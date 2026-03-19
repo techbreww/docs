@@ -1,0 +1,39 @@
+---
+title: "Mod logs"
+description: "Track moderation actions and server events in a dedicated channel."
+icon: "scroll"
+tag: "FREE"
+---
+
+Mod logs record server events and moderation actions in a channel you designate. This gives your moderation team a clear audit trail and helps maintain transparency.
+
+{/* TODO: Add screenshot of mod logs UI */}
+
+## Configure mod logs
+
+<Steps>
+  <Step title="Open the dashboard">
+    Go to the [BrewBot Dashboard](https://brewbot.techbrew.dev) and select your server.
+  </Step>
+  <Step title="Navigate to Mod Logs">
+    Open the **Mod Logs** page from the sidebar.
+  </Step>
+  <Step title="Select a log channel">
+    Choose the channel where the bot should post mod log entries. A private channel visible only to moderators works best.
+  </Step>
+  <Step title="Choose events to log">
+    Select which events the bot should track. Available events include:
+
+    - **Message deletes** — logs deleted messages with their content
+    - **Message edits** — logs the before and after of edited messages
+    - **Member bans and unbans** — logs when members are banned or unbanned
+    - **Member kicks** — logs when members are kicked
+    - **Role changes** — logs when a member's roles are added or removed
+    - **Channel updates** — logs channel creation, deletion, and permission changes
+    - **Nickname changes** — logs when members change their display names
+  </Step>
+</Steps>
+
+<Tip>
+  Enable only the events you care about. Logging too many events can make the log channel noisy and harder to review.
+</Tip>

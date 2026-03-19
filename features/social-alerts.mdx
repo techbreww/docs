@@ -1,0 +1,70 @@
+---
+title: "Social alerts"
+description: "Get notified when creators go live or post new content."
+icon: "bell"
+tag: "PREMIUM"
+---
+
+import PremiumNote from '/snippets/premium-note.mdx';
+
+<PremiumNote />
+
+Social alerts monitor social platforms and post notifications to a Discord channel when creators go live or publish new content. You can track accounts on TikTok, Twitch, and YouTube.
+
+{/* TODO: Add screenshot of social alerts UI */}
+
+## Set up social alerts
+
+Configure each platform from the **Social Alerts** page in the [BrewBot Dashboard](https://brewbot.techbrew.dev).
+
+<Tabs>
+  <Tab title="TikTok">
+    Monitor TikTok accounts and get alerts when new content is published.
+
+    <Steps>
+      <Step title="Add a TikTok account">
+        Enter the TikTok username or profile URL of the account you want to monitor.
+      </Step>
+      <Step title="Select the notification channel">
+        Choose the Discord channel where the bot should post alerts.
+      </Step>
+      <Step title="Customize the alert message">
+        Write a custom message for the notification. You can include placeholders for the creator's name and a link to the new post.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Twitch">
+    Get notified when a streamer goes live on Twitch.
+
+    <Steps>
+      <Step title="Add a Twitch channel">
+        Enter the Twitch username or channel URL of the streamer you want to track.
+      </Step>
+      <Step title="Select the notification channel">
+        Choose the Discord channel where the bot should post go-live alerts.
+      </Step>
+      <Step title="Customize the alert message">
+        Write a custom message for the notification. Include details like the stream title, game, or a link to the stream.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="YouTube">
+    Track YouTube channels for new video uploads.
+
+    <Steps>
+      <Step title="Add a YouTube channel">
+        Enter the YouTube channel URL or handle of the creator you want to monitor.
+      </Step>
+      <Step title="Select the notification channel">
+        Choose the Discord channel where the bot should post upload alerts.
+      </Step>
+      <Step title="Customize the alert message">
+        Write a custom message for the notification. You can include placeholders for the video title and link.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+<Tip>
+  Test your alert configuration by using the preview feature on the Social Alerts page before going live. This lets you verify the message format and channel selection.
+</Tip>

@@ -1,0 +1,43 @@
+---
+title: "Custom commands"
+description: "Create custom slash commands and prefix commands for your server."
+icon: "code"
+tag: "PREMIUM"
+---
+
+import PremiumNote from '/snippets/premium-note.mdx';
+
+<PremiumNote />
+
+Custom commands let you build your own commands that trigger specific actions in your server. You can create both slash commands and prefix commands, each with their own response type.
+
+{/* TODO: Add screenshot of custom commands UI */}
+
+## Create a custom command
+
+<Steps>
+  <Step title="Open the dashboard">
+    Go to the [BrewBot Dashboard](https://brewbot.techbrew.dev) and select your server.
+  </Step>
+  <Step title="Navigate to Custom Commands">
+    Open the **Custom Commands** page from the sidebar.
+  </Step>
+  <Step title="Add a new command">
+    Click **Create** to start building a new command.
+  </Step>
+  <Step title="Configure the command">
+    Fill in the following fields:
+
+    - **Name** — the command name members type to trigger it
+    - **Description** — a short description shown in the slash command menu
+    - **Command type** — choose between a slash command or a prefix command
+    - **Response type** — select what happens when the command is used:
+      - **Text** — replies with a text message
+      - **Embed** — replies with a formatted embed message
+      - **Role assignment** — assigns or removes a role from the member
+  </Step>
+</Steps>
+
+<Note>
+  Slash commands may take up to an hour to register with Discord after you create or update them. Prefix commands are available immediately.
+</Note>

@@ -1,0 +1,36 @@
+---
+title: "Reaction roles"
+description: "Let members assign themselves roles by reacting to a message."
+icon: "face-smile"
+tag: "FREE"
+---
+
+Reaction roles let members pick their own roles by reacting to a message with an emoji. When a member adds a reaction, the bot assigns the corresponding role. When they remove the reaction, the bot removes the role.
+
+{/* TODO: Add screenshot of reaction roles UI */}
+
+## Set up reaction roles
+
+<Steps>
+  <Step title="Open the dashboard">
+    Go to the [BrewBot Dashboard](https://brewbot.techbrew.dev) and select your server.
+  </Step>
+  <Step title="Navigate to Reaction Roles">
+    Open the **Reaction Roles** page from the sidebar.
+  </Step>
+  <Step title="Create a new reaction role message">
+    Click **Create** to start a new reaction role message. Give it a title and optional description that tells members what roles are available.
+  </Step>
+  <Step title="Add emoji-to-role mappings">
+    For each role you want to offer, select an emoji and the role it should assign. You can add as many mappings as you need.
+  </Step>
+  <Step title="Set the target channel">
+    Choose the channel where the bot should post the reaction role message. The bot sends the message and adds the configured emoji reactions automatically.
+  </Step>
+</Steps>
+
+## Permissions
+
+<Warning>
+  The bot needs the **Manage Roles** permission to assign and remove roles. Its role in the server role hierarchy must be positioned **above** any roles it assigns. If the bot's role is lower, it cannot grant those roles.
+</Warning>

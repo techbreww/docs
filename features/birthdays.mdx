@@ -1,0 +1,41 @@
+---
+title: "Birthdays"
+description: "Track member birthdays and send automated announcements."
+icon: cake
+tag: FREE
+---
+
+The birthdays feature lets your members register their birthday so the bot can post an announcement when the day arrives.
+
+{/* TODO: Add screenshot of birthday settings UI */}
+
+## How it works
+
+Members register their birthday using the `/remember-birthday` command. On their birthday, the bot automatically posts an announcement in a channel you choose.
+
+## Configure birthdays
+
+<Steps>
+  <Step title="Open birthday settings">
+    Go to the [BrewBot Dashboard](https://brewbot.techbrew.dev), select your server, and navigate to the **Birthdays** page.
+  </Step>
+  <Step title="Set the announcement channel">
+    Choose the channel where the bot posts birthday announcements.
+  </Step>
+  <Step title="Customize the message">
+    Edit the birthday announcement message to match your server's style.
+
+    {/* TODO: Add screenshot of birthday message customization */}
+  </Step>
+</Steps>
+
+## Bot commands
+
+| Command | Description |
+| --- | --- |
+| `/remember-birthday` | Register your birthday |
+| `/forget-birthday` | Remove your birthday |
+
+<Tip>
+Members can use `/forget-birthday` at any time to remove their birthday from the system.
+</Tip>

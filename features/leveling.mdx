@@ -1,0 +1,51 @@
+---
+title: "Leveling"
+description: "Reward active members with XP, levels, and role rewards."
+icon: arrow-up-right
+tag: PREMIUM
+---
+
+import PremiumNote from '/snippets/premium-note.mdx';
+
+<PremiumNote />
+
+Members earn XP by chatting in your server. As they accumulate XP, they level up. You can assign roles at specific levels as rewards, giving active members recognition and access.
+
+{/* TODO: Add screenshot of leveling configuration UI */}
+
+## How it works
+
+Each message a member sends earns them a configurable amount of XP. Once they reach enough XP, they level up automatically. You can set up role rewards so members receive specific roles when they hit certain levels.
+
+## Configure leveling
+
+<Steps>
+  <Step title="Open leveling settings">
+    Go to the [BrewBot Dashboard](https://brewbot.techbrew.dev) and select your server. Navigate to the **Leveling** page.
+  </Step>
+  <Step title="Set the XP rate">
+    Adjust the XP rate to control how quickly members level up. A higher rate means faster leveling.
+  </Step>
+  <Step title="Set a level-up announcement channel">
+    Choose a channel where the bot posts a message each time a member levels up.
+  </Step>
+  <Step title="Add level roles">
+    Assign roles to specific levels. For example, you could give the "Regular" role at Level 5.
+
+    {/* TODO: Add screenshot of level roles configuration */}
+  </Step>
+</Steps>
+
+## Bot commands
+
+| Command | Description |
+| --- | --- |
+| `/rank` | Check your current level and XP |
+| `/levels` | View the server leaderboard |
+| `/give-xp` | Give XP to a member |
+| `/remove-xp` | Remove XP from a member |
+| `/level-test` | Test level-up announcements |
+
+<Tip>
+Use `/level-test` to preview how level-up announcements look before going live.
+</Tip>

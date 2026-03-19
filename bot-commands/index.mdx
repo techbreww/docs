@@ -1,0 +1,59 @@
+---
+title: "Bot commands"
+sidebarTitle: "All commands"
+description: "Complete reference for all BrewBot slash commands."
+icon: "terminal"
+---
+
+BrewBot uses Discord slash commands for all interactions. Type `/` in any channel where BrewBot is active to see available commands.
+
+| Command | Description | Parameters | Required permissions |
+| --- | --- | --- | --- |
+| `/ticket` | Create a support ticket | `subject` (optional) | None |
+| `/rank` | Check your current level and XP | None | None |
+| `/levels` | View the server leaderboard | None | None |
+| `/give-xp` | Award XP to a member | `member`, `amount` | Manage Server |
+| `/remove-xp` | Remove XP from a member | `member`, `amount` | Manage Server |
+| `/level-test` | Test level-up announcements | None | Manage Server |
+| `/remember-birthday` | Register your birthday | `month`, `day` | None |
+| `/forget-birthday` | Remove your birthday | None | None |
+| `/image` | Generate an AI image | `prompt` | None |
+
+## Leveling commands
+
+Use these commands to check XP progress and manage member levels.
+
+- `/rank` shows your current level, XP, and rank in the server
+- `/levels` displays the server leaderboard sorted by XP
+- `/give-xp @member 100` awards XP (moderators only)
+- `/remove-xp @member 50` removes XP (moderators only)
+
+```bash
+/give-xp member:@Jane amount:100
+```
+
+## Birthday commands
+
+Register your birthday so BrewBot can announce it to the server.
+
+- `/remember-birthday month:3 day:15` saves your birthday as March 15
+- `/forget-birthday` removes your stored birthday
+
+```bash
+/remember-birthday month:3 day:15
+```
+
+## Utility commands
+
+Create support tickets and generate AI images.
+
+- `/ticket subject:Need help with roles` creates a new support ticket
+- `/image prompt:a cat wearing a top hat` generates an AI image
+
+```bash
+/ticket subject:Need help with roles
+```
+
+<Note>
+  Some commands require premium features to be enabled. See [pricing](/getting-started/billing) for details.
+</Note>

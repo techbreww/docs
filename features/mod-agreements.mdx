@@ -1,0 +1,38 @@
+---
+title: "Mod agreements"
+description: "Require moderators to sign an agreement before gaining permissions."
+icon: "file-signature"
+tag: "FREE"
+---
+
+Mod agreements let you define terms that moderators must accept before receiving their moderation role. Once a moderator reads and signs the agreement, the bot assigns them a designated role that grants their permissions.
+
+{/* TODO: Add screenshot of mod agreements UI */}
+
+## Configure mod agreements
+
+<Steps>
+  <Step title="Open the dashboard">
+    Go to the [BrewBot Dashboard](https://brewbot.techbrew.dev) and select your server.
+  </Step>
+  <Step title="Navigate to Mod Agreements">
+    Open the **Mod Agreements** page from the sidebar.
+  </Step>
+  <Step title="Write the agreement text">
+    Write the agreement that moderators must accept. Include your expectations for moderator behavior, responsibilities, and any rules they need to follow.
+  </Step>
+  <Step title="Select the role to grant">
+    Choose the role that the bot assigns when a moderator signs the agreement. This role should carry the moderation permissions you want to grant.
+  </Step>
+</Steps>
+
+## How moderators sign
+
+Moderators can access and sign the agreement in two ways:
+
+- **Dashboard link** — share the agreement page URL from the [BrewBot Dashboard](https://brewbot.techbrew.dev) directly with your moderators
+- **Bot command** — moderators use the bot command in your server to view and sign the agreement
+
+<Note>
+  The bot needs the **Manage Roles** permission and its role must be above the role it assigns to moderators.
+</Note>

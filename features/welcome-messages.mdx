@@ -1,0 +1,38 @@
+---
+title: "Welcome messages"
+description: "Automatically greet new members when they join your server."
+icon: "hand-wave"
+tag: "FREE"
+---
+
+Welcome messages send an automatic greeting whenever a new member joins your server. You can customize the message content, choose where it's posted, and optionally assign a role to new members on join.
+
+{/* TODO: Add screenshot of welcome messages UI */}
+
+## Configure welcome messages
+
+<Steps>
+  <Step title="Open the dashboard">
+    Go to the [BrewBot Dashboard](https://brewbot.techbrew.dev) and select your server.
+  </Step>
+  <Step title="Navigate to Welcome Messages">
+    Open the **Welcome Messages** page from the sidebar.
+  </Step>
+  <Step title="Select the welcome channel">
+    Choose the channel where the bot should send welcome messages.
+  </Step>
+  <Step title="Write your message">
+    Write a custom welcome message. Use the `{member}` placeholder to mention the new member by name.
+
+    ```text
+    Welcome to the server, {member}! Check out #rules to get started.
+    ```
+  </Step>
+  <Step title="Assign a role on join (optional)">
+    Select a role to automatically assign to every new member when they join. This is useful for giving members a default role that unlocks specific channels.
+  </Step>
+</Steps>
+
+<Note>
+  The bot needs the **Send Messages** permission in the welcome channel. If you enable auto-role assignment, the bot also needs **Manage Roles** and its role must be above the assigned role.
+</Note>
