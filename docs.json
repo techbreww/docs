@@ -12,7 +12,6 @@
     "tabs": [
       {
         "tab": "Documentation",
-        "href": "/",
         "groups": [
           {
             "group": "Getting started",
@@ -68,7 +67,7 @@
           {
             "group": "Command reference",
             "pages": [
-              "bot-commands/index"
+              "bot-commands/reference"
             ]
           }
         ]
