@@ -29,12 +29,8 @@
               "features/welcome-messages",
               "features/mod-logs",
               "features/mod-agreements",
-              {
-                "page": "features/bot-personalizer",
-                "pages": [
-                  "features/custom-bot"
-                ]
-              },
+              "features/bot-personalizer",
+              "features/custom-bot",
               "features/custom-commands",
               "features/social-alerts",
               "features/leveling",
