@@ -12,6 +12,7 @@
     "tabs": [
       {
         "tab": "Documentation",
+        "href": "/",
         "groups": [
           {
             "group": "Getting started",
