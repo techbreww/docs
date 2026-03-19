@@ -1,0 +1,147 @@
+---
+title: "Custom bot setup"
+description: "Use your own Discord bot application for a fully branded experience."
+icon: "robot"
+tag: "PREMIUM"
+---
+
+import PremiumNote from '/snippets/premium-note.mdx';
+
+<PremiumNote />
+
+The custom bot feature lets you replace the default BrewBot with your own Discord bot application. Your bot gets its own name, avatar, and status — while still being managed through the BrewBot Dashboard.
+
+{/* TODO: Add screenshot of custom bot appearance card */}
+
+## Prerequisites
+
+Before starting, make sure you have:
+
+- An active BrewBot premium subscription
+- A Discord account with an authenticator app enabled (recommended)
+- Your browser's pop-up blocker temporarily disabled
+
+## Create a Discord application
+
+<Steps>
+  <Step title="Open the Developer Portal">
+    Go to [discord.com/developers/applications](https://discord.com/developers/applications) and sign in with your Discord account.
+  </Step>
+  <Step title="Create a new application">
+    Click **New Application**, enter a name, accept Discord's policies, and click **Create**.
+
+    <Note>
+      You can change the name later, but bot name changes have a **7-day cooldown** enforced by Discord.
+    </Note>
+  </Step>
+</Steps>
+
+## Enable required intents
+
+In your new application, go to the **Bot** tab and scroll down to **Privileged Gateway Intents**. Enable all three:
+
+- **Presence Intent**
+- **Server Members Intent**
+- **Message Content Intent**
+
+<Warning>
+  Do **not** enable "Requires OAuth2 Code Grant" — this will break the connection.
+</Warning>
+
+{/* TODO: Add screenshot of the intents toggles in Developer Portal */}
+
+## Add the redirect URI
+
+<Steps>
+  <Step title="Open the OAuth2 tab">
+    In your application, go to the **OAuth2** tab.
+  </Step>
+  <Step title="Add the redirect URL">
+    Under **Redirects**, click **Add Redirect** and enter exactly:
+
+    ```text
+    https://brewbot.techbrew.dev/manage
+    ```
+
+    Click outside the field, then click **Save Changes**.
+  </Step>
+</Steps>
+
+## Copy your tokens
+
+You need two values from the Developer Portal.
+
+### Client secret
+
+1. Go to the **OAuth2** tab
+2. Click **Reset Secret** and confirm
+3. Copy the client secret
+
+### Bot token
+
+1. Go to the **Bot** tab
+2. Click **Reset Token** and confirm
+3. Copy the bot token
+
+<Warning>
+  Never share your bot token or client secret. If either is compromised, reset it immediately in the Developer Portal.
+</Warning>
+
+## Connect in the dashboard
+
+<Steps>
+  <Step title="Open bot personalizer">
+    Go to the [BrewBot Dashboard](https://brewbot.techbrew.dev), select your server, and open **Bot Personalizer**.
+  </Step>
+  <Step title="Start custom bot setup">
+    Click **Use Custom Bot** (or **Set up Custom Bot** if you're already using the default BrewBot).
+  </Step>
+  <Step title="Confirm the prerequisites">
+    Check all three boxes to confirm you have:
+    - Required Intents enabled
+    - OAuth2 Code Grant disabled
+    - Redirect URI added
+  </Step>
+  <Step title="Enter your tokens">
+    Paste your **Client Secret** and **Bot Token** into the form fields.
+  </Step>
+  <Step title="Enable bot personalizer">
+    Click **Enable Bot Personalizer**. The dashboard validates your token against Discord before saving.
+  </Step>
+  <Step title="Authorize command permissions">
+    A Discord pop-up opens asking you to authorize the bot for your server. This grants the bot permission to sync slash commands between the dashboard and Discord.
+
+    Click **Authorize** to complete the setup.
+  </Step>
+</Steps>
+
+{/* TODO: Add screenshot of the custom bot setup modal */}
+{/* TODO: Add screenshot of the authorize permissions modal */}
+
+## After setup
+
+Once connected, the Bot Personalizer page shows the **Custom Bot Appearance** card where you can configure:
+
+| Setting | Description |
+| --- | --- |
+| **Avatar** | Upload a custom avatar image for your bot |
+| **Bot name** | Change the display name (7-day cooldown between changes) |
+| **Status** | Online, Idle, Do Not Disturb, or Invisible |
+| **Activity type** | Playing, Streaming, Listening to, Watching, or Competing in |
+| **Activity text** | Custom text shown next to the activity type |
+
+A live preview shows how your bot will appear in Discord.
+
+{/* TODO: Add screenshot of the custom bot appearance settings */}
+
+<Note>
+  Your custom bot fully replaces BrewBot in your server. All dashboard features — reaction roles, welcome messages, commands — work through your custom bot. You can optionally remove the default BrewBot from your server.
+</Note>
+
+## Move the bot role
+
+After setup, go to **Server Settings** > **Roles** in Discord and drag your custom bot's role above the roles it needs to manage. The bot can only assign roles that are below its own role in the hierarchy.
+
+## Disconnect the custom bot
+
+To switch back to the default BrewBot, open **Bot Personalizer** and click **Disable Custom Bot**. This clears your stored tokens and reverts all features to the default BrewBot.

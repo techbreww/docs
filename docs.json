@@ -29,7 +29,12 @@
               "features/welcome-messages",
               "features/mod-logs",
               "features/mod-agreements",
-              "features/bot-personalizer",
+              {
+                "page": "features/bot-personalizer",
+                "pages": [
+                  "features/custom-bot"
+                ]
+              },
               "features/custom-commands",
               "features/social-alerts",
               "features/leveling",
@@ -84,8 +89,8 @@
     }
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/docs-logo.png",
+    "dark": "/logo/docs-logo.png"
   },
   "navbar": {
     "links": [
