@@ -5,7 +5,7 @@ icon: "scroll"
 tag: "FREE"
 ---
 
-Mod logs record server events and moderation actions in a channel you designate. This gives your moderation team a clear audit trail and helps maintain transparency.
+Mod logs record server events and moderation actions in a channel you designate. Each event posts a color-coded embed with relevant details, giving your moderation team a clear audit trail.
 
 {/* TODO: Add screenshot of mod logs UI */}
 
@@ -19,21 +19,274 @@ Mod logs record server events and moderation actions in a channel you designate.
     Open the **Mod Logs** page from the sidebar.
   </Step>
   <Step title="Select a log channel">
-    Choose the channel where the bot should post mod log entries. A private channel visible only to moderators works best.
+    Choose the channel where the bot should post log entries. You can also create a new `#mod-logs` channel directly from the dashboard.
+  </Step>
+  <Step title="Enable logging">
+    Turn on the **Enable Audit Logging** toggle.
   </Step>
   <Step title="Choose events to log">
-    Select which events the bot should track. Available events include:
-
-    - **Message deletes** — logs deleted messages with their content
-    - **Message edits** — logs the before and after of edited messages
-    - **Member bans and unbans** — logs when members are banned or unbanned
-    - **Member kicks** — logs when members are kicked
-    - **Role changes** — logs when a member's roles are added or removed
-    - **Channel updates** — logs channel creation, deletion, and permission changes
-    - **Nickname changes** — logs when members change their display names
+    Enable the events you want to track. Events are organized into seven categories — see the full reference below.
   </Step>
 </Steps>
 
 <Tip>
   Enable only the events you care about. Logging too many events can make the log channel noisy and harder to review.
 </Tip>
+
+## Additional settings
+
+- **Ignore bots** — don't log actions made by bots (on by default)
+- **Hide user thumbnails** — don't display user avatars in log embeds
+- **Ignored channels** — skip message delete/edit logging for specific channels
+
+## Event reference
+
+Each log entry is a Discord embed with a color indicating the action type:
+
+- 🟢 **Green** — joins, creates, adds
+- 🟡 **Yellow** — updates, changes, edits
+- 🔴 **Red** — deletes, bans, leaves
+- 🔵 **Blue** — informational
+- 🟠 **Orange** — mutes, warnings
+
+### Member events
+
+<Tabs>
+  <Tab title="Member joined">
+    Logs when a new member joins the server.
+
+    | Field | Value |
+    | --- | --- |
+    | **Color** | Green |
+    | **Description** | Member mention, **joined the server** |
+    | **Details** | Account creation date, current member count |
+    | **Footer** | User ID |
+  </Tab>
+  <Tab title="Member left">
+    Logs when a member leaves or is kicked from the server.
+
+    | Field | Value |
+    | --- | --- |
+    | **Color** | Red |
+    | **Description** | Member mention, **left the server** |
+    | **Details** | Roles the member had, current member count |
+    | **Footer** | User ID |
+  </Tab>
+  <Tab title="Member banned">
+    Logs when a member is banned.
+
+    | Field | Value |
+    | --- | --- |
+    | **Color** | Red |
+    | **Description** | Member mention, **was banned** |
+    | **Details** | Ban reason (or "No reason provided") |
+    | **Footer** | User ID |
+  </Tab>
+  <Tab title="Member unbanned">
+    Logs when a ban is removed from a member.
+
+    | Field | Value |
+    | --- | --- |
+    | **Color** | Green |
+    | **Description** | Member mention, **was unbanned** |
+    | **Footer** | User ID |
+  </Tab>
+  <Tab title="Nickname changed">
+    Logs when a member's nickname changes.
+
+    | Field | Value |
+    | --- | --- |
+    | **Color** | Yellow |
+    | **Description** | Member mention, **nickname changed** |
+    | **Details** | Before and after nicknames |
+    | **Footer** | User ID |
+  </Tab>
+  <Tab title="Roles changed">
+    Logs when a member's roles are added or removed.
+
+    | Field | Value |
+    | --- | --- |
+    | **Color** | Yellow |
+    | **Description** | Member mention, **roles have changed** |
+    | **Details** | Added roles, removed roles |
+    | **Footer** | User ID |
+  </Tab>
+</Tabs>
+
+### Message events
+
+<Tabs>
+  <Tab title="Message deleted">
+    Logs when a message is deleted. Skipped for ignored channels.
+
+    | Field | Value |
+    | --- | --- |
+    | **Color** | Red |
+    | **Description** | Message author, **deleted in** channel mention |
+    | **Details** | Message content (truncated to 1,000 characters) |
+    | **Footer** | Message ID |
+  </Tab>
+  <Tab title="Message updated">
+    Logs when a message is edited. Skipped for ignored channels.
+
+    | Field | Value |
+    | --- | --- |
+    | **Color** | Yellow |
+    | **Description** | Message author, **edited in** channel mention |
+    | **Details** | Before and after content (each truncated to 400 characters), link to message |
+    | **Footer** | Message ID |
+  </Tab>
+  <Tab title="Invite posted">
+    Logs when a server invite is created.
+
+    | Field | Value |
+    | --- | --- |
+    | **Color** | Blue |
+    | **Title** | Invite Created |
+    | **Details** | Invite code, channel, created by, max uses (or "Unlimited"), expiry (or "Never") |
+  </Tab>
+</Tabs>
+
+### Role events
+
+<Tabs>
+  <Tab title="Role created">
+    Logs when a new role is created.
+
+    | Field | Value |
+    | --- | --- |
+    | **Color** | The role's color (green fallback) |
+    | **Title** | Role Created |
+    | **Details** | Role name, color hex, mentionable (yes/no), hoisted (yes/no) |
+    | **Footer** | Role ID |
+  </Tab>
+  <Tab title="Role updated">
+    Logs when a role's properties change. Only changed properties are shown.
+
+    | Field | Value |
+    | --- | --- |
+    | **Color** | The role's new color (yellow fallback) |
+    | **Title** | Role Updated |
+    | **Details** | Changed properties: name, color, hoisted, mentionable (before → after) |
+    | **Footer** | Role ID |
+  </Tab>
+  <Tab title="Role deleted">
+    Logs when a role is deleted.
+
+    | Field | Value |
+    | --- | --- |
+    | **Color** | Red |
+    | **Title** | Role Deleted |
+    | **Details** | Role name, color hex |
+    | **Footer** | Role ID |
+  </Tab>
+</Tabs>
+
+### Channel events
+
+<Tabs>
+  <Tab title="Channel created">
+    Logs when a new channel is created.
+
+    | Field | Value |
+    | --- | --- |
+    | **Color** | Green |
+    | **Title** | Channel Created |
+    | **Details** | Channel name, type, category (or "None") |
+    | **Footer** | Channel ID |
+  </Tab>
+  <Tab title="Channel updated">
+    Logs when a channel's properties change. Only changed properties are shown.
+
+    | Field | Value |
+    | --- | --- |
+    | **Color** | Yellow |
+    | **Title** | Channel Updated |
+    | **Details** | Channel mention, changed properties: name, category (before → after) |
+    | **Footer** | Channel ID |
+  </Tab>
+  <Tab title="Channel deleted">
+    Logs when a channel is deleted.
+
+    | Field | Value |
+    | --- | --- |
+    | **Color** | Red |
+    | **Title** | Channel Deleted |
+    | **Details** | Channel name, type, category (or "None") |
+    | **Footer** | Channel ID |
+  </Tab>
+</Tabs>
+
+### Voice events
+
+<Tabs>
+  <Tab title="Joined voice">
+    Logs when a member joins a voice channel.
+
+    | Field | Value |
+    | --- | --- |
+    | **Color** | Green |
+    | **Title** | Joined Voice Channel |
+    | **Details** | Member name, channel name |
+    | **Footer** | User ID |
+  </Tab>
+  <Tab title="Left voice">
+    Logs when a member leaves a voice channel.
+
+    | Field | Value |
+    | --- | --- |
+    | **Color** | Red |
+    | **Title** | Left Voice Channel |
+    | **Details** | Member name, channel name |
+    | **Footer** | User ID |
+  </Tab>
+  <Tab title="Switched voice">
+    Logs when a member moves between voice channels. Triggers if either voice joined or voice left is enabled.
+
+    | Field | Value |
+    | --- | --- |
+    | **Color** | Yellow |
+    | **Title** | Switched Voice Channel |
+    | **Details** | Member name, old channel → new channel |
+    | **Footer** | User ID |
+  </Tab>
+</Tabs>
+
+### Server events
+
+<Tabs>
+  <Tab title="Server edited">
+    Logs when server settings change (name, icon, banner). Only changed properties are shown.
+
+    | Field | Value |
+    | --- | --- |
+    | **Color** | Yellow |
+    | **Title** | Server Updated |
+    | **Details** | Changed properties (before → after) |
+  </Tab>
+  <Tab title="Emoji added">
+    Logs when a custom emoji is added. Controlled by the **Emojis updated** toggle.
+
+    | Field | Value |
+    | --- | --- |
+    | **Color** | Green |
+    | **Title** | Emoji Added |
+    | **Details** | Emoji name, animated (yes/no) |
+    | **Thumbnail** | Emoji image |
+    | **Footer** | Emoji ID |
+  </Tab>
+  <Tab title="Emoji removed">
+    Logs when a custom emoji is removed. Controlled by the **Emojis updated** toggle.
+
+    | Field | Value |
+    | --- | --- |
+    | **Color** | Red |
+    | **Title** | Emoji Removed |
+    | **Details** | Emoji name |
+    | **Footer** | Emoji ID |
+  </Tab>
+</Tabs>
+
+## Default settings
+
+Moderation events (member muted, unmuted, moderation ban, moderation unban) are enabled by default. All other events start disabled. You can toggle any event on or off at any time.
