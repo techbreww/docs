@@ -129,6 +129,16 @@ You need two values from the Developer Portal.
   </Step>
 </Steps>
 
+<Warning>
+  Re-authorizing the bot updates its server-wide permissions, but it does not override private
+  channel or category denies. If your custom bot needs to post in a locked channel, allow the bot
+  role in that channel or in its parent category.
+
+  For features like reaction roles, welcome messages, and alerts, the target channel usually needs
+  **View Channel**, **Send Messages**, **Add Reactions**, and **Read Message History** for the bot
+  role.
+</Warning>
+
 {/* TODO: Add screenshot of the custom bot setup modal */}
 {/* TODO: Add screenshot of the authorize permissions modal */}
 

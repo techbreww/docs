@@ -34,3 +34,12 @@ Reaction roles let members pick their own roles by reacting to a message with an
 <Warning>
   The bot needs the **Manage Roles** permission to assign and remove roles. Its role in the server role hierarchy must be positioned **above** any roles it assigns. If the bot's role is lower, it cannot grant those roles.
 </Warning>
+
+<Info>
+  The bot also needs access to the channel where you post the reaction role message. If that
+  channel is private, locked, or inherits restrictive category overwrites, allow the bot role in
+  that channel or category before you publish.
+
+  For reaction roles, the safest channel-level permissions are **View Channel**, **Send Messages**,
+  **Add Reactions**, and **Read Message History** for the bot role.
+</Info>
