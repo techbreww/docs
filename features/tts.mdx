@@ -153,6 +153,47 @@ Tags can be combined in a single message to create nuanced delivery. Place each 
   Start with one or two tags per message and build from there. Overloading a message with too many tags can make the output sound unnatural.
 </Tip>
 
+## Add the TTS overlay to your stream
+
+Chat TTS plays audio through a **browser source overlay** that you add to your streaming software (OBS, Streamlabs, etc.). The overlay connects to BrewBot, picks up queued TTS messages, and plays them on stream in real time.
+
+<Steps>
+  <Step title="Copy the overlay URL">
+    In the dashboard, go to your TTS settings and copy the **overlay URL**. It looks like this:
+
+    ```text
+    https://brewbot.techbrew.dev/overlay/speed-dating/{serverId}/chat-tts?token={your-token}
+    ```
+
+    Each server gets a unique secure token. Do not share this URL publicly — anyone with the link can connect to your TTS feed.
+  </Step>
+  <Step title="Add a browser source in OBS">
+    In OBS (or your streaming software), add a new **Browser Source**:
+
+    1. Click **+** in the Sources panel.
+    2. Select **Browser**.
+    3. Name it something like `Chat TTS`.
+    4. Paste the overlay URL into the **URL** field.
+    5. Set the width and height to any value (the overlay is invisible — it only plays audio).
+    6. Make sure **Control audio via OBS** is unchecked so the audio plays through your stream.
+  </Step>
+  <Step title="Test the overlay">
+    Send a test TTS message (or use the manual announcement feature in the dashboard) to confirm audio plays through your stream.
+  </Step>
+</Steps>
+
+<Warning>
+  If you regenerate your overlay token in the dashboard, the old URL stops working. Update the browser source URL in OBS with the new token.
+</Warning>
+
+<Note>
+  The overlay automatically reconnects if the connection drops. If it stays disconnected for more than a few seconds, check that your overlay URL and token are correct.
+</Note>
+
+## Manual announcements
+
+You can send TTS announcements directly from the dashboard without waiting for a chat message. Type your announcement text (up to 300 characters) and it is queued and played through the overlay just like a regular TTS message. This is useful for shoutouts, alerts, or any spoken message you want to trigger on demand.
+
 ## Audience controls
 
 You can control who is allowed to send TTS messages:
