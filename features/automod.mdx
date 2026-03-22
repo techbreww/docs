@@ -1,0 +1,142 @@
+---
+title: "AutoMod"
+description: "Automatically enforce server rules — kick unverified members, block links, and stop new member spam."
+icon: "shield-halved"
+---
+
+AutoMod provides automated moderation rules that run 24/7 without moderator intervention. Configure each rule independently from the dashboard.
+
+## Rules overview
+
+AutoMod currently includes three rules:
+
+| Rule | What it does |
+| --- | --- |
+| **Role Enforcement** | Kicks members who don't receive a required role within a set number of days |
+| **Link Blocking** | Deletes messages containing links (and optionally attachments/stickers) in selected channels |
+| **New Member Spam Protection** | Kicks members who post links, images, attachments, or stickers within seconds of joining |
+
+<Note>
+  All AutoMod rules require the bot to be connected to your server.
+</Note>
+
+---
+
+## Role Enforcement
+
+Automatically kicks members who haven't been assigned a specific role within a grace period. Useful for servers that require a verification role.
+
+<Steps>
+  <Step title="Open AutoMod">
+    Go to the [BrewBot Dashboard](https://brewbot.techbrew.dev), select your server, and navigate to **Moderation → AutoMod**.
+  </Step>
+  <Step title="Enable Role Enforcement">
+    Toggle the **Role Enforcement** section on.
+  </Step>
+  <Step title="Select the required role">
+    Choose the role members must have. Anyone without this role past the grace period will be kicked.
+  </Step>
+  <Step title="Set the grace period">
+    Enter the number of days new members have to receive the role (1–30 days, default 5).
+  </Step>
+  <Step title="Optional: Set a custom kick reason">
+    Enter a custom message that appears in the Discord audit log. Leave empty for the default reason.
+  </Step>
+  <Step title="Optional: Set a log channel">
+    Choose a channel where the bot posts an embed each time a member is kicked.
+  </Step>
+</Steps>
+
+<Tip>
+  The bot checks for members missing the required role every 30 minutes.
+</Tip>
+
+---
+
+## Link Blocking
+
+Deletes messages containing links in channels you select. You can also block attachments and stickers, allow same-server Discord links, grant bypass roles, and customize the warning message.
+
+<Steps>
+  <Step title="Enable Link Blocking">
+    Toggle the **Link Blocking** section on.
+  </Step>
+  <Step title="Select channels">
+    Use the **Block Links In** picker to add the channels where links should be blocked. Only the channels you add are enforced — all other channels are unaffected.
+  </Step>
+  <Step title="Optional: Add bypass roles">
+    Members with a bypass role can still post links in enforced channels. Add roles using the **Bypass Roles** picker.
+  </Step>
+</Steps>
+
+### Additional settings
+
+| Setting | Default | Description |
+| --- | --- | --- |
+| **Allow same-server links** | On | Discord links pointing to messages or channels within your own server are not blocked |
+| **Block attachments** | Off | Also delete messages with images, files, and other attachments |
+| **Block stickers** | Off | Also delete messages that contain stickers |
+| **Warning message** | `@user, that content is not allowed in this channel.` | Customize the message the bot sends after deleting content. Use `{user}` to mention the member. The warning auto-deletes after 5 seconds. |
+| **Log channel** | None | Channel where the bot posts a log embed for each deleted message |
+
+<Warning>
+  The bot needs the **Manage Messages** permission in enforced channels to delete messages.
+</Warning>
+
+---
+
+## New Member Spam Protection
+
+Kicks members who post links, images, attachments, or stickers within a configurable time window after joining. This catches spam bots that join and immediately drop content.
+
+<Steps>
+  <Step title="Enable New Member Spam Protection">
+    Toggle the **New Member Spam Protection** section on.
+  </Step>
+  <Step title="Set the time window">
+    Enter the number of seconds after joining during which posting media triggers a kick (10–600 seconds, default 60). For example, `60` means any link or attachment posted within the first minute triggers a kick.
+  </Step>
+  <Step title="Optional: Set a custom kick reason">
+    Enter a custom message for the Discord audit log. Leave empty for the default.
+  </Step>
+  <Step title="Optional: Set a log channel">
+    Choose a channel for kick log embeds.
+  </Step>
+</Steps>
+
+<Tip>
+  This rule runs in **all channels**, not just the ones selected for link blocking. It's a separate spam prevention measure.
+</Tip>
+
+---
+
+## Permissions required
+
+AutoMod needs the following Discord permissions to function:
+
+| Permission | Used by |
+| --- | --- |
+| **Kick Members** | Role Enforcement, New Member Spam Protection |
+| **Manage Messages** | Link Blocking (deleting messages) |
+| **Send Messages** | Link Blocking (sending warning messages) |
+
+Make sure the bot's role is **higher** than the roles of members it needs to kick.
+
+---
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="Are server admins exempt from AutoMod?">
+    No. Server admins are not automatically exempt. For link blocking, add your admin role as a **bypass role**. For role enforcement, make sure admins already have the required role. New member spam protection won't affect existing members — only those who joined within the configured time window.
+  </Accordion>
+  <Accordion title="How often does role enforcement check?">
+    Every 30 minutes. A member who passes the grace period will be kicked within the next polling cycle.
+  </Accordion>
+  <Accordion title="What counts as a 'link' for link blocking?">
+    URLs with `http://` or `https://`, and bare domains with common TLDs (`.com`, `.org`, `.net`, `.gg`, etc.). If **Allow same-server links** is on, Discord links pointing to your own server are excluded.
+  </Accordion>
+  <Accordion title="Can I use AutoMod without premium?">
+    AutoMod requires an active subscription. The bot must also be connected to your server.
+  </Accordion>
+</AccordionGroup>

@@ -30,6 +30,7 @@
               "features/welcome-messages",
               "features/mod-logs",
               "features/mod-agreements",
+              "features/automod",
               "features/bot-personalizer",
               "features/custom-bot",
               "features/custom-commands",
