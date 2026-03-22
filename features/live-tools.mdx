@@ -1,33 +1,134 @@
 ---
 title: "Live tools"
-description: "Run interactive events like speed dating and scheduled activities."
-icon: calendar-clock
+description: "Run live events with speed dating, overlays, TTS, scheduling, and moderation tools."
+icon: tower-broadcast
 ---
 
 import PremiumNote from '/snippets/premium-note.mdx';
 
 <PremiumNote />
 
-Live tools are a set of features for running live events in your server. Access them from the **Live tools** page in the [BrewBot Dashboard](https://brewbot.techbrew.dev).
+Live tools are a suite of features for running live events from the [BrewBot Dashboard](https://brewbot.techbrew.dev). They cover everything from monitoring chat in real time to coordinating speed dating rounds with stream overlays.
 
 {/* TODO: Add screenshot of live tools overview UI */}
 
+## Monitoring
+
+### Chat monitor
+
+Watch live chat messages from a connected TikTok stream directly in the dashboard. Messages stream in through a WebSocket connection as they happen.
+
+<Note>
+  The chat monitor is read-only. You cannot send messages from the dashboard.
+</Note>
+
+<Card title="Live monitor" icon="desktop" href="/features/live-monitor">
+  Full details on the chat monitor.
+</Card>
+
+### Transcripts
+
+Record TikTok live chat sessions and review them later. Transcripts capture chat messages, gifts, follows, and other events. They auto-expire after 24 hours.
+
+<Card title="Transcripts" icon="scroll" href="/features/transcripts">
+  Full details on transcripts.
+</Card>
+
 ## Speed dating
 
-Pair members in temporary voice channels for timed conversations. Each round creates new pairs, giving members a chance to meet different people in your server.
+Speed dating tools let you run live matchmaking events. You manage profiles, coordinate rounds on a drag-and-drop grid, and display results through stream overlays.
 
-{/* TODO: Document speed dating configuration once UI is confirmed */}
+### Speed tracker
+
+The speed tracker is the main control panel for running live speed dating rounds. It includes:
+
+- **Dating grid** — a drag-and-drop grid with slots for active daters. Move profiles between "Waiting", "Dating", "Matched", "Friend Vibes", and "Pass" statuses.
+- **Icebreaker questions** — generate conversation starters by category. Questions display on the stream through the question overlay.
+- **Timer** — a synced countdown timer that displays on stream. When time runs out, a buzzer sound plays through the timer overlay.
+- **Vote off (gift race)** — start a live gift race between daters. Viewers send gifts on TikTok and the leaderboard updates in real time on the vote off overlay.
+- **MVP dock** — mark standout participants as MVPs for special recognition.
+- **AI insights** — generate AI-powered observations about dating rounds.
+
+{/* TODO: Add screenshot of speed tracker UI */}
+
+### Profiles
+
+Manage speed dating participant profiles. Each profile stores a name, age, city, state, age range, gender, and optional TikTok username (used for gift race tracking). You can:
+
+- Add, edit, and delete profiles
+- Search and filter the profile list
+- Detect and review duplicate profiles with AI assistance
+- Transfer profiles between servers (move or copy)
+
+### Tickets
+
+A support ticket system for speed dating events. Viewers can submit tickets through a public portal, and your team can manage them from the dashboard. Tickets support:
+
+- Public and internal messages
+- File attachments
+- Assignment to team members
+- Status tracking (new, in progress, done)
+- Optional Discord notifications when new tickets arrive
+
+### Blocked from live
+
+Track who has been blocked from live events, why, and when. Each record includes the person's name, Discord and TikTok usernames, a reason category (safety, harassment, disruptive behavior, underage concern, spam, no-show, or other), and detailed notes. Admins can edit active records and resolve them while keeping the full audit history.
 
 ## Schedule
 
-Create and manage scheduled events with sign-ups. Members can see upcoming events and register their attendance.
+Plan your weekly live show co-hosts. The schedule is organized by weekday and supports:
 
-{/* TODO: Document schedule setup steps once UI is confirmed */}
+- Adding team members to specific days
+- Drag-and-drop reordering within each day
+- Week-by-week navigation (current week and one week ahead)
+- Draft and published states — only published schedules are visible to non-admin team members
+- Past weeks are automatically locked as read-only
 
-## Live blocks
+<Note>
+  The schedule feature is only available for servers that belong to a team (organization).
+</Note>
 
-Create interactive content blocks in channels. Use these to build structured, interactive content for your community.
+## Overlays
 
-{/* TODO: Document live blocks usage once UI is confirmed */}
+Overlays are browser source URLs that you add to your streaming software (OBS, Streamlabs, etc.) to display live event elements on stream. The recommended size for all overlays is **1920×1080** with a transparent background.
 
-{/* TODO: Document each live tool in detail once UI is confirmed */}
+Copy each overlay URL from the **Overlays** page in the dashboard and add it as a browser source.
+
+### Question overlay
+
+Displays the current icebreaker question on stream. Generate questions from the speed tracker or the overlays page — both update the same overlay.
+
+### Timer overlay
+
+Shows the countdown timer on stream. Start the timer from the speed tracker profiles page. A buzzer sound plays when the timer reaches zero.
+
+### Vote off overlay
+
+Displays a live gift race leaderboard during vote-off rounds. Shows real-time gift counts while the race is active and the elimination result when time runs out.
+
+### Chat TTS overlay
+
+A hidden browser source that plays text-to-speech audio on stream. TikTok chat messages starting with `//` are queued and spoken in order. Keep this source active in OBS even though it is visually invisible.
+
+<Card title="Text-to-speech (TTS)" icon="volume" href="/features/tts">
+  Full details on TTS setup, audio tags, and voice configuration.
+</Card>
+
+### Stream Deck plugin
+
+Control BrewBot from your Elgato Stream Deck. The plugin lets you start and reset the speed dating timer, generate icebreaker questions on the fly, and see connection status. Download the plugin from the overlays page in the dashboard.
+
+## TTS settings
+
+Configure text-to-speech behavior for live events. The TTS settings page has two tabs:
+
+- **Chat TTS** — enable or disable TTS, choose the audience (moderators or everyone), manage whitelisted members, select a voice and voice model, view the TTS queue, send manual announcements, and manage overlay connections.
+- **Live source** — select which TikTok live channel to monitor. This is the same channel used by the gift race and speed tracker.
+
+<Card title="Text-to-speech (TTS)" icon="volume" href="/features/tts">
+  Full details on TTS audio tags, overlay setup, and voice models.
+</Card>
+
+<Note>
+  TTS settings are only accessible to team admins.
+</Note>
