@@ -74,7 +74,7 @@
         },
         {
           "anchor": "Discord",
-          "href": "https://discord.gg/dR9nJnemH3",
+          "href": "https://discord.gg/WbMUYr7DCg",
           "icon": "discord"
         }
       ]
@@ -88,7 +88,7 @@
     "links": [
       {
         "label": "Support",
-        "href": "https://discord.gg/dR9nJnemH3"
+        "href": "https://discord.gg/WbMUYr7DCg"
       }
     ],
     "primary": {
@@ -99,7 +99,7 @@
   },
   "footer": {
     "socials": {
-      "discord": "https://discord.gg/dR9nJnemH3"
+      "discord": "https://discord.gg/WbMUYr7DCg"
     }
   }
 }

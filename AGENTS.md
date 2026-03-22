@@ -37,4 +37,4 @@
   ```
 - Features are split into free and premium tiers — always note which tier a feature belongs to
 - The dashboard URL is `https://brewbot.techbrew.dev`
-- The Discord support server is `https://discord.gg/dR9nJnemH3`
+- The Discord support server is `https://discord.gg/WbMUYr7DCg`
