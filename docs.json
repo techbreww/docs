@@ -19,7 +19,8 @@
               "index",
               "getting-started/add-bot",
               "getting-started/onboarding",
-              "getting-started/billing"
+              "getting-started/billing",
+              "getting-started/teams"
             ]
           },
           {
@@ -48,12 +49,6 @@
             "pages": [
               "integrations/stream-deck",
               "integrations/api-logs"
-            ]
-          },
-          {
-            "group": "Account",
-            "pages": [
-              "account/teams"
             ]
           }
         ]
