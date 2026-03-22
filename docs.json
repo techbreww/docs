@@ -39,6 +39,7 @@
               "features/channel-role-manager",
               "features/birthdays",
               "features/transcripts",
+              "features/tts",
               "features/reports"
             ]
           },

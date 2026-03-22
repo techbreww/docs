@@ -1,0 +1,169 @@
+---
+title: "Text-to-speech (TTS)"
+description: "Turn text into spoken audio with expressive voice tags powered by ElevenLabs."
+icon: "volume"
+---
+
+import PremiumNote from '/snippets/premium-note.mdx';
+
+<PremiumNote />
+
+Text-to-speech lets the bot convert written messages into natural-sounding audio. BrewBot uses [ElevenLabs](https://elevenlabs.io) to generate speech, and supports expressive audio tags that add emotion, reactions, and vocal variety to the output.
+
+{/* TODO: Add screenshot of TTS settings UI */}
+
+## Voice models
+
+BrewBot supports two ElevenLabs voice models:
+
+| Model | Description |
+|---|---|
+| **Multilingual v2** | Stable, general-purpose model. Works well for straightforward speech. This is the default. |
+| **v3** | Newer model with support for expressive audio tags. Choose this if you want emotional delivery and sound effects. |
+
+<Warning>
+  Audio tags only work with the **v3** voice model. If you use the Multilingual v2 model, tags are ignored or read aloud as plain text.
+</Warning>
+
+## Configure TTS
+
+<Steps>
+  <Step title="Open the dashboard">
+    Go to the [BrewBot Dashboard](https://brewbot.techbrew.dev) and select your server.
+  </Step>
+  <Step title="Navigate to TTS settings">
+    Open the TTS or voice settings section for the feature you want to configure.
+  </Step>
+  <Step title="Enable TTS">
+    Toggle TTS on. Choose who can trigger TTS messages — moderators only, whitelisted members, or everyone.
+  </Step>
+  <Step title="Pick a voice">
+    Select a voice from the available ElevenLabs voices. Each voice has a different tone and style.
+  </Step>
+  <Step title="Select a voice model">
+    Choose **v3** if you want audio tag support, or stick with **Multilingual v2** for standard speech.
+  </Step>
+</Steps>
+
+## How TTS works
+
+When a member sends a TTS-eligible message, the bot:
+
+1. Detects the TTS trigger (a `//` prefix for chat TTS).
+2. Extracts the spoken text from the message.
+3. Sends the text to ElevenLabs with the configured voice and model.
+4. Plays the generated audio.
+
+For example, typing `// Hello everyone, welcome to the stream!` produces a spoken greeting in the selected voice.
+
+## Audio tags
+
+Audio tags are short markers you embed in your text to control how the voice sounds. Wrap each tag in square brackets and place it where you want the effect to occur.
+
+```text
+// [excited] We just hit a new record! [laughs] I can't believe it!
+```
+
+### Emotional tone
+
+Use these tags to set the mood of the delivery:
+
+| Tag | Effect |
+|---|---|
+| `[excited]` | Upbeat, enthusiastic delivery |
+| `[nervous]` | Hesitant, anxious tone |
+| `[frustrated]` | Annoyed, impatient delivery |
+| `[tired]` | Low-energy, fatigued tone |
+| `[sarcastic]` | Dry, ironic delivery |
+| `[curious]` | Inquisitive, wondering tone |
+| `[mischievously]` | Playful, scheming delivery |
+
+### Reactions
+
+Simulate physical and vocal reactions:
+
+| Tag | Effect |
+|---|---|
+| `[laughs]` | Short laugh |
+| `[laughs harder]` | Extended, intense laughter |
+| `[starts laughing]` | Laughter that builds in |
+| `[wheezing]` | Breathless laughter |
+| `[gasp]` | Sharp intake of breath |
+| `[sighs]` | Audible sigh |
+| `[exhales]` | Breath release |
+| `[crying]` | Tearful, emotional delivery |
+| `[snorts]` | Nasal laugh or scoff |
+| `[gulps]` | Nervous swallow |
+
+### Volume and energy
+
+Control how loud or quiet the voice is:
+
+| Tag | Effect |
+|---|---|
+| `[whispers]` | Soft, hushed delivery |
+| `[whispering]` | Sustained quiet tone |
+| `[shouting]` | Loud, projected delivery |
+| `[quietly]` | Subdued, low-volume speech |
+| `[loudly]` | Raised-voice delivery |
+
+### Pacing and rhythm
+
+Adjust the speed and flow of speech:
+
+| Tag | Effect |
+|---|---|
+| `[pauses]` | Brief silence for dramatic effect |
+| `[stammers]` | Halting, uncertain speech |
+| `[rushed]` | Fast, hurried delivery |
+
+### Sound effects
+
+Add non-speech audio cues:
+
+| Tag | Effect |
+|---|---|
+| `[applause]` | Clapping audience |
+| `[clapping]` | Rhythmic clapping |
+
+### Special
+
+| Tag | Effect |
+|---|---|
+| `[sings]` | Melodic, sung delivery |
+| `[woo]` | Celebratory exclamation |
+
+## Layering tags
+
+Tags can be combined in a single message to create nuanced delivery. Place each tag inline where you want the effect to happen:
+
+```text
+// [nervously] I... I'm not sure this is going to work. [gulps] But let's try anyway.
+```
+
+```text
+// [whispering] Did you hear that? [pauses] [loudly] It's coming from over there!
+```
+
+```text
+// [excited] We won! [laughs harder] I told you we could do it! [applause]
+```
+
+<Tip>
+  Start with one or two tags per message and build from there. Overloading a message with too many tags can make the output sound unnatural.
+</Tip>
+
+## Audience controls
+
+You can control who is allowed to send TTS messages:
+
+| Setting | Description |
+|---|---|
+| **Moderators only** | Only server moderators can trigger TTS. This is the default. |
+| **Whitelisted members** | Only members you add to the whitelist can trigger TTS. |
+| **MVPs** | Members marked as MVPs gain TTS access (when enabled). |
+| **Everyone** | Any member can trigger TTS. |
+
+<Note>
+  Whitelisted members and MVPs always have TTS access regardless of the audience setting.
+</Note>
