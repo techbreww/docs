@@ -1,0 +1,148 @@
+---
+title: "Captcha Verification"
+description: "Gate your server with an emoji captcha challenge — new members must pick the right emoji to get in."
+icon: "robot"
+---
+
+Captcha Verification adds a human-verification step for new members. A persistent "Start Verification" button lives in a channel you choose. When a member clicks it, the bot sends them a private emoji challenge — pick the correct emoji from 10 random options to unlock the server. Fail twice and you're temporarily banned.
+
+<Note>
+  Captcha Verification is a **premium** feature and requires the bot to be connected to your server.
+</Note>
+
+---
+
+## How it works
+
+1. A new member joins and can only see the verification channel
+2. They click **Start Verification** on the embed
+3. The bot replies with a private message showing 10 random emoji buttons and tells them which one to pick
+4. **Correct pick** — the verified role is granted and the rest of the server is unlocked
+5. **2 wrong picks** — the member is temporarily banned (configurable duration)
+6. **No response** within the timeout — the member is kicked (they can rejoin and try again)
+
+<Tip>
+  The emoji challenge is **randomized per user** — each person sees a different set of emojis and a different target. This makes it effective against automated bots.
+</Tip>
+
+---
+
+## Setup
+
+<Steps>
+  <Step title="Create a verification channel">
+    Create a channel in Discord (e.g. `#verify`) where new members will see the verification button.
+  </Step>
+  <Step title="Create or select a verified role">
+    You need a role that gets granted on successful verification. You can create a **Verified** role directly from the dashboard, or select an existing one.
+  </Step>
+  <Step title="Set Discord permissions">
+    Configure your Discord channel permissions so that:
+    - **@everyone** can only see the `#verify` channel
+    - The **Verified** role can see all other channels
+
+    This ensures unverified members are locked to the verification channel.
+  </Step>
+  <Step title="Configure on the dashboard">
+    Go to the [BrewBot Dashboard](https://brewbot.techbrew.dev), select your server, and navigate to **Moderation → Captcha Verification**.
+
+    Set the following:
+    - **Verification Channel** — where the button embed will be posted
+    - **Verified Role** — the role to grant on success (or click "Create Verified role" to make one)
+    - **Rules Channel** (optional) — where to direct members after they verify
+    - **Log Channel** (optional) — where verification events are logged
+    - **Timeout** — how long members have to verify before being kicked (default 10 minutes)
+    - **Temp Ban Duration** — how long a failed member is banned (default 24 hours)
+  </Step>
+  <Step title="Post the verification message">
+    Click **Post Message** to send the persistent verification embed to your channel. This is the button all new members will use.
+  </Step>
+  <Step title="Enable the feature">
+    Toggle the feature on. The bot will now enqueue a kick timer for every new member that joins.
+  </Step>
+</Steps>
+
+---
+
+## Using with Reaction Roles
+
+Captcha Verification and [Reaction Roles](/features/reaction-roles) work together as a two-step onboarding flow:
+
+1. **Captcha** gates access — ensures the member is human
+2. **Reaction Roles** handle onboarding — let verified members pick their roles (interests, pronouns, notifications, etc.)
+
+To set this up:
+
+1. Create your reaction role messages in a rules channel (e.g. `#rules`) using the [Reaction Roles](/features/reaction-roles) feature
+2. In Captcha Verification settings, set the **Rules Channel** to that same channel
+3. After verifying, the bot tells the member: *"Head to #rules to read the rules and pick your roles!"*
+
+<Tip>
+  The Reaction Roles **Verify** template creates a "Member" role for rule acceptance. The Captcha Verification feature creates a separate "Verified" role for human verification. These are different roles with different purposes — captcha proves you're human, reaction roles let you accept rules and pick interests.
+</Tip>
+
+---
+
+## Settings reference
+
+| Setting | Default | Description |
+| --- | --- | --- |
+| **Verification Channel** | — | Channel where the persistent verify button is posted |
+| **Verified Role** | — | Role granted on successful verification |
+| **Rules Channel** | None | Channel the bot directs members to after verification |
+| **Log Channel** | None | Channel where verification events (verified, kicked, banned) are logged |
+| **Timeout** | 10 minutes | How long before an unverified member is auto-kicked (1–60 min) |
+| **Temp Ban Duration** | 24 hours | How long a failed member is banned before auto-unban (1–168 hours) |
+| **Embed Title** | "Verification Required" | Title of the persistent verification embed |
+| **Embed Description** | "Click the button below to verify you are human." | Description text of the embed |
+
+---
+
+## Log events
+
+When a log channel is configured, the bot sends an embed for each verification event:
+
+| Event | Color | When |
+| --- | --- | --- |
+| **Captcha Verified** | Green | Member picked the correct emoji |
+| **Captcha Timeout — Kicked** | Yellow | Member didn't verify within the timeout |
+| **Captcha Failed — Temp Banned** | Red | Member picked the wrong emoji twice |
+
+Each log embed includes the member's username, avatar, and user ID.
+
+---
+
+## Permissions required
+
+| Permission | Used for |
+| --- | --- |
+| **Kick Members** | Kicking members who time out |
+| **Ban Members** | Temp-banning members who fail verification |
+| **Manage Roles** | Granting the verified role |
+
+Make sure the bot's role is **higher** than the verified role in your Discord role hierarchy, otherwise it won't be able to assign it.
+
+---
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="Does the bot post a new message for each member?">
+    No. There is one persistent embed with a "Start Verification" button. All members use the same button. The emoji challenge is sent as a private (ephemeral) reply that only that member can see.
+  </Accordion>
+  <Accordion title="What happens if the bot restarts?">
+    The persistent button in the channel still works — it's a regular Discord message. Any in-progress emoji challenges will expire and members can just click "Start Verification" again. Kick and unban timers are stored in the database and survive restarts.
+  </Accordion>
+  <Accordion title="Can bots solve the emoji challenge?">
+    The challenge uses cryptographically random emoji selection, so the target emoji and button layout are unpredictable. Combined with the 2-strike temp ban and timeout kick, automated bots have a very low success rate.
+  </Accordion>
+  <Accordion title="What if a member is kicked for timeout — can they rejoin?">
+    Yes. A timeout kick is not a ban. The member can rejoin immediately and try again with a fresh challenge.
+  </Accordion>
+  <Accordion title="What if a member is temp-banned for failing?">
+    They are automatically unbanned after the configured duration (default 24 hours). After the ban lifts, they can rejoin and get a fresh challenge.
+  </Accordion>
+  <Accordion title="Do I need both Captcha Verification and the Reaction Roles Verify template?">
+    They serve different purposes. Captcha proves a member is human (anti-bot). The Reaction Roles Verify template lets members accept rules and get a "Member" role. You can use both together for a two-step onboarding, or just one depending on your needs.
+  </Accordion>
+</AccordionGroup>
