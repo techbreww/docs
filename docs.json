@@ -32,6 +32,7 @@
               "features/mod-agreements",
               "features/automod",
               "features/captcha-verification",
+              "features/permissions",
               "features/bot-personalizer",
               "features/custom-bot",
               "features/custom-commands",

@@ -1,0 +1,101 @@
+---
+title: "Permissions"
+description: "Check which Discord permissions the bot has and re-authorize if any are missing."
+icon: "shield-check"
+---
+
+The Permissions page shows the bot's current Discord permissions in your server. If any required permissions are missing, features may not work correctly. You can re-authorize the bot directly from this page to fix it.
+
+<Note>
+  The Permissions page requires the bot to be connected to your server. Find it in **Configuration > Permissions**.
+</Note>
+
+---
+
+## How it works
+
+The dashboard fetches the bot's guild member data and computes its effective permissions from all assigned roles. It then compares those against the full set of permissions BrewBot needs to operate.
+
+Each permission is shown with:
+- A green check if granted
+- A red X if missing, with a description of which features are affected
+
+---
+
+## Required permissions
+
+BrewBot requests these 17 permissions:
+
+| Permission | Used for |
+| --- | --- |
+| **Kick Members** | AutoMod role enforcement, captcha timeout kicks |
+| **Ban Members** | Captcha verification temp bans |
+| **Manage Channels** | Channel manager, creating channels from dashboard |
+| **Add Reactions** | Reaction roles |
+| **View Audit Log** | Mod logs — identifying who performed moderation actions |
+| **View Channel** | Required for all features |
+| **Send Messages** | Welcome messages, mod logs, alerts, captcha verification |
+| **Manage Messages** | AutoMod link blocking, message deletion |
+| **Embed Links** | All embed-based features (mod logs, alerts, etc.) |
+| **Attach Files** | File uploads in bot messages |
+| **Read Message History** | AI chat context, message snapshots for mod logs |
+| **Use External Emojis** | Reaction roles with external server emojis |
+| **Mention Everyone** | Announcement pings in alerts |
+| **Connect** | Voice features, text-to-speech |
+| **Speak** | Voice features, text-to-speech |
+| **Manage Roles** | Reaction roles, captcha verification, leveling rewards |
+| **Moderate Members** | Timeout/mute capabilities |
+
+---
+
+## Re-authorizing the bot
+
+If permissions are missing, click **Re-authorize Bot** on the Permissions page. This opens Discord's authorization popup where you can grant the updated permissions without removing the bot from your server.
+
+<Steps>
+  <Step title="Open Permissions">
+    Go to **Configuration > Permissions** in the dashboard.
+  </Step>
+  <Step title="Review missing permissions">
+    Any permissions with a red X are missing. The status card on the right shows the total count.
+  </Step>
+  <Step title="Click Re-authorize Bot">
+    This opens Discord's OAuth popup. Approve the permissions and close the popup.
+  </Step>
+  <Step title="Verify">
+    The page refreshes automatically after the popup closes. All permissions should now show green checks.
+  </Step>
+</Steps>
+
+<Tip>
+  Re-authorizing does not remove the bot, reset settings, or affect your server in any way. It only updates the bot's permission set.
+</Tip>
+
+---
+
+## Role position
+
+The Permissions page also shows the bot's **role position** in your server's role hierarchy. The bot can only manage roles that are below its own role. If role-based features (reaction roles, captcha verification, leveling rewards) aren't working:
+
+1. Open **Server Settings > Roles** in Discord
+2. Drag the bot's role higher in the list
+3. Make sure it's above any roles it needs to assign
+
+---
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="Why are permissions missing if I already authorized the bot?">
+    Permissions can change if a server admin modifies the bot's role permissions, or if the bot was originally invited with an older permission set. Re-authorizing updates the bot's role to include all current required permissions.
+  </Accordion>
+  <Accordion title="Does re-authorizing affect my server settings?">
+    No. Re-authorizing only updates the bot's Discord role permissions. All dashboard settings, reaction roles, mod logs, and other configurations remain unchanged.
+  </Accordion>
+  <Accordion title="What if the bot has Administrator permission?">
+    If the bot's role has the Administrator permission, all other permissions are automatically granted. The page will show "ADMINISTRATOR" and all permissions will be green.
+  </Accordion>
+  <Accordion title="Can I remove permissions the bot doesn't need?">
+    BrewBot only requests permissions it actively uses. Removing any of them may break specific features. The permission descriptions explain what each one is used for.
+  </Accordion>
+</AccordionGroup>

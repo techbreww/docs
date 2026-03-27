@@ -11,24 +11,30 @@ icon: "circle-plus"
     Go to the [BrewBot Dashboard](https://brewbot.techbrew.dev) and sign in with Discord.
   </Step>
   <Step title="Add your server">
-    Click **Add server** and select the server you want to manage.
+    Click **Add server** and select the server you want to manage. If the bot isn't connected yet, you'll be taken directly to the Bot Personalizer setup page.
   </Step>
   <Step title="Authorize permissions">
     Authorize the requested permissions. BrewBot requests only the specific permissions it needs:
 
-    - **Manage Channels** — dashboard channel management
-    - **Add Reactions** — reaction roles
-    - **View Channel** — access channels across all features
-    - **Send Messages** — nearly every feature
-    - **Manage Messages** — custom commands, alert auto-delete, reaction role embeds
-    - **Embed Links** — audit log, welcome messages, alerts, leveling
-    - **Attach Files** — AI voice messages, image generation
-    - **Read Message History** — reaction roles, audit log
-    - **Use External Emojis** — embeds with external emojis
-    - **Mention Everyone** — alert default messages
-    - **Connect** — AI voice channel join
-    - **Speak** — AI voice channel playback
-    - **Manage Roles** — reaction roles, leveling role rewards, dashboard role management
+    | Permission | Used for |
+    | --- | --- |
+    | **Kick Members** | AutoMod role enforcement, captcha timeout kicks |
+    | **Ban Members** | Captcha verification temp bans |
+    | **Manage Channels** | Channel manager, creating channels from dashboard |
+    | **Add Reactions** | Reaction roles |
+    | **View Audit Log** | Mod logs — identifying who banned, kicked, deleted messages, etc. |
+    | **View Channel** | Required for all features |
+    | **Send Messages** | Welcome messages, mod logs, alerts, verification |
+    | **Manage Messages** | AutoMod link blocking, message deletion |
+    | **Embed Links** | All embed-based features (mod logs, alerts, etc.) |
+    | **Attach Files** | AI voice messages, image generation |
+    | **Read Message History** | Reaction roles, AI chat context, mod log snapshots |
+    | **Use External Emojis** | Reaction roles with external server emojis |
+    | **Mention Everyone** | Announcement pings in alerts |
+    | **Connect** | Voice features, text-to-speech |
+    | **Speak** | Voice features, text-to-speech |
+    | **Manage Roles** | Reaction roles, captcha verification, leveling rewards |
+    | **Moderate Members** | Timeout/mute capabilities |
   </Step>
   <Step title="Open your server">
     Once authorized, your server appears in the dashboard sidebar.
@@ -48,3 +54,9 @@ icon: "circle-plus"
 <Note>
   You need the **Manage Server** permission in Discord to add BrewBot.
 </Note>
+
+## Checking permissions later
+
+If features aren't working, the bot may be missing permissions. Go to **Configuration > Permissions** in the dashboard to see exactly which permissions are granted and which are missing. If any are missing, use the **Re-authorize Bot** button to update them without removing the bot.
+
+See [Permissions](/features/permissions) for details.

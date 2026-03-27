@@ -6,6 +6,8 @@ icon: "scroll"
 
 Mod logs record server events and moderation actions in a channel you choose. Each enabled event posts a color-coded embed with a short summary plus structured fields, so moderators can scan what happened without opening Discord audit logs.
 
+Most events now include **who performed the action** (the actor) by cross-referencing Discord's audit log. This requires the **View Audit Log** permission — check [Permissions](/features/permissions) if actor fields aren't showing.
+
 {/* TODO: Add screenshot of mod logs UI */}
 
 ## Configure mod logs
@@ -59,18 +61,18 @@ Each log entry uses a color to signal what kind of action happened:
     | **Color** | Green |
     | **Title** | Member Joined |
     | **Summary** | Member mention joined the server |
-    | **Details** | Account created timestamp, account age, `New account` vs `Established account`, bot flag, custom avatar flag, member count |
+    | **Details** | Account created timestamp, account age, `New account` vs `Established account`, bot flag, custom avatar flag, invite code + inviter (if trackable), member count |
     | **Footer** | User ID |
   </Tab>
-  <Tab title="Member left">
-    Logs when a member leaves the server.
+  <Tab title="Member left / kicked">
+    Logs when a member leaves or is kicked. The bot checks Discord's audit log to determine if the departure was a kick.
 
     | Field | Value |
     | --- | --- |
     | **Color** | Red |
-    | **Title** | Member Left |
-    | **Summary** | Member mention left the server |
-    | **Details** | Server join timestamp when available, server tenure, account age, top role, role count, truncated role list, member count |
+    | **Title** | Member Left — or **Member Kicked** if a kick audit entry is found |
+    | **Summary** | Member mention left the server (or was kicked) |
+    | **Details** | Kicked by (if kick), kick reason (if kick), server join timestamp, server tenure, account age, top role, role count, truncated role list, member count |
     | **Footer** | User ID |
   </Tab>
   <Tab title="Member banned">
@@ -81,7 +83,7 @@ Each log entry uses a color to signal what kind of action happened:
     | **Color** | Red |
     | **Title** | Member Banned |
     | **Summary** | Member mention was banned |
-    | **Details** | Reason, account created timestamp, account age |
+    | **Details** | Banned by (actor), reason, account created timestamp, account age |
     | **Footer** | User ID |
   </Tab>
   <Tab title="Member unbanned">
@@ -92,7 +94,7 @@ Each log entry uses a color to signal what kind of action happened:
     | **Color** | Green |
     | **Title** | Member Unbanned |
     | **Summary** | Member mention was unbanned |
-    | **Details** | Account created timestamp, account age |
+    | **Details** | Unbanned by (actor), account created timestamp, account age |
     | **Footer** | User ID |
   </Tab>
   <Tab title="Nickname changed">
@@ -114,7 +116,29 @@ Each log entry uses a color to signal what kind of action happened:
     | **Color** | Yellow |
     | **Title** | Member Roles Changed |
     | **Summary** | Member mention had role changes applied |
-    | **Details** | Added roles, removed roles, current top role, current role count |
+    | **Details** | Changed by (actor), audit reason, added roles, removed roles, current top role, current role count |
+    | **Footer** | User ID |
+  </Tab>
+  <Tab title="Member timed out">
+    Logs when a member is timed out (muted). Controlled by the **Member muted** toggle.
+
+    | Field | Value |
+    | --- | --- |
+    | **Color** | Orange |
+    | **Title** | Member Timed Out |
+    | **Summary** | Member mention was timed out |
+    | **Details** | Timed out by (actor), reason, duration, expiry timestamp |
+    | **Footer** | User ID |
+  </Tab>
+  <Tab title="Timeout removed">
+    Logs when a member's timeout is removed. Controlled by the **Member unmuted** toggle.
+
+    | Field | Value |
+    | --- | --- |
+    | **Color** | Green |
+    | **Title** | Timeout Removed |
+    | **Summary** | Member mention's timeout was removed |
+    | **Details** | Removed by (actor) |
     | **Footer** | User ID |
   </Tab>
 </Tabs>
@@ -130,7 +154,7 @@ Each log entry uses a color to signal what kind of action happened:
     | **Color** | Red |
     | **Title** | Message Deleted |
     | **Summary** | Message from a user was deleted in a channel |
-    | **Details** | Author, channel, original send timestamp, age at deletion, content length, attachment/embed/sticker counts, content preview, attachment names |
+    | **Details** | Author, deleted by (if a moderator deleted it), channel, original send timestamp, age at deletion, content length, attachment/embed/sticker counts, content preview, attachment names |
     | **Fallbacks** | Attachment-only messages are labeled as such, and uncached partial deletes still log whatever data is available |
     | **Footer** | Message ID |
   </Tab>
@@ -146,6 +170,16 @@ Each log entry uses a color to signal what kind of action happened:
     | **Fallbacks** | If the previous message content was not cached, the log explicitly says previous content was unavailable |
     | **Footer** | Message ID |
   </Tab>
+  <Tab title="Messages bulk deleted">
+    Logs when multiple messages are purged at once (e.g. a moderator using a purge command).
+
+    | Field | Value |
+    | --- | --- |
+    | **Color** | Red |
+    | **Title** | Messages Bulk Deleted |
+    | **Summary** | X messages were purged in a channel |
+    | **Details** | Purged by (actor), channel, message count, affected authors (up to 10) |
+  </Tab>
   <Tab title="Invite posted">
     Logs when a server invite is created.
 
@@ -156,6 +190,16 @@ Each log entry uses a color to signal what kind of action happened:
     | **Summary** | Invite code was created |
     | **Details** | Invite code, target channel, inviter, temporary flag, max uses, current uses when available, max age, expiry |
     | **Footer** | Invite code |
+  </Tab>
+  <Tab title="Invite deleted">
+    Logs when a server invite is deleted.
+
+    | Field | Value |
+    | --- | --- |
+    | **Color** | Red |
+    | **Title** | Invite Deleted |
+    | **Summary** | Invite code was deleted |
+    | **Details** | Code, originally created by, channel, total uses |
   </Tab>
 </Tabs>
 
@@ -170,7 +214,7 @@ Each log entry uses a color to signal what kind of action happened:
     | **Color** | Role color, with green fallback |
     | **Title** | Role Created |
     | **Summary** | Role mention was created |
-    | **Details** | Name, color, position, mentionable, hoisted, managed, permission count, truncated permission list |
+    | **Details** | Created by (actor), name, color, position, mentionable, hoisted, managed, permission count, truncated permission list |
     | **Footer** | Role ID |
   </Tab>
   <Tab title="Role updated">
@@ -181,7 +225,7 @@ Each log entry uses a color to signal what kind of action happened:
     | **Color** | New role color, with yellow fallback |
     | **Title** | Role Updated |
     | **Summary** | Role mention was updated |
-    | **Details** | Only changed properties are shown. Changes can include name, color, position, hoist, mentionable, managed, plus added and removed permissions |
+    | **Details** | Updated by (actor), plus only changed properties: name, color, position, hoist, mentionable, managed, added and removed permissions |
     | **Footer** | Role ID |
   </Tab>
   <Tab title="Role deleted">
@@ -192,7 +236,7 @@ Each log entry uses a color to signal what kind of action happened:
     | **Color** | Red |
     | **Title** | Role Deleted |
     | **Summary** | Role name was deleted |
-    | **Details** | Name, color, position, mentionable, hoisted, managed, permission count, truncated permission list |
+    | **Details** | Deleted by (actor), name, color, position, mentionable, hoisted, managed, permission count, truncated permission list |
     | **Footer** | Role ID |
   </Tab>
 </Tabs>
@@ -208,7 +252,7 @@ Each log entry uses a color to signal what kind of action happened:
     | **Color** | Green |
     | **Title** | Channel Created |
     | **Summary** | Channel mention was created |
-    | **Details** | Name, type label, category, plus type-specific fields such as topic, slowmode, NSFW, bitrate, or user limit when relevant |
+    | **Details** | Created by (actor), name, type label, category, plus type-specific fields such as topic, slowmode, NSFW, bitrate, or user limit when relevant |
     | **Footer** | Channel ID |
   </Tab>
   <Tab title="Channel updated">
@@ -219,7 +263,7 @@ Each log entry uses a color to signal what kind of action happened:
     | **Color** | Yellow |
     | **Title** | Channel Updated |
     | **Summary** | Channel mention was updated |
-    | **Details** | Type label plus only the changed fields. Changes can include name, category, topic, slowmode, NSFW, bitrate, and user limit |
+    | **Details** | Updated by (actor), type label plus only the changed fields: name, category, topic, slowmode, NSFW, bitrate, and user limit |
     | **Footer** | Channel ID |
   </Tab>
   <Tab title="Channel deleted">
@@ -230,7 +274,7 @@ Each log entry uses a color to signal what kind of action happened:
     | **Color** | Red |
     | **Title** | Channel Deleted |
     | **Summary** | Channel name was deleted |
-    | **Details** | Name, type label, category, plus any relevant text or voice metadata still available on the deleted channel object |
+    | **Details** | Deleted by (actor), name, type label, category, plus any relevant text or voice metadata still available on the deleted channel object |
     | **Footer** | Channel ID |
   </Tab>
 </Tabs>
