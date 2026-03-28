@@ -36,6 +36,7 @@
               "features/bot-personalizer",
               "features/custom-bot",
               "features/custom-commands",
+              "features/brewlinks",
               "features/social-alerts",
               "features/leveling",
               "features/live-monitor",
