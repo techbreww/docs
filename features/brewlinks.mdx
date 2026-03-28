@@ -1,0 +1,121 @@
+---
+title: "Brewlinks"
+description: "Create a custom link page for your Discord community — like Linktree, but branded for your server."
+icon: "link"
+---
+
+import PremiumNote from '/snippets/premium-note.mdx';
+
+<PremiumNote />
+
+Brewlinks lets you create a public, shareable link page for your Discord server. Similar to Linktree, you can add links to your social media, website, store, or any other resources — all styled with your server's branding.
+
+## Features
+
+- **Custom slug** — Get a clean URL like `brewbot.gg/brewlinks/your-server`
+- **Branded styling** — Use your server logo, custom colors, and title
+- **Link management** — Add, edit, reorder, and delete links easily
+- **Automatic favicons** — Link icons are fetched automatically
+- **Mobile-friendly** — Responsive design looks great on any device
+- **Public or private** — Enable or disable your page anytime
+
+## Creating your Brewlinks page
+
+<Steps>
+  <Step title="Open the dashboard">
+    Go to the [BrewBot Dashboard](https://brewbot.techbrew.dev) and select your server.
+  </Step>
+  <Step title="Navigate to Brewlinks">
+    Open **Brewlinks** from the sidebar under the Server section.
+  </Step>
+  <Step title="Enable Brewlinks">
+    Toggle the **Enable Brewlinks** switch to turn on your page.
+  </Step>
+  <Step title="Set your slug">
+    Enter a custom slug for your URL. This becomes your public link:
+    ```
+    https://brewbot.gg/brewlinks/your-custom-slug
+    ```
+    <Tip>
+      Use lowercase letters, numbers, and hyphens only. For example: `my-server`, `community-hub`, `gaming-2026`
+    </Tip>
+  </Step>
+  <Step title="Add page details">
+    - **Title** — The main heading on your page (e.g., "My Server Links")
+    - **Subtitle** — Optional tagline or description
+    - **Accent color** — Custom hex color for buttons and highlights (default: Discord blurple `#5865f2`)
+    - **Logo** — Upload a custom logo or use your server icon
+  </Step>
+  <Step title="Add your links">
+    Click **Add Link** to create a new link entry. Each link needs:
+    - **Title** — What the link is called (e.g., "YouTube", "Merch Store")
+    - **URL** — The full web address (e.g., `https://youtube.com/@mychannel`)
+    
+    Links automatically show favicons from the website.
+  </Step>
+  <Step title="Save your changes">
+    Click **Save Changes** to publish your Brewlinks page.
+  </Step>
+</Steps>
+
+## Managing links
+
+### Reorder links
+Drag and drop links using the handle on the left side to change their order on the page.
+
+### Edit or delete links
+- Click the **pencil icon** to edit a link's title or URL
+- Click the **trash icon** to remove a link
+- Changes take effect immediately after saving
+
+### Add multiple links
+There's no limit to how many links you can add. Most servers find 3-7 links work best for visitors.
+
+## Sharing your Brewlinks page
+
+Once your page is enabled, share your custom URL anywhere:
+
+- Discord server welcome messages
+- Social media bios (Twitter/X, Instagram, TikTok)
+- Stream overlays
+- Email signatures
+- Business cards
+
+## Disabling Brewlinks
+
+To temporarily hide your page:
+
+1. Open the **Brewlinks** settings
+2. Toggle **Enable Brewlinks** off
+3. Save changes
+
+Your page will show a "not found" message to visitors until you re-enable it. All your links and settings are preserved.
+
+## Slug requirements
+
+<Warning>
+  Your slug must be unique across all BrewBot servers. If someone else is using a slug, you'll need to choose a different one.
+</Warning>
+
+- 3-32 characters
+- Lowercase letters (`a-z`), numbers (`0-9`), and hyphens (`-`) only
+- Cannot start or end with a hyphen
+- No spaces or special characters
+
+## Best practices
+
+<Tip>
+  **Keep it short** — Shorter slugs are easier to remember and share. `brewbot.gg/brewlinks/my-server` beats `brewbot.gg/brewlinks/my-awesome-discord-server-2026`
+</Tip>
+
+<Tip>
+  **Use consistent branding** — Match your accent color to your server's theme and use a recognizable logo for a professional look.
+</Tip>
+
+<Tip>
+  **Prioritize your links** — Put your most important links first. Visitors see them in the order you set.
+</Tip>
+
+<Tip>
+  **Test your URLs** — Make sure all links work before saving. The dashboard validates URLs, but double-check they go to the right place.
+</Tip>
