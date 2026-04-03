@@ -2,7 +2,7 @@
 
 ## About this project
 
-- This is the documentation site for [BrewBot Dashboard](https://brewbot.techbrew.dev), a Discord bot management platform
+- This is the documentation site for [BrewBot Dashboard](https://brewbot.gg), a Discord bot management platform
 - Built on [Mintlify](https://mintlify.com)
 - Pages are MDX files with YAML frontmatter
 - Configuration lives in `docs.json`
@@ -36,5 +36,5 @@
   {/* TODO: Add screenshot of [feature] UI */}
   ```
 - Features are split into free and premium tiers — always note which tier a feature belongs to
-- The dashboard URL is `https://brewbot.techbrew.dev`
+- The dashboard URL is `https://brewbot.gg`
 - The Discord support server is `https://discord.gg/WbMUYr7DCg`

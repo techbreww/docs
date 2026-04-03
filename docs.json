@@ -74,7 +74,7 @@
       "anchors": [
         {
           "anchor": "Dashboard",
-          "href": "https://brewbot.techbrew.dev",
+          "href": "https://brewbot.gg",
           "icon": "browser"
         },
         {
@@ -99,7 +99,7 @@
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://brewbot.techbrew.dev"
+      "href": "https://brewbot.gg"
     }
   },
   "footer": {

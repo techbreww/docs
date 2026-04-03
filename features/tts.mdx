@@ -29,7 +29,7 @@ BrewBot supports two ElevenLabs voice models:
 
 <Steps>
   <Step title="Open the dashboard">
-    Go to the [BrewBot Dashboard](https://brewbot.techbrew.dev) and select your server.
+    Go to the [BrewBot Dashboard](https://brewbot.gg) and select your server.
   </Step>
   <Step title="Navigate to TTS settings">
     Open the TTS or voice settings section for the feature you want to configure.
@@ -162,7 +162,7 @@ Chat TTS plays audio through a **browser source overlay** that you add to your s
     In the dashboard, go to your TTS settings and copy the **overlay URL**. It looks like this:
 
     ```text
-    https://brewbot.techbrew.dev/overlay/speed-dating/{serverId}/chat-tts?token={your-token}
+    https://brewbot.gg/overlay/speed-dating/{serverId}/chat-tts?token={your-token}
     ```
 
     Each server gets a unique secure token. Do not share this URL publicly — anyone with the link can connect to your TTS feed.
@@ -213,7 +213,7 @@ You can control who is allowed to send TTS messages:
 
 Block specific TikTok usernames from triggering Chat TTS. When a user on the blocked list sends a message starting with `//`, the bot skips it instead of queuing it for speech.
 
-Manage the blocked list from the **TTS settings** page in the [BrewBot Dashboard](https://brewbot.techbrew.dev):
+Manage the blocked list from the **TTS settings** page in the [BrewBot Dashboard](https://brewbot.gg):
 
 - **Add a username** — enter a TikTok username to block from TTS
 - **Remove a username** — remove a username from the blocked list to allow their messages through again
