@@ -45,6 +45,7 @@
               "features/birthdays",
               "features/transcripts",
               "features/tts",
+              "features/twitch-tts",
               "features/polls",
               "features/reports"
             ]
