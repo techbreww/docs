@@ -1,0 +1,124 @@
+---
+title: "Polls"
+description: "Create native Discord polls from the dashboard — schedule them, track live results, and manage active polls."
+icon: "square-poll-vertical"
+---
+
+import PremiumNote from '/snippets/premium-note.mdx';
+
+<PremiumNote />
+
+Polls lets you create native Discord polls directly from the BrewBot dashboard. Post a poll immediately or schedule it for later, then track live results — vote counts and percentages — without leaving the dashboard.
+
+{/* TODO: Add screenshot of polls page UI */}
+
+## Create a poll
+
+<Steps>
+  <Step title="Open the dashboard">
+    Go to the [BrewBot Dashboard](https://brewbot.techbrew.dev) and select your server.
+  </Step>
+  <Step title="Navigate to Polls">
+    Open the **Polls** page from the sidebar.
+  </Step>
+  <Step title="Select a channel">
+    Choose the text or announcement channel where the poll will be posted.
+
+    <Warning>
+      Voice channels are not supported. The channel picker only shows text and announcement channels.
+    </Warning>
+  </Step>
+  <Step title="Write your question">
+    Enter a poll question (up to 300 characters).
+  </Step>
+  <Step title="Add answer options">
+    Add between 2 and 10 answer options. Each option can include an optional custom emoji — paste a custom emoji code (e.g. `<:emoji_name:id>`) or an emoji name.
+  </Step>
+  <Step title="Configure poll settings">
+    - **Multiple choice** — toggle on to let members select more than one answer (off by default)
+    - **Duration** — choose how long the poll stays open: 1 hour, 4 hours, 8 hours, 24 hours, 3 days, or 1 week
+  </Step>
+  <Step title="Post or schedule">
+    Choose **Post now** to send the poll immediately, or **Schedule for later** and pick a future date and time. Scheduled polls are posted automatically when the time arrives.
+  </Step>
+</Steps>
+
+---
+
+## Poll statuses
+
+Once created, each poll moves through a lifecycle shown by a color-coded status badge on the dashboard:
+
+| Status | Color | Description |
+| --- | --- | --- |
+| **Scheduled** | Blue | Poll is queued and will post at the scheduled time |
+| **Active** | Green | Poll is live on Discord and accepting votes |
+| **Ended** | Yellow | Poll duration expired or was ended early |
+| **Failed** | Red | Poll could not be posted (e.g. missing permissions or deleted channel) |
+| **Canceled** | Gray | Scheduled poll was canceled before posting |
+
+---
+
+## Manage polls
+
+The dashboard organizes your polls by status — active, scheduled, failed, and history — so you can manage them at a glance.
+
+- **View live results** — click a posted poll to see vote counts and percentages for each option in real time
+- **End a poll early** — close an active poll before its duration expires. The final results are preserved.
+- **Cancel a scheduled poll** — remove a scheduled poll before it posts to Discord
+
+<Note>
+  Once a poll has ended or been canceled, it cannot be restarted. Create a new poll instead.
+</Note>
+
+---
+
+## Settings reference
+
+| Setting | Description | Constraints |
+| --- | --- | --- |
+| **Question** | The poll question displayed to voters | Required, max 300 characters |
+| **Answer options** | The choices voters can pick from | 2–10 options required |
+| **Custom emoji** | Optional emoji shown next to each option | One emoji per option |
+| **Multiple choice** | Allow selecting more than one answer | Off by default |
+| **Duration** | How long the poll stays open for votes | 1 hour, 4 hours, 8 hours, 24 hours, 3 days, or 1 week |
+| **Channel** | Where the poll is posted | Text or announcement channel only |
+| **Post mode** | Post immediately or schedule for a future time | Required |
+
+---
+
+## Permissions required
+
+| Permission | Used for |
+| --- | --- |
+| **Send Messages** | Posting the poll to the target channel |
+| **Embed Links** | Rendering the poll embed |
+
+<Warning>
+  Make sure the bot has both permissions in the channel you select. If the bot cannot send messages to that channel, the poll will fail and show a **Failed** status on the dashboard.
+</Warning>
+
+---
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="Can I create polls from a slash command?">
+    No. Polls are managed entirely from the dashboard. There is no slash command for creating or managing polls.
+  </Accordion>
+  <Accordion title="Can I edit a poll after posting it?">
+    No. Once a poll is posted to Discord, the question and answer options cannot be changed. You can end the poll early and create a new one.
+  </Accordion>
+  <Accordion title="What happens if the bot loses permissions in the target channel?">
+    The poll will fail to post and its status will show as **Failed** on the dashboard. Grant the bot the required permissions and create a new poll.
+  </Accordion>
+  <Accordion title="Can I use polls without premium?">
+    No. Polls require an active premium subscription. See [pricing](/getting-started/billing) for plan details.
+  </Accordion>
+  <Accordion title="What happens to a scheduled poll if the channel is deleted?">
+    The poll will fail when the scheduled time arrives. Its status will change to **Failed** on the dashboard.
+  </Accordion>
+  <Accordion title="Do polls work in voice channels?">
+    No. Polls can only be posted to text channels and announcement channels.
+  </Accordion>
+</AccordionGroup>

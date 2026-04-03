@@ -208,3 +208,16 @@ You can control who is allowed to send TTS messages:
 <Note>
   Whitelisted members and MVPs always have TTS access regardless of the audience setting.
 </Note>
+
+## Blocked users
+
+Block specific TikTok usernames from triggering Chat TTS. When a user on the blocked list sends a message starting with `//`, the bot skips it instead of queuing it for speech.
+
+Manage the blocked list from the **TTS settings** page in the [BrewBot Dashboard](https://brewbot.techbrew.dev):
+
+- **Add a username** — enter a TikTok username to block from TTS
+- **Remove a username** — remove a username from the blocked list to allow their messages through again
+
+<Note>
+  The blocked list applies only to Chat TTS. Blocked users can still send regular messages — their messages are only skipped for text-to-speech.
+</Note>
