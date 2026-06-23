@@ -1,0 +1,61 @@
+---
+title: "Cursor Cloud Agents"
+description: "Launch and monitor Cursor cloud agents by texting BrewBot."
+icon: "robot"
+---
+
+Connect a [Cursor](https://cursor.com) account so approved contacts can launch and check on [Cursor cloud agents](https://cursor.com/docs/cloud-agent) by texting BrewBot. A cloud agent works on one of your GitHub repositories, pushes a branch, and can open a pull request when it finishes.
+
+This integration runs through BrewBot's iMessage assistant. Texts are classified, agent actions require confirmation, and every run is recorded in the agent audit log.
+
+## Connect Cursor
+
+Configure the connection from the **Agent Connections** page in the [BrewBot Dashboard](https://brewbot.gg).
+
+<Steps>
+  <Step title="Add a Cursor API key">
+    Generate a key from Cursor Dashboard → API Keys, then paste it into the Cursor Cloud Agents card. The key is encrypted at rest and never shown again.
+  </Step>
+  <Step title="Refresh repositories">
+    Select **Refresh repositories** to load the GitHub repos your Cursor account can reach. The list is cached so texters can pick a repo without waiting on a slow, rate-limited lookup.
+  </Step>
+  <Step title="Set a default model (optional)">
+    Leave the model blank to use your Cursor account default, or enter a model id such as `composer-2`.
+  </Step>
+</Steps>
+
+<Info>
+  Launching, following up, and cancelling are admin-only and require a typed confirmation. Checking status and listing agents are available to members.
+</Info>
+
+## What you can text
+
+<Tabs>
+  <Tab title="Launch">
+    Ask BrewBot to start an agent and describe the task, for example: "launch a cursor agent to add unit tests for the auth module".
+
+    If you do not name a repository, BrewBot replies with the repos it can use so you can pick one. It then asks you to confirm before the agent starts, and replies with a link to the run.
+  </Tab>
+  <Tab title="Check status">
+    Ask how an agent is doing, for example: "what's my cursor agent doing?" BrewBot fetches the latest agent's status and result, including any branch or pull request it pushed. Defaults to your most recent agent when you do not name one.
+  </Tab>
+  <Tab title="List">
+    Ask BrewBot to "list my cursor agents" to see recent agents and their status.
+  </Tab>
+  <Tab title="Follow up">
+    Send a new instruction to an existing agent, for example: "tell the cursor agent to also update the changelog".
+  </Tab>
+  <Tab title="Cancel">
+    Stop the active run with a message like "cancel the cursor agent". BrewBot confirms before cancelling.
+  </Tab>
+</Tabs>
+
+## Confirmations and permissions
+
+- Launch, follow-up, and cancel require the contact to be an admin and to reply `CONFIRM <code>` before BrewBot acts.
+- Status and list run automatically while you chat and need no confirmation.
+- Each action is written to the agent audit log with the requester, input, and result.
+
+<Note>
+  A cloud agent uses Cursor compute and can push branches or open pull requests on the selected repository. Connect only repositories you want texters to be able to act on.
+</Note>

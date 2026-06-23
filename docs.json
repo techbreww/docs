@@ -53,6 +53,7 @@
           {
             "group": "Integrations",
             "pages": [
+              "integrations/cursor-agents",
               "integrations/stream-deck",
               "integrations/api-logs"
             ]
