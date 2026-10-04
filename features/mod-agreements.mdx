@@ -1,37 +1,20 @@
 ---
 title: "Mod agreements"
-description: "Require moderators to sign an agreement before gaining permissions."
+description: "Create agreement invite links and review moderator acknowledgments."
 icon: "file-signature"
 ---
 
-Mod agreements let you define terms that moderators must accept before receiving their moderation role. Once a moderator reads and signs the agreement, the bot assigns them a designated role that grants their permissions.
+import PremiumNote from '/snippets/premium-note.mdx';
 
-{/* TODO: Add screenshot of mod agreements UI */}
+<PremiumNote />
 
-## Configure mod agreements
+Mod Agreements collects signed acknowledgments through invite links. It requires premium, a team server, and server admin access.
 
-<Steps>
-  <Step title="Open the dashboard">
-    Go to the [BrewBot Dashboard](https://brewbot.gg) and select your server.
-  </Step>
-  <Step title="Navigate to Mod Agreements">
-    Open the **Mod Agreements** page from the sidebar.
-  </Step>
-  <Step title="Write the agreement text">
-    Write the agreement that moderators must accept. Include your expectations for moderator behavior, responsibilities, and any rules they need to follow.
-  </Step>
-  <Step title="Select the role to grant">
-    Choose the role that the bot assigns when a moderator signs the agreement. This role should carry the moderation permissions you want to grant.
-  </Step>
-</Steps>
+{/* TODO: Add screenshot of Mod Agreements invites and acknowledgments */}
 
-## How moderators sign
+1. Open **Moderation > Mod Agreements** and select **Create Invite**.
+2. Enter a title and the agreement terms, then save the invite.
+3. Copy its invite link and share it with prospective moderators.
+4. Open the invite's agreements list to review names, Discord details, email, and the date each person agreed.
 
-Moderators can access and sign the agreement in two ways:
-
-- **Dashboard link** — share the agreement page URL from the [BrewBot Dashboard](https://brewbot.gg) directly with your moderators
-- **Bot command** — moderators use the bot command in your server to view and sign the agreement
-
-<Note>
-  The bot needs the **Manage Roles** permission and its role must be above the role it assigns to moderators.
-</Note>
+You can edit the title and terms, enable or disable an invite, or delete it from the invite list. This workflow records agreement acceptance; it does not automatically assign a Discord moderation role. Assign the appropriate role separately after reviewing the acknowledgment.

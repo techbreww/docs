@@ -1,0 +1,26 @@
+---
+title: "Live commands"
+description: "Choose who can start the Speed Tracker timer from TikTok chat."
+icon: "terminal"
+---
+
+import PremiumNote from '/snippets/premium-note.mdx';
+
+<PremiumNote />
+
+**Live Tools > Live Commands** controls the TikTok `!timer` command. It requires premium, a team server, and server admin access.
+
+{/* TODO: Add screenshot of Live Commands audience and whitelist UI */}
+
+`!timer` starts the Speed Grid timer for 180 seconds. It listens to the shared live source selected in **TTS Settings > TikTok TTS > Live Source**.
+
+Choose an access mode:
+
+| Mode | Who can trigger the command |
+| --- | --- |
+| **Mods** | TikTok moderators |
+| **Whitelist only** | The TikTok usernames you add to the command's whitelist |
+
+Usernames are case-insensitive and saved without `@`. These permissions are separate from the Chat TTS audience and whitelist.
+
+Other chat controls have their own pages: [Rate Me](/features/rate-me), [Game Requests](/features/game-requests), [Spotify](/integrations/spotify), and [Apple Music](/integrations/apple-music). For Discord commands, see the [bot command reference](/bot-commands/reference).

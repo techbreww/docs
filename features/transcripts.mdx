@@ -1,15 +1,30 @@
 ---
-title: "Transcripts"
-description: "Generate chat transcripts from your server channels."
-icon: file-text
+title: "Live transcripts"
+description: "Record, review, summarize, and export TikTok LIVE sessions."
+icon: "scroll"
 ---
 
-Generate transcripts of channel conversations from the [BrewBot Dashboard](https://brewbot.gg). Transcripts are useful for archiving support tickets, meeting notes, or event chats.
+import PremiumNote from '/snippets/premium-note.mdx';
 
-{/* TODO: Add screenshot of transcripts page UI */}
+<PremiumNote />
 
-## Generate a transcript
+Transcripts capture TikTok LIVE events recorded from [TikTok Chat Monitor](/features/live-monitor). They require premium; the transcript dashboard is restricted to server admins on team servers.
 
-Go to the [BrewBot Dashboard](https://brewbot.gg), select your server, and navigate to the **Transcripts** page. From here you can generate and view transcripts of your server's channel conversations.
+{/* TODO: Add screenshot of Live Transcripts and transcript detail */}
 
-{/* TODO: Document transcript generation steps once UI is confirmed */}
+## Record and review
+
+1. Open a TikTok monitor and choose **Record** or **Start Recording**.
+2. Select **Stop** when the session is complete.
+3. Open **Live Tools > Transcripts**, filter by TikTok account, and select **View**.
+4. Review event totals and filter the feed by chats, gifts, follows, likes, or shares.
+
+The detail page shows recording duration, total events, and time remaining before expiration. Use **Summarize** to generate an AI summary when there are recorded events, or **Regenerate** to replace that summary.
+
+## Export and retention
+
+Download **TXT**, **CSV**, or **JSON** from the list or detail page. Transcripts expire **24 hours after creation**, including time spent recording. Download a copy before expiration if you need a longer-lived record.
+
+<Warning>
+  Deleting a transcript removes it from the dashboard. Expired or deleted transcripts are no longer available there.
+</Warning>

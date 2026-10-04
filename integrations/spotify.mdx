@@ -1,0 +1,44 @@
+---
+title: "Spotify"
+description: "Control Spotify from TikTok or Twitch chat and display the current track and queue."
+icon: "spotify"
+---
+
+import PremiumNote from '/snippets/premium-note.mdx';
+
+<PremiumNote />
+
+Spotify live tools let eligible viewers control music from TikTok or Twitch chat. BrewBot premium and server admin access are required for these settings. Playback also requires a connected **Spotify Premium** account.
+
+{/* TODO: Add screenshot of Spotify settings, queue, and overlays */}
+
+## Connect and enable commands
+
+1. Connect Spotify in **Configuration > Integrations**.
+2. Open **Live Tools > Spotify**.
+3. Choose the **TikTok** or **Twitch** platform settings.
+4. For TikTok, select the shared live source used by TTS. For Twitch, connect the broadcaster through Integrations.
+5. Turn on **Enable commands**, choose viewer access, and enable the commands you want.
+
+Each platform has its own command settings. Viewer access can be **Broadcaster only**, **Whitelist only**, **Mods and whitelist**, or **Everyone**. Add specific usernames to the whitelist or blocked list. TikTok also has **Allow MVP Profiles** for profiles on the MVP dock; blocked usernames remain blocked.
+
+## Commands
+
+The **Command prefix** determines the text viewers type. With `!` as the configured prefix, the command set is:
+
+| Command | Action |
+| --- | --- |
+| `!play`, `!pause` | Resume or pause playback |
+| `!skip` | Skip the current track |
+| `!request song artist` | Request a track |
+| `!song` | Request current-song information |
+| `!up`, `!down` | Adjust playback volume |
+| `!clear` | Clear the request queue |
+
+Each command group has its own switch. The **Queue** tab shows the current track and upcoming songs; use **Refresh** to update it. If playback cannot start, open Spotify and make sure the connected account has an active playback device.
+
+## Overlays
+
+Enable and copy the **Now playing overlay** link, or use the **Queue overlay** for upcoming songs. **Live Tools > Overlays** also offers a **Spotify Scan Code** source for the currently playing track. These display sources do not replace your Spotify audio capture.
+
+If you regenerate the overlay link, update the affected OBS sources. For general setup, see [Stream overlays](/features/overlays).

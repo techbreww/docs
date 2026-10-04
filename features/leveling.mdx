@@ -1,50 +1,39 @@
 ---
 title: "Leveling"
-description: "Reward active members with XP, levels, and role rewards."
-icon: arrow-up-right
+description: "Reward eligible Discord messages with XP, levels, and role rewards."
+icon: "ranking-star"
 ---
 
 import PremiumNote from '/snippets/premium-note.mdx';
 
 <PremiumNote />
 
-Members earn XP by chatting in your server. As they accumulate XP, they level up. You can assign roles at specific levels as rewards, giving active members recognition and access.
+Leveling rewards eligible messages with XP and ranks members on a server leaderboard. Open **Engagement > Leveling** to enable it.
 
-{/* TODO: Add screenshot of leveling configuration UI */}
+{/* TODO: Add screenshot of Leveling settings */}
 
-## How it works
+## Configure XP and announcements
 
-Each message a member sends earns them a configurable amount of XP. Once they reach enough XP, they level up automatically. You can set up role rewards so members receive specific roles when they hit certain levels.
+Set the **XP Rate** multiplier to control progression. Use **No-XP Channels** and **No-XP Roles** to allow all except selected entries or deny all except selected entries.
 
-## Configure leveling
+Choose a level-up announcement mode: **Disabled**, **Current Channel**, **Private Message**, or **Custom Channel**. Customize the announcement with the placeholders offered by the editor.
 
-<Steps>
-  <Step title="Open leveling settings">
-    Go to the [BrewBot Dashboard](https://brewbot.gg) and select your server. Navigate to the **Leveling** page.
-  </Step>
-  <Step title="Set the XP rate">
-    Adjust the XP rate to control how quickly members level up. A higher rate means faster leveling.
-  </Step>
-  <Step title="Set a level-up announcement channel">
-    Choose a channel where the bot posts a message each time a member levels up.
-  </Step>
-  <Step title="Add level roles">
-    Assign roles to specific levels. For example, you could give the "Regular" role at Level 5.
+XP is subject to eligibility and cooldown rules; sending repeated messages does not guarantee XP for every message.
 
-    {/* TODO: Add screenshot of level roles configuration */}
-  </Step>
-</Steps>
+## Role rewards
 
-## Bot commands
+Add a role and the level required to earn it. Choose whether members **Stack previous rewards** or **Remove previous rewards** to keep only their highest reward. You can also remove a reward after a member loses enough XP.
 
-| Command | Description |
+The bot needs **Manage Roles** and must be above reward roles. Rank-card customization marked **Coming Soon** is not available yet.
+
+## Commands
+
+| Command | Use |
 | --- | --- |
-| `/rank` | Check your current level and XP |
-| `/levels` | View the server leaderboard |
-| `/give-xp` | Give XP to a member |
-| `/remove-xp` | Remove XP from a member |
-| `/level-test` | Test level-up announcements |
+| `/rank` | Your rank, or another member's rank using the optional `user` argument |
+| `/levels` | Server leaderboard |
+| `/give-xp user:@Jane amount:100` | Award XP; requires Manage Server |
+| `/remove-xp user:@Jane amount:50` | Remove XP; requires Manage Server |
+| `/level-test` | Inspect subscription, leveling settings, XP, rewards, and command status |
 
-<Tip>
-Use `/level-test` to preview how level-up announcements look before going live.
-</Tip>
+Use the command switches to enable the supported rank, leaderboard, and XP controls. `/level-test` returns a diagnostic report rather than sending a sample level-up announcement. See the [command reference](/bot-commands/reference).

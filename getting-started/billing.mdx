@@ -1,48 +1,51 @@
 ---
 title: "Pricing and billing"
-description: "Plans, pricing, and what's included in free and premium tiers."
+description: "Compare free and premium access and manage server and Slack subscriptions."
 icon: "credit-card"
 ---
 
-{/* TODO: Add details about trial period if available */}
-{/* TODO: Add screenshot of billing page */}
+BrewBot offers free Discord features and premium subscriptions. Open **Configuration > Billing** for a server's current plan, trial, payment details, and subscription controls.
 
-BrewBot offers both free and premium tiers.
+{/* TODO: Add screenshot of Billing plans and trial status */}
 
-## Plans
+## Standard plans
 
-| Plan | Price | Details |
-|------|-------|---------|
-| Free | $0 | Reaction roles, welcome messages, mod logs, mod agreements |
-| Monthly | $25/month | All features |
-| Yearly | $249/year | All features, save ~17% |
-| Setup fee | $149 one-time | Required for new premium subscriptions |
+| Plan | Standard price |
+| --- | --- |
+| Free | $0 |
+| Premium monthly | $25/month |
+| Premium annual | $249/year |
+
+Annual pricing saves $51 compared with twelve monthly payments, about 17%. The current checkout does not add the previously documented mandatory $149 setup fee. Eligible new subscriptions have a five-day trial; the billing page shows the applicable trial and end date. Check that page and checkout for your actual price, including any custom or externally managed arrangement.
 
 ## Free features
-
-The following features are available on the free plan:
 
 - Reaction roles
 - Welcome messages
 - Mod logs
-- Mod agreements
+- Birthdays
+- Basic Bot Settings and custom bot setup
+
+AI backstory, chat, voice, and image generation require premium even when the bot's basic setup is free.
 
 ## Premium features
 
-Premium unlocks the full feature set:
+Premium includes channel and role managers, custom commands, reports, mod agreements, AutoMod, captcha verification, social alerts, leveling, polls, Brewlinks, Messages, and agent connections.
 
-- Bot personalizer
-- Custom commands
-- Social alerts
-- Leveling
-- Live monitor
-- Live tools
-- Birthdays
-- Transcripts
-- Reports
-- Channel/role manager
-- Polls
+Premium [live tools](/features/live-tools) include monitors, transcripts, TTS and browser players, sound uploads and gift sounds, gift goals, timer gifts, Rate Me, game requests, music controls, overlays, and live-event tools.
 
-<Tip>
-  Contact support on [Discord](https://discord.gg/WbMUYr7DCg) if you have billing questions.
-</Tip>
+<Note>
+  Premium does not grant every team permission. Some tools require a team server, designated server admin access, Speed Dating access, or the separate Dare Grid permission. See [Teams](/getting-started/teams).
+</Note>
+
+## Manage a subscription
+
+Use **Manage Subscription** to open the billing management flow. Team admins manage team-owned billing. A cancellation scheduled for the end of a billing period retains access until that period ends; check the displayed end date.
+
+Personal servers may show **Stay on Free Plan** during the trial. Select the free plan explicitly if you want its limited features; an ended, canceled, or unpaid subscription should not be assumed to have become a free subscription automatically.
+
+Externally managed subscriptions may direct you to support for changes. Contact [BrewBot support](https://discord.gg/WbMUYr7DCg) if the billing page cannot manage your arrangement.
+
+## Slack billing
+
+Each [Slack workspace](/integrations/slack) has its own trial and subscription state, managed from its Slack **Billing** page. Discord and Slack use the same standard price options, but a Discord subscription does not automatically activate Slack. Team token budgets can be shared when team billing is enabled.

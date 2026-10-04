@@ -1,0 +1,34 @@
+---
+title: "Slack workspaces"
+description: "Install BrewBot in a team-owned Slack workspace and configure its assistant."
+icon: "slack"
+---
+
+BrewBot manages Slack workspaces separately from Discord servers. Each Slack workspace has its own subscription and trial state. The Slack assistant and premium feature settings require premium access for that workspace.
+
+{/* TODO: Add screenshot of Slack installation and workspace overview */}
+
+## Install BrewBot
+
+1. Switch into a BrewBot team. Personal Discord workspaces cannot own Slack installations.
+2. As a team admin, open **Slack Workspaces** and choose **Install Slack Workspace**.
+3. Complete Slack authorization for the target workspace.
+4. Open the workspace dashboard to configure its assistant and billing.
+
+Reinstalling an existing workspace refreshes authorization and retains its billing record.
+
+## Assistant
+
+Under **Assistant**, enable channel replies, direct-message assistance, and thread follow-ups as needed. Choose the channels where BrewBot can respond to mentions. Invite BrewBot to the relevant Slack channels and mention it to request help.
+
+The workspace dashboard also exposes **Summaries** controls for digest channels and a schedule, and **Alerts** controls for destination channels.
+
+<Note>
+  Summary and alert settings are available in the dashboard, but scheduled digest delivery and automated alert forwarding are not yet verified in the current runtime. Do not rely on those settings alone as confirmation that a delivery job is running.
+</Note>
+
+## Authorization and billing
+
+**Settings** shows workspace details and granted scopes. Use **Refresh Slack Access** to reinstall when access or scopes need updating.
+
+**Billing** shows the workspace's plan and subscription controls. Team admins manage billing. A Discord server's subscription does not automatically activate a Slack workspace.

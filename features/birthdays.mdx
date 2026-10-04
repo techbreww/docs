@@ -1,40 +1,25 @@
 ---
 title: "Birthdays"
-description: "Track member birthdays and send automated announcements."
-icon: cake
+description: "Save member birthdays and announce them in a Discord channel."
+icon: "cake-candles"
 ---
 
-The birthdays feature lets your members register their birthday so the bot can post an announcement when the day arrives.
+Birthdays is available on the **free plan**. Members save their birthday in Discord, and BrewBot announces it in the channel you select.
 
-{/* TODO: Add screenshot of birthday settings UI */}
+{/* TODO: Add screenshot of Birthdays settings */}
 
-## How it works
+1. Open **Server Management > Birthdays**.
+2. Turn on **Active**.
+3. Select the **Announcement Channel** and save the settings.
 
-Members register their birthday using the `/remember-birthday` command. On their birthday, the bot automatically posts an announcement in a channel you choose.
+Members use these commands:
 
-## Configure birthdays
+```text
+/remember-birthday date:03-15
+/remember-birthday date:1995-03-15
+/forget-birthday
+```
 
-<Steps>
-  <Step title="Open birthday settings">
-    Go to the [BrewBot Dashboard](https://brewbot.gg), select your server, and navigate to the **Birthdays** page.
-  </Step>
-  <Step title="Set the announcement channel">
-    Choose the channel where the bot posts birthday announcements.
-  </Step>
-  <Step title="Customize the message">
-    Edit the birthday announcement message to match your server's style.
+The required `date` accepts `MM-DD` or `YYYY-MM-DD`. `/forget-birthday` removes the member's saved birthday for that server.
 
-    {/* TODO: Add screenshot of birthday message customization */}
-  </Step>
-</Steps>
-
-## Bot commands
-
-| Command | Description |
-| --- | --- |
-| `/remember-birthday` | Register your birthday |
-| `/forget-birthday` | Remove your birthday |
-
-<Tip>
-Members can use `/forget-birthday` at any time to remove their birthday from the system.
-</Tip>
+Birthday checks use UTC. During non-leap years, February 29 birthdays are announced on February 28. Make sure the bot can post in the announcement channel.

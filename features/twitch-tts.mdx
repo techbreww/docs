@@ -1,6 +1,6 @@
 ---
 title: "Twitch TTS"
-description: "Read Twitch chat messages aloud on stream with text-to-speech powered by ElevenLabs."
+description: "Read Twitch chat aloud with separate audience controls, voices, and playback."
 icon: "twitch"
 ---
 
@@ -8,170 +8,50 @@ import PremiumNote from '/snippets/premium-note.mdx';
 
 <PremiumNote />
 
-Twitch TTS reads messages from a Twitch channel's chat and plays them as spoken audio on your stream using ElevenLabs voices. It runs independently from [Chat TTS](/features/tts) (TikTok) — each has its own overlay, settings, and queue.
+Twitch TTS reads messages from a connected Twitch broadcaster's chat. It requires premium and server admin access on team servers. Its source, settings, audio queue, and overlay are separate from [TikTok TTS](/features/tts).
 
-Configure Twitch TTS from the **Twitch TTS** tab on the TTS settings page in the dashboard.
+{/* TODO: Add screenshot of Twitch TTS source library and voice overrides */}
 
-{/* TODO: Add screenshot of Twitch TTS settings UI */}
+## Connect a source
 
-## Set up Twitch TTS
+1. Open **Live Tools > TTS Settings > Twitch TTS**.
+2. Search for a channel in **Source Library** and select **Add source**.
+3. Select **Connect channel** and authorize as the matching broadcaster.
+4. Select that source for TTS. You can save several sources, but only one is active for TTS at a time.
+5. Enable Twitch TTS and configure the trigger, audience, and voice.
+6. Copy the overlay URL into OBS or select **Open Browser Player**.
 
-<Steps>
-  <Step title="Open TTS settings">
-    Go to the [BrewBot Dashboard](https://brewbot.gg), select your server, and navigate to **Live Tools → TTS Settings**. Select the **Twitch TTS** tab.
-  </Step>
-  <Step title="Add a Twitch channel source">
-    Search for the Twitch channel by username and add it. This tells BrewBot which chat to monitor for TTS messages.
-  </Step>
-  <Step title="Connect the source">
-    Click **Connect** to start the Twitch OAuth flow. You'll be redirected to Twitch to authorize BrewBot to read chat messages from the channel.
+Sources are shared with [Twitch Monitor](/features/twitch-monitor) and Integrations. Reconnect the broadcaster if the source reports an authorization error or requests additional Monitor permissions. The source library also lets you disconnect, enable/disable, or remove sources.
 
-    <Note>
-      After authorizing, the source status updates to **Connected**. If something goes wrong, the status shows **Error** — try disconnecting and reconnecting.
-    </Note>
-  </Step>
-  <Step title="Select the active source">
-    Choose the connected source as the active Twitch channel for TTS. Only one source can be active at a time.
-  </Step>
-  <Step title="Configure settings">
-    Set your preferred trigger mode, audience level, and voice options. See the sections below for details on each setting.
-  </Step>
-  <Step title="Enable Twitch TTS">
-    Toggle Twitch TTS on. The bot starts listening to the connected Twitch channel's chat.
-  </Step>
-</Steps>
+## Trigger and audience
 
----
+**Use // prefix** requires eligible viewers to start their message with `//`. **Read messages normally** reads eligible messages without that prefix. **Allow Privileged Users Without //** grants a prefix bypass to the broadcaster, moderators, and VIPs.
 
-## Add the overlay to your stream
-
-Twitch TTS plays audio through a **browser source overlay** in your streaming software (OBS, Streamlabs, etc.).
-
-<Steps>
-  <Step title="Copy the overlay URL">
-    In the Twitch TTS settings, copy the **overlay URL**. It looks like this:
-
-    ```text
-    https://brewbot.gg/overlay/twitch-tts/{serverId}?token={your-token}
-    ```
-
-    Each server gets a unique secure token. Do not share this URL publicly — anyone with the link can connect to your TTS feed.
-  </Step>
-  <Step title="Add a browser source in OBS">
-    In OBS (or your streaming software), add a new **Browser Source**:
-
-    1. Click **+** in the Sources panel.
-    2. Select **Browser**.
-    3. Name it something like `Twitch TTS`.
-    4. Paste the overlay URL into the **URL** field.
-    5. Set the width and height to any value (the overlay is invisible — it only plays audio).
-    6. Make sure **Control audio via OBS** is unchecked so the audio plays through your stream.
-  </Step>
-  <Step title="Test the overlay">
-    Send a TTS-eligible message in the connected Twitch channel's chat to confirm audio plays through your stream.
-  </Step>
-</Steps>
-
-<Warning>
-  If you regenerate your overlay token in the dashboard, the old URL stops working. Update the browser source URL in OBS with the new token.
-</Warning>
-
----
-
-## Trigger modes
-
-| Mode | Behavior |
+| Audience | Eligible viewers |
 | --- | --- |
-| **Prefix** | Messages must start with `//` to trigger TTS. This is the default. |
-| **All messages** | Every eligible message is read aloud — no prefix needed. |
+| **Broadcaster + Moderators** | Broadcaster and moderators |
+| **VIPs + Staff** | VIPs, broadcaster, and moderators |
+| **VIPs + Broadcaster** | VIPs and broadcaster |
+| **Everyone** | All chatters, subject to access lists |
 
-<Tip>
-  In Prefix mode, you can enable **Allow privileged bypass** so that broadcasters, moderators, and VIPs can trigger TTS without the `//` prefix.
-</Tip>
-
----
-
-## Audience controls
-
-Control who can trigger Twitch TTS:
-
-| Level | Who can trigger TTS |
-| --- | --- |
-| **Staff Only** | Broadcaster and Moderators |
-| **VIPs and Staff** | VIPs, Broadcaster, and Moderators |
-| **VIPs Only** | VIPs and Broadcaster |
-| **Everyone** | Any chatter |
-
-You can further refine access with two lists:
-
-- **Whitelist** — specific Twitch usernames that can always trigger TTS, regardless of the audience level. When the whitelist has entries, only whitelisted users and privileged users (broadcaster, mods, VIPs) can trigger TTS.
-- **Blocklist** — specific Twitch usernames that are always blocked from triggering TTS, even if they are on the whitelist.
+**Whitelisted Users** can bypass audience restrictions. Whitelisting adds eligibility without removing access already granted by the selected audience. **Blocked Users** always wins: a blocked username cannot trigger TTS even if it is also whitelisted.
 
 <Note>
-  Override precedence: **Blocklist > Whitelist > Audience level**. A blocked user cannot trigger TTS under any circumstances.
+  New Twitch TTS requests are skipped while the server’s Speed Tracker timer is running, even though Twitch uses a separate queue and overlay.
 </Note>
-
----
 
 ## Voice settings
 
-| Setting | Default | Description |
-| --- | --- | --- |
-| **Voice mode** | Single | **Single** uses the same voice for every message. **Random All** picks a random voice for each message. |
-| **Voice model** | Multilingual v2 | Choose **Multilingual v2** for stable general-purpose speech, or **v3** for audio tag support. |
-| **Voice** | — | Select from the available ElevenLabs voices. |
+Choose **Single voice** or **Random voices**, and select **Eleven Multilingual v2** or **Eleven v3**. Random mode retains the saved single voice as a fallback. Assign **Custom User Voices** to give specific Twitch usernames a fixed voice that overrides the default or random mode.
 
-<Card title="Audio tags and voice models" icon="volume" href="/features/tts">
-  Full reference for ElevenLabs audio tags, voice models, and layering techniques.
-</Card>
+See [voice models and audio tags](/features/tts#voices-and-audio-tags) for expressive speech examples.
 
----
+## Overlay, browser player, and queue
 
-## Source management
+The **Overlay & Queue** section provides the OBS URL, preview, token regeneration, and **Browser Player** link. The browser player runs on another device with a visible queue and playback controls. Select **Enable audio** if the browser blocks playback.
 
-You can add multiple Twitch channel sources, but only **one source can be active at a time**. Use the source library to:
-
-- **Add** a new Twitch channel by searching for the username
-- **Remove** sources you no longer need
-- **Connect / Disconnect** OAuth per source — reconnect if the connection drops or the token expires
-- **Enable / Disable** individual sources
-
-Each source shows two statuses:
-
-| Status type | Values |
-| --- | --- |
-| **Connection** | Disconnected, Connecting, Connected, Error |
-| **Auth** | Disconnected, Pending, Connected, Error |
+**Clear pending** removes pending jobs. A player claims jobs for playback; multiple open playback sources do not mirror every message to every device. Keep the intended source audible in your streaming setup.
 
 <Warning>
-  If a source shows **Error** status, disconnect it and reconnect through the Twitch OAuth flow. The token may have expired or been revoked.
+  Regenerating the token invalidates existing Twitch TTS overlay and player URLs. Replace them in OBS and on any playback devices. Keep token-bearing links private.
 </Warning>
-
----
-
-## Queue management
-
-Pending TTS jobs appear in the queue on the dashboard. You can:
-
-- **View the queue** — see pending and claimed jobs with sender info and message text
-- **Clear the queue** — remove all pending jobs at once
-- **Regenerate overlay token** — create a new secure overlay URL (the old URL stops working immediately)
-
----
-
-## FAQ
-
-<AccordionGroup>
-  <Accordion title="What is the difference between Twitch TTS and Chat TTS?">
-    Twitch TTS reads messages from a Twitch channel's chat. [Chat TTS](/features/tts) reads messages from TikTok live chat. They are separate systems with their own overlays, settings, and queues.
-  </Accordion>
-  <Accordion title="Can I use both Twitch TTS and Chat TTS at the same time?">
-    Yes. They run independently. Each has its own overlay URL — add them as separate browser sources in OBS.
-  </Accordion>
-  <Accordion title="Why does my Twitch source show an Error status?">
-    The OAuth token may have expired or been revoked on the Twitch side. Disconnect the source and reconnect through the Twitch authorization flow to get a fresh token.
-  </Accordion>
-  <Accordion title="Do audio tags work with Twitch TTS?">
-    Yes, if you select the **v3** voice model. See the [audio tags reference](/features/tts#audio-tags) on the TTS page for the full list of supported tags.
-  </Accordion>
-</AccordionGroup>

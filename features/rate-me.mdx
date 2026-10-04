@@ -1,0 +1,27 @@
+---
+title: "Rate Me"
+description: "Queue TikTok viewer profile pictures on a timed stream overlay."
+icon: "circle-user"
+---
+
+import PremiumNote from '/snippets/premium-note.mdx';
+
+<PremiumNote />
+
+Rate Me shows one TikTok viewer's profile picture and name at a time when viewers type `!rateme`. It requires premium, a team server, and [Speed Dating access](/getting-started/teams#feature-permissions).
+
+{/* TODO: Add screenshot of Rate Me settings and overlay preview */}
+
+## Set up the overlay
+
+1. Add an active TikTok channel in [TikTok Chat Monitor](/features/live-monitor).
+2. Open **Live Tools > Rate Me** and select the **TikTok live source**.
+3. Choose **Screen time**: 5, 10, 15, 20, 25, or 30 seconds. The default is 30 seconds.
+4. Enable **Chat requests**.
+5. Copy the overlay URL and add it as a separate browser source in OBS.
+
+Viewers send `!rateme` in the selected live chat. Requests play in arrival order, and the next viewer appears automatically. Screen-time changes apply to the next viewer.
+
+Repeated commands do not add the same viewer twice while they are in the queue. A viewer can request again after the one-minute cooldown. The queue holds up to 25 viewers. A missing photo uses initials instead.
+
+Rate Me is off until enabled. When its queue is empty, the overlay prompts viewers to send `!rateme`. Use the page's preview to check the layout before going live.

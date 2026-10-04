@@ -1,0 +1,30 @@
+---
+title: "Twitch Monitor"
+description: "Watch Twitch chat and stream events and send chat messages from the dashboard."
+icon: "twitch"
+---
+
+import PremiumNote from '/snippets/premium-note.mdx';
+
+<PremiumNote />
+
+Twitch Monitor displays live Twitch activity in the dashboard. It requires premium and server admin access. It uses the same saved broadcaster sources as [Twitch TTS](/features/twitch-tts).
+
+{/* TODO: Add screenshot of Twitch Monitor and community panels */}
+
+## Open a monitor
+
+1. Open **Live Tools > Twitch Monitor**.
+2. Search for a Twitch channel and choose **Add to Monitor**, or add one of the **Shared Twitch Channels** already saved for alerts or TTS.
+3. Connect the matching broadcaster account. If the page says **Reconnect needed**, authorize again to grant the missing permissions.
+4. Select **Open Monitor**.
+
+You can keep several channels in the watch list. Each monitor page opens one live session.
+
+## Monitor activity
+
+The page shows stream state, viewer count, uptime, follows, bits, subscriptions, gifted subscriptions, and redemptions as Twitch supplies them. Its available event families also include hype trains, polls, predictions, and moderation events.
+
+Use the chat feed and **Send a message** field to participate in chat. Community panels show moderators, VIPs, chat bots, and viewers. The moderation log and AutoMod queue display incoming Twitch moderation activity.
+
+Check **Capabilities** and any missing-permissions notice when an event family is unavailable. This monitor is for the live session; the [Transcripts](/features/transcripts) feature records TikTok sessions.

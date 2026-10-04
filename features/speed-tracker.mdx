@@ -1,0 +1,56 @@
+---
+title: "Speed Tracker and profiles"
+description: "Run speed dating rounds, manage profiles and MVPs, and configure the shared timer."
+icon: "stopwatch"
+---
+
+import PremiumNote from '/snippets/premium-note.mdx';
+
+<PremiumNote />
+
+Speed Tracker coordinates live speed dating rounds. It requires premium and a team server. Team admins and designated server admins have access; other members need [Speed Dating permission](/getting-started/teams#feature-permissions).
+
+{/* TODO: Add screenshot of Speed Tracker grid and profile dialog */}
+
+## Run a round
+
+Open **Live Tools > Speed Tracker**. Add profiles, then drag participants from the waiting list into the grid's host, co-host, focus, and panel positions. Use the search to find people by name, city, status, slot, or TikTok username.
+
+Profiles store participant details such as age, location, gender, preferred age range, and TikTok username. The TikTok username links gifts to the correct profile during gift races.
+
+- Generate an icebreaker question and display it with the question overlay.
+- Start or reset the shared timer for a round.
+- Record matches, friend outcomes, or passes as the round progresses.
+- Use the gift race to run a viewer-supported vote-off.
+- Generate AI insights or send a profile rundown through Chat TTS when available.
+
+The grid can warn when a participant appears to be matched on another server. Review the warning before recording a new match.
+
+## Profiles and MVPs
+
+The **Profiles** page lets you search, edit, and manage participant records and outcomes. The duplicate-review page helps review possible duplicate profiles. Deleting profiles requires the separate delete permission unless you administer the server.
+
+Use **Make MVP** when creating a profile, or **Add From Profiles** in the MVP dock, to mark standout participants. Remove an individual entry from the dock when it should no longer be an MVP. TTS and Spotify each have their own **Allow MVP Profiles** switch; placing someone on the dock does not enable those integrations by itself.
+
+Unmatching sends both profiles back to **Waiting** and preserves match history.
+
+## Grid and timer settings
+
+Open **Speed Tracker > Settings > Grid & Timer**.
+
+| Setting | Behavior |
+| --- | --- |
+| **Grid Matching Mode** | **Two-way** shows mutual, focus-only, panel-only, and no-match states. **Focus-only** checks whether a panel participant's age range includes the focus participant. |
+| **Timer Title** | Sets the label on the default running timer overlay. Themed styles keep their own labels. |
+| **Timer Overlay Style** | Chooses the countdown design, including themed styles. |
+| **Timer End Sound** | Classic buzzer, boat horn, basketball, super alarm, or toilet flush. |
+
+Settings apply to everyone viewing the server's tracker. Copy the countdown URL from [Overlays](/features/overlays).
+
+The **Live Source** tab selects the same TikTok channel used by Gift Race and Chat TTS. [Timer Gifts](/features/timer-gifts) can extend a running countdown once; [Live Commands](/features/live-commands) controls access to `!timer`.
+
+<Note>
+  TikTok TTS requests are blocked while the speed dating timer is running. Finish or stop the countdown before queuing narration.
+</Note>
+
+Related tools include [Tickets](/features/tickets), [Schedule](/features/schedule), and [Blocked From Live](/features/live-blocks).

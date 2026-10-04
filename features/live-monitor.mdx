@@ -1,29 +1,40 @@
 ---
-title: "Live monitor"
-description: "Watch server chat in real time from the dashboard."
-icon: monitor
+title: "TikTok Chat Monitor"
+description: "Watch TikTok live chat, gifts, viewers, and moderators from the dashboard."
+icon: "desktop"
 ---
 
 import PremiumNote from '/snippets/premium-note.mdx';
 
 <PremiumNote />
 
-The live monitor lets you view chat messages from your server directly in the [BrewBot Dashboard](https://brewbot.gg). Messages stream in through a WebSocket connection as they happen.
+TikTok Chat Monitor watches TikTok LIVE activity from a server-specific watch list. It is separate from [TikTok alerts](/features/social-alerts): adding an account here does not send Discord notifications.
 
-{/* TODO: Add screenshot of live monitor UI */}
+{/* TODO: Add screenshot of TikTok Chat Monitor and moderators-only view */}
 
-## What you can do
+## Add and watch a channel
 
-- Watch messages from your server channels in real time
-- Monitor conversations without opening Discord
-- View message content as it comes in
+1. Open **Live Tools > TikTok Chat Monitor**.
+2. Select **Add Channel**, enter a TikTok username, and select **Verify**.
+3. Confirm the account with **Add to Watch List**.
+4. Select **Monitor** to open its live feed.
+
+If the account is offline, the monitor shows **Not Currently Live** and checks for the stream. You can also use **Check Again**. Public live chat and overlays do not require TikTok login; account authorization is managed under [Integrations](/integrations/platform-connections).
+
+## Live feed and people
+
+The monitor displays chat, gifts, likes, follows, shares, subscriptions, joins, and stream status events as they arrive. Use the header controls for viewers, top gifters, followers, shares, and stream statistics. **Full** or pop-out controls open a larger view; **Overlay** copies a transparent chat source for OBS.
+
+**Live people** shows observed moderators and recent viewers. **Moderators** opens a moderators-only window. Moderators are identified from live events, so silent moderators may not appear. Heart Me status reflects the latest status supplied by TikTok; unavailable data is not proof that someone lacks a badge.
+
+Select a participant to inspect their profile. Public profile data may be cached for up to ten minutes.
 
 <Note>
-The live monitor is read-only. You cannot send messages or interact with the chat from the dashboard.
+  TikTok monitoring is read-only. The dashboard cannot send TikTok chat messages.
 </Note>
 
-## Open the live monitor
+## Record a session
 
-Go to the [BrewBot Dashboard](https://brewbot.gg), select your server, and navigate to the **Live monitor** page. Messages appear as members send them in your server.
+Use **Record** or **Start Recording** to capture a transcript and **Stop** when finished. Export TXT, CSV, or JSON from the transcript controls. Recordings expire 24 hours after creation; download anything you need before then. See [Transcripts](/features/transcripts).
 
-{/* TODO: Add screenshot of live monitor in action */}
+Accounts on this watch list can be selected as live sources for [TTS](/features/tts), [gift tools](/features/gift-sounds), [Rate Me](/features/rate-me), and other streaming features.

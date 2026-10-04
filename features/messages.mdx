@@ -1,0 +1,47 @@
+---
+title: "BrewBot Messages"
+description: "Approve contacts and manage AI conversations and actions from iMessage."
+icon: "message"
+---
+
+import PremiumNote from '/snippets/premium-note.mdx';
+
+<PremiumNote />
+
+BrewBot Messages lets approved contacts chat with your server's AI and request BrewBot actions through iMessage. This is a premium feature under **Engagement > BrewBot Messages**. Message delivery must be available for your deployment before contacts can use it.
+
+{/* TODO: Add screenshot of BrewBot Messages settings and contacts */}
+
+## Configure Messages
+
+Enable the integration and choose a mode:
+
+| Mode | Behavior |
+| --- | --- |
+| **Hybrid chat + actions** | AI conversation and permitted actions |
+| **AI chat only** | Conversation without action requests |
+| **Actions only** | Handle action requests without general AI chat |
+
+Choose an AI model or use the team default. Select a **Default Discord Channel** for actions that need a destination, then enable the allowed actions. The iMessage experience settings control how replies behave.
+
+## Approve contacts
+
+Open **Contacts** and select **Add Contact**, or approve a number in **Pending Approval** after it texts BrewBot. Set the phone number, optional display name and Discord ID, and a contact role: **Guest**, **Member**, **Admin**, or **Owner**.
+
+Pending contacts cannot chat or run actions until approved. Contact action overrides can narrow or customize the integration's allowed actions; leaving all unchecked inherits the integration list. These contact roles are separate from dashboard team roles.
+
+BrewBot replies after inbound contact and respects opt-out messages. Review the contact's active and opted-out state when troubleshooting missing replies.
+
+## Contact status
+
+Contacts can use the [public contact-status page](https://brewbot.gg/message) to check the number they use to text BrewBot. It reports approved, pending, opted-out, disabled, or unknown contact status. An opted-out contact can text `START` to opt back in.
+
+## Conversations, jobs, and memory
+
+**Conversations** shows recent message threads and actions. **Jobs** shows action requests, confirmation state, bot-worker results, and failures.
+
+Sensitive actions can require a typed confirmation before they run. [Agent Connections](/integrations/agent-connections) adds tools such as Brave Search and Cursor Cloud Agents under the same policy checks.
+
+<Warning>
+  Clearing **iMessage Memory** removes stored iMessage conversation history and pending confirmations. This is separate from clearing Discord AI chat history in Bot Settings.
+</Warning>

@@ -24,37 +24,83 @@
             ]
           },
           {
-            "group": "Features",
+            "group": "Server management",
             "pages": [
               "features/reaction-roles",
               "features/welcome-messages",
-              "features/mod-logs",
-              "features/mod-agreements",
-              "features/automod",
-              "features/captcha-verification",
-              "features/permissions",
-              "features/bot-personalizer",
-              "features/custom-bot",
-              "features/custom-commands",
-              "features/brewlinks",
-              "features/social-alerts",
-              "features/leveling",
-              "features/live-monitor",
-              "features/live-tools",
-              "features/channel-role-manager",
               "features/birthdays",
-              "features/transcripts",
-              "features/tts",
-              "features/twitch-tts",
-              "features/polls",
+              "features/channel-role-manager",
+              "features/custom-commands",
               "features/reports"
             ]
           },
           {
-            "group": "Integrations",
+            "group": "Moderation",
             "pages": [
-              "integrations/cursor-agents",
+              "features/mod-logs",
+              "features/mod-agreements",
+              "features/automod",
+              "features/captcha-verification"
+            ]
+          },
+          {
+            "group": "Engagement",
+            "pages": [
+              "features/social-alerts",
+              "features/leveling",
+              "features/polls",
+              "features/brewlinks",
+              "features/messages"
+            ]
+          },
+          {
+            "group": "Live monitoring",
+            "pages": [
+              "features/live-tools",
+              "features/live-monitor",
+              "features/twitch-monitor",
+              "features/tiktok-rankings",
+              "features/transcripts"
+            ]
+          },
+          {
+            "group": "Stream audio and interaction",
+            "pages": [
+              "features/tts",
+              "features/twitch-tts",
+              "features/tts-story",
+              "features/gift-sounds",
+              "features/gift-goals",
+              "features/timer-gifts",
+              "features/rate-me",
+              "features/game-requests",
+              "features/live-commands",
+              "features/overlays"
+            ]
+          },
+          {
+            "group": "Live events",
+            "pages": [
+              "features/speed-tracker",
+              "features/tickets",
+              "features/schedule",
+              "features/live-blocks",
+              "features/dare-grid"
+            ]
+          },
+          {
+            "group": "Configuration and integrations",
+            "pages": [
+              "features/bot-personalizer",
+              "features/custom-bot",
+              "features/permissions",
+              "integrations/platform-connections",
+              "integrations/spotify",
+              "integrations/apple-music",
               "integrations/stream-deck",
+              "integrations/agent-connections",
+              "integrations/cursor-agents",
+              "integrations/slack",
               "integrations/api-logs"
             ]
           }

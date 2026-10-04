@@ -1,0 +1,24 @@
+---
+title: "Agent Connections"
+description: "Connect Brave Search and Cursor tools for BrewBot Messages."
+icon: "plug"
+---
+
+import PremiumNote from '/snippets/premium-note.mdx';
+
+<PremiumNote />
+
+**Engagement > Agent Connections** lets BrewBot's iMessage agent use external tools. It is a premium feature used with [BrewBot Messages](/features/messages).
+
+{/* TODO: Add screenshot of Agent Connections and connection configuration */}
+
+Select **Add connection** and choose an integration. Configure its credentials, enable it, and use the available test or repository-refresh controls to verify the connection.
+
+| Integration | What it enables |
+| --- | --- |
+| Brave Search | Web search through the Brave Search API |
+| Cursor Cloud Agents | Launch, inspect, follow up on, and cancel coding agents for connected repositories |
+
+Each connection lists its tools, minimum contact role, confirmation requirement, and whether autonomous use is allowed. A connection does not override the contact's role or the Messages action policy.
+
+Use **Manage** to update a connection or disconnect it. Credentials are encrypted and are not returned to the browser after saving. Follow the [Cursor Cloud Agents guide](/integrations/cursor-agents) for the agent workflow.

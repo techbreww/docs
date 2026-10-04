@@ -1,19 +1,21 @@
 ---
 title: "Reports"
-description: "View activity reports and analytics for your server."
-icon: chart-bar
+description: "Publish a Discord report panel linked to your Speed Tracker ticket form."
+icon: "flag"
 ---
 
-View server activity reports from the [BrewBot Dashboard](https://brewbot.gg). Track member growth, message activity, and engagement trends over time.
+import PremiumNote from '/snippets/premium-note.mdx';
 
-{/* TODO: Add screenshot of reports dashboard UI */}
+<PremiumNote />
 
-## Available reports
+Reports publishes a message and button in Discord so members can open your [Speed Tracker ticket form](/features/tickets). It is a premium feature.
 
-Access the **Reports** page in the dashboard to view analytics for your server, including:
+{/* TODO: Add screenshot of Reports configuration and Discord preview */}
 
-- **Member growth** -- track how your server's membership changes over time
-- **Message activity** -- see messaging volume and patterns
-- **Engagement trends** -- monitor how active your community is
+1. Open **Live Tools > Speed Tracker > Tickets** once to create the public form link, and enable the form.
+2. Open **Server Management > Reports**.
+3. Select the Discord channel for the panel.
+4. Write the panel message, up to 2,000 characters. Plain text and line breaks are preserved.
+5. Check the ticket-form destination and **Discord Preview**, turn on **Active**, and publish your changes.
 
-{/* TODO: Document available report types and metrics once confirmed */}
+The bot needs access to the selected channel and permission to post there. If the page says the form is disabled, enable ticketing before publishing. Manage incoming reports from the Tickets queue.

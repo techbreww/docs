@@ -1,0 +1,63 @@
+---
+title: "Gift sounds and uploads"
+description: "Play built-in or uploaded sounds when viewers send TikTok gifts."
+icon: "music"
+---
+
+import PremiumNote from '/snippets/premium-note.mdx';
+
+<PremiumNote />
+
+Gift Sounds maps TikTok gifts to audio clips. It plays through the same browser source as [TikTok Chat TTS](/features/tts) and [TTS Story](/features/tts-story).
+
+Open **Live Tools > Gift Sounds**. You need access to the server and premium live tools. For team members, the navigation also requires [Speed Dating access](/getting-started/teams#feature-permissions).
+
+{/* TODO: Add screenshot of Gift Sounds mappings and sound uploads UI */}
+
+## Set up gift sounds
+
+1. Add the TikTok account to [TikTok Chat Monitor](/features/live-monitor).
+2. In **Live Tools > TTS Settings > TikTok TTS > Live Source**, select that account as the shared live source.
+3. Open **Gift Sounds** and turn on **Enable Gift Sounds**.
+4. Use **Add a gift sound** to choose a gift, then select **Add gift**.
+5. Choose a built-in sound or one of **Your server’s sounds** from the gift's sound menu.
+6. Turn on the switch for that gift. Changes save automatically.
+7. Copy the **Shared Chat TTS overlay** URL into an OBS browser source. If you already have that source, use the existing one.
+
+Both the main switch and the individual gift switch must be on. Choosing **Nothing** leaves a gift silent. **Preview** plays the selected clip in your dashboard browser; it does not simulate a TikTok gift.
+
+<Note>
+  Gift Sounds works independently of the Chat TTS text-reading switch. Keep the shared overlay active to play sounds even when chat reading is off. Gifts use the selected shared live source; gifts explicitly addressed to another visible, non-host recipient are skipped.
+</Note>
+
+## Upload your own sounds
+
+In **Your server’s sounds**, select **Upload sound** and choose a file. After the upload completes, select it from a gift's sound menu and enable that mapping.
+
+| Limit | Supported value |
+| --- | --- |
+| File format | MP3 or PCM WAV |
+| File size | Up to 5 MB |
+| Duration | Up to 30 seconds |
+| Library size | Up to 50 sounds per server |
+| Upload pacing | Wait at least 5 seconds between uploads |
+
+The library shows each file's name, duration, and size. Use **Preview** to check it before assigning it. Uploads belong to the server where you added them; people need server access to manage them, and that server's authorized overlay can play them.
+
+<Warning>
+  **Delete** asks you to confirm **Delete sound**. Deleting an upload removes it from its gift assignments. Upload it again and reassign it if you need it later.
+</Warning>
+
+## Troubleshooting
+
+| Symptom | Check |
+| --- | --- |
+| No sound after a gift | Confirm the live source, main switch, gift switch, and selected sound. Keep the shared overlay connected and audible. |
+| Preview works but OBS is silent | Preview uses your browser's audio. Check the OBS source URL, mixer, and output routing separately. |
+| Upload rejected | Export a valid MP3 or PCM WAV. Renaming another format to `.mp3` or `.wav` does not convert it. Trim clips over 30 seconds. |
+| Upload button disabled | Wait for the current operation to finish, or delete an unused sound if the library has reached 50. |
+| Old overlay stops playing | Copy the current URL after regenerating the Chat TTS link. |
+
+Gift sounds enter the shared audio queue. A gift streak can request repeated playback, so clips may wait behind audio already playing.
+
+Timer-end sounds are configured separately in [Speed Tracker settings](/features/speed-tracker#grid-and-timer-settings). Uploaded gift sounds are selected from gift mappings, not the timer-end sound menu.

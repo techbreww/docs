@@ -1,42 +1,35 @@
 ---
-title: "Channel and role manager"
-description: "Create and manage channels and roles from the dashboard."
-icon: settings
+title: "Channel and role managers"
+description: "Edit channel structure and role permissions, then publish changes to Discord."
+icon: "gear"
 ---
 
-The channel and role manager lets you manage your server's channels and roles without opening Discord. Create, edit, reorder, and delete channels and roles directly from the [BrewBot Dashboard](https://brewbot.gg).
+import PremiumNote from '/snippets/premium-note.mdx';
 
-{/* TODO: Add screenshot of channel and role manager UI */}
+<PremiumNote />
 
-## Required permissions
+Open **Server Management > Channel Manager** or **Role Manager**. Both are premium features and require a connected bot.
 
-The bot needs the following Discord permissions to manage channels and roles:
+{/* TODO: Add screenshot of Channel Manager and Role Manager pending changes */}
 
-- **Manage Channels** -- create, edit, reorder, and delete channels
-- **Manage Roles** -- create, edit, reorder, and delete roles
+## Channel Manager
+
+Create categories and supported text, voice, announcement, forum, or stage channels. Drag channels to reorder them or move them between categories, rename them, and edit role-specific permission overrides.
+
+When moving a channel, choose whether to keep its existing permissions or sync them from the destination category. Permission controls support **Allow**, **Inherit**, and **Deny**.
+
+Changes remain pending until you choose **Publish Changes**. Use **Discard** to abandon pending edits.
+
+## Role Manager
+
+Create a role from a template or enter a name and color. Edit permissions, whether it is displayed separately, and whether anyone can mention it. Drag roles to reorder them, or copy permissions from another role.
+
+Use **Review** to inspect new, modified, deleted, and reordered roles before publishing. Roles above the bot, and other non-editable roles, cannot be changed by the bot.
+
+## Permissions and deletion
+
+The bot needs **Manage Channels** and **Manage Roles** for the corresponding operations. It can manage only roles below its own position.
 
 <Warning>
-Without these permissions, the bot cannot make changes to your server's channels or roles. Make sure the bot's role is positioned above the roles it needs to manage.
+  Deleting a channel permanently removes its messages and data. Deleting a category moves its channels into the uncategorized section. Deleting a role removes it and its permissions from members who held it. Review pending deletions before publishing.
 </Warning>
-
-## Manage channels
-
-Go to the [BrewBot Dashboard](https://brewbot.gg), select your server, and open the **Channel and role manager** page. From here you can:
-
-- Create new text, voice, or category channels
-- Edit existing channel names and settings
-- Reorder channels by dragging them
-- Delete channels you no longer need
-
-{/* TODO: Add screenshot of channel management UI */}
-
-## Manage roles
-
-From the same page, switch to the **Roles** tab to:
-
-- Create new roles with custom names and colors
-- Edit existing role permissions and settings
-- Reorder roles in the hierarchy
-- Delete roles you no longer need
-
-{/* TODO: Add screenshot of role management UI */}

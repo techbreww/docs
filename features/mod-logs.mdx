@@ -4,7 +4,7 @@ description: "Track moderation actions and server events in a dedicated channel.
 icon: "scroll"
 ---
 
-Mod logs record server events and moderation actions in a channel you choose. Each enabled event posts a color-coded embed with a short summary plus structured fields, so moderators can scan what happened without opening Discord audit logs.
+Mod logs are available on the **free plan**. They record server events and moderation actions in a channel you choose. Each enabled event posts a color-coded embed with a short summary plus structured fields, so moderators can scan what happened without opening Discord audit logs.
 
 Most events now include **who performed the action** (the actor) by cross-referencing Discord's audit log. This requires the **View Audit Log** permission — check [Permissions](/features/permissions) if actor fields aren't showing.
 
@@ -23,7 +23,7 @@ Most events now include **who performed the action** (the actor) by cross-refere
     Choose the channel where the bot should post log entries. You can also create a new `#mod-logs` channel directly from the dashboard.
   </Step>
   <Step title="Enable logging">
-    Turn on the **Enable Audit Logging** toggle.
+    Turn on the **Mod Logs** toggle.
   </Step>
   <Step title="Choose events to log">
     Enable the event categories you want to track. Each event has its own toggle, so you can keep the log channel focused on what your team actually reviews.
@@ -38,17 +38,18 @@ Most events now include **who performed the action** (the actor) by cross-refere
 
 - **Ignore bots** — skips events when the affected user is known to be a bot
 - **Hide user thumbnails** — removes user avatars from member, message, and voice embeds
+- **Diagnostics Channel** — optional feed for skipped events, fallbacks, incomplete event data, and handler errors
 - **Ignored channels** — skips message delete and message edit logs for the channels you exclude
 
 ## Event reference
 
 Each log entry uses a color to signal what kind of action happened:
 
-- 🟢 **Green** — joins, creates, unbans, and other positive or additive events
-- 🟡 **Yellow** — edits, updates, moves, and changed settings
-- 🔴 **Red** — leaves, deletes, bans, and removals
-- 🔵 **Blue** — informational events such as invite creation
-- 🟠 **Orange** — reserved for moderation warning-style events
+- **Green** — joins, creates, unbans, and other positive or additive events
+- **Yellow** — edits, updates, moves, and changed settings
+- **Red** — leaves, deletes, bans, and removals
+- **Blue** — informational events such as invite creation
+- **Orange** — reserved for moderation warning-style events
 
 ### Member events
 

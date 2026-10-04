@@ -1,37 +1,29 @@
 ---
 title: "Welcome messages"
-description: "Automatically greet new members when they join your server."
+description: "Greet new members with a configurable text message."
 icon: "hand-wave"
 ---
 
-Welcome messages send an automatic greeting whenever a new member joins your server. You can customize the message content, choose where it's posted, and optionally assign a role to new members on join.
+Welcome messages are available on the **free plan**. BrewBot sends your configured text when a member joins.
 
-{/* TODO: Add screenshot of welcome messages UI */}
+{/* TODO: Add screenshot of Welcome Message editor and preview */}
 
-## Configure welcome messages
+1. Open **Server Management > Welcome Message**.
+2. Enable **Send a message when a user joins the server**.
+3. Select an existing welcome channel or create one from the channel picker.
+4. Write a text message of up to 2,000 characters and check the preview.
+5. Use **Send Test**, then publish the settings.
 
-<Steps>
-  <Step title="Open the dashboard">
-    Go to the [BrewBot Dashboard](https://brewbot.gg) and select your server.
-  </Step>
-  <Step title="Navigate to Welcome Messages">
-    Open the **Welcome Messages** page from the sidebar.
-  </Step>
-  <Step title="Select the welcome channel">
-    Choose the channel where the bot should send welcome messages.
-  </Step>
-  <Step title="Write your message">
-    Write a custom welcome message. Use the `{member}` placeholder to mention the new member by name.
+| Placeholder | Value |
+| --- | --- |
+| `{user}` | Mention of the new member |
+| `{server}` | Server name |
+| `{member_count}` | Total member count |
+| `{user.tag}` | Member's Discord tag |
+| `{user.id}` | Member's Discord ID |
 
-    ```text
-    Welcome to the server, {member}! Check out #rules to get started.
-    ```
-  </Step>
-  <Step title="Assign a role on join (optional)">
-    Select a role to automatically assign to every new member when they join. This is useful for giving members a default role that unlocks specific channels.
-  </Step>
-</Steps>
+```text
+Hey {user}, welcome to **{server}**! You are member #{member_count}.
+```
 
-<Note>
-  The bot needs the **Send Messages** permission in the welcome channel. If you enable auto-role assignment, the bot also needs **Manage Roles** and its role must be above the assigned role.
-</Note>
+The bot needs **View Channel** and **Send Messages** in the welcome channel. Use [Reaction Roles](/features/reaction-roles) or [Captcha Verification](/features/captcha-verification) to manage onboarding roles. The welcome editor currently supports text messages; its embed option is marked as coming soon.
