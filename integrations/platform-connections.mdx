@@ -1,0 +1,27 @@
+---
+title: "Platform connections"
+description: "Connect TikTok, Twitch, Spotify, Apple Music, and OnlyFans accounts for dashboard features."
+icon: "plug"
+---
+
+Open **Configuration > Integrations** to connect platform accounts. Connection settings are separate from enabling premium alerts, music commands, and live tools. Team-owned shared connections may require a team admin even when you are a designated server admin.
+
+{/* TODO: Add screenshot of the Integrations page */}
+
+| Connection | Used by | Setup notes |
+| --- | --- | --- |
+| TikTok | Account-aware live tools and connected-account rankings | Authorize through the connection flow. Public LIVE chat and overlays do not require login. |
+| Twitch | Twitch Monitor, TTS, and music chat commands | Search for a broadcaster and connect the matching Twitch account. Saved sources are shared across Twitch features. |
+| Spotify | Spotify commands and track overlays | Connect a Spotify Premium account for playback commands. |
+| Apple Music | Browser audio controller and music commands | Connect the account, then keep the audio controller open for playback. |
+| OnlyFans | New-post alerts | Connect a creator through the OnlyFansAPI sign-in window. Connections are shared within the team and managed by team admins. |
+
+## Reconnect an account
+
+Check the connection status on this page when a feature asks you to reconnect. TikTok access refreshes automatically; reconnect when authorization expires or is revoked. Twitch may request another authorization when additional permissions are needed for Monitor events.
+
+A connected account does not automatically turn on every feature. Continue to its setup page to select channels, enable the feature, and configure its audience.
+
+See [Social alerts](/features/social-alerts), [Twitch Monitor](/features/twitch-monitor), [Spotify](/integrations/spotify), and [Apple Music](/integrations/apple-music).
+
+For iMessage agent tools, use [Agent Connections](/integrations/agent-connections) under Engagement.

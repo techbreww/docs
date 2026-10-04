@@ -4,7 +4,7 @@ description: "Let members assign themselves roles by reacting to a message."
 icon: "face-smile"
 ---
 
-Reaction roles let members pick their own roles by reacting to a message with an emoji. When a member adds a reaction, the bot assigns the corresponding role. When they remove the reaction, the bot removes the role.
+Reaction roles are available on the **free plan**. They let members pick their own roles by reacting to a message with an emoji. When a member adds a reaction, the bot assigns the corresponding role. When they remove the reaction, the bot removes the role.
 
 {/* TODO: Add screenshot of reaction roles UI */}
 
@@ -18,15 +18,21 @@ Reaction roles let members pick their own roles by reacting to a message with an
     Open the **Reaction Roles** page from the sidebar.
   </Step>
   <Step title="Create a new reaction role message">
-    Click **Create** to start a new reaction role message. Give it a title and optional description that tells members what roles are available.
+    Choose a starting template or create a new reaction role message. Give it a title and optional description that tells members what roles are available.
   </Step>
   <Step title="Add emoji-to-role mappings">
-    For each role you want to offer, select an emoji and the role it should assign. You can add as many mappings as you need.
+    For each role you want to offer, select an emoji and the role it should assign. Each message supports up to 20 reactions.
   </Step>
   <Step title="Set the target channel">
     Choose the channel where the bot should post the reaction role message. The bot sends the message and adds the configured emoji reactions automatically.
   </Step>
 </Steps>
+
+## Reaction modes
+
+**Default** grants a role when a member reacts and removes it when they remove the reaction. **Reverse** removes a role on reaction and gives it back when the reaction is removed.
+
+Use **Allow members to pick up roles from multiple reactions** to permit more than one selection. You can create channels and roles from the editor, then publish the message. Existing templates already in use are marked in the template list.
 
 ## Permissions
 

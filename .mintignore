@@ -5,3 +5,8 @@
 # Draft content
 drafts/
 *.draft.mdx
+
+# Maintainer-only audit and instructions
+FEATURE_AUDIT.md
+AGENTS.md
+CLAUDE.md

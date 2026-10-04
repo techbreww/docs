@@ -1,0 +1,56 @@
+---
+title: "Stream overlays"
+description: "Add BrewBot browser sources to OBS and choose the right source for each live tool."
+icon: "layer-group"
+---
+
+import PremiumNote from '/snippets/premium-note.mdx';
+
+<PremiumNote />
+
+BrewBot overlays display live visuals or play audio through browser sources. Open **Live Tools > Overlays** to copy and preview the available sources. Overlays are premium; the dashboard also applies [Speed Dating access](/getting-started/teams#feature-permissions) to this page.
+
+{/* TODO: Add screenshot of the Overlays page */}
+
+## Add a browser source
+
+1. Copy the URL from BrewBot rather than constructing it yourself.
+2. In OBS, add a **Browser** source and paste the URL.
+3. Start with the dashboard's recommended 1920 × 1080 size, then crop or resize it in your scene.
+4. For audio sources, keep the source active and check its audio routing in the OBS mixer. If you enable **Control audio via OBS**, configure monitoring and stream output there.
+5. Test the feature before the event.
+
+Treat token-bearing URLs as private playback links. After regenerating a link, update every browser source or player that uses it.
+
+## Choose a source
+
+| Source | What it displays or plays | Where to configure it |
+| --- | --- | --- |
+| Question | Current icebreaker question | [Speed Tracker](/features/speed-tracker) or Overlays |
+| Timer | Shared countdown, style, title, and end sound | Speed Tracker > Settings |
+| Vote Off | Gift race leaderboard and result | Speed Tracker |
+| Match Counter | Matched-pair counter | Overlays |
+| Chat | Transparent TikTok chat for a selected monitored channel | Overlays or TikTok Chat Monitor |
+| Chat TTS | TikTok speech, TTS Story, and Gift Sounds | [TTS Settings](/features/tts) |
+| Twitch TTS | Twitch speech in its own queue | [Twitch TTS settings](/features/twitch-tts) |
+| Gift Goal | Selected gift and target progress | [Gift Goals](/features/gift-goals) |
+| Rate Me | Viewer photo, name, and countdown | [Rate Me](/features/rate-me) |
+| Game Requests | Viewer queue and optional Box Battle points | [Game Requests](/features/game-requests) |
+| Spotify Now Playing | Current track | [Spotify](/integrations/spotify) |
+| Spotify Queue | Upcoming tracks | Spotify or Overlays |
+| Spotify Scan Code | Scannable code for the current track | Overlays |
+| Apple Music | Now-playing display | [Apple Music](/integrations/apple-music) |
+
+Some links are on their feature's own page rather than in the main Overlays list.
+
+## Shared audio and timer sources
+
+Add the Chat TTS source once for TikTok speech, TTS Story, and Gift Sounds. Twitch TTS has its own source. Alternatively, open a [browser player](/features/tts#browser-player) for playback on another device.
+
+Timer Gifts extends the existing timer and needs no additional overlay. Timer-end sounds come from **Speed Tracker > Settings > Grid & Timer**, separately from the uploaded gift-sound library.
+
+## Match counter
+
+In the Match Counter settings, **Starting Match Count** changes the count shown by both the Match square and the overlay. After saving, new matches continue increasing the counter normally.
+
+The Overlays page also provides the [Stream Deck plugin](/integrations/stream-deck) download.

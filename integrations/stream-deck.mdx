@@ -1,27 +1,34 @@
 ---
 title: "Stream Deck"
-description: "Control BrewBot from your Elgato Stream Deck."
+description: "Install BrewBot Controls and trigger timers or questions from physical buttons."
 icon: "gamepad"
 ---
 
-Integrate BrewBot with your Elgato Stream Deck to trigger bot actions with physical buttons. The integration uses OAuth to connect your Stream Deck to the dashboard.
+import PremiumNote from '/snippets/premium-note.mdx';
 
-## Set up the integration
+<PremiumNote />
 
-<Steps>
-  <Step title="Open the Stream Deck integration">
-    Open the [BrewBot Dashboard](https://brewbot.gg) and go to **Integrations** > **Stream Deck**.
-  </Step>
-  <Step title="Authorize the connection">
-    Click **Connect Stream Deck** and authorize the connection.
-  </Step>
-  <Step title="Add BrewBot actions">
-    In the Stream Deck app, add BrewBot actions to your buttons.
-  </Step>
-  <Step title="Configure your buttons">
-    Configure each button with the action you want to trigger.
-  </Step>
-</Steps>
+The BrewBot Controls plugin triggers premium Speed Tracker actions from an Elgato Stream Deck. You need access to the server's live-event tools.
 
-{/* TODO: Document available Stream Deck actions */}
-{/* TODO: Add screenshot of Stream Deck integration setup */}
+{/* TODO: Add screenshot of Stream Deck action settings and login */}
+
+## Install and connect
+
+1. Open **Live Tools > Overlays** and expand **Stream Deck Plugin**.
+2. Select **Download Plugin** and double-click the downloaded `.streamDeckPlugin` file to install it.
+3. In Stream Deck, add a **BrewBot Controls** action to a key.
+4. Open that action's settings, sign in through BrewBot, and choose your server.
+5. Configure the action and press the key to test it against your live tools.
+
+The bundled plugin requires Stream Deck software 6.9 or later and supports macOS 12 or later and Windows 10 or later.
+
+## Available actions
+
+| Action | Behavior |
+| --- | --- |
+| **Start Timer** | Starts the shared Speed Tracker timer; configure its duration in the key settings. |
+| **Personal Question** | Generates a personal conversation question. |
+| **Regular Question** | Generates an icebreaker question. |
+| **Spicy Question** | Generates a flirty question. |
+
+Keep the appropriate [overlay](/features/overlays) in OBS to show the timer or generated question. For request failures, check the selected server, account access, and [API Logs](/integrations/api-logs).

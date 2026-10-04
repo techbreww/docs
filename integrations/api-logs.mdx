@@ -1,17 +1,13 @@
 ---
 title: "API logs"
-description: "View and debug API requests made by the dashboard."
+description: "Inspect external integration requests and dashboard timer actions."
 icon: "list"
 ---
 
-The API logs page shows a record of API requests made between the dashboard and Discord. Use it to debug issues or monitor bot activity.
+Open **Configuration > API Logs** to inspect external integration requests and dashboard timer-control actions. On team servers, this page requires server admin access. Viewing this diagnostic page is not itself a premium feature, although the actions it records may use premium tools.
 
-Access the logs from **Integrations** > **API Logs** in the [dashboard](https://brewbot.gg). Each log entry shows:
+{/* TODO: Add screenshot of API Logs filters and request details */}
 
-- Timestamp
-- Endpoint
-- HTTP method
-- Status code
-- Response time
+Filter by status (**Success (2xx)** or **Error (4xx/5xx)**) and endpoint. Logged endpoints include external server, timer, and question requests, plus dashboard timer start, reset, and stop actions.
 
-{/* TODO: Add screenshot of the API logs page */}
+Each entry shows the timestamp, endpoint, method, status, and duration. Expand an entry for available requester details, IP prefix, user agent, or error information. Use these logs when troubleshooting [Stream Deck](/integrations/stream-deck) or live timer controls; this is not a complete log of every Discord request.

@@ -1,0 +1,29 @@
+---
+title: "Timer gifts"
+description: "Let a TikTok gift extend a running countdown once."
+icon: "hourglass-half"
+---
+
+import PremiumNote from '/snippets/premium-note.mdx';
+
+<PremiumNote />
+
+Timer Gifts adds three minutes to the current Speed Tracker timer when the first matching gift arrives. It requires a team server, premium, and [Speed Dating access](/getting-started/teams#feature-permissions).
+
+{/* TODO: Add screenshot of Timer Gifts UI */}
+
+## Configure the trigger
+
+1. Select the shared TikTok source in **Live Tools > TTS Settings > TikTok TTS > Live Source**.
+2. Open **Live Tools > Timer Gifts** and enable **Gift trigger**.
+3. Choose a gift from the catalog, or choose **Enter an unlisted gift name** and enter its exact TikTok name.
+4. Select **Save gift**. **Use Meteor Shower** selects the default gift; save that selection to apply it.
+5. Start the timer normally in [Speed Tracker](/features/speed-tracker).
+
+The first matching gift extends a running countdown by three minutes. Additional gifts do not extend that countdown again. After the extended countdown finishes, the next countdown can receive one extension.
+
+<Note>
+  Gifts cannot start a timer. A three-minute countdown plus one extension has six minutes of total time. Keep your existing timer overlay in OBS; Timer Gifts uses its current appearance and end sound.
+</Note>
+
+Use **Timer appearance & sounds** to change the [grid and timer settings](/features/speed-tracker#grid-and-timer-settings).

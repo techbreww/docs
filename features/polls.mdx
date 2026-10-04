@@ -32,7 +32,7 @@ Polls lets you create native Discord polls directly from the BrewBot dashboard. 
     Enter a poll question (up to 300 characters).
   </Step>
   <Step title="Add answer options">
-    Add between 2 and 10 answer options. Each option can include an optional custom emoji — paste a custom emoji code (e.g. `<:emoji_name:id>`) or an emoji name.
+    Add between 2 and 10 answer options. Each option can include an optional custom emoji — paste a custom emoji code (e.g. `<:emoji_name:id>`) or use a Unicode emoji.
   </Step>
   <Step title="Configure poll settings">
     - **Multiple choice** — toggle on to let members select more than one answer (off by default)
@@ -44,6 +44,12 @@ Polls lets you create native Discord polls directly from the BrewBot dashboard. 
 </Steps>
 
 ---
+
+## Recurring polls
+
+Enable **Repeat this poll on a schedule** and choose **Hourly**, **Daily**, **Weekly**, **Monthly**, **Quarterly**, or **Yearly**. Choose whether the first poll posts now or at a scheduled time. The repeat interval controls future posts; the duration controls how long each individual poll accepts votes.
+
+Each successful recurring post creates the next scheduled poll. To stop the chain, cancel its next unposted occurrence from the scheduled list. Ending the currently active poll does not cancel that next occurrence.
 
 ## Poll statuses
 
@@ -61,7 +67,7 @@ Once created, each poll moves through a lifecycle shown by a color-coded status 
 
 ## Manage polls
 
-The dashboard organizes your polls by status — active, scheduled, failed, and history — so you can manage them at a glance.
+The dashboard organizes polls by status so you can manage active, scheduled, failed, and past polls.
 
 - **View live results** — click a posted poll to see vote counts and percentages for each option in real time
 - **End a poll early** — close an active poll before its duration expires. The final results are preserved.
@@ -91,8 +97,8 @@ The dashboard organizes your polls by status — active, scheduled, failed, and 
 
 | Permission | Used for |
 | --- | --- |
-| **Send Messages** | Posting the poll to the target channel |
-| **Embed Links** | Rendering the poll embed |
+| **View Channel** and **Send Messages** | Posting the poll to the target channel |
+| **Send Polls** | Posting native Discord polls |
 
 <Warning>
   Make sure the bot has both permissions in the channel you select. If the bot cannot send messages to that channel, the poll will fail and show a **Failed** status on the dashboard.

@@ -1,0 +1,41 @@
+---
+title: "Speed Tracker tickets"
+description: "Collect issue reports through a public form and manage replies, assignments, and status."
+icon: "ticket"
+---
+
+import PremiumNote from '/snippets/premium-note.mdx';
+
+<PremiumNote />
+
+Tickets gives viewers a public form for Speed Tracker issues and gives staff a queue for handling them. Staff access requires premium, a team server, and Speed Dating permission.
+
+{/* TODO: Add screenshot of ticket queue and detail page */}
+
+## Share the form
+
+Open **Live Tools > Speed Tracker > Tickets** to generate or view the **Public Form Link**. Enable the form and share that URL with viewers. The Discord `/ticket` command returns this link when the form is enabled; it does not create a ticket directly in Discord.
+
+[Reports](/features/reports) can publish a Discord panel linked to the same form.
+
+<Warning>
+  **Regenerate URL** replaces the public form link. Update places where you shared the old link.
+</Warning>
+
+## Submit and track a ticket
+
+The public form collects a name, TikTok username, title, issue type, and description, with optional contact and session details. It accepts up to six image attachments, up to 10 MB each, in PNG, JPG, WEBP, GIF, HEIC, or HEIF format. After submission, save the private status link to follow public updates; internal staff notes do not appear there.
+
+Some servers also have a dedicated wedding-registry form for registry notes, gift details, and optional shipping information. Use the specific link provided by that team; it is not available for every server.
+
+## Work through the queue
+
+Filter tickets by **Unassigned**, **Mine**, or **All**, and by **New**, **In Progress**, or **Done**. Open a ticket to review the submitted details and attachments, assign it to a staff member, and update its status.
+
+Use public replies for updates the submitter should see. Use internal notes for staff-only discussion. The detail page also provides a **Status Link** and supports image attachments in replies.
+
+## Discord notifications
+
+Open **Notification Settings**, enable Discord notifications, and choose a channel. Optionally choose a role to mention for new tickets. The bot needs permission to post in that channel.
+
+The settings page also shows recent public-form visits for staff review. Public visitors do not need access to your staff dashboard to use the form.

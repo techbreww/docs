@@ -4,7 +4,7 @@ description: "Check which Discord permissions the bot has and re-authorize if an
 icon: "shield-check"
 ---
 
-The Permissions page shows the bot's current Discord permissions in your server. If any required permissions are missing, features may not work correctly. You can re-authorize the bot directly from this page to fix it.
+The Permissions page is available on the **free plan** and shows the bot's current Discord permissions in your server. If any required permissions are missing, features may not work correctly. You can re-authorize the bot directly from this page to fix it.
 
 <Note>
   The Permissions page requires the bot to be connected to your server. Find it in **Configuration > Permissions**.
@@ -14,7 +14,7 @@ The Permissions page shows the bot's current Discord permissions in your server.
 
 ## How it works
 
-The dashboard fetches the bot's guild member data and computes its effective permissions from all assigned roles. It then compares those against the full set of permissions BrewBot needs to operate.
+The dashboard fetches the bot's server membership data and computes its effective permissions from all assigned roles. It then compares those against the full set of permissions BrewBot needs to operate.
 
 Each permission is shown with:
 - A green check if granted
@@ -63,12 +63,12 @@ If permissions are missing, click **Re-authorize Bot** on the Permissions page. 
     This opens Discord's OAuth popup. Approve the permissions and close the popup.
   </Step>
   <Step title="Verify">
-    The page refreshes automatically after the popup closes. All permissions should now show green checks.
+    Review the permissions again after authorization. Resolve any remaining missing permissions or channel overrides.
   </Step>
 </Steps>
 
 <Tip>
-  Re-authorizing does not remove the bot, reset settings, or affect your server in any way. It only updates the bot's permission set.
+  Re-authorizing does not remove the bot, reset settings, or affect your server in any way. It updates the bot's requested permission set. Channel-specific overrides still need to allow access.
 </Tip>
 
 ---

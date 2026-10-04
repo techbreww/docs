@@ -4,9 +4,7 @@ description: "Use your own Discord bot application for a fully branded experienc
 icon: "robot"
 ---
 
-import PremiumNote from '/snippets/premium-note.mdx';
-
-<PremiumNote />
+Custom bot setup is available with basic Bot Settings on the **free plan**. AI backstory, chat, voice, and image generation require **premium**.
 
 The custom bot feature lets you replace the default BrewBot with your own Discord bot application. Your bot gets its own name, avatar, and status — while still being managed through the BrewBot Dashboard.
 
@@ -16,7 +14,7 @@ The custom bot feature lets you replace the default BrewBot with your own Discor
 
 Before starting, make sure you have:
 
-- An active BrewBot premium subscription
+- An active BrewBot free or premium plan and permission to administer the server
 - A Discord account with an authenticator app enabled (recommended)
 - Your browser's pop-up blocker temporarily disabled
 
@@ -30,7 +28,7 @@ Before starting, make sure you have:
     Click **New Application**, enter a name, accept Discord's policies, and click **Create**.
 
     <Note>
-      You can change the name later, but bot name changes have a **7-day cooldown** enforced by Discord.
+      You can change the name later, but bot name changes have a **7-day cooldown** enforced by BrewBot.
     </Note>
   </Step>
 </Steps>
@@ -89,8 +87,8 @@ You need two values from the Developer Portal.
 ## Connect in the dashboard
 
 <Steps>
-  <Step title="Open bot personalizer">
-    Go to the [BrewBot Dashboard](https://brewbot.gg), select your server, and open **Bot Personalizer**.
+  <Step title="Open Bot Settings">
+    Go to the [BrewBot Dashboard](https://brewbot.gg), select your server, and open **Configuration > Bot Settings**.
   </Step>
   <Step title="Start custom bot setup">
     Click **Use Custom Bot** (or **Set up Custom Bot** if you're already using the default BrewBot).
@@ -104,25 +102,11 @@ You need two values from the Developer Portal.
   <Step title="Enter your tokens">
     Paste your **Client Secret** and **Bot Token** into the form fields.
   </Step>
-  <Step title="Enable bot personalizer">
-    Click **Enable Bot Personalizer**. The dashboard validates your token against Discord before saving.
+  <Step title="Enable Bot Settings">
+    Click **Enable Custom Bot**. The dashboard validates your token against Discord before saving.
   </Step>
   <Step title="Authorize command permissions">
-    A Discord pop-up opens asking you to authorize the bot for your server. This grants the same permissions as the default BrewBot:
-
-    - **Manage Channels** — dashboard channel management
-    - **Add Reactions** — reaction roles
-    - **View Channel** — access channels across all features
-    - **Send Messages** — nearly every feature
-    - **Manage Messages** — custom commands, alert auto-delete, reaction role embeds
-    - **Embed Links** — audit log, welcome messages, alerts, leveling
-    - **Attach Files** — AI voice messages, image generation
-    - **Read Message History** — reaction roles, audit log
-    - **Use External Emojis** — embeds with external emojis
-    - **Mention Everyone** — alert default messages
-    - **Connect** — AI voice channel join
-    - **Speak** — AI voice channel playback
-    - **Manage Roles** — reaction roles, leveling role rewards, dashboard role management
+    A Discord pop-up opens asking you to authorize the bot for your server. Review the requested permissions using the [Permissions guide](/features/permissions).
 
     Click **Authorize** to complete the setup.
   </Step>
@@ -142,12 +126,12 @@ You need two values from the Developer Portal.
 {/* TODO: Add screenshot of the authorize permissions modal */}
 
 <Tip>
-  If BrewBot updates its required permissions, you can re-authorize at any time from the **Bot Permissions** card on the Bot Personalizer page. This updates the bot's permissions without removing it from your server.
+  If BrewBot updates its required permissions, you can re-authorize at any time from the **Bot Permissions** card on the Bot Settings page. This updates the bot's permissions without removing it from your server.
 </Tip>
 
 ## After setup
 
-Once connected, the Bot Personalizer page shows the **Custom Bot Appearance** card where you can configure:
+Once connected, the Bot Settings page shows the **Custom Bot Appearance** card where you can configure:
 
 | Setting | Description |
 | --- | --- |
@@ -171,4 +155,4 @@ After setup, go to **Server Settings** > **Roles** in Discord and drag your cust
 
 ## Disconnect the custom bot
 
-To switch back to the default BrewBot, open **Bot Personalizer** and click **Disable Custom Bot**. This clears your stored tokens and reverts all features to the default BrewBot.
+To switch back to the default BrewBot, open **Configuration > Bot Settings** and click **Remove Custom Bot**. This clears the custom bot connection. Make sure the default BrewBot is installed and connected before relying on it to resume server features.

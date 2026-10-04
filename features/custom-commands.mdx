@@ -1,42 +1,25 @@
 ---
 title: "Custom commands"
-description: "Create custom slash commands and prefix commands for your server."
-icon: "code"
+description: "Build Discord prefix commands with messages, embeds, restrictions, and cooldowns."
+icon: "terminal"
 ---
 
 import PremiumNote from '/snippets/premium-note.mdx';
 
 <PremiumNote />
 
-Custom commands let you build your own commands that trigger specific actions in your server. You can create both slash commands and prefix commands, each with their own response type.
+Create custom Discord commands under **Server Management > Custom Commands**. The current editor creates prefix commands that send text or embeds. Each server can have up to 500 custom commands.
 
-{/* TODO: Add screenshot of custom commands UI */}
+{/* TODO: Add screenshot of custom command actions and advanced settings */}
 
-## Create a custom command
+1. Select **New custom command**.
+2. Enter the command name. The editor shows the server’s configured prefix.
+3. Add message actions: send in a predefined channel or respond in the current channel.
+4. For message actions, enter text and optionally add an embed. Add multiple response choices when you want the bot to choose randomly.
+5. Configure **Advanced options and permissions**, then save or publish the command.
 
-<Steps>
-  <Step title="Open the dashboard">
-    Go to the [BrewBot Dashboard](https://brewbot.gg) and select your server.
-  </Step>
-  <Step title="Navigate to Custom Commands">
-    Open the **Custom Commands** page from the sidebar.
-  </Step>
-  <Step title="Add a new command">
-    Click **Create** to start building a new command.
-  </Step>
-  <Step title="Configure the command">
-    Fill in the following fields:
+Advanced settings include a command description, allowed and denied roles, allowed and denied channels, cooldown in seconds, and hiding command usage. Enable or disable individual commands from the command list.
 
-    - **Name** — the command name members type to trigger it
-    - **Description** — a short description shown in the slash command menu
-    - **Command type** — choose between a slash command or a prefix command
-    - **Response type** — select what happens when the command is used:
-      - **Text** — replies with a text message
-      - **Embed** — replies with a formatted embed message
-      - **Role assignment** — assigns or removes a role from the member
-  </Step>
-</Steps>
+The bot needs access to any destination channel. Use the prefix configured in [Bot Settings](/features/bot-personalizer). Role assignment and removal appear as unavailable actions in the current editor; they are not selectable setup options. Built-in slash commands are listed separately in the [command reference](/bot-commands/reference).
 
-<Note>
-  Slash commands may take up to an hour to register with Discord after you create or update them. Prefix commands are available immediately.
-</Note>
+The custom-command list also points members to the prefix `help` command to discover available commands. [Live Commands](/features/live-commands) controls TikTok commands separately.

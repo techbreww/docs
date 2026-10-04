@@ -1,0 +1,27 @@
+---
+title: "Game requests"
+description: "Collect a TikTok !play queue and show Box Battle points on stream."
+icon: "gamepad"
+---
+
+import PremiumNote from '/snippets/premium-note.mdx';
+
+<PremiumNote />
+
+Game Requests collects viewers who type `!play` in TikTok chat and displays the queue in the dashboard and an OBS overlay. It requires premium and the dashboard's Speed Dating access.
+
+{/* TODO: Add screenshot of Game Requests queue and Box Battle settings */}
+
+1. Add the TikTok channel in [TikTok Chat Monitor](/features/live-monitor).
+2. Open **Live Tools > Game Requests** and choose the **Monitored TikTok channel**.
+3. Enable **!play game requests for this server**.
+4. Copy the **OBS overlay link** into a browser source.
+5. Ask viewers to type `!play` in that channel's live chat.
+
+The queue shows each viewer's display name, TikTok username, profile picture when available, and MVP status. **Box Battle mode** tracks gifts sent to queued viewers as points and displays those points alongside their entries.
+
+Use **Clear all** when you want to clear the current request queue.
+
+<Note>
+  This `!play` command joins the game queue. Music commands use the prefix configured in [Spotify](/integrations/spotify) or [Apple Music](/integrations/apple-music). Check those prefixes when enabling both tools.
+</Note>

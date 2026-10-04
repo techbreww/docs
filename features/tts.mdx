@@ -1,227 +1,91 @@
 ---
-title: "Text-to-speech (TTS)"
-description: "Turn TikTok chat messages into spoken audio with expressive voice tags powered by ElevenLabs."
-icon: "volume"
+title: "TikTok text-to-speech"
+description: "Read eligible TikTok chat aloud and manage voices, Heart Me access, and playback."
+icon: "volume-high"
 ---
 
 import PremiumNote from '/snippets/premium-note.mdx';
 
 <PremiumNote />
 
-Text-to-speech lets the bot convert written messages into natural-sounding audio. BrewBot uses [ElevenLabs](https://elevenlabs.io) to generate speech, and supports expressive audio tags that add emotion, reactions, and vocal variety to the output. This page covers **Chat TTS** (TikTok live chat) and the shared voice model and audio tag reference used by all TTS features.
+TikTok Chat TTS reads eligible live-chat messages aloud through an OBS browser source or a browser player. It requires premium and a team server. The TTS Settings page requires server admin access.
 
-<Card title="Twitch TTS" icon="twitch" href="/features/twitch-tts">
-  Looking for Twitch chat text-to-speech? See the Twitch TTS guide.
-</Card>
+{/* TODO: Add screenshot of TikTok TTS tabs and audience settings */}
 
-{/* TODO: Add screenshot of TTS settings UI */}
+## Set up TikTok TTS
 
-## Voice models
+1. Add a channel to [TikTok Chat Monitor](/features/live-monitor).
+2. Open **Live Tools > TTS Settings > TikTok TTS > Live Source** and select the channel.
+3. Open **TikTok Chat TTS** and turn on **Enable Chat TTS**.
+4. Choose the trigger mode, audience, voice, and voice model.
+5. Copy the **Hidden OBS Browser Source** URL into OBS, or open the browser player.
+6. Send an eligible message in the selected live chat to test playback.
 
-BrewBot supports two ElevenLabs voice models:
+The live source is shared with Speed Tracker and Gift Race. Changing it changes the source those tools use too. [Twitch TTS](/features/twitch-tts) has separate settings, a separate source, and a separate queue.
 
-| Model | Description |
-|---|---|
-| **Multilingual v2** | Stable, general-purpose model. Works well for straightforward speech. This is the default. |
-| **v3** | Newer model with support for expressive audio tags. Choose this if you want emotional delivery and sound effects. |
+## Trigger modes
+
+| Mode | Behavior |
+| --- | --- |
+| **Use // prefix** | Eligible viewers start a message with `//`. |
+| **Read messages normally** | Eligible messages can play without a prefix. |
+
+**Allow Moderators Without //** lets moderators bypass the prefix requirement. Audience eligibility and trigger mode are separate checks.
+
+```text
+// Hello everyone, welcome to the stream!
+```
+
+## Audience and blocked users
+
+Choose **Moderators** or **Everyone** as the audience. Additional controls let you grant or deny access:
+
+- **Whitelisted Users** can use TTS even in moderator-only mode.
+- **Allow MVP Profiles** grants eligibility to profiles currently on the MVP dock. In prefix mode, they still need `//` unless another applicable bypass grants it.
+- **Heart Me TTS Access** grants eligibility to viewers with an active Heart Me fan-club badge. An inactive badge does not grant access. A new Heart Me gift can grant access for the current LIVE when badge status is unavailable.
+- **Blocked Users** cannot trigger Chat TTS, even if they are moderators, whitelisted, MVPs, or otherwise eligible.
+
+The selected trigger mode still applies to Heart Me access. **Heart Me Gift TTS** is a separate switch that reads a short announcement when someone sends that gift.
+
+## Voices and audio tags
+
+Choose **Single voice** for a fixed voice or **Random voices** to select a premade voice per message. The saved single voice remains a fallback. **Custom User Voices** assigns a fixed voice to a TikTok username and takes priority over the default or random mode.
+
+| Model | Use |
+| --- | --- |
+| **Eleven Multilingual v2** | General speech |
+| **Eleven v3** | Expressive speech with audio tags |
+
+With v3, try inline directions such as `[whispering]`, `[excited]`, or `[laughs]`. Delivery varies by voice and text; tags are prompts rather than guaranteed sound effects.
+
+```text
+// [whispering] I have a secret. [laughs] We reached the goal!
+```
+
+Use [Gift Sounds](/features/gift-sounds) for a specific prerecorded sound clip.
+
+## OBS playback
+
+Copy the URL from the dashboard and keep the browser source active. It maintains the TikTok monitoring connection and plays queued audio. Configure browser-source audio routing in OBS so the sound reaches your stream. See [Stream overlays](/features/overlays).
+
+The same source plays **Chat TTS**, **TTS Story**, and **Gift Sounds**. You do not need an extra source for either story narration or gift clips. Gift Sounds can run while chat reading is disabled.
 
 <Warning>
-  Audio tags only work with the **v3** voice model. If you use the Multilingual v2 model, tags are ignored or read aloud as plain text.
+  Overlay and player links contain private access tokens. **Regenerate Link** replaces the token; update your OBS sources and saved player links afterward.
 </Warning>
 
-## Configure TTS
+## Browser player
 
-<Steps>
-  <Step title="Open the dashboard">
-    Go to the [BrewBot Dashboard](https://brewbot.gg) and select your server.
-  </Step>
-  <Step title="Navigate to TTS settings">
-    Open the TTS or voice settings section for the feature you want to configure.
-  </Step>
-  <Step title="Enable TTS">
-    Toggle TTS on. Choose who can trigger TTS messages — moderators only, whitelisted members, or everyone.
-  </Step>
-  <Step title="Pick a voice">
-    Select a voice from the available ElevenLabs voices. Each voice has a different tone and style.
-  </Step>
-  <Step title="Select a voice model">
-    Choose **v3** if you want audio tag support, or stick with **Multilingual v2** for standard speech.
-  </Step>
-</Steps>
+Select **Open Browser Player** to play TTS on a phone, tablet, or laptop with a visible queue. The player shows connection status, pending and active jobs, current playback, and recently played items. It provides volume, mute, pause-intake, skip, and clear controls where available.
 
-## How TTS works
+If the browser blocks sound, select **Enable audio**. Use the player you intend to capture for the stream: it actively claims queued jobs, so opening another player or OBS source is not a way to mirror each message to every device.
 
-When a member sends a TTS-eligible message, the bot:
+## Queue and announcements
 
-1. Detects the TTS trigger (a `//` prefix for chat TTS).
-2. Extracts the spoken text from the message.
-3. Sends the text to ElevenLabs with the configured voice and model.
-4. Plays the generated audio.
+In **TTS Queue**, review pending and in-progress messages. **Clear Pending/Stale** removes pending items and playing items stuck for more than five minutes. **Overlay Connections** lists connected sources and lets you refresh or disconnect them.
 
-For example, typing `// Hello everyone, welcome to the stream!` produces a spoken greeting in the selected voice.
-
-## Audio tags
-
-Audio tags are short markers you embed in your text to control how the voice sounds. Wrap each tag in square brackets and place it where you want the effect to occur.
-
-```text
-// [excited] We just hit a new record! [laughs] I can't believe it!
-```
-
-### Emotional tone
-
-Use these tags to set the mood of the delivery:
-
-| Tag | Effect |
-|---|---|
-| `[excited]` | Upbeat, enthusiastic delivery |
-| `[nervous]` | Hesitant, anxious tone |
-| `[frustrated]` | Annoyed, impatient delivery |
-| `[tired]` | Low-energy, fatigued tone |
-| `[sarcastic]` | Dry, ironic delivery |
-| `[curious]` | Inquisitive, wondering tone |
-| `[mischievously]` | Playful, scheming delivery |
-
-### Reactions
-
-Simulate physical and vocal reactions:
-
-| Tag | Effect |
-|---|---|
-| `[laughs]` | Short laugh |
-| `[laughs harder]` | Extended, intense laughter |
-| `[starts laughing]` | Laughter that builds in |
-| `[wheezing]` | Breathless laughter |
-| `[gasp]` | Sharp intake of breath |
-| `[sighs]` | Audible sigh |
-| `[exhales]` | Breath release |
-| `[crying]` | Tearful, emotional delivery |
-| `[snorts]` | Nasal laugh or scoff |
-| `[gulps]` | Nervous swallow |
-
-### Volume and energy
-
-Control how loud or quiet the voice is:
-
-| Tag | Effect |
-|---|---|
-| `[whispers]` | Soft, hushed delivery |
-| `[whispering]` | Sustained quiet tone |
-| `[shouting]` | Loud, projected delivery |
-| `[quietly]` | Subdued, low-volume speech |
-| `[loudly]` | Raised-voice delivery |
-
-### Pacing and rhythm
-
-Adjust the speed and flow of speech:
-
-| Tag | Effect |
-|---|---|
-| `[pauses]` | Brief silence for dramatic effect |
-| `[stammers]` | Halting, uncertain speech |
-| `[rushed]` | Fast, hurried delivery |
-
-### Sound effects
-
-Add non-speech audio cues:
-
-| Tag | Effect |
-|---|---|
-| `[applause]` | Clapping audience |
-| `[clapping]` | Rhythmic clapping |
-
-### Special
-
-| Tag | Effect |
-|---|---|
-| `[sings]` | Melodic, sung delivery |
-| `[woo]` | Celebratory exclamation |
-
-## Layering tags
-
-Tags can be combined in a single message to create nuanced delivery. Place each tag inline where you want the effect to happen:
-
-```text
-// [nervously] I... I'm not sure this is going to work. [gulps] But let's try anyway.
-```
-
-```text
-// [whispering] Did you hear that? [pauses] [loudly] It's coming from over there!
-```
-
-```text
-// [excited] We won! [laughs harder] I told you we could do it! [applause]
-```
-
-<Tip>
-  Start with one or two tags per message and build from there. Overloading a message with too many tags can make the output sound unnatural.
-</Tip>
-
-## Add the TTS overlay to your stream
-
-Chat TTS plays audio through a **browser source overlay** that you add to your streaming software (OBS, Streamlabs, etc.). The overlay connects to BrewBot, picks up queued TTS messages, and plays them on stream in real time.
-
-<Steps>
-  <Step title="Copy the overlay URL">
-    In the dashboard, go to your TTS settings and copy the **overlay URL**. It looks like this:
-
-    ```text
-    https://brewbot.gg/overlay/speed-dating/{serverId}/chat-tts?token={your-token}
-    ```
-
-    Each server gets a unique secure token. Do not share this URL publicly — anyone with the link can connect to your TTS feed.
-  </Step>
-  <Step title="Add a browser source in OBS">
-    In OBS (or your streaming software), add a new **Browser Source**:
-
-    1. Click **+** in the Sources panel.
-    2. Select **Browser**.
-    3. Name it something like `Chat TTS`.
-    4. Paste the overlay URL into the **URL** field.
-    5. Set the width and height to any value (the overlay is invisible — it only plays audio).
-    6. Make sure **Control audio via OBS** is unchecked so the audio plays through your stream.
-  </Step>
-  <Step title="Test the overlay">
-    Send a test TTS message (or use the manual announcement feature in the dashboard) to confirm audio plays through your stream.
-  </Step>
-</Steps>
-
-<Warning>
-  If you regenerate your overlay token in the dashboard, the old URL stops working. Update the browser source URL in OBS with the new token.
-</Warning>
+Use **Send Announcement** for up to 300 characters of manual speech. A disconnected overlay leaves the announcement queued until a player reconnects. For longer reads, use [TTS Story](/features/tts-story), which accepts up to 20,000 characters.
 
 <Note>
-  The overlay automatically reconnects if the connection drops. If it stays disconnected for more than a few seconds, check that your overlay URL and token are correct.
-</Note>
-
-## Manual announcements
-
-You can send TTS announcements directly from the dashboard without waiting for a chat message. Type your announcement text (up to 300 characters) and it is queued and played through the overlay just like a regular TTS message. This is useful for shoutouts, alerts, or any spoken message you want to trigger on demand.
-
-## Audience controls
-
-You can control who is allowed to send TTS messages:
-
-| Setting | Description |
-|---|---|
-| **Moderators only** | Only server moderators can trigger TTS. This is the default. |
-| **Whitelisted members** | Only members you add to the whitelist can trigger TTS. |
-| **MVPs** | Members marked as MVPs gain TTS access (when enabled). |
-| **Everyone** | Any member can trigger TTS. |
-
-<Note>
-  Whitelisted members and MVPs always have TTS access regardless of the audience setting.
-</Note>
-
-## Blocked users
-
-Block specific TikTok usernames from triggering Chat TTS. When a user on the blocked list sends a message starting with `//`, the bot skips it instead of queuing it for speech.
-
-Manage the blocked list from the **TTS settings** page in the [BrewBot Dashboard](https://brewbot.gg):
-
-- **Add a username** — enter a TikTok username to block from TTS
-- **Remove a username** — remove a username from the blocked list to allow their messages through again
-
-<Note>
-  The blocked list applies only to Chat TTS. Blocked users can still send regular messages — their messages are only skipped for text-to-speech.
+  TikTok TTS requests are unavailable while the Speed Tracker timer is running. Story parts also take priority over ordinary chat speech while pending or speaking. Check the timer, story queue, blocked list, and player connection when a chat message is not spoken.
 </Note>

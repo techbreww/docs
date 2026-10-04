@@ -4,13 +4,19 @@ description: "Launch and monitor Cursor cloud agents by texting BrewBot."
 icon: "robot"
 ---
 
+import PremiumNote from '/snippets/premium-note.mdx';
+
+<PremiumNote />
+
+{/* TODO: Add screenshot of Cursor connection settings */}
+
 Connect a [Cursor](https://cursor.com) account so approved contacts can launch and check on [Cursor cloud agents](https://cursor.com/docs/cloud-agent) by texting BrewBot. A cloud agent works on one of your GitHub repositories, pushes a branch, and can open a pull request when it finishes.
 
-This integration runs through BrewBot's iMessage assistant. Texts are classified, agent actions require confirmation, and every run is recorded in the agent audit log.
+This integration runs through [BrewBot Messages](/features/messages). Texts are classified, agent actions require confirmation, and every run is recorded in the agent audit log.
 
 ## Connect Cursor
 
-Configure the connection from the **Agent Connections** page in the [BrewBot Dashboard](https://brewbot.gg).
+Configure the connection from the **Engagement > Agent Connections** page in the [BrewBot Dashboard](https://brewbot.gg).
 
 <Steps>
   <Step title="Add a Cursor API key">

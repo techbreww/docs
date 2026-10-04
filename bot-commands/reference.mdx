@@ -1,59 +1,53 @@
 ---
 title: "Bot commands"
-sidebarTitle: "All commands"
-description: "Complete reference for all BrewBot slash commands."
+description: "Reference for public Discord slash commands and live-chat command guides."
 icon: "terminal"
 ---
 
-BrewBot uses Discord slash commands for all interactions. Type `/` in any channel where BrewBot is active to see available commands.
+BrewBot supports Discord slash commands and configured text commands. Type `/` in Discord to see the commands available to your account. Discord command permissions and dashboard feature switches can restrict availability.
 
-| Command | Description | Parameters | Required permissions |
+## Discord slash commands
+
+| Command | Arguments | What it does | Access |
 | --- | --- | --- | --- |
-| `/ticket` | Create a support ticket | `subject` (optional) | None |
-| `/rank` | Check your current level and XP | None | None |
-| `/levels` | View the server leaderboard | None | None |
-| `/give-xp` | Award XP to a member | `member`, `amount` | Manage Server |
-| `/remove-xp` | Remove XP from a member | `member`, `amount` | Manage Server |
-| `/level-test` | Test level-up announcements | None | Manage Server |
-| `/remember-birthday` | Register your birthday | `month`, `day` | None |
-| `/forget-birthday` | Remove your birthday | None | None |
-| `/image` | Generate an AI image | `prompt` | None |
+| `/ticket` | None | Returns the enabled Speed Tracker public ticket-form link | Form must be configured and enabled |
+| `/rank` | Optional `user` | Shows your rank or another member's rank | Premium leveling; rank command enabled |
+| `/levels` | None | Shows the server leaderboard | Premium leveling; leaderboard command enabled |
+| `/give-xp` | Required `user`, `amount` | Awards XP | Premium leveling, command enabled, Manage Server |
+| `/remove-xp` | Required `user`, `amount` | Removes XP | Premium leveling, command enabled, Manage Server |
+| `/level-test` | None | Reports leveling configuration and XP diagnostics | No default Manage Server restriction; reports premium status |
+| `/remember-birthday` | Required `date` | Saves a birthday for this server | Free birthday feature |
+| `/forget-birthday` | None | Removes your saved birthday | Free birthday feature |
+| `/image` | Required `prompt`; optional `image` attachment | Generates an image or uses an attached reference | Premium AI image feature must be enabled |
+| `/bot-health` | None | Shows bot health and queue information | Manage Server |
 
-## Leveling commands
+XP amounts accept 1–1,000,000. Birthday dates accept `MM-DD` or `YYYY-MM-DD`.
 
-Use these commands to check XP progress and manage member levels.
-
-- `/rank` shows your current level, XP, and rank in the server
-- `/levels` displays the server leaderboard sorted by XP
-- `/give-xp @member 100` awards XP (moderators only)
-- `/remove-xp @member 50` removes XP (moderators only)
-
-```bash
-/give-xp member:@Jane amount:100
+```text
+/rank user:@Jane
+/give-xp user:@Jane amount:100
+/remove-xp user:@Jane amount:50
+/remember-birthday date:03-15
+/image prompt:a teapot in a moonlit garden
+/ticket
 ```
 
-## Birthday commands
+`/ticket` returns a link rather than creating a ticket in Discord. `/level-test` checks leveling state rather than sending a sample announcement. `/image` in DMs also requires a shared server with image generation and DMs enabled.
 
-Register your birthday so BrewBot can announce it to the server.
+## Custom and prefix commands
 
-- `/remember-birthday month:3 day:15` saves your birthday as March 15
-- `/forget-birthday` removes your stored birthday
+Use [Custom Commands](/features/custom-commands) to configure your server's actions, restrictions, and cooldowns. The text-command prefix comes from [Bot Settings](/features/bot-personalizer). Leveling settings also expose rank, leaderboard, give-XP, and remove-XP command switches.
 
-```bash
-/remember-birthday month:3 day:15
-```
+## TikTok and Twitch chat commands
 
-## Utility commands
+These run in the connected platform's live chat, not Discord's slash-command menu:
 
-Create support tickets and generate AI images.
+| Input | Guide |
+| --- | --- |
+| `// message` | [TikTok TTS](/features/tts) or [Twitch TTS](/features/twitch-tts), when prefix mode is selected |
+| `!timer` | [Live Commands](/features/live-commands): start the 180-second Speed Grid timer |
+| `!rateme` | [Rate Me](/features/rate-me): join the viewer-photo queue |
+| `!play` | [Game Requests](/features/game-requests): join the game queue |
+| Configured prefix + music command | [Spotify](/integrations/spotify) or [Apple Music](/integrations/apple-music) |
 
-- `/ticket subject:Need help with roles` creates a new support ticket
-- `/image prompt:a cat wearing a top hat` generates an AI image
-
-```bash
-/ticket subject:Need help with roles
-```
-
-<Note>
-  Some commands require premium features to be enabled. See [pricing](/getting-started/billing) for details.
-</Note>
+Each live feature has its own enable switch and audience controls. Check its guide before testing a command.

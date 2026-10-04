@@ -1,0 +1,34 @@
+---
+title: "Apple Music"
+description: "Control Apple Music through a browser audio controller and display the current track in OBS."
+icon: "apple"
+---
+
+import PremiumNote from '/snippets/premium-note.mdx';
+
+<PremiumNote />
+
+Apple Music live tools accept music commands from TikTok and Twitch. BrewBot premium and server admin access are required to configure them, along with an authorized Apple Music account that can play the requested content.
+
+{/* TODO: Add screenshot of Apple Music settings and audio controller */}
+
+## Set up playback
+
+1. Connect Apple Music under **Configuration > Integrations**.
+2. Open **Live Tools > Apple Music**.
+3. Select the TikTok or Twitch settings and enable commands. For TikTok, select the shared live source; for Twitch, connect the broadcaster.
+4. Choose **Broadcaster only**, **Whitelist only**, **Mods and whitelist**, or **Everyone**, then configure whitelist and blocked usernames.
+5. Select **Open Audio Controller** and keep that window open in Chrome or Safari. Complete any playback authorization it requests.
+6. Add the **OBS display overlay** URL as a browser source and capture the controller browser's audio separately.
+
+<Note>
+  Apple Music audio does not play inside the OBS browser source. The normal browser controller executes playback. If you close it, accepted commands can time out before playback runs.
+</Note>
+
+## Commands and manual playback
+
+Set a command prefix and enable the desired command groups: play/pause, skip, request, current song, and volume up/down. For example, with `!` configured, viewers can send `!request song artist`.
+
+Under **Broadcaster playback**, search for a song or enter an Apple Music URL. Use **Resume Controller** to resume playback through the connected controller.
+
+If account access expires or is revoked, reconnect under Integrations. If you regenerate the overlay link, update the OBS source and controller links you use.

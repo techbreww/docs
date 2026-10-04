@@ -1,124 +1,56 @@
 ---
 title: "Teams"
-description: "Share dashboard access with your team and manage members, roles, and permissions."
+description: "Manage shared workspaces, per-server access, and feature permissions."
 icon: "users"
 ---
 
-Teams let you collaborate with other people on managing your Discord servers through the [BrewBot Dashboard](https://brewbot.gg). Each team is a separate workspace with its own members, servers, and settings.
+Teams share access to Discord servers and Slack workspaces. Your personal workspace is separate. Free Discord features stay free; premium access is determined by each server or Slack workspace subscription. Team membership and feature permissions add another layer of access control.
 
-{/* TODO: Add screenshot of teams overview page */}
+{/* TODO: Add screenshot of team switcher and member Permissions page */}
 
-## Workspaces
+## Create or select a team
 
-When you sign in to the dashboard, you start in your **personal workspace**. Any servers you add here are only visible to you.
+Open **Teams** and select **Create Team**, enter a name, and create the team. The creator becomes a team admin. Use the workspace switcher to select your personal workspace or a team; the switcher supports searching, and the sidebar supports starred items.
 
-When you create or join a **team**, it becomes a separate workspace. Servers added to a team are visible to every team member (with access controlled by roles). You can switch between workspaces at any time from the teams page.
-
-## Roles
-
-There are two roles in a team:
-
-| Role | What they can do |
-|---|---|
-| **Admin** | Full access to all server settings, billing, team management, member invites, and role changes. Can also grant speed dating and delete permissions. |
-| **Member** | Can view and configure server features. Cannot manage billing, team settings, or invite new members. |
-
-<Note>
-  The person who creates a team is automatically assigned the **Admin** role.
-</Note>
-
-## Create a team
-
-<Steps>
-  <Step title="Open the teams page">
-    Go to the [dashboard](https://brewbot.gg) and navigate to the **Teams** page.
-  </Step>
-  <Step title="Click Create Team">
-    Click **Create Team** in the top-right corner.
-  </Step>
-  <Step title="Enter a team name">
-    Give your team a name (for example, your community or organization name) and click **Create Team**.
-  </Step>
-</Steps>
-
-Your new team appears as a workspace card on the teams page. Click **Switch Here** to start working inside that team.
+The team page has **Overview**, **Members**, **Workspaces**, and **Settings** tabs. Workspaces lists its connected Discord servers and Slack workspaces.
 
 ## Invite members
 
-Only **Admins** can invite new members. Each team has a member limit — the number of active members plus pending invitations cannot exceed this limit.
+Team admins select **Add Member**, enter an email address, and choose Member or Admin. An existing BrewBot account is added immediately; otherwise BrewBot sends an invitation. Active members and pending invitations count toward the team's member limit.
 
-<Steps>
-  <Step title="Open your team">
-    From the teams page, click **Manage** on the team you want to add members to.
-  </Step>
-  <Step title="Click Invite Member">
-    Click **Invite Member** in the members section.
-  </Step>
-  <Step title="Enter their email">
-    Type the email address of the person you want to invite.
-  </Step>
-  <Step title="Choose a role">
-    Select **Member** or **Admin** from the role dropdown.
-  </Step>
-  <Step title="Send the invite">
-    Choose one of these options:
+Use **Members** to search the list, open a member's **Permissions**, or revoke a pending invitation. Removing a member immediately revokes their access to the team's servers.
 
-    - **Send Invite** — sends an email invitation. Use this if the person does not have a BrewBot account yet.
-    - **Add Existing User** — instantly adds someone who already has a BrewBot account. If no account is found for that email, use **Send Invite** instead.
-  </Step>
-</Steps>
+## Team and server roles
 
-{/* TODO: Add screenshot of invite member modal */}
+| Role | Scope |
+| --- | --- |
+| **Team Admin** | Manages the team, permissions, and every current and future server. |
+| **Member** | Can use allowed servers and the features permitted for that membership. |
+| **Server Admin** | A per-server assignment for a team Member. Grants that server's admin tools without making the person a team admin. |
 
-<Tip>
-  Use **Add Existing User** when you know the person already has a BrewBot account — it skips the email invitation step and adds them immediately.
-</Tip>
+Server Admin does not grant team membership management, team billing, server ownership changes, or management of team-owned shared integrations. Those remain team-admin responsibilities.
 
-## Manage members
+## Server access
 
-From the team detail page, admins can:
+As a team admin, open a member's **Permissions** and choose:
 
-- **Change roles** — use the role dropdown next to each member to switch between Admin and Member. You cannot change your own role.
-- **Remove members** — click **Remove** to remove a member from the team. They immediately lose access to all team servers.
-- **Revoke pending invitations** — click **Revoke** next to any pending invitation to cancel it.
+- **All servers, including future servers**.
+- **Selected servers only**, with each server set to **No access**, **Member**, or **Server Admin**.
 
-<Warning>
-  Removing a member is immediate. They lose access to all servers belonging to this team as soon as they are removed.
-</Warning>
+Save server-access changes before changing other permissions. Selected-server access does not automatically include newly added servers. Team admins always have admin access to all servers, regardless of this selector.
 
-## Speed dating permissions
+## Feature permissions
 
-Teams that use [live tools](/features/live-tools) have additional per-member permissions that admins can toggle:
+| Permission | What it grants |
+| --- | --- |
+| **Speed Dating** | Host tools on servers where the person has Member access. |
+| **Delete Speed Dating profiles** | Profile deletion, together with Speed Dating access. |
+| **Dare Grid** | Dare Grid on allowed servers; required separately even for server admins. |
 
-| Permission | What it controls |
-|---|---|
-| **Speed Dating Access (SD)** | Grants the member access to speed dating features like the speed tracker, profiles, tickets, blocked-from-live records, and overlays. |
-| **Delete Permission (DEL)** | Allows the member to delete speed dating records. Requires speed dating access to be enabled first. |
+Server admins automatically have Speed Dating and profile-delete access on their designated servers. A feature permission never grants access to a server outside the member's allowed selection.
 
-These toggles appear as badges next to each member on the team detail page. Green means enabled.
+## Shared settings and usage
 
-## Team settings
+Team settings include the default AI model and live-event settings. When team billing is enabled, the team token budget is shared across its Discord servers and Slack workspaces. Usage operates on a rolling 30-day window.
 
-The team detail page shows:
-
-- **Servers** — all Discord servers added to this team, with bot connection status.
-- **Members** — current members with their roles and permissions, plus any pending invitations.
-- **AI usage** — token usage, request counts, and usage-by-model breakdown for the current billing period.
-- **AI model** — the default AI model used for the team's servers.
-- **Speed dating settings** — additional configuration for teams running live events.
-
-{/* TODO: Add screenshot of team detail page */}
-
-## Switch workspaces
-
-To switch between your personal workspace and a team:
-
-1. Go to the **Teams** page.
-2. Find the workspace you want to use.
-3. Click **Switch Here**.
-
-The active workspace is highlighted with an **Active** badge. All server management happens inside whichever workspace is currently active.
-
-<Note>
-  You must switch to a team's workspace before you can manage its members. If you try to view members while a different workspace is active, you are prompted to switch first.
-</Note>
+See [Billing](/getting-started/billing), [Speed Tracker](/features/speed-tracker), and [Slack workspaces](/integrations/slack) for their setup flows.

@@ -1,6 +1,6 @@
 ---
 title: "Social alerts"
-description: "Get notified when creators go live or post new content."
+description: "Send Discord notifications for TikTok, Twitch, Kick, YouTube LIVE, and OnlyFans posts."
 icon: "bell"
 ---
 
@@ -8,62 +8,46 @@ import PremiumNote from '/snippets/premium-note.mdx';
 
 <PremiumNote />
 
-Social alerts monitor social platforms and post notifications to a Discord channel when creators go live or publish new content. You can track accounts on TikTok, Twitch, and YouTube.
+Social alerts send notifications into Discord. Open the platform's page under **Engagement > Alerts**. These premium features require a connected bot with access to the destination channel.
 
-{/* TODO: Add screenshot of social alerts UI */}
+{/* TODO: Add screenshot of platform alert settings */}
 
-## Set up social alerts
+| Platform | What it announces | Main controls |
+| --- | --- | --- |
+| TikTok | New videos and optional LIVE notifications | Verify a username, choose a channel, and customize video and LIVE messages. |
+| Twitch | Streams going live | Search for a channel, set the message and destination, and optionally auto-refresh or auto-delete the live message. |
+| Kick | Streams going live | Enter a channel, choose the message and destination, and optionally auto-refresh or auto-delete. |
+| YouTube | Confirmed live streams | Search for a channel, configure Discord delivery, and review push/live-watch status. |
+| OnlyFans | New posts from connected creators | Connect an account, select an age-restricted Discord channel, and enable post notifications. |
 
-Configure each platform from the **Social Alerts** page in the [BrewBot Dashboard](https://brewbot.gg).
+## TikTok, Twitch, and Kick
 
-<Tabs>
-  <Tab title="TikTok">
-    Monitor TikTok accounts and get alerts when new content is published.
+Create an alert, choose the creator and Discord channel, and customize the message using the platform editor. Enable the alert and save it. TikTok has a separate **Live notifications** switch and message.
 
-    <Steps>
-      <Step title="Add a TikTok account">
-        Enter the TikTok username or profile URL of the account you want to monitor.
-      </Step>
-      <Step title="Select the notification channel">
-        Choose the Discord channel where the bot should post alerts.
-      </Step>
-      <Step title="Customize the alert message">
-        Write a custom message for the notification. You can include placeholders for the creator's name and a link to the new post.
-      </Step>
-    </Steps>
-  </Tab>
-  <Tab title="Twitch">
-    Get notified when a streamer goes live on Twitch.
+Twitch and Kick offer **Auto-refresh** for the live notification and **Auto-delete** when the stream ends. Twitch channel records can also be used for [TTS](/features/twitch-tts) and [Twitch Monitor](/features/twitch-monitor), which require broadcaster authorization for chat and events.
 
-    <Steps>
-      <Step title="Add a Twitch channel">
-        Enter the Twitch username or channel URL of the streamer you want to track.
-      </Step>
-      <Step title="Select the notification channel">
-        Choose the Discord channel where the bot should post go-live alerts.
-      </Step>
-      <Step title="Customize the alert message">
-        Write a custom message for the notification. Include details like the stream title, game, or a link to the stream.
-      </Step>
-    </Steps>
-  </Tab>
-  <Tab title="YouTube">
-    Track YouTube channels for new video uploads.
+TikTok's [monitor watch list](/features/live-monitor) is separate from its Discord alert list. Adding a monitor does not create an alert.
 
-    <Steps>
-      <Step title="Add a YouTube channel">
-        Enter the YouTube channel URL or handle of the creator you want to monitor.
-      </Step>
-      <Step title="Select the notification channel">
-        Choose the Discord channel where the bot should post upload alerts.
-      </Step>
-      <Step title="Customize the alert message">
-        Write a custom message for the notification. You can include placeholders for the video title and link.
-      </Step>
-    </Steps>
-  </Tab>
-</Tabs>
+## YouTube LIVE
 
-<Tip>
-  Test your alert configuration by using the preview feature on the Social Alerts page before going live. This lets you verify the message format and channel selection.
-</Tip>
+The current YouTube alert flow tracks live streams. Open an alert to see push status, lease expiry, last push, last live check, and recent events.
+
+- **Retry push** requests push verification again.
+- **Check now** performs a one-time live check. Discord delivery still occurs on the bot's delivery cycle.
+- **Reset state** clears saved watch state before another attempt.
+
+Configure the destination, alert message, and whether to refresh or delete the live message. If the page reports that YouTube is not configured, contact support.
+
+## OnlyFans posts
+
+OnlyFans alerts are in beta and require a connected creator account under [Integrations](/integrations/platform-connections). Team admins manage the shared connection through the independent OnlyFansAPI sign-in provider.
+
+1. Connect the creator, then open **Engagement > OnlyFans Alerts**.
+2. Choose an **Age-restricted Discord channel** and optionally a role to mention.
+3. Customize the message using the editor's placeholders.
+4. Enable notifications and select **Save alert**.
+5. Use **Send test notification** to verify the saved settings.
+
+Posts published before the alert was enabled are not announced. Link previews are suppressed, and only the selected role can be mentioned.
+
+Automatic checks require automatic checking to be enabled on the connection and an enabled, saved alert. A manual **Check for new posts** uses provider credits and has a five-minute cooldown. Test notifications use saved settings without consuming provider credits. Review recent deliveries and use **Retry failed deliveries** when needed.

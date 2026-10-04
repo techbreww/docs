@@ -4,6 +4,10 @@ description: "Gate your server with an emoji captcha challenge — new members m
 icon: "robot"
 ---
 
+import PremiumNote from '/snippets/premium-note.mdx';
+
+<PremiumNote />
+
 Captcha Verification adds a human-verification step for new members. A persistent "Start Verification" button lives in a channel you choose. When a member clicks it, the bot sends them a private emoji challenge — pick the correct emoji from 10 random options to unlock the server. Fail twice and you're temporarily banned.
 
 <Note>
@@ -134,7 +138,7 @@ Make sure the bot's role is **higher** than the verified role in your Discord ro
     The persistent button in the channel still works — it's a regular Discord message. Any in-progress emoji challenges will expire and members can just click "Start Verification" again. Kick and unban timers are stored in the database and survive restarts.
   </Accordion>
   <Accordion title="Can bots solve the emoji challenge?">
-    The challenge uses cryptographically random emoji selection, so the target emoji and button layout are unpredictable. Combined with the 2-strike temp ban and timeout kick, automated bots have a very low success rate.
+    The challenge randomizes the emoji selection and layout. It adds an onboarding check, but it does not guarantee that every automated account is stopped.
   </Accordion>
   <Accordion title="What if a member is kicked for timeout — can they rejoin?">
     Yes. A timeout kick is not a ban. The member can rejoin immediately and try again with a fresh challenge.
@@ -143,6 +147,6 @@ Make sure the bot's role is **higher** than the verified role in your Discord ro
     They are automatically unbanned after the configured duration (default 24 hours). After the ban lifts, they can rejoin and get a fresh challenge.
   </Accordion>
   <Accordion title="Do I need both Captcha Verification and the Reaction Roles Verify template?">
-    They serve different purposes. Captcha proves a member is human (anti-bot). The Reaction Roles Verify template lets members accept rules and get a "Member" role. You can use both together for a two-step onboarding, or just one depending on your needs.
+    They serve different purposes. Captcha adds an emoji challenge before granting access. The Reaction Roles Verify template lets members accept rules and get a "Member" role. You can use both together for a two-step onboarding, or just one depending on your needs.
   </Accordion>
 </AccordionGroup>

@@ -1,0 +1,27 @@
+---
+title: "TTS Story"
+description: "Queue longer narration through the shared TikTok Chat TTS player."
+icon: "book-open"
+---
+
+import PremiumNote from '/snippets/premium-note.mdx';
+
+<PremiumNote />
+
+TTS Story reads longer text through the shared [TikTok Chat TTS](/features/tts) overlay. It requires premium and a team server with Speed Dating access. The dashboard exposes this page to server admins.
+
+{/* TODO: Add screenshot of TTS Story editor and queue status */}
+
+1. In **Live Tools > TTS Settings**, select a TikTok live source, enable Chat TTS, and choose the voice and model.
+2. Keep the Chat TTS overlay or browser player connected.
+3. Open **Live Tools > TTS Story**.
+4. Paste up to 20,000 characters into **Story Text**.
+5. Review **Estimated Parts** and the selected voice, then select **Queue Story**.
+
+BrewBot splits the story into ordered parts, with a short opening chunk and longer paragraph chunks. You do not need to paste each part separately. Story playback uses the current Chat TTS voice and shared queue, and story parts take priority over ordinary chat TTS while the story is pending or speaking.
+
+<Note>
+  Select a live source and enable Chat TTS before queuing a story. TTS requests are unavailable while the Speed Tracker timer is running. If no player is connected, queued audio waits for a player.
+</Note>
+
+Use **TTS Settings** to review the queue and clear pending or stale items. For short on-demand messages, use **Send Announcement** instead; announcements accept up to 300 characters.

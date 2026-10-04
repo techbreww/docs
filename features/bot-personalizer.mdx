@@ -1,45 +1,40 @@
 ---
-title: "Bot personalizer"
-description: "Customize your bot's name, avatar, and personality."
+title: "Bot Settings"
+description: "Configure bot appearance, AI chat, voice, and usage controls."
 icon: "paintbrush"
 ---
 
-import PremiumNote from '/snippets/premium-note.mdx';
+Open **Configuration > Bot Settings** to manage your bot. Basic setup is available on the **free plan**. Backstory, AI chat, voice, and image generation require **premium**. On team servers, modifying these settings requires server admin access.
 
-<PremiumNote />
+{/* TODO: Add screenshot of Bot Settings tabs */}
 
-The bot personalizer lets you change how the bot appears and behaves in your server. You can set a custom display name, upload an avatar image, and write an AI-generated backstory that shapes the bot's tone in auto-responses.
+## Basics
 
-{/* TODO: Add screenshot of bot personalizer UI */}
+Use **Basics** to sync the latest Discord server name and icon, choose an embed color and command prefix, and check the bot connection. Re-authorize the bot when requested permissions need updating; private channels still need to allow the bot in their own permissions.
 
-## Configure the bot personalizer
+A [custom bot](/features/custom-bot) enables its own avatar, name, status, and activity. BrewBot applies a seven-day cooldown to bot name changes. Changing a custom bot's username affects every server where that bot is installed.
 
-<Steps>
-  <Step title="Open the dashboard">
-    Go to the [BrewBot Dashboard](https://brewbot.gg) and select your server.
-  </Step>
-  <Step title="Navigate to Bot Personalizer">
-    Open the **Bot Personalizer** page from the sidebar.
-  </Step>
-  <Step title="Set a display name">
-    Enter a custom name for the bot. This is the name that appears in your server.
-  </Step>
-  <Step title="Upload an avatar">
-    Upload an image to use as the bot's avatar. Square images work best.
-  </Step>
-  <Step title="Write a backstory">
-    Write a backstory or personality description for the bot. This backstory influences the bot's tone and style when it generates auto-responses in your server.
-  </Step>
-</Steps>
+## Backstory and AI chat
 
-<Tip>
-  Keep the backstory short and specific. A few sentences describing the bot's personality and tone produce better results than a long, detailed biography.
-</Tip>
+The **Backstory** tab includes:
 
-## Custom bot
+- A backstory of up to 2,000 characters, with a randomize option.
+- **Enable AI Chat** and a trigger mode: **Mention Only**, **Allowed Channels**, or **Both**.
+- Allowed channels for automatic responses and **Allow DMs**.
+- **Enable Image Generation**, which enables `/image` with a prompt and an optional reference image.
 
-Want to use your own Discord bot application instead of BrewBot? You can bring your own bot token for a fully branded experience.
+<Warning>
+  **Clear Conversation History** permanently removes the server's stored Discord AI conversation memory. It is separate from iMessage memory.
+</Warning>
 
-<Card title="Custom bot setup" icon="robot" href="/features/custom-bot">
-  Replace BrewBot with your own Discord bot application.
-</Card>
+## Voice
+
+Enable voice features and select an AI voice. Choose **Standard** or **Expressive (Beta)** quality. **Voice Notes** controls audio replies in selected text channels; **Voice Speech** controls spoken responses in selected voice channels.
+
+Stream chat TTS is configured separately under [Live Tools > TTS Settings](/features/tts).
+
+## AI usage
+
+**AI Usage** shows requests, input/output tokens, and model breakdowns. Token budgets use a rolling 30-day window: usage falls as older requests leave that window. Team-managed limits are configured through [Teams](/getting-started/teams).
+
+Budget-alert controls marked **Coming soon** are not active functionality.
