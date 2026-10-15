@@ -4,7 +4,7 @@ description: "Have BrewBot transcribe a voice channel and post an AI summary whe
 icon: "microphone-lines"
 ---
 
-Meeting notes is a **premium** feature. Run `/meet start` in a voice channel and BrewBot joins, transcribes everyone who speaks, and posts a summary with key points, decisions, and action items to the channel you choose.
+Meeting notes is a **premium** feature. Run `/meet start` in a voice channel, or turn on [auto-join](#auto-join), and BrewBot joins, transcribes everyone who speaks, and posts a summary with key points, decisions, and action items to the channel you choose.
 
 {/* TODO: Add screenshot of Meeting Notes settings */}
 
@@ -36,6 +36,18 @@ Meeting notes is a **premium** feature. Run `/meet start` in a voice channel and
 You must be in a voice channel to start a meeting. One meeting can run per server at a time, and stage channels aren't supported.
 
 When a meeting starts, BrewBot posts a notice in the voice channel's chat with **End meeting** and **Don't transcribe me** buttons.
+
+## Auto-join
+
+Turn on **Auto-join** in the Settings tab to have BrewBot start meetings without anyone running `/meet start`.
+
+1. Turn on **Auto-join** and add the **Voice channels to watch**. At least one channel is required; stage channels aren't supported.
+2. Choose how many people must be in the channel before BrewBot joins (2 by default). Bots don't count.
+3. Save the settings.
+
+When a watched channel reaches that number of people, BrewBot waits 30 seconds, then joins and posts the same notice with **End meeting** and **Don't transcribe me** buttons. Anyone in the call can end an auto-joined meeting. Auto-joined meetings show **Auto-joined** in the Meetings tab.
+
+If a meeting ends while people are still in the channel, for example because someone ended it or it reached the maximum length, BrewBot won't rejoin that channel until everyone has left. Only one meeting can run per server, so if two watched channels are busy at once, only the first gets notes.
 
 ## When a meeting ends
 
