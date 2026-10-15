@@ -1,0 +1,56 @@
+---
+title: "Meeting notes"
+description: "Have BrewBot transcribe a voice channel and post an AI summary when the meeting ends."
+icon: "microphone-lines"
+---
+
+Meeting notes is a **premium** feature. Run `/meet start` in a voice channel and BrewBot joins, transcribes everyone who speaks, and posts a summary with key points, decisions, and action items to the channel you choose.
+
+{/* TODO: Add screenshot of Meeting Notes settings */}
+
+## Set up
+
+1. Open **Server Management > Meeting Notes** and select the **Settings** tab.
+2. Turn on **Meeting notes**.
+3. Select a **Summary channel**. This is required. BrewBot must be able to send messages and attach files there.
+4. Optionally limit who can start meetings, set a maximum length, choose the spoken language, and save.
+
+## Commands
+
+```text
+/meet start
+/meet stop
+/meet status
+/meet optout
+/meet help
+```
+
+| Command | What it does | Access |
+| --- | --- | --- |
+| `/meet start` | Joins your current voice channel and starts taking notes | Allowed roles (anyone in the call if none are set) or Manage Server |
+| `/meet stop` | Ends the meeting and posts the summary | The member who started it, allowed roles, or Manage Server |
+| `/meet status` | Shows whether a meeting is running | Everyone |
+| `/meet optout` | Stops transcribing you for the current meeting and deletes what was captured from you | Everyone |
+| `/meet help` | Explains meeting notes | Everyone |
+
+You must be in a voice channel to start a meeting. One meeting can run per server at a time, and stage channels aren't supported.
+
+When a meeting starts, BrewBot posts a notice in the voice channel's chat with **End meeting** and **Don't transcribe me** buttons.
+
+## When a meeting ends
+
+A meeting ends when someone runs `/meet stop` or presses **End meeting**, when it reaches the maximum length, or a minute after everyone leaves (if **End when everyone leaves** is on). BrewBot then posts the summary to the summary channel, with the full transcript attached as a `.txt` file if **Attach transcript to summary** is on.
+
+The **Meetings** tab lists every meeting with its summary and a speaker-labelled transcript.
+
+## Privacy and retention
+
+- Audio is processed in memory and never stored.
+- Transcripts are deleted automatically after **30 days**. Summaries are kept until you delete the meeting.
+- From the Meetings tab you can delete just the transcript, or the whole meeting.
+- Members can opt out at any time with `/meet optout` or the **Don't transcribe me** button.
+- Other bots in the voice channel are never transcribed.
+
+<Note>
+  If BrewBot restarts during a meeting, the meeting ends and BrewBot summarizes whatever was transcribed up to that point.
+</Note>

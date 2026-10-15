@@ -18,6 +18,9 @@ BrewBot supports Discord slash commands and configured text commands. Type `/` i
 | `/level-test` | None | Reports leveling configuration and XP diagnostics | No default Manage Server restriction; reports premium status |
 | `/remember-birthday` | Required `date` | Saves a birthday for this server | Free birthday feature |
 | `/forget-birthday` | None | Removes your saved birthday | Free birthday feature |
+| `/meet start` | None; run while in a voice channel | Joins your voice channel and starts [meeting notes](/features/meetings) | Premium meeting notes enabled with a summary channel; allowed roles or Manage Server |
+| `/meet stop` | None | Ends the meeting and posts the summary | Meeting starter, allowed roles, or Manage Server |
+| `/meet status` / `/meet optout` / `/meet help` | None | Shows meeting status, opts you out of transcription, or explains the feature | Everyone |
 | `/image` | Required `prompt`; optional `image` attachment | Generates an image or uses an attached reference | Premium AI image feature must be enabled |
 | `/bot-health` | None | Shows bot health and queue information | Manage Server |
 
