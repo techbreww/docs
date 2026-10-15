@@ -29,6 +29,7 @@
               "features/reaction-roles",
               "features/welcome-messages",
               "features/birthdays",
+              "features/meetings",
               "features/channel-role-manager",
               "features/custom-commands",
               "features/reports"
