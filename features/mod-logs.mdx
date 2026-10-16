@@ -357,6 +357,67 @@ Each log entry uses a color to signal what kind of action happened:
   </Tab>
 </Tabs>
 
+### Meeting events
+
+These log [Meeting notes](/features/meetings) activity, which requires a premium plan. Dashboard actions are credited to the dashboard user's linked Discord account, or their name if no Discord account is linked.
+
+<Tabs>
+  <Tab title="Meeting started">
+    Logs when a meeting starts, from `/meet start` or auto-join.
+
+    | Field | Value |
+    | --- | --- |
+    | **Color** | Blurple |
+    | **Title** | Meeting Started |
+    | **Summary** | Who started taking notes in which voice channel, or that BrewBot auto-joined |
+    | **Details** | Voice channel, started by (member or Auto-join), summary channel |
+    | **Footer** | Meeting ID |
+  </Tab>
+  <Tab title="Meeting ended">
+    Logs when a meeting stops capturing audio.
+
+    | Field | Value |
+    | --- | --- |
+    | **Color** | Yellow |
+    | **Title** | Meeting Ended |
+    | **Summary** | Meeting notes in the voice channel ended |
+    | **Details** | Voice channel, reason (ended by a member, everyone left, maximum length, disconnected, or BrewBot restarted), ended by, duration, participant count |
+    | **Footer** | Meeting ID |
+  </Tab>
+  <Tab title="Opted out">
+    Logs when a member uses `/meet optout` or **Don't transcribe me**. Off by default.
+
+    | Field | Value |
+    | --- | --- |
+    | **Color** | Orange |
+    | **Title** | Opted Out of Transcription |
+    | **Summary** | Member opted out, and anything already captured from them was deleted |
+    | **Details** | Member, voice channel |
+    | **Footer** | Meeting ID |
+  </Tab>
+  <Tab title="Meeting or transcript deleted">
+    Logs when a transcript or a whole meeting is deleted from the dashboard. Automatic 30-day transcript cleanup isn't logged.
+
+    | Field | Value |
+    | --- | --- |
+    | **Color** | Red |
+    | **Title** | Meeting Transcript Deleted or Meeting Deleted |
+    | **Summary** | Who deleted what from the dashboard |
+    | **Details** | Meeting title, deleted by |
+    | **Footer** | Meeting ID |
+  </Tab>
+  <Tab title="Settings changed">
+    Logs when meeting notes settings are saved with changes.
+
+    | Field | Value |
+    | --- | --- |
+    | **Color** | Blurple |
+    | **Title** | Meeting Settings Changed |
+    | **Summary** | Who updated meeting notes settings from the dashboard |
+    | **Details** | One field per changed setting, shown as before → after |
+  </Tab>
+</Tabs>
+
 ## Default settings
 
-Moderation events such as **Member muted**, **Member unmuted**, **Moderation ban**, and **Moderation unban** are enabled by default in the dashboard configuration. The current event-driven log output described on this page focuses on the handlers already implemented by the bot, while all other toggles start disabled until you opt in.
+Moderation events such as **Member muted**, **Member unmuted**, **Moderation ban**, and **Moderation unban** are enabled by default in the dashboard configuration. Meeting events are also on by default except **Member opted out of transcription**; they only fire for servers that use meeting notes. The current event-driven log output described on this page focuses on the handlers already implemented by the bot, while all other toggles start disabled until you opt in.
