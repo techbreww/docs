@@ -55,6 +55,12 @@ A meeting ends when someone runs `/meet stop` or presses **End meeting**, when i
 
 The **Meetings** tab lists every meeting with its summary and a speaker-labelled transcript.
 
+### If the summary can't be posted
+
+If BrewBot can't post to the summary channel, the summary is still saved and the meeting shows a warning with the reason, such as a missing permission. BrewBot needs **View Channel**, **Send Messages**, **Embed Links**, and **Attach Files** (when the transcript is attached) in the summary channel.
+
+Fix the permissions, or pick a different summary channel in Settings, then open the meeting and press **Retry posting summary**. BrewBot posts to the current summary channel. If the summary itself failed to generate, press **Retry summary** to regenerate and post it; this needs the transcript, so it isn't available after the transcript is deleted.
+
 ## Privacy and retention
 
 - Audio is processed in memory and never stored.
