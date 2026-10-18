@@ -1,0 +1,68 @@
+---
+title: "Volume"
+description: "Turn down TTS, announcements, gift sounds, and sticker sounds separately, and let mods adjust them from chat."
+icon: "sliders"
+---
+
+import PremiumNote from '/snippets/premium-note.mdx';
+
+<PremiumNote />
+
+The Chat TTS overlay plays chat reading, announcements, gift sounds, and sticker sounds through one browser source, so the OBS mixer can only turn them all down together. **Volume** sets each kind of sound separately.
+
+Open **Live Tools > Volume**. You need access to the server and premium live tools. For team members, the navigation also requires [Speed Dating access](/getting-started/teams#feature-permissions).
+
+{/* TODO: Add screenshot of the Volume page */}
+
+## Set volume levels
+
+Drag a slider, or select the speaker icon to mute or unmute that sound. Changes save automatically and reach open overlays and browser players right away, including a sound that is already playing. You don't need to reload OBS.
+
+| Slider | Controls |
+| --- | --- |
+| TikTok Chat TTS | Viewer messages read by [TikTok TTS](/features/tts). |
+| Announcements & stories | Manual announcements and [TTS Story](/features/tts-story) reads. |
+| Gift sounds | Clips played by [Gift Sounds](/features/gift-sounds). |
+| Sticker sounds | Clips played by Sticker Sounds. |
+| Twitch TTS | Messages read by [Twitch TTS](/features/twitch-tts). Changes apply from the next message. |
+
+100% is the original loudness. Sounds can be turned down but not boosted above their original level. The browser player's own volume slider still works on top of these levels.
+
+## Volume chat command
+
+Mods and other trusted viewers can change these levels from TikTok or Twitch chat during a live. The command is off until you turn it on for a platform.
+
+| Command | What it does |
+| --- | --- |
+| `!volume` | Replies with all current levels. |
+| `!volume gifts` | Replies with one level. |
+| `!volume gifts 40` | Sets gift sounds to 40%. |
+| `!volume tts down` / `!volume tts up` | Moves TTS down or up by 10%. |
+| `!volume stickers mute` | Sets sticker sounds to 0%. `max` sets 100%. |
+| `!volume all 50` | Sets every category to 50%. |
+
+Categories are `tts`, `gifts`, `stickers`, `announcements`, `twitch`, and `all`. `tts` means TikTok TTS when typed in TikTok chat and Twitch TTS when typed in Twitch chat. `!vol` works as a shorter alias.
+
+### Choose who can use it
+
+Only server admins can change these settings. Other team members can still move the sliders.
+
+1. In **Volume chat command**, optionally change the **Command prefix** (default `!`).
+2. Pick **TikTok** or **Twitch**, then turn on **Enable in TikTok chat** or **Enable in Twitch chat**.
+3. Choose **Who can use it**: **Mods and whitelist**, **Whitelist only**, **Everyone**, or (Twitch only) **Broadcaster only**.
+4. On TikTok, optionally turn on **Allow MVP profiles**.
+5. Add usernames to the **Whitelist** to always allow them, or to **Blocked users** to always refuse them.
+
+The broadcaster can always use the command. Blocked users are refused even if they are mods or whitelisted.
+
+<Note>
+  On TikTok, the command only works in the live selected as the shared source in **Live Tools > TTS Settings > TikTok TTS > Live Source**. Mods in other monitored lives can't change your volume.
+</Note>
+
+## Troubleshooting
+
+| Symptom | Check |
+| --- | --- |
+| A slider has no effect | Make sure OBS uses the current Chat TTS or Twitch TTS overlay URL. If the sound is already at 100% and still quiet, raise it in the OBS mixer instead. |
+| `!volume` gets no reply | Turn on the command for that platform and check **Who can use it**. On TikTok, confirm the chat is from the selected live source. |
+| A mod can't use the command | Check the blocked list, and make sure the audience isn't **Whitelist only** or **Broadcaster only**. |
