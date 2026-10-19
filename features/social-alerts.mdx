@@ -1,5 +1,6 @@
 ---
 title: "Social alerts"
+sidebarTitle: "Alerts"
 description: "Send Discord notifications for TikTok, Twitch, Kick, YouTube LIVE, and OnlyFans posts."
 icon: "bell"
 ---
@@ -8,7 +9,9 @@ import PremiumNote from '/snippets/premium-note.mdx';
 
 <PremiumNote />
 
-Social alerts send notifications into Discord. Open the platform's page under **Engagement > Alerts**. These premium features require a connected bot with access to the destination channel.
+Social alerts send notifications into Discord. These premium features require a connected bot with access to the destination channel.
+
+Each platform has its own entry under **Engagement > Alerts**: **TikTok Alerts**, **Twitch Alerts**, **Kick Alerts**, **OnlyFans Alerts**, and **YouTube Alerts**. This page covers all five.
 
 {/* TODO: Add screenshot of platform alert settings */}
 
@@ -24,9 +27,26 @@ Social alerts send notifications into Discord. Open the platform's page under **
 
 Create an alert, choose the creator and Discord channel, and customize the message using the platform editor. Enable the alert and save it. TikTok has a separate **Live notifications** switch and message.
 
+The **Active** switch at the top of **TikTok Alerts** turns all TikTok alerts in your server on or off.
+
 Twitch and Kick offer **Auto-refresh** for the live notification and **Auto-delete** when the stream ends. Twitch channel records can also be used for [TTS](/features/twitch-tts) and [Twitch Monitor](/features/twitch-monitor), which require broadcaster authorization for chat and events.
 
 TikTok's [monitor watch list](/features/live-monitor) is separate from its Discord alert list. Adding a monitor does not create an alert.
+
+### When alerts post
+
+BrewBot checks each platform on a schedule, so alerts can arrive a few minutes after the creator goes live or posts.
+
+| Platform | How often BrewBot checks |
+| --- | --- |
+| TikTok LIVE | About every 10 minutes |
+| TikTok videos | About every 5 minutes |
+| Twitch | About every 5 minutes |
+| Kick | About every 5 minutes |
+| YouTube | Discord delivery runs about every 5 minutes |
+| OnlyFans | About every 5 minutes per connection, when automatic checking is on |
+
+For TikTok LIVE, BrewBot posts as soon as TikTok confirms the stream is live. Viewers don't need to chat, like, or send gifts first, so quiet streams are announced too. BrewBot posts once per live stream. If the creator ends the stream and starts a new one, the new stream gets its own alert.
 
 ## YouTube LIVE
 
@@ -51,3 +71,18 @@ OnlyFans alerts are in beta and require a connected creator account under [Integ
 Posts published before the alert was enabled are not announced. Link previews are suppressed, and only the selected role can be mentioned.
 
 Automatic checks require automatic checking to be enabled on the connection and an enabled, saved alert. A manual **Check for new posts** uses provider credits and has a five-minute cooldown. Test notifications use saved settings without consuming provider credits. Review recent deliveries and use **Retry failed deliveries** when needed.
+
+## Troubleshooting
+
+| Problem | What to do |
+| --- | --- |
+| No alert posted | Confirm your server has premium. Alerts are skipped on free servers. |
+| No alert posted | Confirm the alert is enabled and saved. For TikTok LIVE, also check that **Live notifications** is on and the **Active** switch on **TikTok Alerts** is on. |
+| No alert posted | Check that the bot can **View Channel**, **Send Messages**, and **Embed Links** in the destination channel. If you use a [custom bot](/features/custom-bot), check its permissions instead. |
+| No TikTok alert in an announcement channel | TikTok alerts post only to standard text channels. Choose a text channel as the destination. |
+| No alert for the right creator | Check the username or channel you entered. For TikTok, enter the username, not the display name, and select **Verify**. |
+| The alert arrived late | This is expected. BrewBot checks on a schedule, so alerts can arrive several minutes after the creator goes live. See [When alerts post](#when-alerts-post). |
+| `@everyone` or a role isn't pinged | The bot needs **Mention Everyone** to ping `@everyone`, `@here`, or roles that aren't mentionable. Alternatively, make the role mentionable in [Role Manager](/features/channel-role-manager#role-manager). |
+| The same stream was announced twice | BrewBot posts once per live stream. A second alert usually means the creator restarted the stream, which counts as a new live. |
+| OnlyFans alerts aren't posting | Check that automatic checking is on for the connection and the alert is enabled and saved. Posts published before you enabled the alert are not announced. |
+| YouTube alerts aren't posting | Open the alert and review push status and recent events. Use **Retry push** or **Reset state**, then **Check now**. |

@@ -19,6 +19,8 @@ TikTok Chat Monitor watches TikTok LIVE activity from a server-specific watch li
 3. Confirm the account with **Add to Watch List**.
 4. Select **Monitor** to open its live feed.
 
+Each server's watch list holds up to 20 TikTok accounts. Remove an account you no longer need to make room for another.
+
 If the account is offline, the monitor shows **Not Currently Live** and checks for the stream. You can also use **Check Again**. Public live chat and overlays do not require TikTok login; account authorization is managed under [Integrations](/integrations/platform-connections).
 
 ## Live feed and people
@@ -29,12 +31,69 @@ The monitor displays chat, gifts, likes, follows, shares, subscriptions, joins, 
 
 Select a participant to inspect their profile. Public profile data may be cached for up to ten minutes.
 
+The monitor reconnects on its own after a network drop, sleep, or stalled connection. It also reconnects when you return to the tab or your browser comes back online.
+
+<Note>
+  Events that happen while the monitor is disconnected are not replayed. The feed resumes when the connection returns.
+</Note>
+
 <Note>
   TikTok monitoring is read-only. The dashboard cannot send TikTok chat messages.
 </Note>
+
+## Battle mode
+
+Battle mode shows two TikTok lives side by side in one window. Use it to follow both creators in a TikTok battle.
+
+{/* TODO: Add screenshot of the battle monitor window */}
+
+1. Open **Live Tools > TikTok Chat Monitor** and select **Battle mode**.
+2. For the **Left account** and the **Right account**, choose a **Saved account** from your watch list or enter a **TikTok username**.
+3. Optionally, select **Swap sides** to switch the two accounts.
+4. Select **Open battle monitor**.
+
+The battle monitor opens in a pop-up window. If nothing opens, allow pop-ups for BrewBot in your browser and try again.
+
+Choose two different accounts. A username that is not on your watch list yet is verified and added to it automatically. BrewBot verifies both usernames before it adds either one. If the new accounts would take your watch list past 20, remove an account or choose saved accounts instead.
+
+### What the battle monitor shows
+
+Each side has its own panel with:
+
+- The creator's name, live status, and elapsed time.
+- **Viewers** and **Live likes** counts.
+- The live feed. Turn on **Show joins** to include join events, which are hidden by default.
+- **People**, which opens that live's observed viewers and moderators.
+- **Retry connection**, shown when the account is connected but not live.
+
+The center **Side by side** column compares **Gifts**, **Diamonds**, **Likes**, **Shares**, and **Follows** for both lives. A dash appears until BrewBot observes that account's live.
+
+**Recent gifts** merges gifts from both lives, newest first, and keeps the latest 100. Each row shows **L** or **R** for the receiving side, the sender, the gift and count, and its diamond value. Hover over a row to see the full details and the time.
+
+<Note>
+  Totals count only activity observed while the window is open. They are not TikTok's official battle score. Each side resets when that creator starts a new live.
+</Note>
+
+Scroll up in either feed to pause its auto-scroll. The other side keeps scrolling. Each side connects independently, so a reconnect on one side does not reset the other.
+
+Recording, **Overlay**, and the moderators-only window are available only in the single-account monitor. To record a battle, select **Monitor** for an account and start a recording there.
 
 ## Record a session
 
 Use **Record** or **Start Recording** to capture a transcript and **Stop** when finished. Export TXT, CSV, or JSON from the transcript controls. Recordings expire 24 hours after creation; download anything you need before then. See [Transcripts](/features/transcripts).
 
 Accounts on this watch list can be selected as live sources for [TTS](/features/tts), [gift tools](/features/gift-sounds), [Rate Me](/features/rate-me), and other streaming features.
+
+## Troubleshooting
+
+| Problem | What to do |
+| --- | --- |
+| The monitor shows **Not Currently Live** | The account is not streaming yet. The page updates when the stream starts. Select **Check Again** to check now. |
+| **Verify** says "TikTok user not found" | Check the spelling. Enter the TikTok username, not the display name. The leading `@` is optional. |
+| **Verify** says the username format is invalid | TikTok usernames contain only letters, numbers, underscores, and periods. |
+| "Maximum of 20 monitored channels per server reached" | Your watch list is full. Remove an account you no longer need, then add the new one. |
+| "This TikTok user is already in your watch list" | The account is already saved. Select **Monitor** on its existing entry. |
+| The battle monitor does not open | Your browser blocked the pop-up. Allow pop-ups for BrewBot, then select **Open battle monitor** again. |
+| The status shows **Reconnecting…** or **Connection error** | The monitor retries on its own. Check your internet connection. If the creator is live but a battle side stays on **Not live** or **Stream disconnected**, select **Retry connection**. |
+| Chat or gifts are missing after a connection drop | Events sent while the monitor was disconnected are not replayed. Keep the computer awake and online during the stream. |
+| Battle totals don't match TikTok's battle score | Battle mode counts only what it observes while the window is open. It is not TikTok's official score. |

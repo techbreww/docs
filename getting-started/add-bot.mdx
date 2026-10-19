@@ -60,3 +60,17 @@ icon: "circle-plus"
 If features aren't working, the bot may be missing permissions. Go to **Configuration > Permissions** in the dashboard to see exactly which permissions are granted and which are missing. If any are missing, use the **Re-authorize Bot** button to update them without removing the bot.
 
 See [Permissions](/features/permissions) for details.
+
+## Troubleshooting
+
+| Problem | What to do |
+| --- | --- |
+| Your server isn't listed on **Install BrewBot** | The list only shows servers you own or where you have **Administrator** or **Manage Server**. Servers already set up in another workspace are hidden. If the page says the guilds scope is missing, reconnect Discord. |
+| You can't select a second server | Personal workspaces can reserve one server. Create a [team](/getting-started/teams) to manage more. |
+| The install summary stays on **Waiting for Discord...** | Finish the authorization in the Discord tab that opened, and make sure you selected **Authorize**. If you closed that tab, select **Install BrewBot** again. |
+| The server dashboard shows **Bot setup needed** and feature pages are unavailable | The bot isn't in the server yet. Open **Configuration > Bot Settings**, select **Add BrewBot**, then select **Check Connection**. |
+| **Configuration > Permissions** shows permissions as missing | Select **Re-authorize Bot** and approve every requested permission in Discord. |
+| Reaction roles, captcha verification, or leveling rewards don't assign roles | The bot can only manage roles below its own role. In Discord, open **Server Settings > Roles** and drag the bot's role above the roles it assigns. The Permissions page shows the bot's current **Role Position**. |
+| The bot can't post in one channel, but the Permissions page shows everything granted | The Permissions page checks server-wide role permissions, not channel overrides. Allow the bot's role in that channel or its parent category. |
+| Polls show **Failed** | BrewBot's invite doesn't request **Create Polls**, and the Permissions page doesn't check it. See [Polls permissions](/features/polls#permissions-required). |
+| BrewBot appears offline in the member list | If you use your own bot, see [custom bot troubleshooting](/features/custom-bot#troubleshooting). Otherwise, wait a few minutes, then ask in the [support server](https://discord.gg/WbMUYr7DCg) if it stays offline. |

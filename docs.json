@@ -17,22 +17,23 @@
             "group": "Getting started",
             "pages": [
               "index",
-              "getting-started/add-bot",
               "getting-started/onboarding",
+              "getting-started/add-bot",
               "getting-started/billing",
-              "getting-started/teams"
+              "getting-started/teams",
+              "getting-started/data-and-privacy"
             ]
           },
           {
-            "group": "Server management",
+            "group": "Server Management",
             "pages": [
+              "features/channel-role-manager",
               "features/reaction-roles",
+              "features/reports",
+              "features/custom-commands",
               "features/welcome-messages",
               "features/birthdays",
-              "features/meetings",
-              "features/channel-role-manager",
-              "features/custom-commands",
-              "features/reports"
+              "features/meetings"
             ]
           },
           {
@@ -47,63 +48,76 @@
           {
             "group": "Engagement",
             "pages": [
+              "features/horoscopes",
               "features/social-alerts",
               "features/leveling",
               "features/polls",
               "features/brewlinks",
-              "features/messages"
+              "features/messages",
+              "integrations/agent-connections",
+              "integrations/cursor-agents"
             ]
           },
           {
-            "group": "Live monitoring",
+            "group": "Live Tools",
             "pages": [
               "features/live-tools",
-              "features/live-monitor",
-              "features/twitch-monitor",
-              "features/tiktok-rankings",
-              "features/transcripts"
+              {
+                "group": "Monitoring",
+                "pages": [
+                  "features/tiktok-rankings",
+                  "features/live-monitor",
+                  "features/twitch-monitor",
+                  "features/transcripts"
+                ]
+              },
+              {
+                "group": "Speed Dating",
+                "pages": [
+                  "features/schedule",
+                  "features/speed-tracker",
+                  "features/dare-grid",
+                  "features/tickets",
+                  "features/live-blocks"
+                ]
+              },
+              {
+                "group": "Streaming",
+                "pages": [
+                  "features/gift-goals",
+                  "features/rate-me",
+                  "features/game-requests",
+                  "features/gift-sounds",
+                  "features/sticker-sounds",
+                  "features/volume",
+                  "features/timer-gifts",
+                  "features/overlays",
+                  "features/tts",
+                  "features/twitch-tts",
+                  "features/live-commands",
+                  "features/tts-story",
+                  "integrations/spotify",
+                  "integrations/apple-music"
+                ]
+              }
             ]
           },
           {
-            "group": "Stream audio and interaction",
-            "pages": [
-              "features/tts",
-              "features/twitch-tts",
-              "features/tts-story",
-              "features/gift-sounds",
-              "features/volume",
-              "features/gift-goals",
-              "features/timer-gifts",
-              "features/rate-me",
-              "features/game-requests",
-              "features/live-commands",
-              "features/overlays"
-            ]
-          },
-          {
-            "group": "Live events",
-            "pages": [
-              "features/speed-tracker",
-              "features/tickets",
-              "features/schedule",
-              "features/live-blocks",
-              "features/dare-grid"
-            ]
-          },
-          {
-            "group": "Configuration and integrations",
+            "group": "Configuration",
             "pages": [
               "features/bot-personalizer",
               "features/custom-bot",
-              "features/permissions",
               "integrations/platform-connections",
-              "integrations/spotify",
-              "integrations/apple-music",
               "integrations/stream-deck",
-              "integrations/agent-connections",
-              "integrations/cursor-agents",
-              "integrations/slack",
-              "integrations/api-logs"
+              "features/permissions",
+              "integrations/api-logs",
+              "integrations/slack"
+            ]
+          },
+          {
+            "group": "Help",
+            "pages": [
+              "troubleshooting"
             ]
           }
         ]
@@ -115,6 +129,17 @@
             "group": "Command reference",
             "pages": [
               "bot-commands/reference"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Changelog",
+        "groups": [
+          {
+            "group": "Changelog",
+            "pages": [
+              "changelog"
             ]
           }
         ]

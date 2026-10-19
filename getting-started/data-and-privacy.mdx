@@ -1,0 +1,48 @@
+---
+title: "Data and privacy"
+description: "What BrewBot stores for each feature, how long it keeps it, and how to delete it sooner."
+icon: "shield-halved"
+---
+
+This page summarizes what BrewBot keeps for the features you turn on. The [Privacy Policy](https://brewbot.gg/privacy) is the authoritative statement; this page explains it feature by feature.
+
+## Retention at a glance
+
+| Data | Kept for | Delete it sooner |
+| --- | --- | --- |
+| [Live transcripts](/features/transcripts) of TikTok LIVE events | 24 hours after the recording starts | Delete the transcript from **Live Tools > Transcripts**. |
+| [Meeting notes](/features/meetings) transcripts | 30 days | Delete the transcript or the whole meeting from the Meetings tab. Members can run `/meet optout` during a meeting. |
+| Meeting summaries | Until you delete the meeting | Delete the meeting. |
+| Meeting audio | Never stored | Audio is processed in memory only. |
+| AI chat conversation memory | 24 hours by default | Use **Clear Conversation History** in [Bot Settings](/features/bot-personalizer). |
+| AI usage records (token counts for credit limits) | 45 days | — |
+| Message snapshots for [mod logs](/features/mod-logs) | 14 days | Turn off message edit and delete logging. |
+| [API logs](/integrations/api-logs) | 60 days | — |
+| [TikTok TTS](/features/tts) queue items (viewer name and message) | 7 days after they play or fail | — |
+| Saved birthdays | Until removed | Members run `/forget-birthday`. |
+| Speed Tracker profiles, outcomes, and grid activity | Until deleted, or until the server is removed from BrewBot | Delete profiles from **Speed Tracker > Profiles**. |
+| Uploaded sounds | Until deleted | Delete them from **Your server's sounds** in [Gift Sounds](/features/gift-sounds). |
+| Server settings | Until the server is removed from BrewBot | — |
+
+Backups and disaster-recovery copies can outlive these windows for a limited period, as described in the Privacy Policy.
+
+## What each feature reads
+
+- **Mod logs** store a short-lived copy of messages only while message edit logging, message delete logging, or a diagnostics channel is turned on. That copy lets the log show what a message said before it was edited or deleted.
+- **AI features** send the prompt, recent conversation, and related context to BrewBot's AI providers to generate a reply. Nothing is sent when AI features are off.
+- **TTS, Gift Sounds, and Sticker Sounds** read TikTok or Twitch chat from the live source you choose. Each queued item keeps the viewer's name and message so the queue and browser player can show it. TikTok queue items are deleted 7 days after they play or fail.
+- **Sticker Sounds** saves each discovered sticker's ID, image, and the name you give it, so you can assign a sound later.
+- **Horoscopes** read the daily post from the channel you choose each time a member asks. BrewBot doesn't keep a copy of the post or the member's choice.
+- **Meeting notes** transcribe members who speak in the call. A member who opts out is not transcribed, and anything already captured from them is deleted.
+
+## Service monitoring
+
+BrewBot records operational metrics, such as queue lengths, error rates, and aggregate counts of words in monitored TikTok chat, to keep the service running. These metrics don't include message text, viewer identities, or voice IDs.
+
+## Credentials
+
+Custom bot tokens and connected-account tokens (such as Spotify and Slack) are stored encrypted and used only for the feature that needs them. Disconnect an account from the page where you connected it, such as **Configuration > Integrations** or **Live Tools > Spotify**, to stop BrewBot from using it.
+
+## Questions and deletion requests
+
+Contact [BrewBot support](https://discord.gg/WbMUYr7DCg) to ask what BrewBot holds for your server or to request deletion of data you can't remove from the dashboard.

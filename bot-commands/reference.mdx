@@ -18,8 +18,8 @@ BrewBot supports Discord slash commands and configured text commands. Type `/` i
 | `/level-test` | None | Reports leveling configuration and XP diagnostics | No default Manage Server restriction; reports premium status |
 | `/remember-birthday` | Required `date` | Saves a birthday for this server | Free birthday feature |
 | `/forget-birthday` | None | Removes your saved birthday | Free birthday feature |
-| `/meet start` | None; run while in a voice channel | Joins your voice channel and starts [meeting notes](/features/meetings) | Premium meeting notes enabled with a summary channel; allowed roles or Manage Server |
-| `/meet stop` | None | Ends the meeting and posts the summary | Meeting starter, allowed roles, or Manage Server |
+| `/meet start` | None; run while in a voice channel | Joins your voice channel and starts [meeting notes](/features/meetings) | Premium meeting notes enabled with a summary channel; allowed roles (everyone if none are set) or Manage Server |
+| `/meet stop` | None | Ends the meeting and posts the summary | The member who started it, allowed roles, or Manage Server; anyone in the call for an auto-joined meeting |
 | `/meet status` / `/meet optout` / `/meet help` | None | Shows meeting status, opts you out of transcription, or explains the feature | Everyone |
 | `/image` | Required `prompt`; optional `image` attachment | Generates an image or uses an attached reference | Premium AI image feature must be enabled |
 | `/bot-health` | None | Shows bot health and queue information | Manage Server |
@@ -37,9 +37,30 @@ XP amounts accept 1–1,000,000. Birthday dates accept `MM-DD` or `YYYY-MM-DD`.
 
 `/ticket` returns a link rather than creating a ticket in Discord. `/level-test` checks leveling state rather than sending a sample announcement. `/image` in DMs also requires a shared server with image generation and DMs enabled.
 
-## Custom and prefix commands
+## Prefix commands
 
-Use [Custom Commands](/features/custom-commands) to configure your server's actions, restrictions, and cooldowns. The text-command prefix comes from [Bot Settings](/features/bot-personalizer). Leveling settings also expose rank, leaderboard, give-XP, and remove-XP command switches.
+Prefix commands are typed as normal Discord messages. They use the **Command Prefix** set in **Configuration > Bot Settings > Basics**, which defaults to `!`. The examples below use `!`.
+
+Built-in prefix commands require premium and only run while **Custom Commands** is **Active** for the server.
+
+| Command | Aliases | What it does | Access |
+| --- | --- | --- | --- |
+| `!help` | None | Lists your server's custom commands and the enabled built-in commands | Everyone |
+| `!rank [@member]` | None | Shows your rank or a mentioned member's rank | Leveling enabled; `!rank` switch on |
+| `!levels` | `!leaderboard` | Shows the server leaderboard | Leveling enabled; `!levels` switch on |
+| `!givexp @member <amount>` | `!give-xp` | Awards XP | Leveling enabled; `!givexp` switch on; Manage Server |
+| `!removexp @member <amount>` | `!remove-xp` | Removes XP | Leveling enabled; `!removexp` switch on; Manage Server |
+| `!leveltest` | `!level-test` | Reports leveling configuration and XP diagnostics | Leveling enabled |
+
+The leveling switches are under **Engagement > Leveling > Commands** and control both the prefix and slash versions. XP amounts accept 1–1,000,000.
+
+```text
+!rank @Jane
+!givexp @Jane 100
+!leaderboard
+```
+
+Use [Custom Commands](/features/custom-commands) to add your own prefix commands with actions, restrictions, and cooldowns.
 
 ## TikTok and Twitch chat commands
 
@@ -51,6 +72,7 @@ These run in the connected platform's live chat, not Discord's slash-command men
 | `!timer` | [Live Commands](/features/live-commands): start the 180-second Speed Grid timer |
 | `!rateme` | [Rate Me](/features/rate-me): join the viewer-photo queue |
 | `!play` | [Game Requests](/features/game-requests): join the game queue |
+| `!volume` or `!vol` | [Volume](/features/volume): check or change TTS, gift sound, sticker sound, and announcement levels |
 | Configured prefix + music command | [Spotify](/integrations/spotify) or [Apple Music](/integrations/apple-music) |
 
 Each live feature has its own enable switch and audience controls. Check its guide before testing a command.

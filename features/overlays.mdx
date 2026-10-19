@@ -1,5 +1,6 @@
 ---
 title: "Stream overlays"
+sidebarTitle: "Overlays"
 description: "Add BrewBot browser sources to OBS and choose the right source for each live tool."
 icon: "layer-group"
 ---
@@ -31,7 +32,7 @@ Treat token-bearing URLs as private playback links. After regenerating a link, u
 | Vote Off | Gift race leaderboard and result | Speed Tracker |
 | Match Counter | Matched-pair counter | Overlays |
 | Chat | Transparent TikTok chat for a selected monitored channel | Overlays or TikTok Chat Monitor |
-| Chat TTS | TikTok speech, TTS Story, and Gift Sounds | [TTS Settings](/features/tts) |
+| Chat TTS | TikTok speech, announcements, TTS Story, Gift Sounds, and Sticker Sounds | [TTS Settings](/features/tts) |
 | Twitch TTS | Twitch speech in its own queue | [Twitch TTS settings](/features/twitch-tts) |
 | Gift Goal | Selected gift and target progress | [Gift Goals](/features/gift-goals) |
 | Rate Me | Viewer photo, name, and countdown | [Rate Me](/features/rate-me) |
@@ -45,7 +46,13 @@ Some links are on their feature's own page rather than in the main Overlays list
 
 ## Shared audio and timer sources
 
-Add the Chat TTS source once for TikTok speech, TTS Story, and Gift Sounds. Twitch TTS has its own source. Alternatively, open a [browser player](/features/tts#browser-player) for playback on another device.
+Add the Chat TTS source once for TikTok speech, announcements, TTS Story, [Gift Sounds](/features/gift-sounds), and [Sticker Sounds](/features/sticker-sounds). Twitch TTS has its own source. Alternatively, open a [browser player](/features/tts#browser-player) for playback on another device.
+
+Because these sounds share one source, the OBS mixer turns them all up or down together. Use [Volume](/features/volume) to set a separate level for each kind of sound.
+
+<Note>
+  The Gift Goal overlay's count restarts at zero when you clear the Speed Tracker board or select **Switch panel** after a goal is reached. See [Gift Goals](/features/gift-goals#use-with-speed-grid).
+</Note>
 
 Timer Gifts extends the existing timer and needs no additional overlay. Timer-end sounds come from **Speed Tracker > Settings > Grid & Timer**, separately from the uploaded gift-sound library.
 
@@ -54,3 +61,15 @@ Timer Gifts extends the existing timer and needs no additional overlay. Timer-en
 In the Match Counter settings, **Starting Match Count** changes the count shown by both the Match square and the overlay. After saving, new matches continue increasing the counter normally.
 
 The Overlays page also provides the [Stream Deck plugin](/integrations/stream-deck) download.
+
+## Troubleshooting
+
+| Symptom | Check |
+| --- | --- |
+| Chat TTS or Twitch TTS source looks blank | That's expected. Audio sources are transparent and only show a small status message in the corner when something is wrong or, for Twitch TTS, while speaking. |
+| A status message says the token is missing or authentication failed | Copy the full URL from the dashboard again. Don't edit or shorten it. |
+| Old URL stopped working | The link was regenerated. Paste the current URL into every browser source and player that used the old one. |
+| No audio on stream | Keep the source active and check it in the OBS mixer. If you enabled **Control audio via OBS**, set up audio monitoring and make sure the source goes to your stream output. |
+| One kind of sound is too quiet or too loud | Adjust it in [Volume](/features/volume). Sounds can be turned down from their original level but not boosted. |
+| Gift Goal count dropped to zero | The Speed Tracker board was cleared or the panel was switched. Use **Current count** in [Gift Goals](/features/gift-goals) to correct it. |
+| Visual overlay is cut off | Start from 1920 × 1080, then crop or resize the source in your scene. |
