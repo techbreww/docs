@@ -71,6 +71,7 @@
               "features/twitch-tts",
               "features/tts-story",
               "features/gift-sounds",
+              "features/volume",
               "features/gift-goals",
               "features/timer-gifts",
               "features/rate-me",
