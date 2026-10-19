@@ -1,0 +1,106 @@
+---
+title: "Horoscopes"
+description: "Read your server's daily horoscope post aloud to members when they join a voice channel."
+icon: "star"
+---
+
+Horoscopes is available on the **free plan**. When a member joins a voice channel you choose, BrewBot asks for their star sign and reads that sign's entry from your server's latest daily horoscope post. It can also use AI to turn the entry into a longer, playful reading.
+
+Open **Engagement > Horoscopes**. BrewBot must be connected to your server.
+
+{/* TODO: Add screenshot of the Horoscopes page */}
+
+## How it works
+
+1. Someone posts the daily horoscopes as text in your daily-post channel.
+2. A member joins the voice channel you selected.
+3. BrewBot posts a personal star-sign menu in that voice channel's text chat and mentions the member.
+4. BrewBot joins the voice channel and says aloud that the member should check the chat.
+5. The member picks their sign. BrewBot reads the entry aloud.
+6. The member also gets a private reply with the reading's text and a link to the original post.
+
+## Set up horoscope readings
+
+1. Open **Engagement > Horoscopes**.
+2. In **Daily-post channel**, choose the text or announcement channel where horoscopes are posted.
+3. In **Voice channel**, choose a regular voice channel. Stage channels aren't supported.
+4. Choose whether to turn on **Expand the reading with AI**.
+5. Turn on the **Daily horoscopes** switch.
+6. Select **Save settings**.
+7. Join the voice channel to test it.
+
+You must choose both channels before you can enable readings, and they must be different channels. Turning readings off always saves, even if a selected channel was deleted.
+
+## Settings
+
+| Setting | Default | What it does |
+| --- | --- | --- |
+| **Daily horoscopes** | Off | Turns readings on or off for the server. |
+| **Daily-post channel** | None | The text or announcement channel BrewBot reads the daily post from. |
+| **Voice channel** | None | The voice channel that triggers a reading when a member joins. |
+| **Expand the reading with AI** | On | Rewrites the chosen entry as a playful 80–120 word reading. |
+
+AI expansion uses its own comedy style. It doesn't use your server's AI backstory, personality, or chat history. Expansion uses your server's AI credits and counts toward its [AI usage](/features/bot-personalizer#ai-usage) budget. If the budget is used up, or expansion fails, BrewBot reads the original entry instead.
+
+Readings use the AI voice and voice quality selected in **Configuration > Bot Settings > Voice**. If no voice has been chosen there, BrewBot uses its default voice. Changing the voice is a premium setting; see [Bot Settings](/features/bot-personalizer#voice). You don't need to turn on AI chat.
+
+## Format the daily post
+
+BrewBot looks for a heading line for each sign, followed by that sign's reading. A heading can start with the zodiac symbol and can include a subtitle after a dash or colon. Bold, italics, and Markdown headings are fine.
+
+```text
+♈ ARIES — Competitive Menace
+You will argue with a vending machine today and win.
+
+♉ TAURUS — Snack Goblin
+The universe wants you to share your fries. Ignore it.
+```
+
+- BrewBot uses the newest post that contains horoscopes, from the last 100 messages in the channel.
+- The post must be no more than 36 hours old.
+- Text in messages and embeds both work. Image-only posts aren't supported.
+- A long post can be split across several messages, as long as the same author sends them within five minutes.
+- If the newest post is missing a sign, BrewBot doesn't fall back to an older post for that sign.
+- Lines starting with **COSMIC WARNING** or **For entertainment only** aren't read.
+
+## Menus and voice sessions
+
+- Each menu belongs to the member it mentions. Other members can't use it.
+- A menu expires after five minutes and works only once. Rejoin the voice channel to get a new one.
+- The member must still be in the configured voice channel when they choose a sign and while the reading plays.
+- If a member leaves and rejoins quickly, BrewBot posts at most one new menu per minute for them.
+- BrewBot reads one request at a time. Up to 10 requests can wait in line.
+- BrewBot leaves the voice channel when no members are left, or after two minutes without a reading.
+- BrewBot never interrupts another voice session, such as a [meeting](/features/meetings). While BrewBot is busy in voice elsewhere in the server, readings are refused with an explanation.
+
+## Bot permissions
+
+| Channel | Permissions BrewBot needs |
+| --- | --- |
+| Daily-post channel | **View Channel**, **Read Message History** |
+| Voice channel | **View Channel**, **Send Messages**, **Connect**, **Speak** |
+
+The voice channel also needs room for BrewBot. Set its **User Limit** to at least 2, or leave it unlimited. Alternatively, give BrewBot **Move Members** in that channel so it can join when the channel is full. BrewBot never moves members during readings.
+
+<Note>
+  If you use a [custom bot](/features/custom-bot), your custom bot handles readings. Give it these permissions instead.
+</Note>
+
+## Troubleshooting
+
+| Symptom | Check |
+| --- | --- |
+| No menu appears when a member joins | Make sure readings are enabled and saved, and that the member joined the selected voice channel. Give BrewBot **View Channel** and **Send Messages** in that voice channel; without them, no menu is posted and no error appears. A member gets at most one new menu per minute. |
+| "BrewBot is missing … in this voice channel" | Grant the listed permissions. Check both the voice channel and its category for overrides. |
+| "BrewBot is timed out in this server" | Remove BrewBot's timeout. |
+| "BrewBot is server-muted in this voice channel" | Unmute BrewBot in the voice channel. |
+| "This voice channel is full" | Raise the channel's **User Limit** to leave a seat for BrewBot, or give BrewBot **Move Members** in that channel. |
+| "BrewBot is busy in another voice session" | BrewBot is already in voice in this server, for example recording a meeting. Try again after that session ends. |
+| "Try again in two minutes" | BrewBot is still finishing a horoscope session in a different voice channel, usually after you changed the selected channel. Wait for it to leave. |
+| "I couldn't find a recent … entry" | Post the horoscopes as text, with that sign on its own heading line, within the last 36 hours. |
+| "BrewBot needs View Channel and Read Message History in the horoscope source" | Grant those permissions in the daily-post channel. |
+| "The horoscope source channel is unavailable" | The daily-post channel was deleted or changed type. Choose a new channel and save. |
+| "This menu belongs to another member, has expired, or has already been used" | Rejoin the voice channel to get a new menu. |
+| "The reading queue is full" | Wait for queued readings to finish, then try again. |
+| Reading is the original text, not an AI reading | **Expand the reading with AI** is off, the server's AI budget is used up, or expansion was unavailable. |
+| "Connect BrewBot before enabling readings" | Add BrewBot to the server, then save again. |

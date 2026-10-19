@@ -1,0 +1,77 @@
+---
+title: "Sticker Sounds"
+description: "Play built-in or uploaded sounds when viewers send stickers in TikTok chat."
+icon: "face-smile"
+---
+
+import PremiumNote from '/snippets/premium-note.mdx';
+
+<PremiumNote />
+
+Sticker Sounds plays an audio clip when a viewer sends a sticker in your TikTok live chat. It works like [Gift Sounds](/features/gift-sounds), but for chat stickers instead of gifts. Sounds play through the same browser source as [TikTok Chat TTS](/features/tts).
+
+Open **Live Tools > Sticker Sounds**. You need access to the server and premium live tools. For team members, the navigation also requires [Speed Dating access](/getting-started/teams#feature-permissions).
+
+{/* TODO: Add screenshot of the Sticker Sounds page with discovered stickers */}
+
+## How it differs from Gift Sounds
+
+- You don't add stickers by hand. BrewBot discovers them from your live chat and lists them for you.
+- Each different sticker in a message plays once. Repeated copies of the same sticker in one message don't play again.
+- Sticker sounds don't repeat for streaks the way gift sounds can.
+
+## Set up sticker sounds
+
+1. Add the TikTok account to [TikTok Chat Monitor](/features/live-monitor).
+2. In **Live Tools > TTS Settings > TikTok TTS > Live Source**, select that account as the shared live source.
+3. Open **Sticker Sounds** and turn on **Enable Sticker Sounds**.
+4. Go live and connect your Chat TTS overlay, browser player, or live monitor. Send a sticker in your live chat, or wait for viewers to send some.
+5. In **Stickers from your live chat**, find the sticker. Optionally give it a name.
+6. Choose a built-in sound or one of **Your server's sounds** from its sound menu.
+7. Turn on the switch for that sticker. Changes save automatically.
+8. Copy the **Shared Chat TTS overlay** URL into an OBS browser source. If you already have that source, use the existing one.
+
+Both **Enable Sticker Sounds** and the sticker's own switch must be on. A sticker's switch stays disabled until you choose a sound. **No sound** leaves a sticker silent. **Preview** plays the selected clip in your dashboard browser; it does not simulate a sticker.
+
+The sticker list shows the 500 most recently seen stickers for the selected live source, with enabled stickers first. The name you give a sticker appears in the TTS queue.
+
+<Note>
+  Sticker Sounds works independently of the Chat TTS text-reading switch. Keep the shared overlay or browser player open to play sounds, even when chat reading is off.
+</Note>
+
+## Discover stickers automatically
+
+New stickers appear in the list while your live monitor, Chat TTS overlay, or browser player is connected to the selected live source. This happens even while **Enable Sticker Sounds** is off, so you can set sounds up before turning playback on.
+
+Turn on **Discover stickers automatically** to collect stickers without a player open. It is off by default.
+
+- Discovery starts when a TikTok [social alert](/features/social-alerts) with **Live notifications** on confirms the selected account is live.
+- BrewBot doesn't run extra checks to see whether you're live. Without a live alert for that account, automatic discovery never starts.
+- Once started, discovery runs until the live ends or the connection drops. The next live alert starts it again.
+- Automatic discovery only saves stickers. It never plays sounds. Keep a player open to hear them.
+
+## Use your own sounds
+
+Sticker Sounds shares the **Your server's sounds** library with Gift Sounds. Upload a file on either page and choose it from any sticker or gift sound menu. See [Upload your own sounds](/features/gift-sounds#upload-your-own-sounds) for supported formats and limits.
+
+<Warning>
+  Deleting an upload removes it from every gift and sticker that uses it, and turns those stickers off. Upload it again and reassign it if you need it later.
+</Warning>
+
+## Playback and volume
+
+Sticker sounds join the same audio queue as chat reading, announcements, stories, and gift sounds. A clip may wait behind audio that is already playing.
+
+To make sticker sounds quieter than the rest, use the **Sticker sounds** slider in [Volume](/features/volume), or `!volume stickers` in chat.
+
+## Troubleshooting
+
+| Symptom | Check |
+| --- | --- |
+| No stickers in the list | Select a live source in TTS Settings. While you're live, connect your overlay, browser player, or live monitor, or turn on automatic discovery with a TikTok live alert for the same account. Then send a sticker in that live chat. |
+| Automatic discovery never starts | Create a TikTok social alert for the selected account with **Live notifications** on. Discovery needs that live confirmation. |
+| No sound after a sticker | Confirm the main switch, the sticker's switch, and its selected sound. Keep the shared overlay or browser player connected and audible. |
+| A sticker's switch can't be turned on | Choose a sound for that sticker first. |
+| A sticker stopped playing after a deletion | Its uploaded sound was deleted. Choose a new sound and turn the sticker back on. |
+| Preview works but OBS is silent | Preview uses your browser's audio. Check the OBS source URL, mixer, and the **Sticker sounds** level in Volume. |
+| Old overlay stops playing | Copy the current URL after regenerating the Chat TTS link. |

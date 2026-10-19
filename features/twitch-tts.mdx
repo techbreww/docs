@@ -10,6 +10,8 @@ import PremiumNote from '/snippets/premium-note.mdx';
 
 Twitch TTS reads messages from a connected Twitch broadcaster's chat. It requires premium and server admin access on team servers. Its source, settings, audio queue, and overlay are separate from [TikTok TTS](/features/tts).
 
+Twitch TTS doesn't have its own menu item. Open **Live Tools > TTS Settings** and select the **Twitch TTS** tab.
+
 {/* TODO: Add screenshot of Twitch TTS source library and voice overrides */}
 
 ## Connect a source
@@ -46,6 +48,8 @@ Choose **Single voice** or **Random voices**, and select **Eleven Multilingual v
 
 See [voice models and audio tags](/features/tts#voices-and-audio-tags) for expressive speech examples.
 
+Before speaking, BrewBot converts stylized Unicode letters, such as 𝓑𝓻𝓮𝔀𝔀 or ｆｕｌｌｗｉｄｔｈ text, into plain letters and skips emoji and decorative symbols. A message with nothing left to say, such as one made only of emoji, is skipped. See [How messages are cleaned up](/features/tts#how-messages-are-cleaned-up).
+
 ## Overlay, browser player, and queue
 
 The **Overlay & Queue** section provides the OBS URL, preview, token regeneration, and **Browser Player** link. The browser player runs on another device with a visible queue and playback controls. Select **Enable audio** if the browser blocks playback.
@@ -55,3 +59,16 @@ The **Overlay & Queue** section provides the OBS URL, preview, token regeneratio
 <Warning>
   Regenerating the token invalidates existing Twitch TTS overlay and player URLs. Replace them in OBS and on any playback devices. Keep token-bearing links private.
 </Warning>
+
+## Troubleshooting
+
+| Symptom | Check |
+| --- | --- |
+| No messages are read | Confirm Twitch TTS is enabled and a source is selected for TTS. Make sure that source is enabled in **Source Library** and connected. |
+| Source shows an authorization error | Select **Connect channel** and authorize again as the matching broadcaster. |
+| One message isn't read | Check the trigger mode and `//` prefix, the audience, the whitelist, and the blocked list. The same viewer sending the same message again within 30 seconds is skipped. |
+| Nothing is read while the timer runs | New requests are skipped while the Speed Tracker timer is running. They aren't queued for later. |
+| An emoji-only message isn't read | Messages with no letters or numbers left after cleanup are skipped. |
+| No audio in OBS | Keep the browser source active and check its audio routing in the OBS mixer. Check the **Twitch TTS** level in [Volume](/features/volume). |
+| Browser player is silent | Select **Enable audio**. Each job plays on one player, so close players you aren't using. |
+| Old overlay or player stops working | **Regenerate token** replaced the token. Paste the new URL into OBS and reopen saved player links. |

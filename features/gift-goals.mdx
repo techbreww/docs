@@ -1,5 +1,6 @@
 ---
 title: "Gift goals"
+sidebarTitle: "Gift Goals"
 description: "Display progress toward a TikTok gift target in OBS."
 icon: "bullseye"
 ---
@@ -21,5 +22,23 @@ Gift Goals displays a selected gift, target, and current count on stream. It is 
 Settings save from the page. The overlay URL stays stable when you change the goal. Selecting a different gift resets its current count to zero.
 
 Use **Current count** to correct progress manually, or **Reset count** to start again. These controls change the count shown on stream; they do not alter TikTok's gift history.
+
+## Use with Speed Grid
+
+The [Speed Tracker](/features/speed-tracker#gift-goal-on-the-grid) grid shows your goal's progress in its header. The monitored channel must be enabled for progress to appear there.
+
+When viewers reach the goal, the grid asks whether to switch the panel. **Switch panel** returns panel participants to waiting and restarts the count at zero.
+
+<Warning>
+  Clearing the Speed Grid board also resets the current count to zero, including the count shown on stream.
+</Warning>
+
+After the goal restarts, the grid can prompt again when viewers reach it. Any of these restart the goal:
+
+- Selecting **Reset count**
+- Choosing a different gift
+- Lowering **Current count**
+- Changing **Goal count** or the monitored channel
+- Clearing the Speed Grid board or switching the panel
 
 See [Gift Sounds](/features/gift-sounds) to play audio for gifts and [Timer Gifts](/features/timer-gifts) to extend a countdown.

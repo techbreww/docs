@@ -1,5 +1,6 @@
 ---
 title: "Gift sounds and uploads"
+sidebarTitle: "Gift Sounds"
 description: "Play built-in or uploaded sounds when viewers send TikTok gifts."
 icon: "music"
 ---
@@ -8,7 +9,7 @@ import PremiumNote from '/snippets/premium-note.mdx';
 
 <PremiumNote />
 
-Gift Sounds maps TikTok gifts to audio clips. It plays through the same browser source as [TikTok Chat TTS](/features/tts) and [TTS Story](/features/tts-story).
+Gift Sounds maps TikTok gifts to audio clips. It plays through the same browser source as [TikTok Chat TTS](/features/tts), [TTS Story](/features/tts-story), and [Sticker Sounds](/features/sticker-sounds).
 
 Open **Live Tools > Gift Sounds**. You need access to the server and premium live tools. For team members, the navigation also requires [Speed Dating access](/getting-started/teams#feature-permissions).
 
@@ -34,6 +35,8 @@ Both the main switch and the individual gift switch must be on. Choosing **Nothi
 
 In **Your server’s sounds**, select **Upload sound** and choose a file. After the upload completes, select it from a gift's sound menu and enable that mapping.
 
+The library is shared with [Sticker Sounds](/features/sticker-sounds). A sound you upload on either page is available in both.
+
 | Limit | Supported value |
 | --- | --- |
 | File format | MP3 or PCM WAV |
@@ -45,7 +48,7 @@ In **Your server’s sounds**, select **Upload sound** and choose a file. After 
 The library shows each file's name, duration, and size. Use **Preview** to check it before assigning it. Uploads belong to the server where you added them; people need server access to manage them, and that server's authorized overlay can play them.
 
 <Warning>
-  **Delete** asks you to confirm **Delete sound**. Deleting an upload removes it from its gift assignments. Upload it again and reassign it if you need it later.
+  **Delete** asks you to confirm **Delete sound**. Deleting an upload removes it from every gift and sticker that uses it, and turns those stickers off. Upload it again and reassign it if you need it later.
 </Warning>
 
 ## Troubleshooting

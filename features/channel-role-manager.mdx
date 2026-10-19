@@ -1,5 +1,6 @@
 ---
 title: "Channel and role managers"
+sidebarTitle: "Channel and Role Manager"
 description: "Edit channel structure and role permissions, then publish changes to Discord."
 icon: "gear"
 ---
@@ -14,11 +15,23 @@ Open **Server Management > Channel Manager** or **Role Manager**. Both are premi
 
 ## Channel Manager
 
-Create categories and supported text, voice, announcement, forum, or stage channels. Drag channels to reorder them or move them between categories, rename them, and edit role-specific permission overrides.
+Create categories and supported text, voice, announcement, forum, or stage channels. Rename channels and edit role-specific permission overrides.
 
-When moving a channel, choose whether to keep its existing permissions or sync them from the destination category. Permission controls support **Allow**, **Inherit**, and **Deny**.
+### Reorder channels and categories
+
+- Drag a channel within its category to reorder it.
+- Drag a channel onto another category, or onto a channel in another category, to move it there. The channel goes to the end of that category's text or voice channels.
+- Drag a category onto another category to reorder categories. You can't place a category inside another category.
+
+Discord sorts text channels and voice channels separately within each category. Voice and stage channels always appear after text channels. Dropping a text channel onto a voice channel in the same category does nothing.
+
+When you move a channel into a category that has permission overrides, BrewBot asks how to handle permissions. Select **Keep Current** to keep the channel's permissions, or **Sync Permissions** to copy them from the category. Permission controls support **Allow**, **Inherit**, and **Deny**.
+
+### Publish changes
 
 Changes remain pending until you choose **Publish Changes**. Use **Discard** to abandon pending edits.
+
+BrewBot saves the new channel order after your other pending changes. If any other change fails, BrewBot doesn't save the new order. After publishing, the list reloads from Discord. Check that your changes and channel order look right, and redo anything that didn't apply.
 
 ## Role Manager
 

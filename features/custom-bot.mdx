@@ -156,3 +156,17 @@ After setup, go to **Server Settings** > **Roles** in Discord and drag your cust
 ## Disconnect the custom bot
 
 To switch back to the default BrewBot, open **Configuration > Bot Settings** and click **Remove Custom Bot**. This clears the custom bot connection. Make sure the default BrewBot is installed and connected before relying on it to resume server features.
+
+## Troubleshooting
+
+| Problem | What to do |
+| --- | --- |
+| **Enable Custom Bot** shows **Invalid bot token** | Copy the token from the **Bot** tab, not the client secret or application ID. If you reset the token after copying it, copy the new one. |
+| The bot stays offline after setup | Check that **Server Members Intent** and **Message Content Intent** are on in the **Bot** tab. BrewBot requests both, and Discord refuses the bot's connection if either is off. Then select **Reload Custom Bot** in **Configuration > Bot Settings**. |
+| The bot went offline after you reset its token in the Developer Portal | The old token no longer works. Select **Remove Custom Bot**, then set up the custom bot again with the new token. |
+| Nothing happens when you select **Authorize Permissions** | Your browser blocked the Discord pop-up. Allow pop-ups for `brewbot.gg` and try again. |
+| Discord shows an error about a code grant or redirect | Turn off **Requires OAuth2 Code Grant** in the **Bot** tab, and check that the redirect URL above is saved. |
+| The bot isn't in your server after authorization | The dashboard finishes setup when the Discord pop-up closes, even if you didn't select **Authorize**. Open the **Bot Permissions** card on **Bot Settings**, select **Re-authorize**, and complete the Discord prompt. |
+| Slash commands don't appear | Select **Re-authorize** to grant the commands scope, then select **Reload Custom Bot**. |
+| The bot can't join a voice channel | Once connected, your custom bot joins voice for features such as [meeting notes](/features/meetings) and [horoscopes](/features/horoscopes). Give its role **Connect** and **Speak** in that channel. If another voice session is running in the server, wait for it to end. |
+| Roles aren't assigned | Move the bot's role above the roles it manages. See [Move the bot role](#move-the-bot-role). |

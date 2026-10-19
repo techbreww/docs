@@ -1,6 +1,6 @@
 # BrewBot feature documentation audit
 
-Reviewed October 4, 2026 against local `brew-bot` commit `08656cf3` (`feat: add selectable Rate Me screen time`). This is a source audit of the dashboard, relevant validation/access routes, bot handlers, and the bundled Stream Deck plugin; it is not a claim that every feature was exercised against production accounts. The app repository was not changed.
+Reviewed October 4, 2026 against local `brew-bot` commit `08656cf3` (`feat: add selectable Rate Me screen time`). Refreshed October 19, 2026 against `brew-bot` `main` at `d0bfec1c` for the commits since then: meeting notes, horoscopes, sticker sounds, volume, battle mode, Speed Grid changes, TikTok live alert timing, and channel reordering. The docs nav now mirrors the dashboard sidebar groups. This is a source audit of the dashboard, relevant validation/access routes, bot handlers, and the bundled Stream Deck plugin; it is not a claim that every feature was exercised against production accounts. The app repository was not changed.
 
 ## Coverage
 
@@ -17,12 +17,14 @@ Every entry in `src/components/manage-navigation/config.ts` is mapped below, inc
 | Custom Commands | `/custom-commands` | [features/custom-commands](features/custom-commands.mdx) |
 | Welcome Message | `/welcome-message` | [features/welcome-messages](features/welcome-messages.mdx) |
 | Birthdays | `/birthdays` | [features/birthdays](features/birthdays.mdx) |
+| Meeting Notes | `/meetings` | [features/meetings](features/meetings.mdx) |
 | Moderation | `/moderation` | [getting-started/onboarding](getting-started/onboarding.mdx) |
 | Mod Logs | `/mod-logs` | [features/mod-logs](features/mod-logs.mdx) |
 | Mod Agreements | `/mod-agreements` | [features/mod-agreements](features/mod-agreements.mdx) |
 | AutoMod | `/automod` | [features/automod](features/automod.mdx) |
 | Captcha Verification | `/captcha-verification` | [features/captcha-verification](features/captcha-verification.mdx) |
 | Engagement | `/engagement` | [getting-started/onboarding](getting-started/onboarding.mdx) |
+| Horoscopes | `/horoscopes` | [features/horoscopes](features/horoscopes.mdx) |
 | TikTok Alerts | `/alerts` | [features/social-alerts](features/social-alerts.mdx) |
 | Twitch Alerts | `/twitch-alerts` | [features/social-alerts](features/social-alerts.mdx) |
 | Kick Alerts | `/kick-alerts` | [features/social-alerts](features/social-alerts.mdx) |
@@ -35,7 +37,7 @@ Every entry in `src/components/manage-navigation/config.ts` is mapped below, inc
 | Agent Connections | `/agent-connections` | [integrations/agent-connections](integrations/agent-connections.mdx) |
 | Live Tools | `/live-tools` | [features/live-tools](features/live-tools.mdx) |
 | TikTok Rankings | `/live-tools/rankings` | [features/tiktok-rankings](features/tiktok-rankings.mdx) |
-| TikTok Chat Monitor | `/live-monitor` | [features/live-monitor](features/live-monitor.mdx) |
+| TikTok Chat Monitor (incl. Battle mode at `/live-monitor/battle`) | `/live-monitor` | [features/live-monitor](features/live-monitor.mdx) |
 | Twitch Monitor | `/twitch-monitor` | [features/twitch-monitor](features/twitch-monitor.mdx) |
 | Transcripts | `/transcripts` | [features/transcripts](features/transcripts.mdx) |
 | Schedule | `/live-tools/schedule` | [features/schedule](features/schedule.mdx) |
@@ -48,6 +50,8 @@ Every entry in `src/components/manage-navigation/config.ts` is mapped below, inc
 | Rate Me | `/live-tools/rate-me` | [features/rate-me](features/rate-me.mdx) |
 | Game Requests | `/live-tools/game-requests` | [features/game-requests](features/game-requests.mdx) |
 | Gift Sounds | `/live-tools/gift-sounds` | [features/gift-sounds](features/gift-sounds.mdx) |
+| Sticker Sounds | `/live-tools/sticker-sounds` | [features/sticker-sounds](features/sticker-sounds.mdx) |
+| Volume | `/live-tools/volume` | [features/volume](features/volume.mdx) |
 | Timer Gifts | `/live-tools/timer-gifts` | [features/timer-gifts](features/timer-gifts.mdx) |
 | Overlays | `/live-tools/overlays` | [features/overlays](features/overlays.mdx) |
 | TTS Settings | `/live-tools/tts-settings` | [features/tts](features/tts.mdx) |

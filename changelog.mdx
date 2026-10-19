@@ -1,0 +1,65 @@
+---
+title: "Changelog"
+description: "New features and notable changes in the BrewBot dashboard and bot."
+icon: "clock-rotate-left"
+rss: true
+---
+
+<Update label="October 18, 2026" tags={["Live tools"]}>
+  ## Per-category volume and `!volume`
+
+  - New [Volume](/features/volume) page under **Live Tools** sets TikTok Chat TTS, announcements, gift sounds, sticker sounds, and Twitch TTS levels separately. Changes reach open overlays without reloading OBS.
+  - Mods and trusted viewers can change levels from TikTok or Twitch chat with `!volume` (or `!vol`). It's off until you turn it on for a platform.
+</Update>
+
+<Update label="October 17, 2026" tags={["Server management", "Engagement"]}>
+  ## Horoscope voice readings and meeting summary retries
+
+  - New [Horoscopes](/features/horoscopes) feature. When a member joins the voice channel you choose, BrewBot offers a sign menu and reads that sign from your daily horoscope post aloud. It's available on the free plan.
+  - When BrewBot can't join a voice channel, the error now tells you whether the channel is full or BrewBot is missing permissions.
+  - [Meeting notes](/features/meetings) that failed to post can be retried from the dashboard with **Retry posting summary** or **Retry summary**.
+</Update>
+
+<Update label="October 16, 2026" tags={["Live tools", "Moderation"]}>
+  ## Sticker Sounds, faster TikTok live alerts, and meeting mod logs
+
+  - New [Sticker Sounds](/features/sticker-sounds) plays a clip when a viewer sends a TikTok sticker. Stickers are discovered automatically from your live, and you can use the same uploaded sounds as Gift Sounds.
+  - [TikTok live alerts](/features/social-alerts) now post as soon as TikTok confirms the stream is live, even when chat is quiet.
+  - TTS now converts stylized letters such as 𝓯𝓪𝓷𝓬𝔂 or ｆｕｌｌｗｉｄｔｈ text to plain text before reading, and skips decorative symbols.
+  - [Mod logs](/features/mod-logs) can record meeting events, such as meetings starting and ending, opt-outs, and deletions.
+</Update>
+
+<Update label="October 15, 2026" tags={["Server management"]}>
+  ## Meeting notes
+
+  - New premium [`/meet`](/features/meetings) command transcribes a voice call and posts an AI summary to the channel you choose. Audio is never stored, and transcripts are deleted after 30 days.
+  - Meeting notes can auto-join voice calls in the channels you choose.
+  - [Pricing](/getting-started/billing) on the docs and dashboard now matches the landing page.
+</Update>
+
+<Update label="October 14, 2026" tags={["Live tools"]}>
+  ## Battle mode for TikTok Chat Monitor
+
+  - [Battle mode](/features/live-monitor#battle-mode) opens two TikTok lives side by side, with observed gifts, diamonds, likes, shares, and follows compared in the middle.
+  - Recent gifts are now compact rows that show each gift's diamond value.
+  - Chat monitors reconnect automatically after network drops or when your computer wakes from sleep.
+</Update>
+
+<Update label="October 8–11, 2026" tags={["Live tools", "Server management"]}>
+  ## Speed Grid improvements
+
+  - The [Speed Grid](/features/speed-tracker) shows sync status, keeps a shared **Activity** history, and adds **Vote off**, **Clear board** confirmation, and a **Move to slot** option for each profile.
+  - [Gift goal](/features/gift-goals) progress appears in the grid header. Reaching the goal offers to switch the panel, and clearing the board resets the goal.
+  - Redesigned profile cards, with adjustable font size and layout density in **Grid Appearance**.
+  - MVP status can be changed from the edit profile dialog, and MVPs are managed from the new **MVPs** button.
+  - Dragging stays smooth with large queues.
+  - Channel and category reordering in the [Channel Manager](/features/channel-role-manager) now saves when you publish.
+</Update>
+
+<Update label="October 4–7, 2026" tags={["Dashboard", "Live tools"]}>
+  ## Light mode and Rate Me screen time
+
+  - The dashboard now has a light mode. Use the sun or moon button in the top bar to switch; your choice is saved in your browser.
+  - [Rate Me](/features/rate-me) screen time can be set from 5 to 30 seconds.
+  - Dashboard help links now point to this documentation site.
+</Update>

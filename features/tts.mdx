@@ -1,5 +1,6 @@
 ---
 title: "TikTok text-to-speech"
+sidebarTitle: "TTS Settings"
 description: "Read eligible TikTok chat aloud and manage voices, Heart Me access, and playback."
 icon: "volume-high"
 ---
@@ -21,7 +22,7 @@ TikTok Chat TTS reads eligible live-chat messages aloud through an OBS browser s
 5. Copy the **Hidden OBS Browser Source** URL into OBS, or open the browser player.
 6. Send an eligible message in the selected live chat to test playback.
 
-The live source is shared with Speed Tracker and Gift Race. Changing it changes the source those tools use too. [Twitch TTS](/features/twitch-tts) has separate settings, a separate source, and a separate queue.
+The live source is shared with Speed Tracker, Gift Race, [Gift Sounds](/features/gift-sounds), [Sticker Sounds](/features/sticker-sounds), and the TikTok [`!volume` command](/features/volume#volume-chat-command). Changing it changes the source those tools use too. [Twitch TTS](/features/twitch-tts) has separate settings, a separate source, and a separate queue.
 
 ## Trigger modes
 
@@ -62,13 +63,19 @@ With v3, try inline directions such as `[whispering]`, `[excited]`, or `[laughs]
 // [whispering] I have a secret. [laughs] We reached the goal!
 ```
 
-Use [Gift Sounds](/features/gift-sounds) for a specific prerecorded sound clip.
+Use [Gift Sounds](/features/gift-sounds) or [Sticker Sounds](/features/sticker-sounds) for a specific prerecorded sound clip.
+
+## How messages are cleaned up
+
+Before speaking, BrewBot converts stylized Unicode letters, such as 𝓑𝓻𝓮𝔀𝔀, ｆｕｌｌｗｉｄｔｈ, or Ⓑⓤⓑⓑⓛⓔ text, into plain letters. It skips emoji and decorative symbols such as ☆, ★, and ♡. Accents, other languages, and audio tags are kept.
+
+A message with nothing left to say after cleanup, such as one made only of emoji, is skipped. The queue and player still show the original message.
 
 ## OBS playback
 
 Copy the URL from the dashboard and keep the browser source active. It maintains the TikTok monitoring connection and plays queued audio. Configure browser-source audio routing in OBS so the sound reaches your stream. See [Stream overlays](/features/overlays).
 
-The same source plays **Chat TTS**, **TTS Story**, and **Gift Sounds**. You do not need an extra source for either story narration or gift clips. Gift Sounds can run while chat reading is disabled.
+The same source plays **Chat TTS**, announcements, **TTS Story**, **Gift Sounds**, and **Sticker Sounds**. You do not need an extra source for story narration, gift clips, or sticker clips. Gift Sounds and Sticker Sounds can run while chat reading is disabled. To set each kind of sound to a different level, use [Volume](/features/volume).
 
 <Warning>
   Overlay and player links contain private access tokens. **Regenerate Link** replaces the token; update your OBS sources and saved player links afterward.
@@ -89,3 +96,16 @@ Use **Send Announcement** for up to 300 characters of manual speech. A disconnec
 <Note>
   TikTok TTS requests are unavailable while the Speed Tracker timer is running. Story parts also take priority over ordinary chat speech while pending or speaking. Check the timer, story queue, blocked list, and player connection when a chat message is not spoken.
 </Note>
+
+## Troubleshooting
+
+| Symptom | Check |
+| --- | --- |
+| No messages are read | Confirm **Enable Chat TTS** is on and a live source is selected in **Live Source**. Messages from other monitored lives are ignored. |
+| One message isn't read | Check the trigger mode and `//` prefix, the audience, and the blocked list. The same viewer sending the same message again within 30 seconds is skipped. |
+| Nothing is read while the timer runs | New chat requests are skipped while the Speed Tracker timer is running. Messages sent during that time aren't queued for later. |
+| An emoji-only message isn't read | Messages with no letters or numbers left after cleanup are skipped. See [How messages are cleaned up](#how-messages-are-cleaned-up). |
+| No audio in OBS | Keep the browser source active, and check its audio routing in the OBS mixer. If you enabled **Control audio via OBS**, set up monitoring and output there. Check the levels in [Volume](/features/volume). |
+| Browser player is silent | Select **Enable audio**. Make sure only the player you intend to use is open, because each job plays on one player. |
+| The overlay shows an error message | The Chat TTS source is normally invisible. A message in the corner means it couldn't connect or authenticate. Copy the current URL from the dashboard. |
+| Old overlay or player stops working | **Regenerate Link** replaced the token. Paste the new URL into OBS and reopen saved player links. |

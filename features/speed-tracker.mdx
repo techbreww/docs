@@ -1,5 +1,6 @@
 ---
 title: "Speed Tracker and profiles"
+sidebarTitle: "Speed Tracker"
 description: "Run speed dating rounds, manage profiles and MVPs, and configure the shared timer."
 icon: "stopwatch"
 ---
@@ -14,43 +15,174 @@ Speed Tracker coordinates live speed dating rounds. It requires premium and a te
 
 ## Run a round
 
-Open **Live Tools > Speed Tracker**. Add profiles, then drag participants from the waiting list into the grid's host, co-host, focus, and panel positions. Use the search to find people by name, city, status, slot, or TikTok username.
+Open **Live Tools > Speed Tracker**. Select **Add participant** to create profiles, then drag participants from the waiting queue into the grid's host, co-host, and panel slots. Use the queue search to find people by name, city, status, slot, or TikTok username.
 
-Profiles store participant details such as age, location, gender, preferred age range, and TikTok username. The TikTok username links gifts to the correct profile during gift races.
+Profiles store participant details such as age, location, gender, preferred age range, and TikTok username. The TikTok username links gifts to the correct profile during a vote off.
 
 - Generate an icebreaker question and display it with the question overlay.
-- Start or reset the shared timer for a round.
-- Record matches, friend outcomes, or passes as the round progresses.
-- Use the gift race to run a viewer-supported vote-off.
+- Start or reset the shared three-minute timer for a round.
+- Drag a participant to **Match** and choose their partner to record a match.
+- Run a [vote off](#vote-off) so viewers can send gifts to keep participants on the panel.
 - Generate AI insights or send a profile rundown through Chat TTS when available.
 
+The grid records matches only. To record a **Friends** or **Pass** outcome, open the **Profiles** page and select **Add Match**.
+
 The grid can warn when a participant appears to be matched on another server. Review the warning before recording a new match.
+
+## Grid header and controls
+
+{/* TODO: Add screenshot of Speed Grid header and controls row */}
+
+The header shows the sync status, who else is viewing, and your [gift goal](#gift-goal-on-the-grid) progress.
+
+| Control | What it does |
+| --- | --- |
+| **AI Insights** | Opens a dialog that analyzes the participants on the board. Generated insights stay available when you close and reopen it. |
+| **MVPs** | Shows the MVP count and opens the [MVP list](#profiles-and-mvps). |
+| **Activity** | Opens the shared [grid activity](#activity-and-past-results) log. |
+| **Show queue** / **Hide queue** | Shows or hides the waiting queue. The button shows how many people are waiting. |
+| **Add participant** | Creates a new profile. |
+| Gear icon | Opens Speed Tracker settings. |
+
+The row below the header holds the round controls.
+
+| Control | What it does |
+| --- | --- |
+| **Start 3m** / **Reset** | Starts a three-minute date timer, or resets a running one. |
+| **Vote off** | Starts a 60-second [vote off](#vote-off). |
+| Shots and Gifts counters | Track shots and gifts with plus, minus, and reset buttons. |
+| **Compact view** / **Comfortable view** | Switches card density in your browser. |
+| **Clear board** | Returns panel participants to the queue after you confirm. |
+
+<Warning>
+  **Clear board** returns everyone in panel slots, including the speed dater, to waiting. The host and co-host stay in place. Any active vote off is cancelled, and your gift goal count restarts at zero.
+</Warning>
+
+## Speed dater and match colors
+
+Slot 10 holds the speed dater. If slot 10 is empty, the participant in slot 9 becomes the speed dater. Only one speed dater is active at a time.
+
+When a speed dater is on the board, each panel card shows how the two age ranges line up. **Grid Matching Mode** in settings controls which states appear.
+
+| Badge | Meaning |
+| --- | --- |
+| **Mutual Match** | Each person is within the other's preferred age range. |
+| **Focus -> Panel** | The speed dater's range includes the panel participant, but not the other way around. |
+| **Panel -> Focus** | The panel participant's range includes the speed dater, but not the other way around. |
+| **No Match** | Neither range includes the other person. |
+| **Panel Matches Focus** / **Panel No Match** | Focus-only mode. Shows whether the panel participant's range includes the speed dater. |
+
+## Profile cards and actions
+
+Each card shows the participant's name, age, location, preferred age range, gender, and any MVP badge. During a vote off, the card also shows the participant's gift count and highlights the lowest count.
+
+Select the **⋯** button on a card to open its actions. Use this dialog to manage a profile without dragging.
+
+| Action | When it appears |
+| --- | --- |
+| **Edit profile** | Always. |
+| **Choose match** | The participant is waiting or on the board. |
+| **Return to waiting** | The participant is on the board. |
+| **Move to slot** | The participant isn't matched. Only empty slots are listed. |
+| **Unmatch pair** | The participant is matched. |
+
+The waiting queue lists MVPs first, followed by other waiting participants. **Friends** and **Passed** groups appear below them.
+
+Unmatching sends both profiles back to **Waiting** and preserves match history. Unmatch a pair before you move either profile or match them with someone else.
+
+## Vote off
+
+A vote off lets viewers send TikTok gifts to keep panel participants on the board.
+
+1. Select a TikTok channel in **Speed Tracker > Settings > Live Source**.
+2. Add TikTok usernames to at least two panel participants. Each participant needs a different username.
+3. Select **Vote off**.
+
+The vote off lasts 60 seconds. The host and co-host don't take part. BrewBot counts the gifts, so the round finishes even if you close the dashboard.
+
+About ten seconds after the round ends, the participant with the lowest gift count returns to waiting. The board then shows the result.
+
+<Note>
+  No one moves if the lowest counts are tied. No one moves if a participant was moved or edited during the round.
+</Note>
+
+Select **Stop vote** during the round to cancel it without removing anyone. If the button shows **Finalizing vote… · Cancel**, select it to cancel the round.
+
+## Gift goal on the grid
+
+The header shows progress for your [Gift Goals](/features/gift-goals) target. If your gift goal has no enabled monitored channel, the header shows **Set up gift goal** instead.
+
+Select the progress bar to see the current count or open **Manage gift goal**. When viewers reach the goal, a **Gift goal reached!** prompt opens.
+
+- **Switch panel** returns the panel, including the speed dater, to waiting. The host and co-host stay in place, and the gift goal restarts at zero.
+- **Keep this panel** closes the prompt. Your browser doesn't ask again until the goal restarts and is reached again.
+
+The prompt waits until you finish dragging and close other dialogs. It doesn't appear when the panel is empty.
+
+## Activity and past results
+
+{/* TODO: Add screenshot of Grid activity and Past results dialogs */}
+
+Select **Activity** to see recent grid changes from your team and BrewBot. Choose **Last 24 hours** or **Last 7 days**, then select **Load older activity** to page back. New entries appear automatically.
+
+Activity covers profile changes, moves, matches and unmatches, board clears, counters, timer actions, MVP changes, and vote offs. Actions from before this log was released aren't listed.
+
+Select **Browse past results** below the queue to find finished participants. Search by name, city, or TikTok username, and filter by **Matched**, **Friends**, or **Passed**. Select a result to open its actions.
+
+## Sync status
+
+The grid refreshes automatically while it's open. The header shows when it last updated.
+
+| Status | Meaning |
+| --- | --- |
+| **Connected** | The board is up to date. |
+| **Saving…** | Your change is being saved. |
+| **Updates delayed — board may be outdated** | The board hasn't refreshed for at least ten seconds. Select **Retry sync**. |
+| **Offline — showing saved board** | Your browser is offline. The last saved board stays visible. |
+
+If a change fails to save, the board returns to its saved state and shows the reason.
 
 ## Profiles and MVPs
 
 The **Profiles** page lets you search, edit, and manage participant records and outcomes. The duplicate-review page helps review possible duplicate profiles. Deleting profiles requires the separate delete permission unless you administer the server.
 
-Use **Make MVP** when creating a profile, or **Add From Profiles** in the MVP dock, to mark standout participants. Remove an individual entry from the dock when it should no longer be an MVP. TTS and Spotify each have their own **Allow MVP Profiles** switch; placing someone on the dock does not enable those integrations by itself.
+Turn on **Make MVP** when you add or edit a profile to mark a standout participant. MVPs show a badge and appear first in the waiting queue.
 
-Unmatching sends both profiles back to **Waiting** and preserves match history.
+Select **MVPs** in the grid header to see every MVP and their current status. Select **Edit** to open a profile, or **Remove** to take away MVP status.
+
+TTS and Spotify each have their own **Allow MVP Profiles** switch. Marking someone as an MVP doesn't turn on those integrations by itself.
 
 ## Grid and timer settings
 
 Open **Speed Tracker > Settings > Grid & Timer**.
 
-| Setting | Behavior |
-| --- | --- |
-| **Grid Matching Mode** | **Two-way** shows mutual, focus-only, panel-only, and no-match states. **Focus-only** checks whether a panel participant's age range includes the focus participant. |
-| **Timer Title** | Sets the label on the default running timer overlay. Themed styles keep their own labels. |
-| **Timer Overlay Style** | Chooses the countdown design, including themed styles. |
-| **Timer End Sound** | Classic buzzer, boat horn, basketball, super alarm, or toilet flush. |
+| Setting | Applies to | Behavior |
+| --- | --- | --- |
+| **Profile font size** | Your browser | Sets the text size for age, preferred age range, and location on cards. |
+| **Layout density** | Your browser | **Comfortable** uses larger cards. **Compact** fits more cards per row. |
+| **Grid Matching Mode** | Everyone on the server | **Two-way** shows mutual, focus-only, panel-only, and no-match states. **Focus-only** checks whether a panel participant's age range includes the focus participant. |
+| **Timer Title** | Everyone on the server | Sets the label on the default running timer overlay. Themed styles keep their own labels. |
+| **Timer Overlay Style** | Everyone on the server | Chooses the countdown design. Appears only when your server has custom timer styles. |
+| **Timer End Sound** | Everyone on the server | Classic buzzer, boat horn, basketball, super alarm, or toilet flush. |
 
-Settings apply to everyone viewing the server's tracker. Copy the countdown URL from [Overlays](/features/overlays).
+The **Grid Appearance** section includes a live preview card. Its settings don't change what your teammates see. Copy the countdown URL from [Overlays](/features/overlays).
 
-The **Live Source** tab selects the same TikTok channel used by Gift Race and Chat TTS. [Timer Gifts](/features/timer-gifts) can extend a running countdown once; [Live Commands](/features/live-commands) controls access to `!timer`.
+The **Live Source** tab selects the same TikTok channel used by vote offs and Chat TTS. [Timer Gifts](/features/timer-gifts) can extend a running countdown once; [Live Commands](/features/live-commands) controls access to `!timer`.
 
 <Note>
   TikTok TTS requests are blocked while the speed dating timer is running. Finish or stop the countdown before queuing narration.
 </Note>
+
+## Troubleshooting
+
+| Symptom | Check |
+| --- | --- |
+| The header shows **Updates delayed** | Check your connection and select **Retry sync**. The board keeps showing the last saved state until it reconnects. |
+| A drop or move is rejected because the slot is occupied | Each slot holds one person. Move the current occupant first, or choose an empty slot from **Move to slot**. |
+| You can't move a matched profile | Select **Unmatch pair** first. Matched profiles stay matched until you unmatch them. |
+| **Vote off** is disabled | Select a channel in **Live Source**. Then make sure at least two panel participants have different TikTok usernames. |
+| A vote off ended but no one moved | The lowest counts were tied, or a participant was moved or edited during the round. |
+| The button stays on **Finalizing vote…** | BrewBot may be unavailable. Select the button to cancel the round. |
+| **Set up gift goal** appears instead of progress | Choose a monitored TikTok channel in [Gift Goals](/features/gift-goals) and make sure that channel is enabled. |
 
 Related tools include [Tickets](/features/tickets), [Schedule](/features/schedule), and [Blocked From Live](/features/live-blocks).

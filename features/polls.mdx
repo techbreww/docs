@@ -98,11 +98,20 @@ The dashboard organizes polls by status so you can manage active, scheduled, fai
 | Permission | Used for |
 | --- | --- |
 | **View Channel** and **Send Messages** | Posting the poll to the target channel |
-| **Send Polls** | Posting native Discord polls |
+| **Create Polls** (**Send Polls** in Discord's API) | Posting native Discord polls |
+
+The bot needs all three permissions in the channel you select. If any is missing, the poll fails and shows a **Failed** status on the dashboard.
 
 <Warning>
-  Make sure the bot has both permissions in the channel you select. If the bot cannot send messages to that channel, the poll will fail and show a **Failed** status on the dashboard.
+  BrewBot's invite does not request **Create Polls**. The bot only has it when the `@everyone` role, or another role the bot has, allows it in that channel. The [Permissions](/features/permissions) page does not check **Create Polls**, so it won't show it as missing.
 </Warning>
+
+If polls fail to post:
+
+1. In Discord, open **Server Settings > Roles** and select the bot's role.
+2. Under **Permissions**, turn on **Create Polls** and save.
+3. Open the target channel's **Edit Channel > Permissions** and make sure no role or member override denies **Create Polls** for the bot.
+4. Create the poll again in the dashboard.
 
 ---
 
@@ -116,7 +125,7 @@ The dashboard organizes polls by status so you can manage active, scheduled, fai
     No. Once a poll is posted to Discord, the question and answer options cannot be changed. You can end the poll early and create a new one.
   </Accordion>
   <Accordion title="What happens if the bot loses permissions in the target channel?">
-    The poll will fail to post and its status will show as **Failed** on the dashboard. Grant the bot the required permissions and create a new poll.
+    The poll will fail to post and its status will show as **Failed** on the dashboard. Grant the bot the [required permissions](#permissions-required) and create a new poll.
   </Accordion>
   <Accordion title="Can I use polls without premium?">
     No. Polls require an active premium subscription. See [pricing](/getting-started/billing) for plan details.
