@@ -1,6 +1,6 @@
 ---
 title: "Twitch TTS"
-description: "Read Twitch chat aloud with separate audience controls, voices, and playback."
+description: "Read Twitch chat aloud with separate audience controls, custom user voices, and playback."
 icon: "twitch"
 ---
 
@@ -8,7 +8,7 @@ import PremiumNote from '/snippets/premium-note.mdx';
 
 <PremiumNote />
 
-Twitch TTS reads messages from a connected Twitch broadcaster's chat. It requires premium and server admin access on team servers. Its source, settings, audio queue, and overlay are separate from [TikTok TTS](/features/tts).
+Twitch TTS reads messages from a connected Twitch broadcaster's chat. It requires premium and server admin access on team servers. Its source, settings, audio queue, and overlay are separate from [TikTok TTS](/features/tts). The default voice is shared with TikTok TTS.
 
 Twitch TTS doesn't have its own menu item. Open **Live Tools > TTS Settings** and select the **Twitch TTS** tab.
 
@@ -20,7 +20,7 @@ Twitch TTS doesn't have its own menu item. Open **Live Tools > TTS Settings** an
 2. Search for a channel in **Source Library** and select **Add source**.
 3. Select **Connect channel** and authorize as the matching broadcaster.
 4. Select that source for TTS. You can save several sources, but only one is active for TTS at a time.
-5. Enable Twitch TTS and configure the trigger, audience, and voice.
+5. Enable Twitch TTS and configure the trigger and audience. The voice is set in the **Voice** card at the top of the page.
 6. Copy the overlay URL into OBS or select **Open Browser Player**.
 
 Sources are shared with [Twitch Monitor](/features/twitch-monitor) and Integrations. Reconnect the broadcaster if the source reports an authorization error or requests additional Monitor permissions. The source library also lets you disconnect, enable/disable, or remove sources.
@@ -44,7 +44,9 @@ Sources are shared with [Twitch Monitor](/features/twitch-monitor) and Integrati
 
 ## Voice settings
 
-Choose **Single voice** or **Random voices**, and select **Eleven Multilingual v2** or **Eleven v3**. Random mode retains the saved single voice as a fallback. Assign **Custom User Voices** to give specific Twitch usernames a fixed voice that overrides the default or random mode.
+Twitch TTS uses the shared **Voice** card at the top of **Live Tools > TTS Settings**, the same voice, mode (**Single voice** or **Random voices**), and model as [TikTok TTS](/features/tts#voices-and-audio-tags). Changing it there changes it for both platforms.
+
+On the **Twitch TTS** tab, assign **Custom User Voices** to give specific Twitch usernames a fixed voice that overrides the shared voice or random mode.
 
 See [voice models and audio tags](/features/tts#voices-and-audio-tags) for expressive speech examples.
 

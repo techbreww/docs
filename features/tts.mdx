@@ -18,11 +18,11 @@ TikTok Chat TTS reads eligible live-chat messages aloud through an OBS browser s
 1. Add a channel to [TikTok Chat Monitor](/features/live-monitor).
 2. Open **Live Tools > TTS Settings > TikTok TTS > Live Source** and select the channel.
 3. Open **TikTok Chat TTS** and turn on **Enable Chat TTS**.
-4. Choose the trigger mode, audience, voice, and voice model.
+4. Choose the trigger mode and audience, then set the voice and voice model in the **Voice** card at the top of the page.
 5. Copy the **Hidden OBS Browser Source** URL into OBS, or open the browser player.
 6. Send an eligible message in the selected live chat to test playback.
 
-The live source is shared with Speed Tracker, Gift Race, [Gift Sounds](/features/gift-sounds), [Sticker Sounds](/features/sticker-sounds), and the TikTok [`!volume` command](/features/volume#volume-chat-command). Changing it changes the source those tools use too. [Twitch TTS](/features/twitch-tts) has separate settings, a separate source, and a separate queue.
+The live source is shared with Speed Tracker, Gift Race, [Gift Sounds](/features/gift-sounds), [Sticker Sounds](/features/sticker-sounds), and the TikTok [`!volume` command](/features/volume#volume-chat-command). Changing it changes the source those tools use too. [Twitch TTS](/features/twitch-tts) has separate settings, a separate source, and a separate queue, but uses the same voice.
 
 ## Trigger modes
 
@@ -50,7 +50,9 @@ The selected trigger mode still applies to Heart Me access. **Heart Me Gift TTS*
 
 ## Voices and audio tags
 
-Choose **Single voice** for a fixed voice or **Random voices** to select a premade voice per message. The saved single voice remains a fallback. **Custom User Voices** assigns a fixed voice to a TikTok username and takes priority over the default or random mode.
+The **Voice** card at the top of **Live Tools > TTS Settings** applies to both TikTok and [Twitch TTS](/features/twitch-tts). Choose **Single voice** for a fixed voice or **Random voices** to select a premade voice per message. The saved single voice remains a fallback. Select **Browse** to search voices by name, accent, or style and play a short sample before choosing.
+
+**Custom User Voices**, on the **TikTok Chat TTS** tab, assigns a fixed voice to a TikTok username and takes priority over the shared voice or random mode.
 
 | Model | Use |
 | --- | --- |
