@@ -1,0 +1,50 @@
+---
+title: "Govee Cloud"
+description: "Connect a Govee Cloud account to a server and check which devices BrewBot can see."
+icon: "lightbulb"
+---
+
+**Configuration > Integrations** can connect one Govee Cloud account to each server. Connecting only verifies your key and counts your devices. It does not change your lights or send device commands.
+
+{/* TODO: Add screenshot of the Govee Cloud card on the Integrations page */}
+
+## Get a Govee Cloud API key
+
+1. Open the **Govee Home** mobile app and go to **Settings**.
+2. Select **Apply for API Key**.
+3. Fill in your details, describe how you plan to use the API, and submit.
+4. Check your email for Govee's approval. The email contains your API key.
+
+Govee's [official instructions](https://developer.govee.com/reference/apply-you-govee-api-key) include screenshots.
+
+<Warning>
+The API GUID shown in **Govee Desktop** is not a Cloud API key and will be rejected. Govee Desktop does not need to be running.
+</Warning>
+
+Generating a new key in Govee Home invalidates your previous key. Govee's free API is limited to non-profit use, so check Govee's terms for your intended use.
+
+## Connect
+
+1. Open **Configuration > Integrations** and find **Govee Cloud**.
+2. Paste your key into **Cloud API key**.
+3. Select **Verify & connect**.
+
+BrewBot checks the key with Govee before saving it. The card then shows when the key was last verified and how many devices were found. Zero devices is a valid result; add compatible devices in Govee Home, then select **Refresh devices**.
+
+The key is encrypted for this server and is never shown again. If BrewBot hasn't been added to the server yet, add the bot first.
+
+## Refresh, replace, or disconnect
+
+| Action | What it does |
+| --- | --- |
+| **Refresh devices** | Checks the saved key with Govee again and updates the device count. You don't need to re-enter the key. |
+| **Verify & replace key** | Verifies a new key and replaces the saved one. If the new key is rejected, the saved key is kept. |
+| **Disconnect** | Removes the saved key from BrewBot. It does not revoke the key at Govee. |
+
+The device count and verification time reflect the last successful save or refresh. BrewBot does not monitor the connection continuously.
+
+If a refresh says Govee no longer accepts the saved key, you probably generated a new key in Govee Home. Paste the new key to replace the old one.
+
+## Who can manage it
+
+Personal server owners, team admins, and designated server admins can connect, refresh, replace, and disconnect Govee. Other members with access to the server can see the connection status but not the key. See [Permissions](/features/permissions).
