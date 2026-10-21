@@ -1,0 +1,85 @@
+---
+title: "Light Effects"
+sidebarTitle: "Light Effects"
+description: "Control Govee lights and switch to a lighting scene when viewers send TikTok gifts."
+icon: "lightbulb"
+---
+
+import PremiumNote from '/snippets/premium-note.mdx';
+
+<PremiumNote />
+
+Light Effects lets you control your Govee lights from the dashboard and change them to a scene when a viewer sends a TikTok gift. For example, Rose could switch your desk light to Rainbow. Light Effects is in **beta**. Which lights and scenes you can use depends on your Govee model.
+
+Open **Live Tools > Light Effects**. You need access to the server and premium live tools. It works on personal and team servers; on team servers, members need [Speed Dating access](/getting-started/teams#feature-permissions) to open the page.
+
+Personal server owners, team admins, and designated server admins can control lights and edit gift effects. Other members with access see your lights, settings, and gift effects as view only.
+
+{/* TODO: Add screenshot of the Light Effects page with lights and gift effects */}
+
+## Before you start
+
+1. Connect your Govee account in [Govee Cloud](/integrations/govee).
+2. Add the TikTok account you stream from in [TikTok Chat Monitor](/features/live-monitor), and make sure monitoring is turned on.
+
+Only lights that Govee's cloud API supports show up. If a light is missing, add it in Govee Home, then select **Refresh devices** on this page.
+
+## Control your lights
+
+**Your lights** lists your Govee lights. Select **Turn on** or **Turn off** to switch a light. Lights that don't support power control from Govee's cloud have these buttons turned off.
+
+Power commands don't change your gift effects. A success message means Govee accepted the command. The light itself may take a moment to respond.
+
+## Connect a gift to a scene
+
+1. In **Connect a gift to a scene**, choose a **TikTok gift**.
+2. Choose a **Light**. Only lights that support scenes are listed.
+3. Choose a **Scene**. Built-in scenes come from Govee; DIY scenes are ones you made in Govee Home.
+4. Select **Save gift effect**.
+
+Each gift uses one light and one scene. Saving a gift again replaces its previous scene.
+
+<Tip>
+  To use your own animation, create a DIY scene in Govee Home, then select **Refresh devices** so it appears in the **Scene** menu.
+</Tip>
+
+## Turn on gift automation
+
+1. In **Gift automation**, choose the **TikTok account** to listen to.
+2. Turn on **Enable gift effects**.
+
+Both the main switch and the switch for each gift effect must be on. Gift effects run separately from overlays and [Gift Sounds](/features/gift-sounds), so they work even without OBS.
+
+Changing the TikTok account pauses automation. Turn **Enable gift effects** back on after choosing the new account. After you turn automation on, it can take up to 15 seconds before gifts start changing your lights.
+
+## How gifts trigger scenes
+
+- Each gift triggers its scene once. A gift streak triggers once, when the streak finishes, no matter how many gifts were in it.
+- Gifts sent to a co-host or guest instead of the host are skipped.
+- The same gift can trigger at most once every 5 seconds.
+- Your lights take at most one command per second, and that limit is shared with the dashboard's power and test buttons. Gifts that arrive while your lights are busy are skipped, not queued.
+- A scene stays on until something else changes the light. BrewBot doesn't switch it back automatically.
+- Failed commands aren't retried, because Govee may already have applied them.
+
+## Test, pause, or remove a gift effect
+
+Each saved effect in **Gift effects** shows the light, the scene, and the last time a gift tried to trigger it.
+
+| Action | What it does |
+| --- | --- |
+| Switch | Turns that gift effect on or off without deleting it. |
+| **Test scene** | Sends the scene to your real light now, even if gift automation is paused. A successful test clears the effect's last error. |
+| **Remove** | Deletes the gift effect. |
+
+## Troubleshooting
+
+| Symptom | Check |
+| --- | --- |
+| A gift didn't change the light | Confirm the TikTok account, **Enable gift effects**, and the gift's switch are on. Then check whether the same gift fired in the last 5 seconds or another command was just sent. |
+| **Govee did not confirm this effect** | Check that the light is online in Govee Home and that your Govee key still works, then select **Test scene**. |
+| **This light is not in the connected Govee account** | You replaced your Govee key with one from another account, or the light was removed in Govee Home. Choose a light and scene again for that gift. |
+| No scenes for a light | Govee reports no scenes for that model. Try another light, or create a DIY scene in Govee Home and refresh devices. |
+| Govee is rate limiting requests | Wait a minute. Other apps that use the same Govee key share Govee's limit. |
+| Gift automation turned off by itself | Saving a new key in [Govee Cloud](/integrations/govee) pauses automation. Turn it back on after you check your gift effects. |
+
+Disconnecting Govee Cloud deletes all Light Effects gift effects for the server.
