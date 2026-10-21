@@ -5,6 +5,37 @@ icon: "clock-rotate-left"
 rss: true
 ---
 
+<Update label="October 21, 2026" tags={["Live tools", "Dashboard"]}>
+  ## Light Effects and Govee Cloud
+
+  - New [Govee Cloud](/integrations/govee) integration under **Configuration > Integrations**. Connect a Govee Cloud API key to see which of your devices BrewBot can reach.
+  - New [Light Effects](/features/light-effects) (beta) under **Live Tools**. Turn Govee lights on and off from the dashboard, and switch a light to a built-in or DIY scene when a viewer sends a TikTok gift. It's a premium feature.
+  - Gift scenes can set a brightness and a scene length from 5 to 120 seconds. When time is up, the light switches back to its resting look, which you set once per light in **Your lights**.
+  - BrewBot keeps its Govee requests under Govee's daily limit of 10,000 per account, stopping at 9,999 until midnight UTC. Light Effects shows how many requests BrewBot has sent today.
+  - The **Integrations** page has a new layout: an overview of every connection at the top, matching panels for each service, and save results that pop up in the corner.
+</Update>
+
+<Update label="October 20, 2026" tags={["Live tools", "Dashboard"]}>
+  ## Live tools on personal servers, one TTS voice, and a new onboarding
+
+  - [Live tools](/features/live-tools) now work on personal servers. Gift Goals, Rate Me, Game Requests, Gift Sounds, Sticker Sounds, Volume, Overlays, TTS Settings, and TTS Story are available to the owner with premium. Speed Tracker and the tools built around it stay team-only.
+  - TikTok and Twitch [TTS](/features/tts) now share one default voice, chosen in the new **Voice** panel on **TTS Settings**. Custom voices for specific viewers still apply per platform.
+  - A new voice browser lets you search and filter voices and play previews without using TTS credits. It includes the new **Dave Brewbot** voice.
+  - **TTS Settings** has a new layout, with TikTok and Twitch side by side.
+  - [Onboarding](/getting-started/onboarding) links your Discord account in one step. If you're asked to confirm it's you first, you can do that without leaving the page.
+  - Onboarding now asks whether you're setting up a **Personal** or **Team** workspace. You can also accept a pending team invite there.
+  - Signing in from a link, such as Discord's **Add App** button, now takes you back to that page instead of the dashboard home.
+</Update>
+
+<Update label="October 19, 2026" tags={["Server management", "Moderation"]}>
+  ## Announcement channels and custom bot recovery
+
+  - [TikTok alerts](/features/social-alerts), [welcome messages](/features/welcome-messages), [captcha](/features/captcha-verification) logs, and [mod logs](/features/mod-logs) now post in announcement channels as well as text channels.
+  - BrewBot's invite now asks for the **Create Polls** permission that [Polls](/features/polls) needs. On existing servers, [Permissions](/features/permissions) lists it as missing until you re-authorize the bot.
+  - A [custom bot](/features/custom-bot) that fails to sign in three times is turned off, and the dashboard shows its owner a notice linking to setup. Finishing setup again turns it back on.
+  - Fixed a dashboard crash after switching between your personal workspace and a team.
+</Update>
+
 <Update label="October 18, 2026" tags={["Live tools"]}>
   ## Per-category volume and `!volume`
 
