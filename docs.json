@@ -108,6 +108,7 @@
               "features/bot-personalizer",
               "features/custom-bot",
               "integrations/platform-connections",
+              "integrations/govee",
               "integrations/stream-deck",
               "features/permissions",
               "integrations/api-logs",
