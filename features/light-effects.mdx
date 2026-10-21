@@ -9,13 +9,11 @@ import PremiumNote from '/snippets/premium-note.mdx';
 
 <PremiumNote />
 
-Light Effects lets you control your Govee lights from the dashboard and change them to a scene when a viewer sends a TikTok gift. For example, Rose could switch your desk light to Rainbow. Light Effects is in **beta**. Which lights and scenes you can use depends on your Govee model.
+Light Effects lets you control your Govee lights from the dashboard and change them to a scene when a viewer sends a TikTok gift. For example, Rose could switch your desk light to Rainbow at full brightness for 15 seconds, then back to a dim orange. Light Effects is in **beta**. Which lights and scenes you can use depends on your Govee model.
 
 Open **Live Tools > Light Effects**. You need access to the server and premium live tools. It works on personal and team servers; on team servers, members need [Speed Dating access](/getting-started/teams#feature-permissions) to open the page.
 
 Personal server owners, team admins, and designated server admins can control lights and edit gift effects. Other members with access see your lights, settings, and gift effects as view only.
-
-{/* TODO: Add screenshot of the Light Effects page with lights and gift effects */}
 
 ## Before you start
 
@@ -28,16 +26,43 @@ Only lights that Govee's cloud API supports show up. If a light is missing, add 
 
 **Your lights** lists your Govee lights. Select **Turn on** or **Turn off** to switch a light. Lights that don't support power control from Govee's cloud have these buttons turned off.
 
-Power commands don't change your gift effects. A success message means Govee accepted the command. The light itself may take a moment to respond.
+Power commands don't change your gift effects. A success message means Govee accepted the command. The light itself may take a moment to respond. Turning a light on or off also cancels a pending switch-back on that light.
+
+<Frame>
+  <img className="block dark:hidden" src="/images/light-effects/your-lights-light.png" alt="Your lights panel with the resting look editor open for Desk light: solid orange color at 30% brightness" />
+  <img className="hidden dark:block" src="/images/light-effects/your-lights-dark.png" alt="Your lights panel with the resting look editor open for Desk light: solid orange color at 30% brightness" />
+</Frame>
+
+## Set a resting look
+
+A resting look is what a light switches back to after a timed gift scene. It belongs to the light, not to a gift: set it once, and every gift effect on that light with a scene length switches back to it. You need one before you can give a gift effect a scene length.
+
+1. In **Your lights**, select **Resting look** next to the light.
+2. Choose a **Resting look**: a **Scene** or a **Solid color**. Choose **No scene or color** to only change the brightness.
+3. Optionally choose a **Brightness**.
+4. Select **Save resting look**.
+
+Each light's row shows its resting look, for example **Resting: #FF8800 · 30%**. To remove one, open **Resting look**, choose **No scene or color** with brightness **Don't change**, then select **Clear resting look**.
+
+<Note>
+  BrewBot switches back to the resting look you set, not to whatever the light was showing before the gift. Govee doesn't report which scene a light is running, so BrewBot can't restore it.
+</Note>
 
 ## Connect a gift to a scene
 
 1. In **Connect a gift to a scene**, choose a **TikTok gift**.
 2. Choose a **Light**. Only lights that support scenes are listed.
 3. Choose a **Scene**. Built-in scenes come from Govee; DIY scenes are ones you made in Govee Home.
-4. Select **Save gift effect**.
+4. Optionally choose a **Brightness** for the scene. **Don't change** keeps the light's current brightness.
+5. Choose a **Scene length**: **Until something else changes it**, or 5 to 120 seconds followed by the light's resting look.
+6. Select **Save gift effect**.
 
-Each gift uses one light and one scene. Saving a gift again replaces its previous scene.
+Each gift uses one light and one scene. Saving a gift again replaces its previous settings.
+
+<Frame>
+  <img className="block dark:hidden" src="/images/light-effects/gift-scene-light.png" alt="Connect a gift to a scene form: Rose on Desk light with the Rainbow scene at 100% brightness for 15 seconds, then the light's resting look" />
+  <img className="hidden dark:block" src="/images/light-effects/gift-scene-dark.png" alt="Connect a gift to a scene form: Rose on Desk light with the Rainbow scene at 100% brightness for 15 seconds, then the light's resting look" />
+</Frame>
 
 <Tip>
   To use your own animation, create a DIY scene in Govee Home, then select **Refresh devices** so it appears in the **Scene** menu.
@@ -52,23 +77,44 @@ Both the main switch and the switch for each gift effect must be on. Gift effect
 
 Changing the TikTok account pauses automation. Turn **Enable gift effects** back on after choosing the new account. After you turn automation on, it can take up to 15 seconds before gifts start changing your lights.
 
+<Frame>
+  <img className="block dark:hidden" src="/images/light-effects/automation-light.png" alt="Gift automation panel with gift effects on for @streamer and 214 of 9,999 Govee requests used today" />
+  <img className="hidden dark:block" src="/images/light-effects/automation-dark.png" alt="Gift automation panel with gift effects on for @streamer and 214 of 9,999 Govee requests used today" />
+</Frame>
+
 ## How gifts trigger scenes
 
 - Each gift triggers its scene once. A gift streak triggers once, when the streak finishes, no matter how many gifts were in it.
 - Gifts sent to a co-host or guest instead of the host are skipped.
 - The same gift can trigger at most once every 5 seconds.
 - Your lights take at most one command per second, and that limit is shared with the dashboard's power and test buttons. Gifts that arrive while your lights are busy are skipped, not queued.
-- A scene stays on until something else changes the light. BrewBot doesn't switch it back automatically.
-- Failed commands aren't retried, because Govee may already have applied them.
+- A scene with a brightness sends two commands: the scene, then the brightness.
+- With a scene length, the light switches back to its resting look when the time is up. If another gift changes the same light first, the timer restarts from that gift. A gift without a scene length, or a manual **Turn on** or **Turn off**, cancels the switch-back.
+- Switching back still happens if BrewBot restarts during your stream. If your lights are busy at that moment, it waits a second instead of being skipped.
+- Without a scene length, a scene stays on until something else changes the light.
+- Failed gift commands aren't retried, because Govee may already have applied them. A failed switch-back is tried up to three times in total before a warning appears on the light.
+
+## Govee's daily limit
+
+Govee allows 10,000 requests per account each day. To stay under it, BrewBot counts every request it sends with your key, including loading lights and scenes, tests, gifts, and switch-backs, and stops at 9,999 until midnight UTC. **Gift automation** shows how many requests BrewBot has sent today.
+
+- A timed gift only runs if its switch-back also fits under the limit, so a light is never left on a gift scene because the limit ran out.
+- Servers that use the same Govee key share one count.
+- Other apps that use your key also count toward Govee's limit, but BrewBot can't see them. If you use the key elsewhere, Govee may still limit you before BrewBot's count reaches 9,999.
 
 ## Test, pause, or remove a gift effect
 
-Each saved effect in **Gift effects** shows the light, the scene, and the last time a gift tried to trigger it.
+Each saved effect in **Gift effects** shows the light, the scene, its brightness and scene length, and the last time a gift tried to trigger it.
+
+<Frame>
+  <img className="block dark:hidden" src="/images/light-effects/gift-effects-light.png" alt="Gift effects list: Rose switches Desk light to Rainbow at 100% for 15 seconds; Galaxy sets Shelf strip to Gift celebration until something else changes it" />
+  <img className="hidden dark:block" src="/images/light-effects/gift-effects-dark.png" alt="Gift effects list: Rose switches Desk light to Rainbow at 100% for 15 seconds; Galaxy sets Shelf strip to Gift celebration until something else changes it" />
+</Frame>
 
 | Action | What it does |
 | --- | --- |
 | Switch | Turns that gift effect on or off without deleting it. |
-| **Test scene** | Sends the scene to your real light now, even if gift automation is paused. A successful test clears the effect's last error. |
+| **Test scene** | Sends the scene and brightness to your real light now, even if gift automation is paused. If the effect has a scene length, the light switches back afterwards, just like a real gift. A successful test clears the effect's last error. |
 | **Remove** | Deletes the gift effect. |
 
 ## Troubleshooting
@@ -80,6 +126,10 @@ Each saved effect in **Gift effects** shows the light, the scene, and the last t
 | **This light is not in the connected Govee account** | You replaced your Govee key with one from another account, or the light was removed in Govee Home. Choose a light and scene again for that gift. |
 | No scenes for a light | Govee reports no scenes for that model. Try another light, or create a DIY scene in Govee Home and refresh devices. |
 | Govee is rate limiting requests | Wait a minute. Other apps that use the same Govee key share Govee's limit. |
+| **BrewBot paused Govee requests for this key until midnight UTC** | BrewBot's daily count for your key reached 9,999. Lights and gifts work again after midnight UTC. |
+| **Set this light's resting look first** | A scene length needs something to switch back to. Select **Resting look** next to that light in **Your lights**, save one, then save the gift effect. |
+| Light didn't switch back | Check for a warning under **Your lights**. Make sure the light is online in Govee Home and its resting look is still set. A manual power command or an untimed gift cancels the switch-back. |
+| Brightness is greyed out | Govee reports no brightness control for that light. |
 | Gift automation turned off by itself | Saving a new key in [Govee Cloud](/integrations/govee) pauses automation. Turn it back on after you check your gift effects. |
 
 Disconnecting Govee Cloud deletes all Light Effects gift effects for the server.
