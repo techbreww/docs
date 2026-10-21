@@ -1,10 +1,10 @@
 ---
 title: "Govee Cloud"
-description: "Connect a Govee Cloud account to a server and check which devices BrewBot can see."
+description: "Connect a Govee Cloud account to a server so Light Effects can control your lights."
 icon: "lightbulb"
 ---
 
-**Configuration > Integrations** can connect one Govee Cloud account to each server. Connecting only verifies your key and counts your devices. It does not change your lights or send device commands.
+**Configuration > Integrations** can connect one Govee Cloud account to each server. Connecting only verifies your key and counts your devices. It does not change your lights. To control lights and trigger scenes from TikTok gifts, use [Light Effects](/features/light-effects) after you connect.
 
 {/* TODO: Add screenshot of the Govee Cloud card on the Integrations page */}
 
@@ -38,12 +38,14 @@ The key is encrypted for this server and is never shown again. If BrewBot hasn't
 | Action | What it does |
 | --- | --- |
 | **Refresh devices** | Checks the saved key with Govee again and updates the device count. You don't need to re-enter the key. |
-| **Verify & replace key** | Verifies a new key and replaces the saved one. If the new key is rejected, the saved key is kept. |
-| **Disconnect** | Removes the saved key from BrewBot. It does not revoke the key at Govee. |
+| **Verify & replace key** | Verifies a new key and replaces the saved one. If the new key is rejected, the saved key is kept. Saving a key pauses [Light Effects](/features/light-effects) gift automation. |
+| **Disconnect** | Removes the saved key and all Light Effects gift effects from BrewBot. It does not revoke the key at Govee. |
 
 The device count and verification time reflect the last successful save or refresh. BrewBot does not monitor the connection continuously.
 
-If a refresh says Govee no longer accepts the saved key, you probably generated a new key in Govee Home. Paste the new key to replace the old one.
+If a refresh says Govee no longer accepts the saved key, you probably generated a new key in Govee Home. Paste the new key to replace the old one, then turn gift automation back on in Light Effects.
+
+If the new key belongs to a different Govee account, gift effects saved for the old account's lights are flagged in Light Effects. Choose a light and scene again for those gifts.
 
 ## Who can manage it
 
