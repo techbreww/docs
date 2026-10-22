@@ -15,6 +15,13 @@ Open **Live Tools > Light Effects**. You need access to the server and premium l
 
 Personal server owners, team admins, and designated server admins can control lights and edit gift effects. Other members with access see your lights, settings, and gift effects as view only.
 
+The strip at the top of the page shows whether gift automation is on and for which account, how many lights and gift effects you have, and how many Govee requests BrewBot has sent today.
+
+<Frame>
+  <img className="block dark:hidden" src="/images/light-effects/overview-light.png" alt="Status strip: gift automation on for @streamer, 2 lights with 1 resting look, 2 gift effects on, and 214 of 9,999 Govee requests used today" />
+  <img className="hidden dark:block" src="/images/light-effects/overview-dark.png" alt="Status strip: gift automation on for @streamer, 2 lights with 1 resting look, 2 gift effects on, and 214 of 9,999 Govee requests used today" />
+</Frame>
+
 ## Before you start
 
 1. Connect your Govee account in [Govee Cloud](/integrations/govee).
@@ -78,8 +85,8 @@ Both the main switch and the switch for each gift effect must be on. Gift effect
 Changing the TikTok account pauses automation. Turn **Enable gift effects** back on after choosing the new account. After you turn automation on, it can take up to 15 seconds before gifts start changing your lights.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/light-effects/automation-light.png" alt="Gift automation panel with gift effects on for @streamer and 214 of 9,999 Govee requests used today" />
-  <img className="hidden dark:block" src="/images/light-effects/automation-dark.png" alt="Gift automation panel with gift effects on for @streamer and 214 of 9,999 Govee requests used today" />
+  <img className="block dark:hidden" src="/images/light-effects/automation-light.png" alt="Gift automation panel with gift effects on for @streamer" />
+  <img className="hidden dark:block" src="/images/light-effects/automation-dark.png" alt="Gift automation panel with gift effects on for @streamer" />
 </Frame>
 
 ## How gifts trigger scenes
@@ -96,7 +103,9 @@ Changing the TikTok account pauses automation. Turn **Enable gift effects** back
 
 ## Govee's daily limit
 
-Govee allows 10,000 requests per account each day. To stay under it, BrewBot counts every request it sends with your key, including loading lights and scenes, tests, gifts, and switch-backs, and stops at 9,999 until midnight UTC. **Gift automation** shows how many requests BrewBot has sent today.
+Govee allows 10,000 requests per account each day. To stay under it, BrewBot counts every request it sends with your key, including loading lights and scenes, tests, gifts, and switch-backs, and stops at 9,999 until midnight UTC.
+
+The **Govee requests today** tile at the top of the page tracks the count with a bar. It turns amber at 80% and shows how many requests are left. At 9,999 it turns red and shows **Paused until midnight UTC**.
 
 - A timed gift only runs if its switch-back also fits under the limit, so a light is never left on a gift scene because the limit ran out.
 - Servers that use the same Govee key share one count.
