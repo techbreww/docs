@@ -97,6 +97,7 @@
                   "features/twitch-tts",
                   "features/live-commands",
                   "features/tts-story",
+                  "features/tts-audio-tags",
                   "integrations/spotify",
                   "integrations/apple-music"
                 ]

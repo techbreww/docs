@@ -1,0 +1,155 @@
+---
+title: "TTS audio tags"
+sidebarTitle: "TTS Audio Tags"
+description: "Direct emotion, delivery, pacing, accents, and reactions with Eleven v3 audio tags."
+icon: "tags"
+---
+
+import PremiumNote from '/snippets/premium-note.mdx';
+
+<PremiumNote />
+
+Audio tags are short directions in square brackets that change how the **Eleven v3** voice model speaks. Use them to add emotion, whispering or shouting, laughter, pauses, accents, and character voices to text-to-speech.
+
+Audio tags work anywhere BrewBot reads text with the shared TTS voice:
+
+- [TikTok Chat TTS](/features/tts) messages and announcements
+- [Twitch TTS](/features/twitch-tts) messages
+- [TTS Story](/features/tts-story) narration
+
+## Turn on Eleven v3
+
+1. Open **Live Tools > TTS Settings**.
+2. In the **Voice** card, set the voice model to **Eleven v3**.
+3. Add tags to chat messages, announcements, or story text.
+
+With **Eleven Multilingual v2**, tags aren't performed and may be read aloud or ignored.
+
+## How to write tags
+
+Put a tag directly before the words it should affect. You can change direction several times in one message, even mid-sentence.
+
+```text
+// [whispering] I have a secret. [laughs] We reached the goal!
+```
+
+- Tags use `[square brackets]`.
+- Tags are written in plain English. There is no fixed list, so you can describe a delivery in your own words.
+- Combine directions in one tag with commas, such as `[quietly, after a pause]` or `[angry, shouting]`.
+- Tags count toward message and announcement character limits.
+- A message needs spoken words besides its tags. A message made only of tags, such as `// [laughs]`, is skipped.
+
+<Note>
+  Tags are prompts, not guaranteed effects. Results vary by voice and by the surrounding text, and not every tag works with every voice. Test a tag with your chosen voice before relying on it live.
+</Note>
+
+## Emotions
+
+Change how the speaker feels.
+
+| Mood | Tags |
+| --- | --- |
+| Happy and positive | `[happy]` `[happily]` `[excited]` `[cheerfully]` `[playfully]` `[curious]` `[mischievously]` `[awe]` `[surprised]` `[calm]` |
+| Sad and negative | `[sad]` `[sorrowful]` `[crying]` `[angry]` `[frustrated]` `[annoyed]` `[upset]` `[regretful]` `[resigned tone]` `[disappointed]` `[bitter]` |
+| Fear and nerves | `[nervous]` `[nervously]` `[hesitant]` `[panicking]` `[cautiously]` `[worried]` `[scared]` `[anxious]` `[timidly]` `[flustered]` `[exasperated]` |
+| Attitude | `[sarcastic]` `[sarcastically]` `[cheeky]` `[dismissive]` `[deadpan]` `[flatly]` `[casual]` `[dramatic]` `[dramatically]` `[whiny]` `[matter-of-fact]` `[suspicious tone]` |
+
+## Delivery and volume
+
+Control how loud and how forcefully something is said.
+
+`[whispers]` `[whispering]` `[quietly]` `[softly]` `[shouts]` `[shouting]` `[loudly]` `[screaming]` `[yelling]` `[understated]` `[emphasized]` `[stress on next word]` `[deliberate]` `[neutral tone]` `[deep voice]` `[robotic tone]`
+
+## Laughter and reactions
+
+Add laughs, breaths, and other non-verbal sounds.
+
+| Type | Tags |
+| --- | --- |
+| Laughter | `[laughs]` `[laughing]` `[chuckles]` `[laughs harder]` `[laughs hard]` `[starts laughing]` `[big laugh]` `[giggle]` `[light chuckle]` `[laughs wickedly]` `[evil laugh]` `[wheezing]` `[snorts]` `[woo]` |
+| Breathing | `[sighs]` `[sigh]` `[sighing]` `[sigh of relief]` `[exhales]` `[breathes]` `[gasps]` `[gasp]` |
+| Throat and swallowing | `[gulp]` `[gulps]` `[swallows]` `[clears throat]` |
+
+## Pacing and pauses
+
+Shape timing for conversation or narration.
+
+`[pause]` `[pauses]` `[long pause]` `[continues after a beat]` `[hesitates]` `[stammers]` `[rushed]` `[rapid-fire]` `[fast-paced]` `[slows down]` `[slowly]` `[drawn out]` `[repeats]` `[breathes]` `[deliberate]`
+
+<Tip>
+  Eleven v3 doesn't support SSML break tags such as `<break time="1s" />`. Use `[pause]` or `[long pause]`, or punctuation such as ellipses (`...`) and line breaks.
+</Tip>
+
+## Accents
+
+Change pronunciation and speaking style without translating the words.
+
+`[American accent]` `[British accent]` `[Australian accent]` `[Irish accent]` `[Scottish accent]` `[Southern US accent]` `[New York accent]` `[Indian English]` `[French accent]` `[German accent]` `[Spanish accent]` `[Italian accent]` `[Russian accent]` `[strong French accent]` `[thick Irish accent]`
+
+Use the pattern `[strong X accent]` or `[thick X accent]` to try other accents.
+
+## Character voices
+
+Give the voice a persona or acting style.
+
+`[pirate voice]` `[evil scientist voice]` `[childlike tone]` `[deep voice]` `[robotic tone]` `[fantasy narrator]` `[sci-fi AI voice]` `[classic film noir]` `[dramatic]` `[sarcastically]` `[matter-of-fact]` `[whiny]`
+
+## Conversation and interruptions
+
+Direct turn-taking when a message or story reads like a conversation.
+
+`[interrupting]` `[overlapping]` `[cuts in]` `[interjecting]` `[jumping in]` `[starting to speak]` `[hesitates]` `[fast-paced]` `[flustered]` `[casual]`
+
+## Sound effects
+
+`[applause]` `[clapping]` `[gunshot]` `[explosion]` `[fart]` `[sings]` `[woo]` `[swallows]` `[gulps]`
+
+<Warning>
+  Sound effect tags are experimental and vary a lot between voices. For a specific, repeatable sound, use [Gift Sounds](/features/gift-sounds) or [Sticker Sounds](/features/sticker-sounds) instead.
+</Warning>
+
+## Combined tags
+
+Combine several directions in one tag for a more specific performance. These are starting points to experiment with, not presets.
+
+```text
+[whispering, nervous]
+[low, gravelly voice]
+[angry, shouting]
+[softly, sorrowful]
+[excited, laughing]
+[slowly, dramatically]
+[sarcastic, playful]
+[tired, frustrated]
+[quietly, with controlled fear]
+```
+
+## Example script
+
+This works well as a [TTS Story](/features/tts-story) or announcement:
+
+```text
+[excited] Welcome to TeamBrew!
+
+[chuckles] Oh, you thought this was going to be easy?
+
+[whispers] Well, I've got a little secret for you...
+
+[long pause]
+
+[shouting] THE BATTLE STARTS NOW!
+
+[laughs wickedly]
+
+[calmly] Good luck. You're going to need it.
+```
+
+## Troubleshooting
+
+| Symptom | Check |
+| --- | --- |
+| The tag is read aloud | Confirm the voice model in the **Voice** card is **Eleven v3**. Check that the tag uses square brackets, not parentheses or braces. |
+| The tag has no effect | Try a different voice, a more common tag, or more text after the tag. Short messages give the model less to work with. |
+| A sound effect sounds wrong | Sound effect tags are experimental. Use [Gift Sounds](/features/gift-sounds) or [Sticker Sounds](/features/sticker-sounds) for exact clips. |
+| A tag-only message isn't read | Messages with no words left after removing tags are skipped. Add text after the tag. |
+| A chat message with tags isn't read | Tags don't change eligibility. Check the trigger mode, `//` prefix, audience, and blocked list in [TikTok Chat TTS](/features/tts#troubleshooting) or [Twitch TTS](/features/twitch-tts). |
