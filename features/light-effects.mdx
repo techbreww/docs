@@ -55,6 +55,29 @@ Each light's row shows its resting look, for example **Resting: #FF8800 · 30%**
   BrewBot switches back to the resting look you set, not to whatever the light was showing before the gift. Govee doesn't report which scene a light is running, so BrewBot can't restore it.
 </Note>
 
+### Set one resting look for all your lights
+
+With two or more lights, you don't have to set each one separately. **Set for all lights** saves the same resting look to every light you check.
+
+1. In **Your lights**, select **Set for all lights**.
+2. Choose a **Resting look** and, optionally, a **Brightness**, the same way as for one light.
+3. Under **Apply to**, every light starts checked. Uncheck any light that should keep its own resting look, or use **Uncheck all** and pick a few.
+4. Select **Save for** followed by the number of lights.
+
+The resting look replaces the current one on every checked light. Unchecked lights keep theirs, and you can still change any single light afterwards with its own **Resting look** button. To clear many at once, choose **No scene or color** with brightness **Don't change**.
+
+Lights that can't show the look you chose are greyed out and skipped:
+
+- **Solid color** skips lights without color support. Lights without brightness control get the color only.
+- **Scene** works for one **Light model** at a time, because each Govee model has its own scenes. Choose the model, then the scene; lights of other models are skipped. Repeat for each model you own.
+- **No scene or color** with a brightness skips lights without brightness control.
+
+With only one light, **Set for all lights** doesn't appear. Use the light's **Resting look** button.
+
+<Note>
+  Saving a scene for many lights checks it on each light with Govee, which uses one or two of your daily Govee requests per light. Colors and brightness don't need this check.
+</Note>
+
 ## Connect a gift to a scene
 
 1. In **Connect a gift to a scene**, choose a **TikTok gift**.
@@ -136,7 +159,7 @@ Each saved effect in **Gift effects** shows the light, the scene, its brightness
 | No scenes for a light | Govee reports no scenes for that model. Try another light, or create a DIY scene in Govee Home and refresh devices. |
 | Govee is rate limiting requests | Wait a minute. Other apps that use the same Govee key share Govee's limit. |
 | **BrewBot paused Govee requests for this key until midnight UTC** | BrewBot's daily count for your key reached 9,999. Lights and gifts work again after midnight UTC. |
-| **Set this light's resting look first** | A scene length needs something to switch back to. Select **Resting look** next to that light in **Your lights**, save one, then save the gift effect. |
+| **Set this light's resting look first** | A scene length needs something to switch back to. Select **Resting look** next to that light in **Your lights**, or **Set for all lights** to cover every light at once. Save it, then save the gift effect. |
 | Light didn't switch back | Check for a warning under **Your lights**. Make sure the light is online in Govee Home and its resting look is still set. A manual power command or an untimed gift cancels the switch-back. |
 | Brightness is greyed out | Govee reports no brightness control for that light. |
 | Gift automation turned off by itself | Saving a new key in [Govee Cloud](/integrations/govee) pauses automation. Turn it back on after you check your gift effects. |
