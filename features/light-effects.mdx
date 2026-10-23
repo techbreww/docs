@@ -81,13 +81,13 @@ With only one light, **Set for all lights** doesn't appear. Use the light's **Re
 ## Connect a gift to a scene
 
 1. In **Connect a gift to a scene**, choose a **TikTok gift**.
-2. Choose a **Light**. Only lights that support scenes are listed.
+2. Choose a **Light**: one light, **All lights**, or **Choose lights…** to check the ones you want. Only lights that support scenes are listed.
 3. Choose a **Scene**. Built-in scenes come from Govee; DIY scenes are ones you made in Govee Home.
 4. Optionally choose a **Brightness** for the scene. **Don't change** keeps the light's current brightness.
 5. Choose a **Scene length**: **Until something else changes it**, or 5 to 120 seconds followed by the light's resting look.
 6. Select **Save gift effect**.
 
-Each gift uses one light and one scene. Saving a gift again replaces its previous settings.
+Each gift has one scene. Saving a gift again replaces its scene and lights.
 
 <Frame>
   <img className="block dark:hidden" src="/images/light-effects/gift-scene-light.png" alt="Connect a gift to a scene form: Rose on Desk light with the Rainbow scene at 100% brightness for 15 seconds, then the light's resting look" />
@@ -97,6 +97,22 @@ Each gift uses one light and one scene. Saving a gift again replaces its previou
 <Tip>
   To use your own animation, create a DIY scene in Govee Home, then select **Refresh devices** so it appears in the **Scene** menu.
 </Tip>
+
+### Play a gift on all your lights
+
+Set a gift once and every light can play it. Choose **All lights** under **Light**, or **Choose lights…** and check the lights you want. With one light, these choices don't appear.
+
+Each Govee model has its own scenes, so with several lights you pick a scene by name. Every light plays its own model's version of that scene. The **Scene** menu shows how many of your lights have each scene, for example **Built-in · Rainbow (18 of 33 lights)**. Lights that don't have the scene are skipped, and the form lists them before you save. The gift still plays on the rest.
+
+With several lights:
+
+- A **Brightness** applies to every light that can dim. Lights without brightness control just play the scene.
+- A **Scene length** needs a resting look on every light. If some are missing, the form names them. Use **Set for all lights** in **Your lights** to give them one at once.
+- The lights change together. BrewBot sends to up to 10 lights at a time, and they switch back to their resting looks together too.
+
+<Warning>
+  Every light counts toward Govee's daily limit (see below). A gift on 33 lights with a brightness uses 66 requests, and 99 to 132 with a scene length, depending on the resting looks. The form shows how many requests each gift uses and roughly how many such gifts the limit covers in a day. Gifts on many lights during a busy stream can use up the day's requests.
+</Warning>
 
 ## Turn on gift automation
 
@@ -118,7 +134,8 @@ Changing the TikTok account pauses automation. Turn **Enable gift effects** back
 - Gifts sent to a co-host or guest instead of the host are skipped.
 - The same gift can trigger at most once every 5 seconds.
 - Your lights take at most one command per second, and that limit is shared with the dashboard's power and test buttons. Gifts that arrive while your lights are busy are skipped, not queued.
-- A scene with a brightness sends two commands: the scene, then the brightness.
+- A scene with a brightness sends two commands to each light: the scene, then the brightness.
+- A gift on several lights sends to up to 10 lights at once, so lights stay busy one second per command for every 10 lights. For example, 33 lights with a brightness are busy for 8 seconds. If one light doesn't respond, the others still change, and the gift effect names the lights that failed.
 - With a scene length, the light switches back to its resting look when the time is up. If another gift changes the same light first, the timer restarts from that gift. A gift without a scene length, or a manual **Turn on** or **Turn off**, cancels the switch-back.
 - Switching back still happens if BrewBot restarts during your stream. If your lights are busy at that moment, it waits a second instead of being skipped.
 - Without a scene length, a scene stays on until something else changes the light.
@@ -130,13 +147,14 @@ Govee allows 10,000 requests per account each day. To stay under it, BrewBot cou
 
 The **Govee requests today** tile at the top of the page tracks the count with a bar. It turns amber at 80% and shows how many requests are left. At 9,999 it turns red and shows **Paused until midnight UTC**.
 
+- Each light a gift plays on uses its own requests. **Gift effects** shows how many requests each gift uses.
 - A timed gift only runs if its switch-back also fits under the limit, so a light is never left on a gift scene because the limit ran out.
 - Servers that use the same Govee key share one count.
 - Other apps that use your key also count toward Govee's limit, but BrewBot can't see them. If you use the key elsewhere, Govee may still limit you before BrewBot's count reaches 9,999.
 
 ## Test, pause, or remove a gift effect
 
-Each saved effect in **Gift effects** shows the light, the scene, its brightness and scene length, and the last time a gift tried to trigger it.
+Each saved effect in **Gift effects** shows the light (or how many lights; select it to see their names), the scene, its brightness and scene length, how many Govee requests one gift uses, and the last time a gift tried to trigger it.
 
 <Frame>
   <img className="block dark:hidden" src="/images/light-effects/gift-effects-light.png" alt="Gift effects list: Rose switches Desk light to Rainbow at 100% for 15 seconds; Galaxy sets Shelf strip to Gift celebration until something else changes it" />
@@ -146,7 +164,7 @@ Each saved effect in **Gift effects** shows the light, the scene, its brightness
 | Action | What it does |
 | --- | --- |
 | Switch | Turns that gift effect on or off without deleting it. |
-| **Test scene** | Sends the scene and brightness to your real light now, even if gift automation is paused. If the effect has a scene length, the light switches back afterwards, just like a real gift. A successful test clears the effect's last error. |
+| **Test scene** | Sends the scene and brightness to your real lights now, even if gift automation is paused. If the effect has a scene length, the lights switch back afterwards, just like a real gift. A successful test clears the effect's last error. |
 | **Remove** | Deletes the gift effect. |
 
 ## Troubleshooting
@@ -155,7 +173,9 @@ Each saved effect in **Gift effects** shows the light, the scene, its brightness
 | --- | --- |
 | A gift didn't change the light | Confirm the TikTok account, **Enable gift effects**, and the gift's switch are on. Then check whether the same gift fired in the last 5 seconds or another command was just sent. |
 | **Govee did not confirm this effect** | Check that the light is online in Govee Home and that your Govee key still works, then select **Test scene**. |
-| **This light is not in the connected Govee account** | You replaced your Govee key with one from another account, or the light was removed in Govee Home. Choose a light and scene again for that gift. |
+| **This light is not in the connected Govee account** | You replaced your Govee key with one from another account, or the light was removed in Govee Home. Choose a light and scene again for that gift. For a gift on several lights, the warning names the missing lights; save the gift again to update its lights. |
+| **Govee did not confirm this effect on 2 of 18 lights** | The named lights didn't respond; the others changed. Check those lights are online in Govee Home, then select **Test scene**. |
+| A light was skipped for a gift | That light's model doesn't have a scene with that name. Pick a scene more of your lights share, or set a separate gift for that light. |
 | No scenes for a light | Govee reports no scenes for that model. Try another light, or create a DIY scene in Govee Home and refresh devices. |
 | Govee is rate limiting requests | Wait a minute. Other apps that use the same Govee key share Govee's limit. |
 | **BrewBot paused Govee requests for this key until midnight UTC** | BrewBot's daily count for your key reached 9,999. Lights and gifts work again after midnight UTC. |
