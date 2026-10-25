@@ -154,7 +154,7 @@ The **Govee requests today** tile at the top of the page tracks the count with a
 - Servers that use the same Govee key share one count.
 - Other apps that use your key also count toward Govee's limit, but BrewBot can't see them. If you use the key elsewhere, Govee may still limit you before BrewBot's count reaches 9,999.
 
-## Test, pause, or remove a gift effect
+## Test, edit, pause, or remove a gift effect
 
 Each saved effect in **Gift effects** shows the light (or how many lights; select it to see their names), the scene, its brightness and scene length, how many Govee requests one gift uses, and the last time a gift tried to trigger it.
 
@@ -167,6 +167,7 @@ Each saved effect in **Gift effects** shows the light (or how many lights; selec
 | --- | --- |
 | Switch | Turns that gift effect on or off without deleting it. |
 | **Test scene** | Sends the scene and brightness to your real lights now, even if gift automation is paused. If the effect has a scene length, the lights switch back afterwards, just like a real gift. A successful test clears the effect's last error. |
+| **Edit** | Opens the gift effect in the form on the right with its lights, scene, brightness, and scene length filled in. The gift stays the same; to use another gift, save a new effect. Select **Save changes** to replace the effect, or **Cancel** to keep it. |
 | **Remove** | Deletes the gift effect. |
 
 ## Troubleshooting
@@ -175,7 +176,8 @@ Each saved effect in **Gift effects** shows the light (or how many lights; selec
 | --- | --- |
 | A gift didn't change the light | Confirm the TikTok account, **Enable gift effects**, and the gift's switch are on. Then check whether the same gift fired in the last 5 seconds or another command was just sent. |
 | **Govee did not confirm this effect** | Check that the light is online in Govee Home and that your Govee key still works, then select **Test scene**. |
-| **This light is not in the connected Govee account** | You replaced your Govee key with one from another account, or the light was removed in Govee Home. Choose a light and scene again for that gift. For a gift on several lights, the warning names the missing lights; save the gift again to update its lights. |
+| **This light is not in the connected Govee account** | You replaced your Govee key with one from another account, or the light was removed in Govee Home. Select **Edit** on that gift and choose a light and scene again. For a gift on several lights, the warning names the missing lights; select **Edit** to update its lights. |
+| **This gift effect has no lights** | The effect lost its lights, so gifts don't change anything. Select **Edit**, choose its lights and scene, and select **Save changes**. |
 | **Govee did not confirm this effect on 2 of 18 lights** | The named lights didn't respond; the others changed. Check those lights are online in Govee Home, then select **Test scene**. |
 | A light was skipped for a gift | That light's model doesn't have a scene with that name. Pick a scene more of your lights share, or set a separate gift for that light. |
 | No scenes for a light | Govee reports no scenes for that model. Try another light, or create a DIY scene in Govee Home and refresh devices. |
