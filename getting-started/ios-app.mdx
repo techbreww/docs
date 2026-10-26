@@ -1,0 +1,176 @@
+---
+title: "BrewBot for iOS"
+sidebarTitle: "iOS app"
+description: "Play TikTok and Twitch chat TTS on your iPhone or iPad, and change your TTS settings on the go."
+icon: "mobile-screen"
+tag: "BETA"
+---
+
+import PremiumNote from '/snippets/premium-note.mdx';
+
+<Note>
+  BrewBot for iOS is in **beta**. Features, screens, and behavior may change between builds. Report problems in the [support Discord](https://discord.gg/WbMUYr7DCg).
+</Note>
+
+<PremiumNote />
+
+BrewBot for iOS turns your iPhone or iPad into a [TikTok](/features/tts) or [Twitch](/features/twitch-tts) TTS player. You can play chat messages on a second device while you run your stream on another one. You can also change your voice, message rules, and audience without opening the dashboard.
+
+The app needs iOS 17 or later. It works on iPhone and iPad, including iPhone Duo.
+
+The beta covers TTS only. Use the [dashboard](https://brewbot.gg) for everything else, including adding TikTok channels and connecting Twitch accounts.
+
+## Get the beta
+
+The beta is available through TestFlight. To get an invite, contact support in the [support Discord](https://discord.gg/WbMUYr7DCg).
+
+## Before you start
+
+- Sign in to the [dashboard](https://brewbot.gg) at least once, so your servers and teams are set up.
+- Choose a source for the platform you want to play. For TikTok, add a channel in [TikTok Chat Monitor](/features/live-monitor). For Twitch, add a source in [Twitch TTS](/features/twitch-tts#connect-a-source).
+- Make sure the server has premium. On team servers, TikTok TTS and **Default voice** also need server admin access or the **Speed Dating** [feature permission](/getting-started/teams#feature-permissions).
+
+## Sign in
+
+Open the app and select **Sign in to BrewBot**. Use the same email or Discord sign-in you use on the dashboard. You don't need a separate account.
+
+<Frame>
+  <img className="block dark:hidden" src="/images/ios-app/sign-in-light.png" alt="BrewBot sign-in screen with the Sign in to BrewBot button" style={{ maxWidth: "320px" }} />
+  <img className="hidden dark:block" src="/images/ios-app/sign-in-dark.png" alt="BrewBot sign-in screen with the Sign in to BrewBot button" style={{ maxWidth: "320px" }} />
+</Frame>
+
+## Find your server
+
+**Your servers** lists every server you can access, grouped by personal workspace and team. Each server shows whether the bot is connected or offline.
+
+- Select the workspace button at the top left to show **All servers**, only **Personal**, or a single team.
+- Use **Find a server** to search by name.
+- Pull down on the list to refresh it.
+
+Choosing a workspace only filters the list. It doesn't change what you can access.
+
+<Frame>
+  <img className="block dark:hidden" src="/images/ios-app/servers-light.png" alt="Your servers list grouped into Personal, Brew Crew, and Community, with each server's bot status" style={{ maxWidth: "320px" }} />
+  <img className="hidden dark:block" src="/images/ios-app/servers-dark.png" alt="Your servers list grouped into Personal, Brew Crew, and Community, with each server's bot status" style={{ maxWidth: "320px" }} />
+</Frame>
+
+Select a server to open it. The server page has a player for **TikTok TTS** and one for **Twitch TTS**, plus a link to **TTS settings**.
+
+<Frame>
+  <img className="block dark:hidden" src="/images/ios-app/server-light.png" alt="Server page for Brew Crew Lounge with TikTok TTS, Twitch TTS, and TTS settings" style={{ maxWidth: "320px" }} />
+  <img className="hidden dark:block" src="/images/ios-app/server-dark.png" alt="Server page for Brew Crew Lounge with TikTok TTS, Twitch TTS, and TTS settings" style={{ maxWidth: "320px" }} />
+</Frame>
+
+## Play TTS on your device
+
+1. Open a server and select **TikTok TTS** or **Twitch TTS**.
+2. Select **Start listening**.
+3. Keep the app open. New messages play automatically.
+
+The player shows the message playing now, your volume, the connection status, and the queue. **Recently played** shows up to five messages that finished playing in this player. Leaving the player clears it.
+
+<Frame>
+  <img className="block dark:hidden" src="/images/ios-app/player-light.png" alt="TikTok TTS player playing a message from Jamie, with stop, Pause intake, and skip controls and a volume slider" style={{ maxWidth: "320px" }} />
+  <img className="hidden dark:block" src="/images/ios-app/player-dark.png" alt="TikTok TTS player playing a message from Jamie, with stop, Pause intake, and skip controls and a volume slider" style={{ maxWidth: "320px" }} />
+</Frame>
+
+| Control | What it does |
+| --- | --- |
+| **Stop listening** (stop icon) | Stops listening on this device. |
+| **Pause intake** | Finishes the current message, then stops taking new ones. Select **Resume** to continue. |
+| **Skip** | Skips the message playing now. |
+| **Mute** and volume | Changes the volume on this device only. [Volume](/features/volume) levels from the dashboard still apply. |
+| **Audio output** | Sends sound to AirPlay, Bluetooth, or another output. |
+| **Clear** | After you confirm, clears this platform's waiting messages for every player on the server. The message playing now finishes. |
+
+Each platform has one queue per server, shared by the app, the OBS browser source, and the browser player. Each message plays on one player only, not on every device. Use only the player you want your stream to hear.
+
+### Keep the player running
+
+- Your screen stays awake while the player is listening.
+- If you switch apps or lock your phone, the current message finishes. New messages wait until you come back to BrewBot.
+- If a call or another app interrupts audio, or your headphones disconnect, the message playing now stops and is skipped, and the player pauses intake. Pausing from the lock screen does the same. Select **Resume** when you're ready.
+- Going back to the server list, switching servers or platforms, or signing out stops the player. Rotating or folding your device doesn't.
+
+<Note>
+  For a whole stream, keep BrewBot open on a device that stays plugged in. The app doesn't keep playing new messages in the background.
+</Note>
+
+## Change TTS settings
+
+Open **TTS settings** from the server page, or select **TTS settings** (the sliders icon) in a player. The app uses the same settings as **Live Tools > TTS Settings** in the dashboard. Changes apply to the server on all your devices.
+
+<Frame>
+  <img className="block dark:hidden" src="/images/ios-app/tts-settings-light.png" alt="TTS settings with Default voice, TikTok, and Twitch" style={{ maxWidth: "320px" }} />
+  <img className="hidden dark:block" src="/images/ios-app/tts-settings-dark.png" alt="TTS settings with Default voice, TikTok, and Twitch" style={{ maxWidth: "320px" }} />
+</Frame>
+
+### Default voice
+
+**Default voice** is shared by TikTok and Twitch.
+
+- **Voice selection**: choose **One voice**, or **Random voices** to pick a voice for each message.
+- **Voice**: with **One voice**, search the voice list by name or style.
+- **Model**: choose **Multilingual v2** or **Eleven v3**. Eleven v3 supports [audio tags](/features/tts-audio-tags).
+
+<Frame>
+  <img className="block dark:hidden" src="/images/ios-app/voice-settings-light.png" alt="Default voice settings with One voice, Katie BrewBot, and the Multilingual v2 model" style={{ maxWidth: "320px" }} />
+  <img className="hidden dark:block" src="/images/ios-app/voice-settings-dark.png" alt="Default voice settings with One voice, Katie BrewBot, and the Multilingual v2 model" style={{ maxWidth: "320px" }} />
+</Frame>
+
+### TikTok and Twitch
+
+Select **TikTok** or **Twitch** to change that platform's chat settings.
+
+| Section | Settings |
+| --- | --- |
+| **Chat TTS** | **Enable chat TTS** and the **Source** to read from. |
+| **Message rules** | **Read messages**: **Starting with //** or **All messages**. With **Starting with //**, turn on **Moderators can skip //** (TikTok) or **Staff & VIPs can skip //** (Twitch) to let those viewers skip the prefix. |
+| **Audience** | **Who can speak**, **Allowed users**, and **Blocked users**. TikTok also has **Allow MVPs**. |
+| **Heart Me** | TikTok only. **Announce Heart Me** and **Heart Me grants TTS access**. |
+| **Voice overrides** | **Individual voices** gives a viewer their own voice on this platform. |
+
+The source list shows your monitored TikTok channels or the Twitch sources you've added. Sources marked **(unavailable)** need attention in the dashboard. Select **Manage connections in dashboard** to add or reconnect one. You can't turn on **Enable chat TTS** until you choose an available source. The TikTok source is shared with your other live tools, so changing it here changes it for them too.
+
+<Frame>
+  <img className="block dark:hidden" src="/images/ios-app/tiktok-settings-light.png" alt="TikTok settings with Enable chat TTS, Source, message rules, and audience" style={{ maxWidth: "320px" }} />
+  <img className="hidden dark:block" src="/images/ios-app/tiktok-settings-dark.png" alt="TikTok settings with Enable chat TTS, Source, message rules, and audience" style={{ maxWidth: "320px" }} />
+</Frame>
+
+### Save your changes
+
+Your changes aren't applied until you select **Save** (the check mark at the top right of the editor). If you close a screen with unsaved changes, the app asks before discarding them. If saving fails, your changes stay on screen so you can try again.
+
+Opening settings from a player doesn't stop playback. Saving a new **Source**, or turning chat TTS on or off, stops this device's player for that platform. Select **Start listening** again afterward. Other changes apply to new messages without stopping the player.
+
+## Account and appearance
+
+Select the profile button at the top right to open **Account**.
+
+- **Manage profile** opens your profile, where you can change your name, email, and sign-in methods.
+- **Appearance** sets the app to **System**, **Light**, or **Dark**. **System** follows your device setting.
+- **Refresh servers** reloads your server list.
+- **Sign out** stops playback on this device and signs you out.
+
+<Frame>
+  <img className="block dark:hidden" src="/images/ios-app/account-light.png" alt="Account screen with the profile card, Appearance set to Light, and Refresh servers" style={{ maxWidth: "320px" }} />
+  <img className="hidden dark:block" src="/images/ios-app/account-dark.png" alt="Account screen with the profile card, Appearance set to Dark, and Refresh servers" style={{ maxWidth: "320px" }} />
+</Frame>
+
+These screenshots use sample data. When you're signed in, **Account** also shows **Manage profile** and **Sign out**.
+
+## iPad and iPhone Duo
+
+On iPad, or on iPhone Duo when it's open, the app shows your servers beside the player or settings. In smaller windows, it shows one screen at a time. Rotating, folding, or resizing the app keeps the player running and keeps unsaved settings.
+
+## Troubleshooting
+
+| Problem | What to try |
+| --- | --- |
+| A server is missing | Check the workspace filter, then select **Refresh servers** in **Account**. The server needs to be in your dashboard first. |
+| "Premium feature" | The server needs premium. See [Pricing and billing](/getting-started/billing). |
+| "These settings aren't available for your account" or "You don't have access to this player" | You need access to the server in the dashboard. On team servers, TikTok TTS and **Default voice** also need server admin access or the **Speed Dating** feature permission. Ask a team admin to check your [feature permissions](/getting-started/teams#feature-permissions). If the player link changed, for example after **Regenerate link** in the dashboard, go back, reopen the player, and select **Start listening**. |
+| "Chat TTS is turned off" | Open **TTS settings**, select the platform, and turn on **Enable chat TTS**. |
+| Messages play on another device instead | Another player, such as an OBS browser source, is taking messages from the same queue. Close the players you don't need. |
+| Playback stopped after a call or disconnected headphones | The interrupted message is skipped. Select **Resume** to continue with the next one. |
+| No new messages after switching apps | Return to BrewBot. Waiting messages start again when the app is open. |
