@@ -1,7 +1,7 @@
 ---
 title: "Gift sounds and uploads"
 sidebarTitle: "Gift Sounds"
-description: "Play built-in or uploaded sounds when viewers send TikTok gifts."
+description: "Play library or uploaded sounds when viewers send TikTok gifts."
 icon: "music"
 ---
 
@@ -21,7 +21,7 @@ Open **Live Tools > Gift Sounds**. You need access to the server and premium liv
 2. In **Live Tools > TTS Settings > TikTok TTS > Live Source**, select that account as the shared live source.
 3. Open **Gift Sounds** and turn on **Enable Gift Sounds**.
 4. Use **Add a gift sound** to choose a gift, then select **Add gift**.
-5. Choose a built-in sound or one of **Your server’s sounds** from the gift's sound menu.
+5. Select the gift's sound button to open the sound browser, then pick a sound. See [Pick a sound](#pick-a-sound).
 6. Turn on the switch for that gift. Changes save automatically.
 7. Copy the **Shared Chat TTS overlay** URL into an OBS browser source. If you already have that source, use the existing one.
 
@@ -31,9 +31,21 @@ Both the main switch and the individual gift switch must be on. Choosing **Nothi
   Gift Sounds works independently of the Chat TTS text-reading switch. Keep the shared overlay active to play sounds even when chat reading is off. Gifts use the selected shared live source; gifts explicitly addressed to another visible, non-host recipient are skipped.
 </Note>
 
+## Pick a sound
+
+The sound browser opens when you select a gift's sound button. Search by name, or filter by category. Select the play button on a card to hear it in your browser, then select the card to use that sound.
+
+The browser includes:
+
+- **Your server’s sounds**: clips you uploaded. See [Upload your own sounds](#upload-your-own-sounds).
+- **BrewBot classics**: the original built-in sounds, such as Cash, Heart Pop, and Boat Horn.
+- **The sound library**: royalty-free sound effects in eight categories: Alerts & Bells, Hype, Funny, Money, Magic, Impacts, Pops & Dings, and Game.
+
+The library is shared with [Sticker Sounds](/features/sticker-sounds) and the [speed dating timer-end sound](/features/speed-tracker#grid-and-timer-settings). Every library sound comes from [Kenney](https://kenney.nl) or [Freesound](https://freesound.org) under the CC0 public domain license, so you can play it on stream without asking permission or crediting anyone.
+
 ## Upload your own sounds
 
-In **Your server’s sounds**, select **Upload sound** and choose a file. After the upload completes, select it from a gift's sound menu and enable that mapping.
+In **Your server’s sounds**, select **Upload sound** and choose a file. After the upload completes, pick it in a gift's sound browser and enable that mapping.
 
 The library is shared with [Sticker Sounds](/features/sticker-sounds). A sound you upload on either page is available in both.
 
@@ -65,4 +77,4 @@ To make gift sounds quieter than chat reading, use [Volume](/features/volume).
 
 Gift sounds enter the shared audio queue. A gift streak can request repeated playback, so clips may wait behind audio already playing.
 
-Timer-end sounds are configured separately in [Speed Tracker settings](/features/speed-tracker#grid-and-timer-settings). Uploaded gift sounds are selected from gift mappings, not the timer-end sound menu.
+Timer-end sounds are configured separately in [Speed Tracker settings](/features/speed-tracker#grid-and-timer-settings). That picker includes the sound library but not your uploaded sounds.
