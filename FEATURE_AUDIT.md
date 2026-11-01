@@ -36,7 +36,7 @@ Every entry in `src/components/manage-navigation/config.ts` is mapped below, inc
 | BrewBot Messages | `/messages` | [features/messages](features/messages.mdx) |
 | Agent Connections | `/agent-connections` | [integrations/agent-connections](integrations/agent-connections.mdx) |
 | Live Tools | `/live-tools` | [features/live-tools](features/live-tools.mdx) |
-| TikTok Rankings | `/live-tools/rankings` | [features/tiktok-rankings](features/tiktok-rankings.mdx) |
+| BrewAnalytics | `/analytics` | [features/brewanalytics](features/brewanalytics.mdx) |
 | TikTok Chat Monitor (incl. Battle mode at `/live-monitor/battle`) | `/live-monitor` | [features/live-monitor](features/live-monitor.mdx) |
 | Twitch Monitor | `/twitch-monitor` | [features/twitch-monitor](features/twitch-monitor.mdx) |
 | Transcripts | `/transcripts` | [features/transcripts](features/transcripts.mdx) |
