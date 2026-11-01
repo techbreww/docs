@@ -66,7 +66,7 @@
               {
                 "group": "Monitoring",
                 "pages": [
-                  "features/tiktok-rankings",
+                  "features/brewanalytics",
                   "features/live-monitor",
                   "features/twitch-monitor",
                   "features/transcripts"
@@ -185,5 +185,11 @@
     "socials": {
       "discord": "https://discord.gg/WbMUYr7DCg"
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/features/tiktok-rankings",
+      "destination": "/features/brewanalytics"
+    }
+  ]
 }
