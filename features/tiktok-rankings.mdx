@@ -1,7 +1,7 @@
 ---
 title: "TikTok rankings"
 sidebarTitle: "TikTok Rankings"
-description: "Explore regional leaderboards and inspect creator statistics."
+description: "TikTok LIVE leaderboards, creator earnings, top gifters, and stream recaps."
 icon: "ranking-star"
 ---
 
@@ -9,14 +9,42 @@ import PremiumNote from '/snippets/premium-note.mdx';
 
 <PremiumNote />
 
-**Live Tools > TikTok Rankings** shows regional leaderboards and creator statistics. This is a premium feature.
+**Live Tools > TikTok Rankings** shows TikTok LIVE leaderboards, where your creator stands, and a full profile for any creator. It is powered by BrewAnalytics, BrewBot's analytics platform. This is a premium feature. You do not need to connect TikTok to use it.
 
 {/* TODO: Add screenshot of TikTok Rankings */}
 
-Choose **Daily** or **Fans Team**, then select a region. Search the returned leaderboard by name or TikTok username and select a creator to inspect their statistics.
+## Your creator
 
-The page can show rank, diamonds or score, the gap to the next place, followers, following, and the ranking reset time. A dash means TikTok did not supply that value. Reset times are displayed in your local time, and the countdown is based on the displayed snapshot.
+The **Your creator** panel uses the TikTok accounts you track in [Chat Monitor](/features/live-monitor). If you track more than one, pick the creator from the menu; your choice is remembered in this browser. The panel shows the creator's rank on the selected board, the score needed to reach the next place, estimated earnings for the current period, and the last 30 days.
 
-Rankings load when you open the page. Use **Refresh** for an update; requests within a minute share the latest snapshot. If a refresh fails, the page retains the last successful results.
+If no account is tracked yet, add one in Chat Monitor.
 
-Connect TikTok under [Integrations](/integrations/platform-connections) to show your connected account. If profile access needs reauthorization, reconnect there. Regional rankings remain available without that profile.
+## Leaderboards
+
+Choose a board, then filter it:
+
+| Board | Shows | Filters |
+| --- | --- | --- |
+| **Daily** | Creators ranked by diamonds, with estimated earnings and live status | Region, and the current period or a finished day or week |
+| **LIVE Teams** | Creators with fan teams, ranked by team points | Region |
+| **Gaming** | Gaming creators ranked by diamonds | Region |
+| **Shopping** | LIVE Shopping sellers ranked by TikTok's shopping score | Region |
+| **Leagues** | Creators in one league, such as A1 or D5 | Region and league |
+| **Global** | Top creators across all regions | Time window, from 10 minutes to 30 days |
+
+Search a board by name or TikTok username. Select a creator to open their profile. Your creator's row is highlighted when they appear on the board.
+
+Boards load when you open the page. Use **Refresh** for an update; requests within a minute share the latest snapshot. If a refresh fails, the page keeps the last successful results.
+
+## Creator profiles
+
+A creator profile shows:
+
+- Estimated earnings for the current period, country rank, the last 30 days, the total since tracking began, and their best day.
+- A chart of daily earnings for up to the last 30 days.
+- **Recent streams**. Select a stream for its recap: earnings, diamonds, gifts, viewers, new followers, diamonds per minute, top gifters, and top gifts.
+- **Top gifters** from TikTok's weekly gift gallery, with a menu to look at earlier weeks.
+
+<Note>
+Earnings are BrewAnalytics estimates in USD after TikTok's share, not TikTok payouts. BrewAnalytics starts tracking a creator the first time they are looked up, so a new or small creator may show little data at first. Their daily earnings fill in from then on. Stream recaps exist only for streams that were tracked while live.
+</Note>
