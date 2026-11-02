@@ -1,7 +1,7 @@
 ---
 title: "BrewBot for iOS"
 sidebarTitle: "iOS app"
-description: "Play TikTok and Twitch chat TTS on your iPhone or iPad, and change your TTS settings on the go."
+description: "Play TikTok and Twitch chat TTS on your iPhone or iPad, change your TTS settings, and manage Brewlinks on the go."
 icon: "mobile-screen"
 tag: "BETA"
 ---
@@ -14,11 +14,11 @@ import PremiumNote from '/snippets/premium-note.mdx';
 
 <PremiumNote />
 
-BrewBot for iOS turns your iPhone or iPad into a [TikTok](/features/tts) or [Twitch](/features/twitch-tts) TTS player. You can play chat messages on a second device while you run your stream on another one. You can also change your voice, message rules, and audience without opening the dashboard.
+BrewBot for iOS turns your iPhone or iPad into a [TikTok](/features/tts) or [Twitch](/features/twitch-tts) TTS player. You can play chat messages on a second device while you run your stream on another one. You can also change your voice, message rules, and audience, and manage your [Brewlinks](/features/brewlinks) pages, without opening the dashboard.
 
 The app needs iOS 17 or later. It works on iPhone and iPad, including iPhone Duo.
 
-The beta covers TTS only. Use the [dashboard](https://brewbot.gg) for everything else, including adding TikTok channels and connecting Twitch accounts.
+The beta covers TTS and Brewlinks. Use the [dashboard](https://brewbot.gg) for everything else, including adding TikTok channels and connecting Twitch accounts.
 
 ## Get the beta
 
@@ -54,7 +54,7 @@ Choosing a workspace only filters the list. It doesn't change what you can acces
   <img className="hidden dark:block" src="/images/ios-app/servers-dark.png" alt="Your servers list grouped into Personal, Brew Crew, and Community, with each server's bot status" style={{ maxWidth: "320px" }} />
 </Frame>
 
-Select a server to open it. The server page has a player for **TikTok TTS** and one for **Twitch TTS**, plus a link to **TTS settings**.
+Select a server to open it. The server page has a player for **TikTok TTS** and one for **Twitch TTS**, a link to **TTS settings**, and **Brewlinks**.
 
 <Frame>
   <img className="block dark:hidden" src="/images/ios-app/server-light.png" alt="Server page for Brew Crew Lounge with TikTok TTS, Twitch TTS, and TTS settings" style={{ maxWidth: "320px" }} />
@@ -143,6 +143,34 @@ Your changes aren't applied until you select **Save** (the check mark at the top
 
 Opening settings from a player doesn't stop playback. Saving a new **Source**, or turning chat TTS on or off, stops this device's player for that platform. Select **Start listening** again afterward. Other changes apply to new messages without stopping the player.
 
+## Manage Brewlinks
+
+Open **Brewlinks** from the server page to see the server's [Brewlinks](/features/brewlinks) pages, how many of the five you've used, and whether each page is **Live** or a **Draft**. The app uses the same pages as **Engagement > Brewlinks** in the dashboard.
+
+- Select **New page** (the plus button) to create a draft page and open it.
+- Select a page to see a preview of what visitors see.
+- Swipe left on a page, or select **Delete page** at the bottom of a page, to delete it. Deleting removes the page and its links permanently.
+- Touch and hold a live page to copy, share, or open its link.
+
+### Share a page
+
+On a page, turn on **Public page** to publish it, or off to hide it again. A page needs at least one link before you can publish it. Once it's live, use **Copy link**, **Share**, or **Open page**.
+
+### Edit a page
+
+Select **Edit** (the pencil at the top right) to change the page's title, subtitle, link, accent color, and links.
+
+- **Link** sets the end of the page's address, such as `brewlinks.gg/your-slug`. It uses lowercase letters, numbers, and hyphens.
+- **Accent color**: pick a color, or enter a hex value like `#5865f2`.
+- **Add link** adds a link. Enter its title and address. If you leave out `https://`, the app adds it.
+- To reorder links, select **Edit** in the **Links** header and drag them. Swipe left on a link to remove it.
+
+The editor shows a preview as you type. Your changes aren't applied until you select **Save**, and the app asks before discarding unsaved changes.
+
+### Change the logo
+
+Tap the logo in the preview, or select **Choose a new logo**, and pick a photo. The new logo goes live right away, without saving. The app converts photos to a supported format and size for you. Select **Use server icon** to switch back to your Discord server icon.
+
 ## Account and appearance
 
 Select the profile button at the top right to open **Account**.
@@ -168,7 +196,7 @@ On iPad, or on iPhone Duo when it's open, the app shows your servers beside the 
 | Problem | What to try |
 | --- | --- |
 | A server is missing | Check the workspace filter, then select **Refresh servers** in **Account**. The server needs to be in your dashboard first. |
-| "Premium feature" | The server needs premium. See [Pricing and billing](/getting-started/billing). |
+| "Premium feature" or **Brewlinks requires Premium** | The server needs premium. See [Pricing and billing](/getting-started/billing). |
 | "These settings aren't available for your account" or "You don't have access to this player" | You need access to the server in the dashboard. On team servers, TikTok TTS and **Default voice** also need server admin access or the **Speed Dating** feature permission. Ask a team admin to check your [feature permissions](/getting-started/teams#feature-permissions). If the player link changed, for example after **Regenerate link** in the dashboard, go back, reopen the player, and select **Start listening**. |
 | "Chat TTS is turned off" | Open **TTS settings**, select the platform, and turn on **Enable chat TTS**. |
 | Messages play on another device instead | Another player, such as an OBS browser source, is taking messages from the same queue. Close the players you don't need. |
