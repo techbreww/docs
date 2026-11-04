@@ -303,7 +303,7 @@ Each log entry uses a color to signal what kind of action happened:
     | **Color** | Red |
     | **Title** | Left Voice Channel — or **Disconnected from Voice** if a moderator disconnected them |
     | **Summary** | Member mention left a voice channel (or was disconnected by a moderator) |
-    | **Details** | Disconnected by (if disconnected), channel name, current occupancy after leaving, self mute/deaf state, stream state, video state |
+    | **Details** | Disconnected by (if disconnected), channel name, time in call, time in that channel (if they switched channels during the call), current occupancy after leaving, self mute/deaf state, stream state, video state |
     | **Footer** | User ID |
   </Tab>
   <Tab title="Switched voice / moved">
@@ -314,10 +314,12 @@ Each log entry uses a color to signal what kind of action happened:
     | **Color** | Yellow |
     | **Title** | Switched Voice Channel — or **Moved Between Voice Channels** if a moderator moved them |
     | **Summary** | Member mention moved voice channels (or was moved by a moderator) |
-    | **Details** | Moved by (if moved), from channel, to channel, occupancy in both channels, self mute/deaf state, stream state, video state |
+    | **Details** | Moved by (if moved), from channel, to channel, time in the channel they left, occupancy in both channels, self mute/deaf state, stream state, video state |
     | **Footer** | User ID |
   </Tab>
 </Tabs>
+
+Times are counted from when BrewBot saw the member join. They're left out for anyone who joined while BrewBot was offline, or before voice join or leave logs were turned on.
 
 Discord's audit log doesn't record who was disconnected or moved, only who did it, so BrewBot matches the two by timing. These logs post a second or two after the member leaves. If someone else leaves at the same moment a moderator disconnects a member, BrewBot can't tell which of them it was. Both logs then say they may have been disconnected, and name the moderator in a **Possibly disconnected by** field. Moves work the same way: the switched-voice logs say they may have been moved, with a **Possibly moved by** field. Shortly after BrewBot restarts, it may log a disconnect as a normal leave.
 
