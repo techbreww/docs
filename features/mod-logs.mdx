@@ -319,7 +319,7 @@ Each log entry uses a color to signal what kind of action happened:
   </Tab>
 </Tabs>
 
-Discord's audit log doesn't record who was disconnected or moved, only who did it, so BrewBot matches the two by timing. These logs post a second or two after the member leaves. If someone else leaves at the same moment a moderator disconnects a member, BrewBot can't tell which of them it was. Both logs then say they **possibly** were disconnected, and name the moderator in a **Possibly disconnected by** field. Moves work the same way. Shortly after BrewBot restarts, it may log a disconnect as a normal leave.
+Discord's audit log doesn't record who was disconnected or moved, only who did it, so BrewBot matches the two by timing. These logs post a second or two after the member leaves. If someone else leaves at the same moment a moderator disconnects a member, BrewBot can't tell which of them it was. Both logs then say they may have been disconnected, and name the moderator in a **Possibly disconnected by** field. Moves work the same way: the switched-voice logs say they may have been moved, with a **Possibly moved by** field. Shortly after BrewBot restarts, it may log a disconnect as a normal leave.
 
 ### Server events
 
