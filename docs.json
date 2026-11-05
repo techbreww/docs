@@ -54,6 +54,7 @@
               "features/leveling",
               "features/polls",
               "features/brewlinks",
+              "features/brewforms",
               "features/messages",
               "integrations/agent-connections",
               "integrations/cursor-agents"
