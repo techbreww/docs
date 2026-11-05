@@ -1,0 +1,89 @@
+---
+title: "BrewForms"
+description: "Build forms, share them with a link or with specific people, and collect responses."
+icon: "clipboard-list"
+---
+
+import PremiumNote from '/snippets/premium-note.mdx';
+
+<PremiumNote />
+
+BrewForms lets you build a form in the dashboard, publish it to a link, and read the responses. People answer one question at a time on a clean page with your colors, and they can use the keyboard the whole way through.
+
+BrewForms works at the account level, not per server. Forms you create on your personal account belong to you. Forms you create in a team belong to that team. Your account or team needs at least one server with premium.
+
+{/* TODO: Add screenshots of the builder and a published form */}
+
+## Create a form
+
+1. Open **BrewForms** from the dashboard home, from **Engagement** in a server's menu, or from your profile menu, and select **New form**.
+2. In **Build**, choose **+ Add a question** and pick a type. Select a question in the list to edit it, and drag the handle (or use the arrow buttons) to reorder.
+3. Optionally turn on the **Welcome screen**, and edit the **Thank-you screen**. The thank-you screen can include a button that links to any `https://` address.
+4. In **Design**, set the form title, the message shown when the form is closed, an accent color, a background, and a font.
+5. Select **Save**, then **Publish**. Your link is ready to share from the **Share** tab. Forms anyone can answer are at `brewforms.gg/f/...`.
+
+The preview next to the editor shows exactly what respondents see. It never saves answers.
+
+### Question types
+
+| Type | What people enter |
+| --- | --- |
+| **Short text** | A line of text, up to 500 characters (or your own limit) |
+| **Long text** | Paragraphs, up to 5,000 characters (or your own limit) |
+| **Email** | An email address |
+| **Number** | A number, with an optional minimum, maximum, and whole-numbers-only setting |
+| **Date** | A calendar date |
+| **Single choice** | One option, shown as a list or a dropdown |
+| **Multiple choice** | Several options, with optional minimum and maximum selections |
+| **Yes / No** | Yes or no |
+| **Rating** | 1 to 5 stars, or a 0 to 10 scale with optional labels |
+
+Any question can be required. A form can have up to 50 questions.
+
+## Edit a published form
+
+Your changes stay in a draft until you select **Publish changes**. New responses then use the new version, and earlier responses stay exactly as they were submitted. If you remove a question, its earlier answers are kept and marked as removed.
+
+Once a question has responses, you can't change its type. Duplicate it and change the copy instead.
+
+## Choose who can respond
+
+In **Share**, under **Who can respond**:
+
+- **Anyone with the link.** No sign-in, and no BrewBot account is attached to responses.
+- **Specific people.** Only the people and teams you add. They sign in with their BrewBot account, and their name and email are saved with each response. Add:
+  - a whole team you belong to (everyone who is a member when they respond),
+  - a member of one of your teams,
+  - anyone else by the exact email on their BrewBot account.
+
+Specific-people forms allow **one response per person** by default. You can't change that once the form has responses. Deleting someone's response lets them respond again.
+
+Specific-people forms are at `brewbot.gg/f/...`, where respondents can sign in. If you switch a form between the two, both of its links keep working and go to the right place.
+
+Access changes apply right away, without publishing. Turn off **Accepting responses** to close the form; the link then shows your closed message.
+
+Every form page has a **Report this form** link, which emails abuse@brewbot.gg.
+
+## Get Discord notifications
+
+In **Notifications**, choose a server, a channel, and optionally a role to mention. BrewBot posts a message there for each new response, with a button that opens your responses.
+
+Turn on **Include answers and respondent** to put the answers in the message. Everyone who can see that channel will read them, so only use a private channel for this.
+
+Select **Send test** after saving to check that BrewBot can post in the channel.
+
+## Read responses
+
+The **Responses** tab lists every response, newest first. Select **View** to see one in full, or **Export CSV** to download them all. You can delete a single response or all of them.
+
+Each response also shows **Submission details**: the respondent's IP address, device, operating system, and browser, how long they had the form open, and the site they came from if their browser shares it. The CSV export includes these too. Only the form's creator and Team Admins can see them.
+
+## Who can manage forms
+
+- On a personal account, you manage your own forms.
+- In a team, **Team Admins** manage every team form and can read all responses.
+- Team members with the **BrewForms** permission can create forms and manage the forms they created. A Team Admin turns this on in [Teams](/getting-started/teams) under **Members > Permissions**.
+
+<Warning>
+  Never use BrewForms to ask for passwords. BrewBot can disable forms that do.
+</Warning>
