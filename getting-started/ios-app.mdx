@@ -1,7 +1,7 @@
 ---
 title: "BrewBot for iOS"
 sidebarTitle: "iOS app"
-description: "Play TikTok and Twitch chat TTS on your iPhone or iPad, change your TTS settings, and manage Brewlinks on the go."
+description: "Play TikTok and Twitch chat TTS on your iPhone or iPad, change your TTS settings, manage Brewlinks, and read BrewForms responses on the go."
 icon: "mobile-screen"
 tag: "BETA"
 ---
@@ -14,11 +14,11 @@ import PremiumNote from '/snippets/premium-note.mdx';
 
 <PremiumNote />
 
-BrewBot for iOS turns your iPhone or iPad into a [TikTok](/features/tts) or [Twitch](/features/twitch-tts) TTS player. You can play chat messages on a second device while you run your stream on another one. You can also change your voice, message rules, and audience, and manage your [Brewlinks](/features/brewlinks) pages, without opening the dashboard.
+BrewBot for iOS turns your iPhone or iPad into a [TikTok](/features/tts) or [Twitch](/features/twitch-tts) TTS player. You can play chat messages on a second device while you run your stream on another one. You can also change your voice, message rules, and audience, manage your [Brewlinks](/features/brewlinks) pages, and read your [BrewForms](/features/brewforms) responses, without opening the dashboard.
 
 The app needs iOS 17 or later. It works on iPhone and iPad, including iPhone Duo.
 
-The beta covers TTS and Brewlinks. Use the [dashboard](https://brewbot.gg) for everything else, including adding TikTok channels and connecting Twitch accounts.
+The beta covers TTS, Brewlinks, and reading BrewForms responses. Use the [dashboard](https://brewbot.gg) for everything else, including adding TikTok channels, connecting Twitch accounts, and building forms.
 
 ## Get the beta
 
@@ -50,8 +50,8 @@ Open the app and select **Sign in to BrewBot**. Use the same email or Discord si
 Choosing a workspace only filters the list. It doesn't change what you can access.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/ios-app/servers-light.png" alt="Your servers list grouped into Personal, Brew Crew, and Community, with each server's bot status" style={{ maxWidth: "320px" }} />
-  <img className="hidden dark:block" src="/images/ios-app/servers-dark.png" alt="Your servers list grouped into Personal, Brew Crew, and Community, with each server's bot status" style={{ maxWidth: "320px" }} />
+  <img className="block dark:hidden" src="/images/ios-app/servers-light.png" alt="Your servers list with BrewForms at the top, then servers grouped into Personal, Brew Crew, and Community, with each server's bot status" style={{ maxWidth: "320px" }} />
+  <img className="hidden dark:block" src="/images/ios-app/servers-dark.png" alt="Your servers list with BrewForms at the top, then servers grouped into Personal, Brew Crew, and Community, with each server's bot status" style={{ maxWidth: "320px" }} />
 </Frame>
 
 Select a server to open it. The server page has a player for **TikTok TTS** and one for **Twitch TTS**, a link to **TTS settings**, and **Brewlinks**.
@@ -171,6 +171,28 @@ The editor shows a preview as you type. Your changes aren't applied until you se
 
 Tap the logo in the preview, or select **Choose a new logo**, and pick a photo. The new logo goes live right away, without saving. The app converts photos to a supported format and size for you. Select **Use server icon** to switch back to your Discord server icon.
 
+## Read BrewForms responses
+
+Select **BrewForms** at the top of **Your servers** to see your forms and how many responses each has. Forms are grouped by workspace and follow the workspace button: **All servers** shows your personal forms and every team's. You see the same forms as in the dashboard: the forms you created, or every team form if you're a Team Admin.
+
+<Frame>
+  <img className="block dark:hidden" src="/images/ios-app/brewforms-light.png" alt="BrewForms list with Giveaway entries under Personal, and Mod applications and Stream feedback under Brew Crew" style={{ maxWidth: "320px" }} />
+  <img className="hidden dark:block" src="/images/ios-app/brewforms-dark.png" alt="BrewForms list with Giveaway entries under Personal, and Mod applications and Stream feedback under Brew Crew" style={{ maxWidth: "320px" }} />
+</Frame>
+
+Select a form to read its responses as a stack of cards, newest first. Each card shows who answered (or **Anonymous response**), when, each answer, and the submission details: device and browser, how long they had the form open, and the site they came from.
+
+- Swipe a card left or right, or select **Next** (the arrow), to go to the next response.
+- Select **Previous** (the curved arrow) to bring back the last one.
+- After the last response, select **Start over** to go back to the newest.
+
+Swiping doesn't change or delete anything. Questions you removed from the form aren't shown. To edit forms, export responses, or delete them, use **Engagement > BrewForms** in the dashboard.
+
+<Frame>
+  <img className="block dark:hidden" src="/images/ios-app/brewforms-response-light.png" alt="A Mod applications response card from Jamie Rivera with answers and submission details, and Previous and Next buttons below it" style={{ maxWidth: "320px" }} />
+  <img className="hidden dark:block" src="/images/ios-app/brewforms-response-dark.png" alt="A Mod applications response card from Jamie Rivera with answers and submission details, and Previous and Next buttons below it" style={{ maxWidth: "320px" }} />
+</Frame>
+
 ## Account and appearance
 
 Select the profile button at the top right to open **Account**.
@@ -202,3 +224,4 @@ On iPad, or on iPhone Duo when it's open, the app shows your servers beside the 
 | Messages play on another device instead | Another player, such as an OBS browser source, is taking messages from the same queue. Close the players you don't need. |
 | Playback stopped after a call or disconnected headphones | The interrupted message is skipped. Select **Resume** to continue with the next one. |
 | No new messages after switching apps | Return to BrewBot. Waiting messages start again when the app is open. |
+| A form is missing from **BrewForms** | Check the workspace button. You only see forms you created, or every team form if you're a Team Admin. Pull down on the list to refresh it. |
