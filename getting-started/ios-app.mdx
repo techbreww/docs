@@ -1,7 +1,7 @@
 ---
 title: "BrewBot for iOS"
 sidebarTitle: "iOS app"
-description: "Play TikTok and Twitch chat TTS on your iPhone or iPad, change your TTS settings, manage Brewlinks, and read BrewForms responses on the go."
+description: "Play TikTok and Twitch chat TTS on your iPhone or iPad, change your TTS settings, run the speed dating timer, manage Brewlinks, and read BrewForms responses on the go."
 icon: "mobile-screen"
 tag: "BETA"
 ---
@@ -14,11 +14,11 @@ import PremiumNote from '/snippets/premium-note.mdx';
 
 <PremiumNote />
 
-BrewBot for iOS turns your iPhone or iPad into a [TikTok](/features/tts) or [Twitch](/features/twitch-tts) TTS player. You can play chat messages on a second device while you run your stream on another one. You can also change your voice, message rules, and audience, manage your [Brewlinks](/features/brewlinks) pages, and read your [BrewForms](/features/brewforms) responses, without opening the dashboard.
+BrewBot for iOS turns your iPhone or iPad into a [TikTok](/features/tts) or [Twitch](/features/twitch-tts) TTS player. You can play chat messages on a second device while you run your stream on another one. You can also change your voice, message rules, and audience, start and stop the [speed dating](/features/speed-tracker) timer, manage your [Brewlinks](/features/brewlinks) pages, and read your [BrewForms](/features/brewforms) responses, without opening the dashboard.
 
 The app needs iOS 17 or later. It works on iPhone and iPad, including iPhone Duo.
 
-The beta covers TTS, Brewlinks, and reading BrewForms responses. Use the [dashboard](https://brewbot.gg) for everything else, including adding TikTok channels, connecting Twitch accounts, and building forms.
+The beta covers TTS, the speed dating timer, Brewlinks, and reading BrewForms responses. Use the [dashboard](https://brewbot.gg) for everything else, including adding TikTok channels, connecting Twitch accounts, and building forms.
 
 ## Get the beta
 
@@ -54,11 +54,11 @@ Choosing a workspace only filters the list. It doesn't change what you can acces
   <img className="hidden dark:block" src="/images/ios-app/servers-dark.png" alt="Your servers list with BrewForms at the top, then servers grouped into Personal, Brew Crew, and Community, with each server's bot status" style={{ maxWidth: "320px" }} />
 </Frame>
 
-Select a server to open it. The server page has a player for **TikTok TTS** and one for **Twitch TTS**, a link to **TTS settings**, and **Brewlinks**.
+Select a server to open it. The server page has **Timer** (team servers), a player for **TikTok TTS** and one for **Twitch TTS**, a link to **TTS settings**, and **Brewlinks**.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/ios-app/server-light.png" alt="Server page for Brew Crew Lounge with TikTok TTS, Twitch TTS, and TTS settings" style={{ maxWidth: "320px" }} />
-  <img className="hidden dark:block" src="/images/ios-app/server-dark.png" alt="Server page for Brew Crew Lounge with TikTok TTS, Twitch TTS, and TTS settings" style={{ maxWidth: "320px" }} />
+  <img className="block dark:hidden" src="/images/ios-app/server-light.png" alt="Server page for Brew Crew Lounge with Timer, TikTok TTS, and Twitch TTS" style={{ maxWidth: "320px" }} />
+  <img className="hidden dark:block" src="/images/ios-app/server-dark.png" alt="Server page for Brew Crew Lounge with Timer, TikTok TTS, and Twitch TTS" style={{ maxWidth: "320px" }} />
 </Frame>
 
 ## Play TTS on your device
@@ -143,6 +143,23 @@ Your changes aren't applied until you select **Save** (the check mark at the top
 
 Opening settings from a player doesn't stop playback. Saving a new **Source**, or turning chat TTS on or off, stops this device's player for that platform. Select **Start listening** again afterward. Other changes apply to new messages without stopping the player.
 
+## Run the speed dating timer
+
+On a team server, select **Timer** on the server page to control the same countdown as **Start 3m** and **Reset** in the dashboard's [Speed Tracker](/features/speed-tracker#grid-header-and-controls). The countdown shows on your timer overlay and on every dashboard managing the server.
+
+1. Under **Timer length**, pick **1m**, **2m**, **3m**, **5m**, or **10m**, or select **Custom** to choose any length up to 60 minutes. The app remembers your choice on this device.
+2. Select **Start**.
+3. Select **Stop timer** to end the countdown early, or **Restart** to start it again at the length you picked.
+
+The countdown turns red in its last 30 seconds. If someone starts or stops the timer from the dashboard, or a [timer gift](/features/timer-gifts) extends it, the app shows the change within a few seconds.
+
+<Frame>
+  <img className="block dark:hidden" src="/images/ios-app/timer-light.png" alt="Timer counting down from 5:00, with timer length presets, Stop timer, and Restart at 5:00" style={{ maxWidth: "320px" }} />
+  <img className="hidden dark:block" src="/images/ios-app/timer-dark.png" alt="Timer counting down from 5:00, with timer length presets, Stop timer, and Restart at 5:00" style={{ maxWidth: "320px" }} />
+</Frame>
+
+You need server admin access or the **Speed Dating** [feature permission](/getting-started/teams#feature-permissions). Timer title, overlay style, and end sound are set in **Speed Tracker > Settings > Grid & Timer** in the dashboard.
+
 ## Manage Brewlinks
 
 Open **Brewlinks** from the server page to see the server's [Brewlinks](/features/brewlinks) pages, how many of the five you've used, and whether each page is **Live** or a **Draft**. The app uses the same pages as **Engagement > Brewlinks** in the dashboard.
@@ -224,4 +241,6 @@ On iPad, or on iPhone Duo when it's open, the app shows your servers beside the 
 | Messages play on another device instead | Another player, such as an OBS browser source, is taking messages from the same queue. Close the players you don't need. |
 | Playback stopped after a call or disconnected headphones | The interrupted message is skipped. Select **Resume** to continue with the next one. |
 | No new messages after switching apps | Return to BrewBot. Waiting messages start again when the app is open. |
+| **Timer** is missing | The timer is only on team servers with premium. On a personal server, use the dashboard. |
+| "You need speed dating access" on **Timer** | Ask a team admin for the **Speed Dating** [feature permission](/getting-started/teams#feature-permissions). |
 | A form is missing from **BrewForms** | Check the workspace button. You only see forms you created, or every team form if you're a Team Admin. Pull down on the list to refresh it. |
