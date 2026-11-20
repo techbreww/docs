@@ -65,7 +65,7 @@ Select a server to open it. The server page has **Timer** (team servers), a play
 
 1. Open a server and select **TikTok TTS** or **Twitch TTS**.
 2. Select **Start listening**.
-3. Keep the app open. New messages play automatically.
+3. New messages play automatically, even after you switch to another app.
 
 The player shows the message playing now, your volume, the connection status, and the queue. **Recently played** shows up to five messages that finished playing in this player. Leaving the player clears it.
 
@@ -88,13 +88,22 @@ Each platform has one queue per server, shared by the app, the OBS browser sourc
 ### Keep the player running
 
 - Your screen stays awake while the player is listening.
-- If you switch apps or lock your phone, the current message finishes. New messages wait until you come back to BrewBot.
-- If a call or another app interrupts audio, or your headphones disconnect, the message playing now stops and is skipped, and the player pauses intake. Pausing from the lock screen does the same. Select **Resume** when you're ready.
+- If you switch apps or lock your phone, BrewBot keeps listening and reading new messages. TTS plays alongside other apps' sound, like TikTok LIVE, Twitch, or music, without stopping it.
+- While BrewBot is listening, the Dynamic Island and the Lock Screen show whether it's listening or reading, the message it's reading, and how many messages it has read. Use **Pause** and **Stop** there without opening the app.
+- If a call or Siri interrupts audio, the message playing now stops and is skipped. When the call ends, BrewBot usually picks up again on its own. If it can't, it shows **Paused. Open BrewBot to resume.**
+- If your headphones disconnect, the message playing now stops and is skipped, and the player pauses intake. Select **Resume** when you're ready.
 - Going back to the server list, switching servers or platforms, or signing out stops the player. Rotating or folding your device doesn't.
 
-<Note>
-  For a whole stream, keep BrewBot open on a device that stays plugged in. The app doesn't keep playing new messages in the background.
-</Note>
+<Warning>
+  Don't swipe BrewBot away in the app switcher. That closes the app and stops listening. If you do, the Lock Screen shows **Stopped. Open BrewBot to listen.**
+</Warning>
+
+### Stream from the same phone
+
+You can run your stream and the TTS player on one phone. Start listening in BrewBot, then switch to your streaming app.
+
+- **Screen streaming** (sharing your phone's screen, for example to Twitch) sends your phone's sound to viewers, so they hear the TTS.
+- **Camera streaming** (like TikTok LIVE or Twitch's camera mode) usually sends only your microphone. Viewers hear the TTS only through your phone's speaker, so keep the volume up and do a short test stream first.
 
 ## Change TTS settings
 
