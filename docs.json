@@ -87,6 +87,7 @@
                 "group": "Streaming",
                 "pages": [
                   "features/gift-goals",
+                  "features/giveaways",
                   "features/rate-me",
                   "features/game-requests",
                   "features/light-effects",

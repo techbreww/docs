@@ -1,0 +1,70 @@
+---
+title: "Giveaways"
+sidebarTitle: "Giveaways"
+description: "Run TikTok LIVE giveaways where follows, gifts, and Super Fans earn entries."
+icon: "gift"
+---
+
+import PremiumNote from '/snippets/premium-note.mdx';
+
+<PremiumNote />
+
+Giveaways counts entries for your viewers while you're LIVE on TikTok, shows the standings on stream, and draws a winner when the giveaway ends. It requires premium and works on personal and team servers. On team servers, members need [Speed Dating access](/getting-started/teams#feature-permissions).
+
+## Create a giveaway
+
+1. Add your TikTok account to [TikTok Chat Monitor](/features/live-monitor).
+2. Open **Live Tools > Giveaways** and select **New giveaway**.
+3. Enter a **Title** and **Subtitle**, for example `💻 MACBOOK AIR M5 GIVEAWAY` and `MIDNIGHT | 512GB | ONE LUCKY WINNER`.
+4. Choose the **TikTok account** and the number of **Winners**.
+5. Choose when it **Starts** (now or later) and when it **Ends**. A giveaway can run for up to 31 days.
+6. Set the entry rules, then select **Start giveaway** or **Schedule giveaway**.
+
+## Entry rules
+
+A new giveaway starts with this breakdown. Change any value, or turn a rule off.
+
+| Rule | What earns entries |
+| --- | --- |
+| **Follow** | Following you. Counts once per viewer, so unfollowing and following again earns nothing. |
+| **Heart Me** | Each Heart Me gift earns a set number of entries. |
+| **Every diamond** | Each diamond a gift is worth. A Rose x10 earns 10 entries at 1 entry per diamond. |
+| **2X gifts / 4X gifts** | Gifts you pick for these groups earn their diamonds times the multiplier. |
+| **Become a Super Fan** | Subscribing during the giveaway. Counts once per viewer. |
+| **Share the LIVE** | Off by default. Each share, up to a limit per viewer. |
+| **Taps** | Off by default. One entry every time a viewer's taps reach the amount you set. |
+
+Gift groups give chosen gifts their own value. Rename them (for example **NEW LIVE Fest Gifts** or **Vault Gifts**), pick their gifts, and choose either a **Diamond multiplier** or **Entries per gift**. Add more groups with **Add group**. A group with no gifts is left out. If a gift is in more than one group, the first group sets its value.
+
+Gifts sent to a guest on your LIVE don't count. Turn on **Also count existing Super Fans** to give Super Fan entries to viewers who were already Super Fans when TikTok shows them joining or gifting.
+
+## How entries are counted
+
+Entries count while BrewBot is connected to your LIVE: keep the [Chat TTS overlay](/features/tts), the BrewBot app, or Chat Monitor open, as you do for TTS. Nothing else needs to be set up.
+
+A giveaway only counts what happens on your LIVE between its start and end times. Entries add up across every LIVE in that window, so a month-long giveaway keeps each viewer's total from stream to stream. Follow and Super Fan entries still count once for the whole giveaway.
+
+Rule changes apply to new events within a few seconds. Entries already earned stay.
+
+## Run the giveaway
+
+The giveaway page updates while you're live. It shows total entries, viewers, diamonds, new follows, and Super Fans, plus:
+
+- **Leaderboard**: each viewer's entries and odds. Search for a viewer by username.
+- **Disqualify**: a disqualified viewer keeps their entries but can't win. Select **Reinstate** to undo.
+- **Manual entries**: add or remove entries for a viewer by TikTok username, with an optional reason. Use this for things BrewBot can't see, like a bonus round.
+- **Activity**: the latest entries earned, including manual changes.
+
+## Show it on stream
+
+Copy the **OBS overlay** link from **Live Tools > Giveaways** into a browser source. It shows the running giveaway's title, countdown, entry breakdown, top entries, and totals, then the winner once drawn. It switches to your next giveaway by itself, so you only add it to OBS once. Select **New link** if the link has been shared; the old link stops working.
+
+The overlay only displays the giveaway. Entries count without it.
+
+## Draw a winner
+
+When the end time passes, or after you select **End now**, select **Draw winner**. Each entry is one ticket, so viewers with more entries have better odds. Disqualified viewers and earlier winners are skipped. Select **Draw next winner** for more winners.
+
+After the first winner is drawn, manual entries are locked. Select **Export CSV** to download every viewer's entries.
+
+See [Gift Goals](/features/gift-goals) for a gift target and [Timer Gifts](/features/timer-gifts) to extend a countdown.
